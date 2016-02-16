@@ -38,7 +38,7 @@ There are the following contenders that offer free CI for open source projects:
 - [https://travis-ci.org/](https://travis-ci.org/ "Travis")
 - [https://www.appveyor.com/](https://www.appveyor.com/ "AppVeyor")
 
-Currently the AppVeyor CI server seems to be the most atractive option for me.
+Currently the AppVeyor CI server seems to be the most attractive option for me.
 
 **Make no mistake here as well:**
 All the offerings are free for open source projects, but for me AppVeyor seems to introduce the least amount of friction. At least for me.
@@ -56,8 +56,8 @@ I might consider [https://github.com/GitTools/GitLink](https://github.com/GitToo
 To test things out I decided to create a small specification framework.
 As you might be aware there 2 types of specification frameworks.
 
-The ones intended to be used by developers and the ones targeting at non developers.
-This one will be for devlopers.
+The ones intended to be used by developers and the ones targeting non developers.
+This one will be for developers.
 
 You might ask: Why create a new specification framework?
 There so many good ones already. And you would be right.
