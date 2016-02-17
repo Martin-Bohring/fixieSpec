@@ -3,10 +3,10 @@
 Not much to see here yet.
 This is a personal project for now to test drive my personal best of breed development stack (personal opinion).
 
-Still here? OK.
+**Still here? OK.**
 
 So you might wonder what I consider a good development stack in the .Net space.
-As a general rule: Things should be easly and low friction.
+As a general rule: **Things should be easly and low friction**.
 
 **The follwing list of tools and frameworks I decided to test drive:**
 
@@ -49,23 +49,46 @@ I might consider [https://github.com/GitTools/GitLink](https://github.com/GitToo
 
 ## Testing ##
 
+### Test Framework ###
+I have used [https://github.com/nunit](https://github.com/nunit "NUnit") professional in the past. It was a good option back then, but extending the test runner or test class life ciycle was always a hassle.
+Also the test setup and test cleanup attributes always fetlt unnatural to me (remember low friction)
+
+The [https://github.com/xunit/xunit](https://github.com/xunit/xunit "xunit") and relived from some of the pain.
+Test class lifecycle is a more natural match with the expectations of a .Net developer.
+
+Extending it is also possible, but still somewhat of a pain (and yes xunit2 has improved things in that area).
+
+And then came [https://github.com/fixie/fixie](https://github.com/fixie/fixie "Fixie").
+Its developer Patrick Lioi started developing it over the course of more than a year in the open.
+His blog serie [https://lostechies.com/patricklioi/2013/07/23/fixies-elevator-pitch/](https://lostechies.com/patricklioi/2013/07/23/fixies-elevator-pitch/) is a must read for every fixie user.
+
+All the decisions, doubts, mistakes, course changes etc. are laid out in plain sight.
+So everybody can watch a great developer at work.
+
+### Assertion Framework ###
+Am a long time ueser of [https://github.com/dennisdoomen/FluentAssertions](https://github.com/dennisdoomen/FluentAssertions "Fluent Assertions"). It is simple the most complete fluent asserion library.
+
+No matter what unit test framework I used in the past, I always had trouble what parameter comes first in its assertion methods:
+
+Is it the actual value or the excpected value. Since both are of the same type (most of the time), the method signator is not helpfull. Fluent Assertions solves that and a lot more [https://github.com/dennisdoomen/FluentAssertions/wiki](https://github.com/dennisdoomen/FluentAssertions/wiki "Fluent Assertions Wiki").
+
+The only draw back is that some of the exception messages are difficult to decipher.
+
+But I want to learn something new. Therefore I will give [https://github.com/shouldly/shouldly](https://github.com/shouldly/shouldly "Shouldly") a try. I am aware of other Assertion Frameworks.
+
+It is not as complete as Fluent Assertions, but they have worked exspecially on improving the error messages ([http://docs.shouldly-lib.net/v2.4.0/docs](http://docs.shouldly-lib.net/v2.4.0/docs "Documentation") look at the error message examples). 
+
+### Mocking Library ###
+Over the years I have used almost all of the mocking libraries in the .Net space that are freely available.
+
 
 
 ## fixieSpec ##
 
 To test things out I decided to create a small specification framework.
-As you might be aware there 2 types of specification frameworks.
-
-The ones intended to be used by developers and the ones targeting non developers.
-This one will be for developers.
 
 You might ask: Why create a new specification framework?
 There so many good ones already. And you would be right.
-As mentioned already I am crearting it to learn something new.
-There is a lot to learn. Things change fast. A good approauch from 2 years ago becomes outdated very quickly.
+As mentioned already I am creating it to learn something new.
+There is a lot to learn out there. Things change fast. A good approach from 2 years ago becomes outdated very quickly.
 
-This is the stack I am working with:
-
-Fixie:
-
-http://fixie.github.io](http://fixie.github.io).
