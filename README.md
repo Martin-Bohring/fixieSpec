@@ -18,7 +18,7 @@ Therefore I tried [https://github.com/psake/psake](https://github.com/psake/psak
 But I really never got the hang of the PowerShell syntax.
 
 **Make no mistake here:**
-It is a very good build automation tool, just not my kind of build automation too.
+It is a very good build automation tool, just not my kind of build automation tool.
 
 The next thing I looked into is [https://github.com/fsharp/FAKE](https://github.com/fsharp/FAKE "FAKE").
 That one has won me over. It has everything I want from build automation.
@@ -32,7 +32,7 @@ In my opinion Cake is the runner-up to Fake and might overtake it in the not to 
 Not to far back in time there were no free CI offerings available.
 Boy have things changed by now (and no I have not lived in a cave for 10 years).
 
-There are the following contenders that offer free CI for open source projects:
+There are the following contenders I know of that offer free CI for open source projects:
 
 - [http://codebetter.com/codebetter-ci/](http://codebetter.com/codebetter-ci/ "Codebetter Teamcity")
 - [https://travis-ci.org/](https://travis-ci.org/ "Travis")
@@ -50,7 +50,7 @@ I might consider [https://github.com/GitTools/GitLink](https://github.com/GitToo
 ## Testing ##
 
 ### Test Framework ###
-I have used [https://github.com/nunit](https://github.com/nunit "NUnit") professional in the past. It was a good option back then, but extending the test runner or test class life ciycle was always a hassle.
+I have used [https://github.com/nunit](https://github.com/nunit "NUnit") professional in the past. It was a good option back then, but extending the test runner or changing the test class life cycle was always a hassle.
 Also the test setup and test cleanup attributes always fetlt unnatural to me (remember low friction)
 
 The [https://github.com/xunit/xunit](https://github.com/xunit/xunit "xunit") and relived from some of the pain.
@@ -81,7 +81,14 @@ It is not as complete as Fluent Assertions, but they have worked exspecially on 
 ### Mocking Library ###
 Over the years I have used almost all of the mocking libraries in the .Net space that are freely available.
 
+- [https://github.com/ayende/rhino-mocks](https://github.com/ayende/rhino-mocks "rhino-mocks")
+- [https://github.com/moq/moq](https://github.com/moq/moq "moq")
+- [https://github.com/FakeItEasy/FakeItEasy](https://github.com/FakeItEasy/FakeItEasy "FakeItEasy")
 
+And yes I am aware of [https://github.com/nsubstitute/NSubstitute](https://github.com/nsubstitute/NSubstitute "NSubsitute"), but never used it professionally.
+
+But for this endavour it will be **FakeItEasy**. It has the most clean syntax (personally opinion again, feel free to have your own)
+Is super low friction, does the right thing out of the box,(Deep mocking anybody? Yes I am locking at you RhinoMocks and Moq) and just gets out of the way.
 
 ## fixieSpec ##
 
