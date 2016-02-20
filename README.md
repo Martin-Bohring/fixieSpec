@@ -1,14 +1,14 @@
 # fixieSpec #
 
 Not much to see here yet.
-This is a personal project for now to test drive my personal best of breed development stack (personal opinion).
+This is a personal project for now to test drive my personal best of breed development stack (opinionated).
 
 **Still here? OK.**
 
 So you might wonder what I consider a good development stack in the .Net space.
 As a general rule: **Things should be easly and low friction**.
 
-**The follwing list of tools and frameworks I decided to test drive:**
+**The follwing tools and frameworks I decided to test drive:**
 
 ## Building automation ##
 There are build automation tools available in the .Net space that go further than plain MSBuild.
@@ -43,7 +43,7 @@ Currently the AppVeyor CI server seems to be the most attractive option for me.
 **Make no mistake here as well:**
 All the offerings are free for open source projects, but for me AppVeyor seems to introduce the least amount of friction. At least for me.
 
-BTW: Fake supports reporting build progress for all of them.
+BTW: Fake already supports reporting build progress to all of them.
 
 I might consider [https://github.com/GitTools/GitLink](https://github.com/GitTools/GitLink "GitLink") and [https://www.nuget.org/](https://www.nuget.org/ "nuget") in case my little experiment ends up as a published Nuget package.
 
