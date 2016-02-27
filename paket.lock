@@ -1,4 +1,7 @@
-
+NUGET
+  remote: https://www.nuget.org/api/v2
+  specs:
+    Fixie (1.0.0.41)
 
 GROUP Build
 NUGET
