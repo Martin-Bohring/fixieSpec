@@ -3,18 +3,18 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FixieSpec", "FixieSpec\FixieSpec.csproj", "{BAC77003-DF6E-489C-B40B-7AA7C67C4716}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FixieSpec", "src\FixieSpec\FixieSpec.csproj", "{BAC77003-DF6E-489C-B40B-7AA7C67C4716}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FixieSpec.Tests", "FixieSpec.Tests\FixieSpec.Tests.csproj", "{31A70DC0-4DB6-422E-BB02-EB606426D35B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FixieSpec.Tests", "src\FixieSpec.Tests\FixieSpec.Tests.csproj", "{31A70DC0-4DB6-422E-BB02-EB606426D35B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FixieSpec.Specs", "FixieSpec.Specs\FixieSpec.Specs.csproj", "{5C4D452D-3911-4D2F-A7A1-6D805ACC09C9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FixieSpec.Specs", "src\FixieSpec.Specs\FixieSpec.Specs.csproj", "{5C4D452D-3911-4D2F-A7A1-6D805ACC09C9}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{398F2A82-CB75-458E-BA2A-44745EC49A0B}"
 	ProjectSection(SolutionItems) = preProject
-		..\build.cmd = ..\build.cmd
-		..\build.fsx = ..\build.fsx
-		..\paket.dependencies = ..\paket.dependencies
-		..\README.md = ..\README.md
+		build.cmd = build.cmd
+		build.fsx = build.fsx
+		paket.dependencies = paket.dependencies
+		README.md = README.md
 	EndProjectSection
 EndProject
 Global
