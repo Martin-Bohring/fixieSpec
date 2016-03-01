@@ -8,10 +8,9 @@ group Build
   
   nuget FAKE
 
-group test
+group Test
 
   source https://nuget.org/api/v2
   
-  nuget AutoFixture
-  nuget FakeItEasy
+  nuget AutoFixture.AutoFakeItEasy
   nuget Shouldly

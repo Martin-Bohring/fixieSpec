@@ -9,10 +9,13 @@ NUGET
   specs:
     FAKE (4.21.0)
 
-GROUP test
+GROUP Test
 NUGET
   remote: https://www.nuget.org/api/v2
   specs:
     AutoFixture (3.40.0)
+    AutoFixture.AutoFakeItEasy (3.40.0)
+      AutoFixture (>= 3.40.0)
+      FakeItEasy (>= 1.7.0)
     FakeItEasy (1.25.3)
     Shouldly (2.6.0)
