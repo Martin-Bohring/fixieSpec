@@ -5,6 +5,8 @@
 #r @"packages/build/FAKE/tools/FakeLib.dll"
 
 open Fake
+open System
+open FixieHelper
 
 // --------------------------------------------------------------------------------------
 // Project metadata
@@ -28,7 +30,7 @@ let tags = "Fixie BDD TDD testing"
 let solutionFile  = "FixieSpec"
 
 // Pattern specifying assemblies to be tested using Fixie
-let testAssemblies = "tests/**/bin/*Tests*.dll"
+let testAssemblies = "build/*Tests*.dll"
 
 let buildDir = "build"
 
@@ -49,5 +51,29 @@ Target "Build" (fun _ ->
     |> ignore
 )
 
+// --------------------------------------------------------------------------------------
+// Run the unit tests using test runner
+
+Target "RunTests" (fun _ ->
+    !! testAssemblies
+    |> Fixie (fun p ->
+        { p with  TimeOut = TimeSpan.FromMinutes 20. })
+)
+
+Target "All" DoNothing
+
+// --------------------------------------------------------------------------------------
+// Dependencies
+
+"Clean"
+  ==> "Build"
+
+"Build"
+  ==> "RunTests"
+
+"RunTests"
+  ==> "All"
+
+
 // start build
-RunTargetOrDefault "Build"
+RunTargetOrDefault "All"
