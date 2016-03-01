@@ -7,3 +7,11 @@ group Build
   source https://nuget.org/api/v2
   
   nuget FAKE
+
+group test
+
+  source https://nuget.org/api/v2
+  
+  nuget AutoFixture
+  nuget FakeItEasy
+  nuget Shouldly
