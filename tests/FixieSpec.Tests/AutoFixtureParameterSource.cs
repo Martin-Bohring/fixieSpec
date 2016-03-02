@@ -24,10 +24,10 @@
 
             IFixture fixture = new Fixture().Customize(new AutoFakeItEasyCustomization());
 
-            yield return GetParameterData(method.GetParameters(), fixture);
+            yield return GetParameterValues(method.GetParameters(), fixture);
         }
 
-        object[] GetParameterData(ParameterInfo[] parameters, IFixture fixture)
+        object[] GetParameterValues(ParameterInfo[] parameters, IFixture fixture)
         {
             return parameters
                 .Select(p => new SpecimenContext(fixture).Resolve(p.ParameterType))
