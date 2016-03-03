@@ -1,4 +1,9 @@
-﻿namespace FixieSpecs.Tests
+﻿// <copyright>
+// Copyright (c) Martin Bohring. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// </copyright>
+
+namespace FixieSpecs.Tests
 {
     using Fixie;
     using Ploeh.AutoFixture;
