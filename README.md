@@ -1,5 +1,7 @@
 # fixieSpec #
 
+[![Build status](https://ci.appveyor.com/api/projects/status/0e3c8ei5n1297y9g?svg=true)](https://ci.appveyor.com/project/Martin-Bohring/fixiespec)
+
 Not much to see here yet.
 This is a personal project for now to test drive my personal best of breed development stack (opinionated).
 
