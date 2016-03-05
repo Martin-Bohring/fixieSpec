@@ -7,7 +7,6 @@ NUGET
       FakeItEasy (>= 1.7.0)
     FakeItEasy (1.25.3)
     Fixie (1.0.0.41)
-    StyleCop.Analyzers (1.0.0)
 
 GROUP Build
 NUGET
