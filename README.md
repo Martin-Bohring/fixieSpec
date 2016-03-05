@@ -24,7 +24,7 @@ It is a very good build automation tool, just not my kind of build automation to
 
 The next thing I looked into is [https://github.com/fsharp/FAKE](https://github.com/fsharp/FAKE "FAKE").
 That one has won me over. It has everything I want from build automation.
-A rich eco-system, a great supportive community, and the address the right kind of problems.
+A rich eco-system, a great supportive community, and they address the right kind of problems.
 
 An yes I am aware of [https://github.com/ruby/rake](https://github.com/ruby/rake "rake") and [https://github.com/cake-build/cake](https://github.com/cake-build/cake "Cake").
 
@@ -43,7 +43,7 @@ There are the following contenders I know of that offer free CI for open source 
 Currently the AppVeyor CI server seems to be the most attractive option for me.
 
 **Make no mistake here as well:**
-All the offerings are free for open source projects, but for me AppVeyor seems to introduce the least amount of friction. At least for me.
+All the offerings are free for open source projects, but for me AppVeyor seems to introduce the least amount of friction.
 
 BTW: Fake already supports reporting build progress to all of them.
 
@@ -68,11 +68,11 @@ All the decisions, doubts, mistakes, course changes etc. are laid out in plain s
 So everybody can watch a great developer at work.
 
 ### Assertion Framework ###
-Am a long time ueser of [https://github.com/dennisdoomen/FluentAssertions](https://github.com/dennisdoomen/FluentAssertions "Fluent Assertions"). It is simple the most complete fluent asserion library.
+I am a long time user of [https://github.com/dennisdoomen/FluentAssertions](https://github.com/dennisdoomen/FluentAssertions "Fluent Assertions"). It is simple the most complete fluent asserion library.
 
 No matter what unit test framework I used in the past, I always had trouble what parameter comes first in its assertion methods:
 
-Is it the actual value or the excpected value. Since both are of the same type (most of the time), the method signator is not helpfull. Fluent Assertions solves that and a lot more [https://github.com/dennisdoomen/FluentAssertions/wiki](https://github.com/dennisdoomen/FluentAssertions/wiki "Fluent Assertions Wiki").
+Is it the actual value or the excpected value. Since both are of the same type (most of the time), the method signature is not helpfull. Fluent Assertions solves that and a lot more [https://github.com/dennisdoomen/FluentAssertions/wiki](https://github.com/dennisdoomen/FluentAssertions/wiki "Fluent Assertions Wiki").
 
 The only draw back is that some of the exception messages are difficult to decipher.
 
@@ -89,8 +89,8 @@ Over the years I have used almost all of the mocking libraries in the .Net space
 
 And yes I am aware of [https://github.com/nsubstitute/NSubstitute](https://github.com/nsubstitute/NSubstitute "NSubsitute"), but never used it professionally.
 
-But for this endavour it will be **FakeItEasy**. It has the most clean syntax (personally opinion again, feel free to have your own)
-Is super low friction, does the right thing out of the box,(Deep mocking anybody? Yes I am locking at you RhinoMocks and Moq) and just gets out of the way.
+But for this endavour it will be **FakeItEasy**. It has the most clean syntax (personal opinion again, feel free to have your own)
+It is super low friction, does the right thing out of the box, (Deep mocking anybody? Yes I am locking at you RhinoMocks and Moq) and just gets out of the way.
 
 ## fixieSpec ##
 
