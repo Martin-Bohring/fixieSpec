@@ -1,5 +1,3 @@
 Fixie
-
 group Test
-  AutoFixture.AutoFakeItEasy
-  Shouldly
+Shouldly

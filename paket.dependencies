@@ -1,5 +1,6 @@
 source https://nuget.org/api/v2
 
+nuget AutoFixture.AutoFakeItEasy
 nuget Fixie
 nuget StyleCop.Analyzers
 
@@ -13,5 +14,4 @@ group Test
 
   source https://nuget.org/api/v2
   
-  nuget AutoFixture.AutoFakeItEasy
   nuget Shouldly

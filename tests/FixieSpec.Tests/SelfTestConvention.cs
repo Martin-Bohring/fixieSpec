@@ -24,9 +24,7 @@ namespace FixieSpecs.Tests
                     t.GetConstructors()
                     .All(ci => ci.GetParameters().Length == 0));
 
-            this.Methods.Where(mi => mi.IsPublic && mi.IsVoid());
-
-            this.Parameters.Add<AutoFixtureParameterSource>();
+            this.Methods.Where(method => method.IsPublic && method.IsVoid());
         }
     }
 }
