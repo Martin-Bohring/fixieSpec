@@ -3,7 +3,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace FixieSpecs.Tests
+namespace FixieSpec.Tests
 {
     using System.Collections.Generic;
     using System.Linq;
@@ -26,10 +26,10 @@ namespace FixieSpecs.Tests
  
             IFixture fixture = new Fixture().Customize(new AutoFakeItEasyCustomization());
 
-            yield return this.GetParameterValues(method.GetParameters(), fixture);
+            yield return GetParameterValues(method.GetParameters(), fixture);
         }
 
-        private object[] GetParameterValues(ParameterInfo[] parameters, IFixture fixture)
+        object[] GetParameterValues(ParameterInfo[] parameters, IFixture fixture)
         {
             return parameters
                 .Select(p => new SpecimenContext(fixture).Resolve(p.ParameterType))

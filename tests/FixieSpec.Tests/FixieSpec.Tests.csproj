@@ -37,6 +37,9 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DependencyTests.cs" />
+    <Compile Include="InputAttribute.cs" />
+    <Compile Include="InputAttributeParameterSource.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SelfTestConvention.cs" />
     <Compile Include="SimpleSpec.cs" />

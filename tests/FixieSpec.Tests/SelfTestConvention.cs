@@ -3,28 +3,26 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace FixieSpecs.Tests
+namespace FixieSpec.Tests
 {
     using System.Linq;
 
     using Fixie;
 
-    /// <summary>
-    /// A Fixie test convention that resolves test case parameters using the <see cref="AutoFixtureParameterSource"/>.
-    /// Test fixture class names need to end with "Tests".
-    /// The test fixture class itself cannot have any constructor parameters.
-    /// </summary>
     public class SelfTestConvention : Convention
     {
         public SelfTestConvention()
         {
-            this.Classes
+            Classes
                 .NameEndsWith("Tests")
                 .Where(t =>
                     t.GetConstructors()
                     .All(ci => ci.GetParameters().Length == 0));
 
-            this.Methods.Where(method => method.IsPublic && method.IsVoid());
+            Methods.Where(method => method.IsPublic && method.IsVoid());
+
+            Parameters
+                .Add<InputAttributeParameterSource>();
         }
     }
 }
