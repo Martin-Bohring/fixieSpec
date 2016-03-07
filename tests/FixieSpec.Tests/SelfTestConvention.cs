@@ -26,7 +26,8 @@ namespace FixieSpec.Tests
                 .Add<InputAttributeParameterSource>();
 
             HideExceptionDetails
-                        .For<ShouldAssertException>();
+                        .For<ShouldAssertException>()
+                        .For<ShouldCompleteInException>();
         }
     }
 }
