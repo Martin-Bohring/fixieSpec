@@ -8,6 +8,7 @@ namespace FixieSpec.Tests
     using System.Linq;
 
     using Fixie;
+    using Shouldly;
 
     public class SelfTestConvention : Convention
     {
@@ -23,6 +24,9 @@ namespace FixieSpec.Tests
 
             Parameters
                 .Add<InputAttributeParameterSource>();
+
+            HideExceptionDetails
+                        .For<ShouldAssertException>();
         }
     }
 }
