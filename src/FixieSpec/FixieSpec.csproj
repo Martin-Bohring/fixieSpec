@@ -42,6 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FixieSpecConvention.cs" />
+    <Compile Include="MethodType.cs" />
+    <Compile Include="MethodTypeScanner.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
