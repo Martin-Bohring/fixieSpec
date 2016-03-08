@@ -10,7 +10,7 @@ namespace FixieSpec.Tests
     using Fixie;
     using Shouldly;
 
-    public class SelfTestConvention : Convention
+    public sealed class SelfTestConvention : Convention
     {
         public SelfTestConvention()
         {

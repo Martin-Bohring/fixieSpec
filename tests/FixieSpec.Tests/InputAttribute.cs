@@ -8,7 +8,7 @@ namespace FixieSpec.Tests
     using System;
 
     [AttributeUsage(AttributeTargets.Method, AllowMultiple = true)]
-    class InputAttribute : Attribute
+    sealed class InputAttribute : Attribute
     {
         public InputAttribute(params object[] parameters)
         {
