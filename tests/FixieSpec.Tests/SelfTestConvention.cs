@@ -16,6 +16,7 @@ namespace FixieSpec.Tests
         {
             Classes
                 .NameEndsWith("Tests")
+                .InTheSameNamespaceAs(typeof(SelfTestConvention))
                 .Where(type =>
                     type.GetConstructors()
                     .All(constructorInfo => constructorInfo.GetParameters().Length == 0));
