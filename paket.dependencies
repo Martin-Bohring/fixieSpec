@@ -1,7 +1,7 @@
 source https://nuget.org/api/v2
 
 nuget AutoFixture.AutoFakeItEasy
-nuget Fixie
+nuget Fixie version_in_path: true
 
 group Build
 
