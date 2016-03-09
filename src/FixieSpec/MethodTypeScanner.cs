@@ -5,6 +5,8 @@
 
 namespace FixieSpec
 {
+    using System;
+    using System.Collections.Concurrent;
     using System.Reflection;
 
     /// <summary>
@@ -12,6 +14,16 @@ namespace FixieSpec
     /// </summary>
     public static class MethodTypeScanner
     {
+        static ConcurrentQueue<MethodNameScanner> methodNameScanners = new ConcurrentQueue<MethodNameScanner>();
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MethodTypeScanner"/> class
+        /// </summary>
+        static MethodTypeScanner()
+        {
+            AddMethodNameScanner(new MethodNameScanner((s => s.StartsWith("Given", StringComparison.OrdinalIgnoreCase)), MethodType.Given));
+        }
+
         /// <summary>
         /// Scans the method given by <paramref name="methodToScan"/> for its <see cref="MethodType"/>.
         /// </summary>
@@ -23,7 +35,70 @@ namespace FixieSpec
         /// </returns>
         public static MethodType ScanMethod(this MethodInfo methodToScan)
         {
+            foreach (var methodNameScanner in methodNameScanners)
+            {
+                var matchResult = methodNameScanner.MatchMethod(methodToScan);
+
+                if (matchResult != MethodType.Undefined)
+                {
+                    return matchResult;
+                }
+            }
+
             return MethodType.Undefined;
+        }
+
+        /// <summary>
+        /// Adds a method name scanner to the list of <see cref="MethodNameScanner"/>'s.
+        /// </summary>
+        /// <param name="methodNameScanner">
+        /// The method name scanner to add.
+        /// </param>
+        static void AddMethodNameScanner(MethodNameScanner methodNameScanner)
+        {
+            methodNameScanners.Enqueue(methodNameScanner);
+        }
+
+        /// <summary>
+        /// A class that matches method names to identify the method type.
+        /// </summary>
+        class MethodNameScanner
+        {
+            readonly Func<string, bool> matcher;
+
+            readonly MethodType methodType;
+
+            /// <summary>
+            /// Initializes a new instance of the <see cref="MethodNameScanner"/> class.
+            /// </summary>
+            /// <param name="methodMatcher">
+            /// A function that attemps to match a test method by its name or parts of it.
+            /// </param>
+            /// <param name="methodTypeIfMatched">
+            /// The type of the method if matched by the <paramref name="methodMatcher"/>.
+            /// </param>
+            public MethodNameScanner(Func<string, bool> methodMatcher, MethodType methodTypeIfMatched) 
+            {
+                methodType = methodTypeIfMatched;
+                matcher = methodMatcher;
+            }
+
+            /// <summary>
+            /// Uses the emthod matcher to match the method given by <paramref name="methodToMatch"/>
+            /// </summary>
+            /// <param name="methodToMatch"></param>
+            /// <returns>
+            /// The type of the method if the method can be macthed or <see cref="MethodType.Undefined"/>.
+            /// </returns>
+            public MethodType MatchMethod(MethodInfo methodToMatch)
+            {
+                if (matcher(methodToMatch.Name))
+                {
+                    return methodType;
+                }
+
+                return MethodType.Undefined;
+            }
         }
     }
 }

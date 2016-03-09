@@ -19,5 +19,14 @@ namespace FixieSpec.Tests
 
             methodScanResult.ShouldBe(MethodType.Undefined);
         }
+
+        public void ShouldScanContextMethodAsContextMethod()
+        {
+            var contextTestMethod = typeof(SimpleSpec).GetMethod("Given_a_simple_spec");
+
+            var methodScanResult = contextTestMethod.ScanMethod();
+
+            methodScanResult.ShouldBe(MethodType.Given);
+        }
     }
 }
