@@ -16,9 +16,9 @@ namespace FixieSpec.Tests
         {
             Classes
                 .NameEndsWith("Tests")
-                .Where(t =>
-                    t.GetConstructors()
-                    .All(ci => ci.GetParameters().Length == 0));
+                .Where(type =>
+                    type.GetConstructors()
+                    .All(constructorInfo => constructorInfo.GetParameters().Length == 0));
 
             Methods.Where(method => method.IsPublic && method.IsVoid());
 
