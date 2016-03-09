@@ -13,10 +13,9 @@ namespace FixieSpec.Tests
     {
         public void ShouldNotScanNonTestMethodsAsTestMethods()
         {
-            var methodScanner = new MethodTypeScanner();
             var nonTestMethod = typeof(object).GetMethods().First();
 
-            var methodScanResult = methodScanner.ScanMethod(nonTestMethod);
+            var methodScanResult = nonTestMethod.ScanMethod();
 
             methodScanResult.ShouldBe(MethodType.Undefined);
         }

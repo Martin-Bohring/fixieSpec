@@ -10,10 +10,10 @@ namespace FixieSpec
     /// <summary>
     /// Scans methods and identifies the type of the methods being scanned.
     /// </summary>
-    public class MethodTypeScanner
+    public static class MethodTypeScanner
     {
         /// <summary>
-        /// Scans the method given by <paramref name="methodToScan"/> and identifies its type.
+        /// Scans the method given by <paramref name="methodToScan"/> for its <see cref="MethodType"/>.
         /// </summary>
         /// <param name="methodToScan">
         /// The method to scan.
@@ -21,7 +21,7 @@ namespace FixieSpec
         /// <returns>
         /// The type of the scanned method.
         /// </returns>
-        public MethodType ScanMethod(MethodInfo methodToScan)
+        public static MethodType ScanMethod(this MethodInfo methodToScan)
         {
             return MethodType.Undefined;
         }
