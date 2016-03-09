@@ -5,6 +5,8 @@
 
 namespace FixieSpec
 {
+    using System.Linq;
+
     using Fixie;
 
     /// <summary>
@@ -13,5 +15,16 @@ namespace FixieSpec
     /// </summary>
     public class FixieSpecConvention : Convention
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FixieSpecConvention"/> class.
+        /// </summary>
+        public FixieSpecConvention()
+        {
+            Classes
+                .NameEndsWith("Specs")
+            .Where(t =>
+                t.GetConstructors().Count() == 1
+                && t.GetConstructors().Count(ci => ci.GetParameters().Length > 0) == 1);
+        }
     }
 }
