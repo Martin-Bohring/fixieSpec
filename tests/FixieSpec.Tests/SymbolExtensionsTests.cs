@@ -33,6 +33,14 @@ namespace FixieSpec.Tests
             methodInfo.IsStatic.ShouldBeTrue();
         }
 
+        public void ShoulfFailForInvalidExpressions()
+        {
+        }
+
+        public void ShoulfFailForNonMethodExpressions()
+        {
+        }
+
         class TestClass
         {
             public void AMethod()
