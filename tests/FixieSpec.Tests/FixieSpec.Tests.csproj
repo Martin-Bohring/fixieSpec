@@ -40,7 +40,7 @@
     <Compile Include="DependencyTests.cs" />
     <Compile Include="InputAttribute.cs" />
     <Compile Include="InputAttributeParameterSource.cs" />
-    <Compile Include="MethodTypeScannerTests.cs" />
+    <Compile Include="SpecificationMethodScannerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SelfTestConvention.cs" />
     <Compile Include="SimpleSpec.cs" />

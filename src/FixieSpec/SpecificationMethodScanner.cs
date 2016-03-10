@@ -10,16 +10,16 @@ namespace FixieSpec
     using System.Reflection;
 
     /// <summary>
-    /// Scans methods and identifies the type of the methods being scanned.
+    /// Scans the methods of a specification and identifies the <see cref="MethodType"/> of the specification methods. 
     /// </summary>
-    public static class MethodTypeScanner
+    public static class SpecificationMethodScanner
     {
         static ConcurrentQueue<MethodNameScanner> methodNameScanners = new ConcurrentQueue<MethodNameScanner>();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="MethodTypeScanner"/> class
+        /// Initializes a new instance of the <see cref="SpecificationMethodScanner"/> class
         /// </summary>
-        static MethodTypeScanner()
+        static SpecificationMethodScanner()
         {
             AddMethodNameScanner(new MethodNameScanner((s => s.StartsWith("Given", StringComparison.OrdinalIgnoreCase)), MethodType.Given));
         }

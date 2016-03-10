@@ -9,7 +9,7 @@ namespace FixieSpec.Tests
 
     using Shouldly;
 
-    public sealed class MethodTypeScannerTests
+    public sealed class SpecificationMethodScannerTests
     {
         public void ShouldNotScanNonTestMethodsAsTestMethods()
         {
