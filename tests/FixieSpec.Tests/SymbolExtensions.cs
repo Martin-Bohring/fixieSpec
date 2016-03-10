@@ -10,9 +10,13 @@ namespace FixieSpec.Tests
     using System.Reflection;
 
     /// <summary>
-    /// A helper mix-in class to refactor safe access <see cref="MethodInfo"/> idendified by an expression instead of a string.
+    /// A helper class to refactor safe access <see cref="MethodInfo"/> idendified by an expression instead of a string.
     /// </summary>
-    /// <remarks>Taken from http://blog.functionalfun.net/search/label/LINQ, but all errors are mine.</remarks>
+    /// <remarks>
+    /// Taken from http://blog.functionalfun.net/search/label/LINQ, but all errors are mine.
+    /// I would like to turn those into real extension methos, but hat is not possible.
+    /// An <see cref="Expression"/> itself does not have a type until evaluated, therefore one can't extend an unknown type.
+    /// </remarks>
     public static class SymbolExtensions
     {
         /// <summary>
