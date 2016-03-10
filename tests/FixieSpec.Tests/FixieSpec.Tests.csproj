@@ -45,6 +45,8 @@
     <Compile Include="SelfTestConvention.cs" />
     <Compile Include="SimpleSpec.cs" />
     <Compile Include="StringBuilderExtensions.cs" />
+    <Compile Include="SymbolExtensions.cs" />
+    <Compile Include="SymbolExtensionsTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\FixieSpec\FixieSpec.csproj">
