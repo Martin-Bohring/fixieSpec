@@ -5,7 +5,6 @@
 
 namespace FixieSpec.Tests
 {
-    using System.Linq;
 
     using Shouldly;
 
@@ -13,7 +12,7 @@ namespace FixieSpec.Tests
     {
         public void ShouldNotScanNonTestMethodsAsTestMethods()
         {
-            var nonTestMethod = typeof(object).GetMethods().First();
+            var nonTestMethod = SymbolExtensions.GetMethodInfo<object>(c => c.ToString());
 
             var methodScanResult = nonTestMethod.ScanMethod();
 
@@ -22,7 +21,7 @@ namespace FixieSpec.Tests
 
         public void ShouldScanContextMethodAsContextMethod()
         {
-            var contextTestMethod = typeof(SimpleSpec).GetMethod("Given_a_simple_spec");
+            var contextTestMethod = SymbolExtensions.GetMethodInfo<SimpleSpec>(c => c.Given_a_simple_spec());
 
             var methodScanResult = contextTestMethod.ScanMethod();
 
