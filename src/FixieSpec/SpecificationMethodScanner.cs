@@ -22,6 +22,7 @@ namespace FixieSpec
         static SpecificationMethodScanner()
         {
             AddMethodNameScanner(new MethodNameScanner((s => s.StartsWith("Given", StringComparison.OrdinalIgnoreCase)), MethodType.Given));
+            AddMethodNameScanner(new MethodNameScanner((s => s.StartsWith("When", StringComparison.OrdinalIgnoreCase)), MethodType.When));
         }
 
         /// <summary>
