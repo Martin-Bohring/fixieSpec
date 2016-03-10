@@ -11,13 +11,13 @@ namespace FixieSpec.Tests
 
     public class SymbolExtensionsTests
     {
-        public void GetMethodInfo_should_return_method_info()
+        public void ShouldGetMethodInfoForPublicMethod()
         {
             var methodInfo = SymbolExtensions.GetMethodInfo<TestClass>(c => c.AMethod());
             methodInfo.Name.ShouldBe("AMethod");
         }
 
-        public void GetMethodInfo_should_return_method_info_for_generic_method()
+        public void ShouldGetMethodInfoForGenericPublicMethod()
         {
             var methodInfo = SymbolExtensions.GetMethodInfo<TestClass>(c => c.AGenericMethod(default(int)));
 
@@ -25,7 +25,7 @@ namespace FixieSpec.Tests
             methodInfo.GetParameters().First().ParameterType.ShouldBe(typeof(int));
         }
 
-        public void GetMethodInfo_should_return_method_info_for_static_method_on_static_class()
+        public void ShouldGetMethodInfoForStaticMethodOnStaticClass()
         {
             var methodInfo = SymbolExtensions.GetMethodInfo(() => StaticTestClass.StaticTestMethod());
 
