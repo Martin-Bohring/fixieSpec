@@ -5,10 +5,10 @@
 
 namespace FixieSpec.Tests
 {
+    using System;
     using System.Linq;
 
     using Shouldly;
-
     public class SymbolExtensionsTests
     {
         public void ShouldGetMethodInfoForPublicMethod()
@@ -35,6 +35,9 @@ namespace FixieSpec.Tests
 
         public void ShoulfFailForInvalidExpressions()
         {
+            Action act = () => SymbolExtensions.GetMethodInfo(null);
+
+            act.ShouldThrow<ArgumentNullException>();
         }
 
         public void ShoulfFailForNonMethodExpressions()

@@ -59,6 +59,11 @@ namespace FixieSpec.Tests
         /// <returns></returns>
         public static MethodInfo GetMethodInfo(LambdaExpression expression)
         {
+            if (expression == null)
+            {
+                throw new ArgumentNullException(nameof(expression));
+            }
+
             MethodCallExpression outermostExpression = expression.Body as MethodCallExpression;
 
             if (outermostExpression == null)
