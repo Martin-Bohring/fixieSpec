@@ -68,7 +68,7 @@ namespace FixieSpec.Tests
 
             if (outermostExpression == null)
             {
-                throw new ArgumentException("Invalid Expression. Expression should consist of a Method call only.");
+                throw new ArgumentException("Invalid Expression. Expression should consist of a Method call only.", nameof(expression));
             }
 
             return outermostExpression.Method;

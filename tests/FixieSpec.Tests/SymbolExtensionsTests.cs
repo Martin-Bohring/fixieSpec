@@ -42,6 +42,9 @@ namespace FixieSpec.Tests
 
         public void ShoulfFailForNonMethodExpressions()
         {
+            Action act = () => SymbolExtensions.GetMethodInfo<TestClass>(c => new TestClass());
+
+            act.ShouldThrow<ArgumentException>();
         }
 
         class TestClass
