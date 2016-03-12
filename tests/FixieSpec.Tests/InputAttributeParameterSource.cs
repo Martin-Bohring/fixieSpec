@@ -10,6 +10,7 @@ namespace FixieSpec.Tests
     using System.Reflection;
 
     using Fixie;
+
     sealed class InputAttributeParameterSource : ParameterSource
     {
         public IEnumerable<object[]> GetParameters(MethodInfo method)
