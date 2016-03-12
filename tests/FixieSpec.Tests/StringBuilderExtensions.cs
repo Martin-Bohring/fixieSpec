@@ -19,11 +19,29 @@ namespace FixieSpec.Tests
     /// </remarks>
     public static class StringBuilderExtensions
     {
+        /// <summary>
+        /// Records the name of the method that is calling ths method.
+        /// </summary>
+        /// <param name="log">
+        /// The <see cref="StringBuilder"/> used to record method calls.
+        /// </param>
+        /// <param name="method">
+        /// The name of the method. This is automatically provided during run time.
+        /// </param>
         public static void WhereAmI(this StringBuilder log, [CallerMemberName] string method = null)
         {
             log.AppendLine(method);
         }
 
+        /// <summary>
+        /// Verifies the method calls given by <paramref name="expected"/> have been recorded.
+        /// </summary>
+        /// <param name="log">
+        /// The <see cref="StringBuilder"/> used to record method calls.
+        /// </param>
+        /// <param name="expected">
+        /// The method calls in the order they should have been recorded.
+        /// </param>
         public static void ShouldHaveLines(this StringBuilder log, params string[] expected)
         {
             var expectation = new StringBuilder();
