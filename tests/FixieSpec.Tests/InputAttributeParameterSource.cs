@@ -11,8 +11,13 @@ namespace FixieSpec.Tests
 
     using Fixie;
 
+    /// <summary>
+    /// A <see cref="ParameterSource"/> that gets its parameter values from one
+    /// or more <see cref="InputAttribute"/> test method annotations.
+    /// </summary>
     sealed class InputAttributeParameterSource : ParameterSource
     {
+        /// <inheritdoc/>
         public IEnumerable<object[]> GetParameters(MethodInfo method)
         {
             return method.GetCustomAttributes<InputAttribute>(true).Select(input => input.Parameters);
