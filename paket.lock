@@ -1,9 +1,9 @@
 NUGET
   remote: https://www.nuget.org/api/v2
   specs:
-    AutoFixture (3.40.1)
-    AutoFixture.AutoFakeItEasy (3.40.1)
-      AutoFixture (>= 3.40.1)
+    AutoFixture (3.41.1)
+    AutoFixture.AutoFakeItEasy (3.41.1)
+      AutoFixture (>= 3.41.1)
       FakeItEasy (>= 1.7.0)
     FakeItEasy (1.25.3)
     Fixie (1.0.0.41) - version_in_path: true
@@ -12,7 +12,7 @@ GROUP Build
 NUGET
   remote: https://www.nuget.org/api/v2
   specs:
-    FAKE (4.21.4)
+    FAKE (4.22.1)
 
 GROUP Test
 NUGET
