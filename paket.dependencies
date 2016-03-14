@@ -2,12 +2,14 @@ source https://nuget.org/api/v2
 
 nuget AutoFixture.AutoFakeItEasy
 nuget Fixie version_in_path: true
+nuget StyleCop.Analyzers
 
 group Build
 
   source https://nuget.org/api/v2
   
   nuget FAKE
+  nuget StyleCop.Analyzers
 
 group Test
 

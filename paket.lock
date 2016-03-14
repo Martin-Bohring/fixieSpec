@@ -7,12 +7,14 @@ NUGET
       FakeItEasy (>= 1.7.0)
     FakeItEasy (1.25.3)
     Fixie (1.0.0.41) - version_in_path: true
+    StyleCop.Analyzers (1.0.0)
 
 GROUP Build
 NUGET
   remote: https://www.nuget.org/api/v2
   specs:
     FAKE (4.22.1)
+    StyleCop.Analyzers (1.0.0)
 
 GROUP Test
 NUGET
