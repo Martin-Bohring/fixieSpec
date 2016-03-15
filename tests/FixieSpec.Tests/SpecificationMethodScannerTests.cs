@@ -36,5 +36,14 @@ namespace FixieSpec.Tests
 
             methodScanResult.ShouldBe(MethodType.When);
         }
+
+        public void ShouldScanSecondTestExectionMethodAsExecutionMethod()
+        {
+            var testExecutionMethod = SymbolExtensions.GetMethodInfo<SimpleSpec>(c => c.Andwhen_executing_a_second_test_step());
+
+            var methodScanResult = testExecutionMethod.ScanMethod();
+
+            methodScanResult.ShouldBe(MethodType.When);
+        }
     }
 }

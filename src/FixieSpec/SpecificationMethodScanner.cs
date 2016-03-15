@@ -23,6 +23,7 @@ namespace FixieSpec
         {
             AddMethodNameScanner(new MethodNameScanner(s => s.StartsWith("Given", StringComparison.OrdinalIgnoreCase), MethodType.Given));
             AddMethodNameScanner(new MethodNameScanner(s => s.StartsWith("When", StringComparison.OrdinalIgnoreCase), MethodType.When));
+            AddMethodNameScanner(new MethodNameScanner(s => s.StartsWith("AndWhen", StringComparison.OrdinalIgnoreCase), MethodType.When));
         }
 
         /// <summary>
