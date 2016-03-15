@@ -31,7 +31,7 @@ namespace FixieSpec.Tests
             methodCallLogger.WhereAmI();
         }
 
-        public void And_a_second_result_can_be_verified()
+        public void And_then_a_second_result_can_be_verified()
         {
             methodCallLogger.WhereAmI();
         }
