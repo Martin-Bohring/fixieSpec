@@ -25,6 +25,7 @@ namespace FixieSpec
             AddMethodNameScanner(new MethodNameScanner(s => s.StartsWith("When", StringComparison.OrdinalIgnoreCase), MethodType.When));
             AddMethodNameScanner(new MethodNameScanner(s => s.StartsWith("AndWhen", StringComparison.OrdinalIgnoreCase), MethodType.When));
             AddMethodNameScanner(new MethodNameScanner(s => s.StartsWith("Then", StringComparison.OrdinalIgnoreCase), MethodType.Then));
+            AddMethodNameScanner(new MethodNameScanner(s => s.StartsWith("AndThen", StringComparison.OrdinalIgnoreCase), MethodType.Then));
         }
 
         /// <summary>
