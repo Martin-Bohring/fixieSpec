@@ -9,7 +9,7 @@ namespace FixieSpec.Tests
     using System.Linq;
 
     using Shouldly;
-    public class SymbolExtensionsTests
+    public sealed class SymbolExtensionsTests
     {
         public void ShouldGetMethodInfoForPublicMethod()
         {
