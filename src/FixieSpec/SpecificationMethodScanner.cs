@@ -96,12 +96,26 @@ namespace FixieSpec
             /// </returns>
             public MethodType MatchMethod(MethodInfo methodToMatch)
             {
-                if (matcher(methodToMatch.Name))
+                if (matcher(ScrubMethodName(methodToMatch)))
                 {
                     return methodType;
                 }
 
                 return MethodType.Undefined;
+            }
+
+            /// <summary>
+            /// Scrubs the name of the method to scan, before attempting to match it.
+            /// </summary>
+            /// <param name="methodToMatch">
+            /// The method the name is being scrubbed.
+            /// </param>
+            /// <returns>
+            /// The scrubbed metod name.
+            /// </returns>
+            private string ScrubMethodName(MethodInfo methodToMatch)
+            {
+                return methodToMatch.Name;
             }
         }
     }
