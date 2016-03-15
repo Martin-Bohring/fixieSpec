@@ -45,5 +45,14 @@ namespace FixieSpec.Tests
 
             methodScanResult.ShouldBe(MethodType.When);
         }
+
+        public void ShouldScanTestVerificationMethodAsVerificationMethod()
+        {
+            var testExecutionMethod = SymbolExtensions.GetMethodInfo<SimpleSpec>(c => c.Then_a_test_result_can_be_verified());
+
+            var methodScanResult = testExecutionMethod.ScanMethod();
+
+            methodScanResult.ShouldBe(MethodType.Then);
+        }
     }
 }
