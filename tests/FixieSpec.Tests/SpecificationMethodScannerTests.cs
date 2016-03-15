@@ -39,7 +39,7 @@ namespace FixieSpec.Tests
 
         public void ShouldScanSecondTestExectionMethodAsExecutionMethod()
         {
-            var testExecutionMethod = SymbolExtensions.GetMethodInfo<SimpleSpec>(c => c.Andwhen_executing_a_second_test_step());
+            var testExecutionMethod = SymbolExtensions.GetMethodInfo<SimpleSpec>(c => c.And_when_executing_a_second_test_step());
 
             var methodScanResult = testExecutionMethod.ScanMethod();
 

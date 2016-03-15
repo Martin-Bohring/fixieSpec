@@ -21,7 +21,7 @@ namespace FixieSpec.Tests
             methodCallLogger.WhereAmI();
         }
 
-        public void Andwhen_executing_a_second_test_step()
+        public void And_when_executing_a_second_test_step()
         {
             methodCallLogger.WhereAmI();
         }
