@@ -5,6 +5,11 @@
 
 namespace FixieSpec.Tests
 {
+    using System;
+    using System.Linq;
+    using System.Reflection;
+    using System.Runtime.Versioning;
+
     using Shouldly;
 
     public sealed class DependencyTests
@@ -18,6 +23,22 @@ namespace FixieSpec.Tests
             var references = typeof(FixieSpecConvention).Assembly.GetReferencedAssemblies();
 
             references.ShouldNotContain(reference => reference.Name == assemblyName);
+        }
+
+        public void ShouldtLeastRequireNet45()
+        {
+            var quirksAreEnabled = Uri.EscapeDataString("'") == "'";
+
+            quirksAreEnabled.ShouldBeFalse();
+
+            var targetFramework =
+                Assembly.GetExecutingAssembly()
+                    .GetCustomAttributes(typeof(TargetFrameworkAttribute), true)
+                    .Cast<TargetFrameworkAttribute>()
+                    .Single()
+                    .FrameworkName;
+
+            quirksAreEnabled.ShouldBe(!targetFramework.Contains("4.5"));
         }
     }
 }
