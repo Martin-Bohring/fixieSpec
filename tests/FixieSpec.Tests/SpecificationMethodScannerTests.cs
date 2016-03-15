@@ -6,6 +6,9 @@
 namespace FixieSpec.Tests
 {
 
+    using System;
+    using System.Reflection;
+
     using Shouldly;
 
     public sealed class SpecificationMethodScannerTests
@@ -62,6 +65,13 @@ namespace FixieSpec.Tests
             var methodScanResult = testExecutionMethod.ScanMethod();
 
             methodScanResult.ShouldBe(MethodType.Then);
+        }
+
+        public void ShouldFailForInvalidMethoodInfo()
+        {
+            Action act = () => ((MethodInfo)null).ScanMethod();
+
+            act.ShouldThrow<ArgumentNullException>();
         }
     }
 }

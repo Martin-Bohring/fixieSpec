@@ -39,6 +39,11 @@ namespace FixieSpec
         /// </returns>
         public static MethodType ScanMethod(this MethodInfo methodToScan)
         {
+            if (methodToScan == null)
+            {
+                throw new ArgumentNullException(nameof(methodToScan));
+            }
+
             foreach (var methodNameScanner in methodNameScanners)
             {
                 var matchResult = methodNameScanner.MatchMethod(methodToScan);
