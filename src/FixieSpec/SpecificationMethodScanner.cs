@@ -115,7 +115,7 @@ namespace FixieSpec
             /// </returns>
             private string ScrubMethodName(MethodInfo methodToMatch)
             {
-                return methodToMatch.Name;
+                return methodToMatch.Name.Replace("_", string.Empty);
             }
         }
     }
