@@ -39,6 +39,7 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DeclarationOrderComparer.cs" />
     <Compile Include="FixieSpecConvention.cs" />
     <Compile Include="MethodType.cs" />
     <Compile Include="SpecificationMethodScanner.cs" />

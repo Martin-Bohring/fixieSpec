@@ -37,7 +37,9 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DeclarationOrderComparerTests.cs" />
     <Compile Include="DependencyTests.cs" />
+    <Compile Include="FixieSpecConventionTests.cs" />
     <Compile Include="InputAttribute.cs" />
     <Compile Include="InputAttributeParameterSource.cs" />
     <Compile Include="SpecificationMethodScannerTests.cs" />
