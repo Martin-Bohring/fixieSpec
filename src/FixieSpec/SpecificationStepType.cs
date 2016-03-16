@@ -6,27 +6,27 @@
 namespace FixieSpec
 {
     /// <summary>
-    /// Describes the type of a method scanned from a specification.
+    /// Describes the type of a specification step.
     /// </summary>
-    public enum MethodType
+    public enum SpecificationStepType
     {
         /// <summary>
-        /// The type of the method is unknown.
+        /// The type of the step is unknown.
         /// </summary>
         Undefined,
 
         /// <summary>
-        /// The method is a test context setup method.
+        /// The step is a context setup step.
         /// </summary>
         Given,
 
         /// <summary>
-        /// The method is a test case execution method,
+        /// The step is an execution step,
         /// </summary>
         When,
 
         /// <summary>
-        /// The method is a test case verification method.
+        /// The step is a verification step.
         /// </summary>
         Then
     }

@@ -11,7 +11,7 @@ namespace FixieSpec.Tests
 
     using Shouldly;
 
-    public sealed class SpecificationMethodScannerTests
+    public sealed class SpecificationStepTypeScannerTests
     {
         public void ShouldNotScanNonTestMethodsAsTestMethods()
         {
@@ -19,7 +19,7 @@ namespace FixieSpec.Tests
 
             var methodScanResult = nonTestMethod.ScanMethod();
 
-            methodScanResult.ShouldBe(MethodType.Undefined);
+            methodScanResult.ShouldBe(SpecificationStepType.Undefined);
         }
 
         public void ShouldScanContextMethodAsContextMethod()
@@ -28,7 +28,7 @@ namespace FixieSpec.Tests
 
             var methodScanResult = contextTestMethod.ScanMethod();
 
-            methodScanResult.ShouldBe(MethodType.Given);
+            methodScanResult.ShouldBe(SpecificationStepType.Given);
         }
 
         public void ShouldScanTestExectionMethodAsExecutionMethod()
@@ -37,7 +37,7 @@ namespace FixieSpec.Tests
 
             var methodScanResult = testExecutionMethod.ScanMethod();
 
-            methodScanResult.ShouldBe(MethodType.When);
+            methodScanResult.ShouldBe(SpecificationStepType.When);
         }
 
         public void ShouldScanSecondTestExectionMethodAsExecutionMethod()
@@ -46,7 +46,7 @@ namespace FixieSpec.Tests
 
             var methodScanResult = testExecutionMethod.ScanMethod();
 
-            methodScanResult.ShouldBe(MethodType.When);
+            methodScanResult.ShouldBe(SpecificationStepType.When);
         }
 
         public void ShouldScanTestVerificationMethodAsVerificationMethod()
@@ -55,7 +55,7 @@ namespace FixieSpec.Tests
 
             var methodScanResult = testExecutionMethod.ScanMethod();
 
-            methodScanResult.ShouldBe(MethodType.Then);
+            methodScanResult.ShouldBe(SpecificationStepType.Then);
         }
 
         public void ShouldScanSecondTestVerificationMethodAsVerificationMethod()
@@ -64,7 +64,7 @@ namespace FixieSpec.Tests
 
             var methodScanResult = testExecutionMethod.ScanMethod();
 
-            methodScanResult.ShouldBe(MethodType.Then);
+            methodScanResult.ShouldBe(SpecificationStepType.Then);
         }
 
         public void ShouldFailForInvalidMethoodInfo()
