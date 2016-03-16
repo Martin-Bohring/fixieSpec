@@ -22,9 +22,9 @@ namespace FixieSpec
         {
             Classes
                 .NameEndsWith("Specs")
-            .Where(t =>
-                t.GetConstructors().Count() == 1
-                && t.GetConstructors().Count(ci => ci.GetParameters().Length > 0) == 1);
+            .Where(type =>
+                type.GetConstructors().Count() == 1
+                && type.GetConstructors().Count(constructorInfo => constructorInfo.GetParameters().Length == 0) == 1);
         }
     }
 }
