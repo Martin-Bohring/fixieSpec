@@ -25,6 +25,10 @@ namespace FixieSpec
             .Where(type =>
                 type.GetConstructors().Count() == 1
                 && type.GetConstructors().Count(constructorInfo => constructorInfo.GetParameters().Length == 0) == 1);
+
+            Methods
+                .Where(method => method.IsPublic && method.IsVoid())
+                .Where(method => method.ScanMethod() == SpecificationStepType.Then);
         }
     }
 }
