@@ -8,5 +8,12 @@ namespace FixieSpec.Tests
 {
     public sealed class FixieSpecConventionTests
     {
+        public void ShouldExecuteContextMethodsBeforeSpecificationSteps()
+        {
+        }
+
+        public void ShouldExecuteContextMethodsInOrderOfDeclaration()
+        {
+        }
     }
 }
