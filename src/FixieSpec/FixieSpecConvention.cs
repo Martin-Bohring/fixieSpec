@@ -22,9 +22,7 @@ namespace FixieSpec
         {
             Classes
                 .NameEndsWith("Specs")
-            .Where(type =>
-                type.GetConstructors().Count() == 1
-                && type.GetConstructors().Count(constructorInfo => constructorInfo.GetParameters().Length == 0) == 1);
+            .Where(type => type.HasOnlyDefaultConstructor());
 
             Methods
                 .Where(method => method.IsPublic && method.IsVoid())
