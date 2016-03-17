@@ -27,6 +27,9 @@ namespace FixieSpec.Tests
             Parameters = parameters;
         }
 
+        /// <summary>
+        /// Gets the parameter values.
+        /// </summary>
         public object[] Parameters { get; }
     }
 }

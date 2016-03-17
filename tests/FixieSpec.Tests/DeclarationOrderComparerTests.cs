@@ -8,7 +8,6 @@ namespace FixieSpec.Tests
     using System.Reflection;
 
     using Shouldly;
-    using TestTypes;
 
     sealed class DeclarationOrderComparerTests
     {
@@ -17,8 +16,8 @@ namespace FixieSpec.Tests
             var testee = new DeclarationOrderComparer<MethodInfo>();
 
             var result = testee.Compare(
-                SymbolExtensions.GetMethodInfo<SimpleSpec>(c => c.When_executing_a_test_step()),
-                SymbolExtensions.GetMethodInfo<SimpleSpec>(c => c.And_when_executing_a_second_test_step()));
+                SymbolExtensions.GetMethodInfo<ClassWithDeclarations>(c => c.FirstMethod()),
+                SymbolExtensions.GetMethodInfo<ClassWithDeclarations>(c => c.SecondMethod()));
 
             result.ShouldBe(-1);
         }
@@ -28,8 +27,8 @@ namespace FixieSpec.Tests
             var testee = new DeclarationOrderComparer<MethodInfo>();
 
             var result = testee.Compare(
-                SymbolExtensions.GetMethodInfo<SimpleSpec>(c => c.And_when_executing_a_second_test_step()),
-                SymbolExtensions.GetMethodInfo<SimpleSpec>(c => c.When_executing_a_test_step()));
+                SymbolExtensions.GetMethodInfo<ClassWithDeclarations>(c => c.SecondMethod()),
+                SymbolExtensions.GetMethodInfo<ClassWithDeclarations>(c => c.FirstMethod()));
 
             result.ShouldBe(1);
         }
@@ -39,10 +38,21 @@ namespace FixieSpec.Tests
             var testee = new DeclarationOrderComparer<MethodInfo>();
 
             var result = testee.Compare(
-                SymbolExtensions.GetMethodInfo<SimpleSpec>(c => c.And_when_executing_a_second_test_step()),
-                SymbolExtensions.GetMethodInfo<SimpleSpec>(c => c.And_when_executing_a_second_test_step()));
+                SymbolExtensions.GetMethodInfo<ClassWithDeclarations>(c => c.FirstMethod()),
+                SymbolExtensions.GetMethodInfo<ClassWithDeclarations>(c => c.FirstMethod()));
 
             result.ShouldBe(0);
+        }
+
+        sealed class ClassWithDeclarations
+        {
+            public void FirstMethod()
+            {
+            }
+
+            public void SecondMethod()
+            {
+            }
         }
     }
 }

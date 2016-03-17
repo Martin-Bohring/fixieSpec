@@ -5,12 +5,10 @@
 
 namespace FixieSpec.Tests
 {
-
     using System;
     using System.Reflection;
 
     using Shouldly;
-    using TestTypes;
 
     public sealed class SpecificationStepTypeScannerTests
     {
@@ -73,6 +71,29 @@ namespace FixieSpec.Tests
             Action act = () => ((MethodInfo)null).ScanMethod();
 
             act.ShouldThrow<ArgumentNullException>();
+        }
+
+        sealed class SimpleSpec
+        {
+            public void Given_a_simple_spec()
+            {
+            }
+
+            public void When_executing_a_test_step()
+            {
+            }
+
+            public void And_when_executing_a_second_test_step()
+            {
+            }
+
+            public void Then_a_test_result_can_be_verified()
+            {
+            }
+
+            public void And_then_a_second_result_can_be_verified()
+            {
+            }
         }
     }
 }
