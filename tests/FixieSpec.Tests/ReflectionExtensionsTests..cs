@@ -3,25 +3,48 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 
-
 namespace FixieSpec.Tests
 {
+    using System;
+    using System.Reflection;
+
     using Shouldly;
 
     public sealed class ReflectionExtensionsTests
     {
-        public void ShouldIdentifyMethodWithoutParameters()
+        public void CanDetectMethodWithoutParameters()
         {
-            var methodWithoutParameter = SymbolExtensions.GetMethodInfo<ReflectionTarget>(c => c.MethodWithOutParameter());
+            var methodWithoutParameter = SymbolExtensions.GetMethodInfo<ReflectionTarget>
+                (c => c.MethodWithOutParameter());
 
             methodWithoutParameter.HasNoParameters().ShouldBeTrue();
         }
 
-        public void ShouldIdentifyMethodWithParameter()
+        public void CanDetectMethodWithParameter()
         {
-            var methodWithParameter = SymbolExtensions.GetMethodInfo<ReflectionTarget>(c => c.MethodWithParammeter(5));
+            var methodWithParameter = SymbolExtensions.GetMethodInfo<ReflectionTarget>
+                (c => c.MethodWithParammeter(5));
 
             methodWithParameter.HasNoParameters().ShouldBeFalse();
+        }
+
+        public void ShoulfFailForInvalidMethod()
+        {
+            Action act = () => (null as MethodInfo).HasNoParameters();
+
+            act.ShouldThrow<ArgumentNullException>();
+        }
+
+        public void CanDetectDefaultConstructor()
+        {
+            typeof(ReflectionTarget).HasOnlyDefaultConstructor().ShouldBeTrue();
+        }
+
+        public void ShouldFailForInvalidType()
+        {
+            Action act = () => (null as Type).HasOnlyDefaultConstructor();
+
+            act.ShouldThrow<ArgumentNullException>();
         }
 
         class ReflectionTarget

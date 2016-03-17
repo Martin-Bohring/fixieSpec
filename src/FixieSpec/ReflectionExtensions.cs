@@ -16,13 +16,13 @@ namespace FixieSpec
     public static class ReflectionExtensions
     {
         /// <summary>
-        /// Checks if the met^hod given by <paramref name="method"/> has any pparameters.
+        /// Detects if the met^hod given by <paramref name="method"/> has any pparameters.
         /// </summary>
         /// <param name="method">
         /// The method to check.
         /// </param>
         /// <returns>
-        /// true, if the method has parameters; false otherwise.
+        /// <see langword="true"/>, if the method has parameters; <see langword="false"/> otherwise.
         /// </returns>
         public static bool HasNoParameters(this MethodInfo method)
         {
@@ -32,6 +32,28 @@ namespace FixieSpec
             }
 
             return !method.GetParameters().Any();
+        }
+
+        /// <summary>
+        /// Detects if the type given by <see paramref="type"/> only has a default constructor.
+        /// </summary>
+        /// <param name="type">
+        /// The type too check.
+        /// </param>
+        /// <returns>
+        /// <see langword="true"/>, if the type given by <paramref name="type"/> only has a default constructor;
+        /// <see langword="false"/> otherwise.
+        /// </returns>
+        public static bool HasOnlyDefaultConstructor(this Type type)
+        {
+            if (type == null)
+            {
+                throw new ArgumentNullException(nameof(type));
+            }
+
+            return type
+                .GetConstructors()
+                .All(constructorInfo => constructorInfo.GetParameters().Length == 0);
         }
     }
 }
