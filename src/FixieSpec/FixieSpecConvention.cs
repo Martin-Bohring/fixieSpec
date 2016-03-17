@@ -26,7 +26,8 @@ namespace FixieSpec
 
             Methods
                 .Where(method => method.IsPublic && method.IsVoid())
-                .Where(method => method.ScanMethod() == SpecificationStepType.Then);
+                .Where(method => method.ScanMethod() == SpecificationStepType.Then)
+                .Where(method => method.HasNoParameters());
         }
     }
 }
