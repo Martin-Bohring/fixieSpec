@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="DeclarationOrderComparer.cs" />
     <Compile Include="FixieSpecConvention.cs" />
+    <Compile Include="ReflectionExtensions.cs" />
     <Compile Include="SpecificationStepType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SpecificationStepTypeScanner.cs" />

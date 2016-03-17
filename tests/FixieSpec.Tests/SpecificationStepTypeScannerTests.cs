@@ -10,6 +10,7 @@ namespace FixieSpec.Tests
     using System.Reflection;
 
     using Shouldly;
+    using TestTypes;
 
     public sealed class SpecificationStepTypeScannerTests
     {
