@@ -1,9 +1,9 @@
 NUGET
   remote: https://www.nuget.org/api/v2
   specs:
-    AutoFixture (3.41.1)
-    AutoFixture.AutoFakeItEasy (3.41.1)
-      AutoFixture (>= 3.41.1)
+    AutoFixture (3.42.0)
+    AutoFixture.AutoFakeItEasy (3.42.0)
+      AutoFixture (>= 3.42.0)
       FakeItEasy (>= 1.7.0)
     FakeItEasy (1.25.3)
     Fixie (1.0.0.41) - version_in_path: true
@@ -12,7 +12,7 @@ GROUP Build
 NUGET
   remote: https://www.nuget.org/api/v2
   specs:
-    FAKE (4.22.4)
+    FAKE (4.22.6)
     StyleCop.Analyzers (1.0.0)
 
 GROUP Test
