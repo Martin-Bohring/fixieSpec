@@ -64,6 +64,14 @@
   -->
   <Import Project="..\..\.paket\paket.targets" />
   <ItemGroup>
+    <Analyzer Include="..\..\packages\build\codecracker.CSharp\analyzers\dotnet\cs\CodeCracker.CSharp.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="..\..\packages\build\codecracker.CSharp\analyzers\dotnet\cs\CodeCracker.Common.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+  </ItemGroup>
+  <ItemGroup>
     <Analyzer Include="..\..\packages\build\StyleCop.Analyzers\analyzers\dotnet\cs\Newtonsoft.Json.dll">
       <Paket>True</Paket>
     </Analyzer>
