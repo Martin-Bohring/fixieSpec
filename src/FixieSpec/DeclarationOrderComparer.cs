@@ -5,7 +5,6 @@
 
 namespace FixieSpec
 {
-    using System;
     using System.Collections.Generic;
     using System.Reflection;
 
@@ -18,7 +17,7 @@ namespace FixieSpec
     /// </typeparam>
     /// <remarks>
     /// There are doubts if this implementation is using .Net framework implementation specific
-    /// properties and if it might fail in other implemenation of the CLR.
+    /// properties and if it might fail in other implementation of the CLR.
     /// </remarks>
     public class DeclarationOrderComparer<T> : IComparer<T>
         where T : MemberInfo
