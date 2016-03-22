@@ -75,8 +75,6 @@ namespace FixieSpec.Tests
             result.ShouldBe(0);
         }
 
-
-
         sealed class ClassWithDeclarations
         {
             public void FirstMethod()
