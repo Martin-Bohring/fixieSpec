@@ -27,12 +27,7 @@ namespace FixieSpec
         {
             if (first == null)
             {
-                if (second == null)
-                {
-                    return 0;
-                }
-
-                return -1;
+                return second != null ? -1 : 0;
             }
 
             if (second == null)
