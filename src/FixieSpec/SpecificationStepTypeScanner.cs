@@ -120,7 +120,7 @@ namespace FixieSpec
             /// <returns>
             /// The scrubbed metod name.
             /// </returns>
-            private string ScrubMethodName(MethodInfo methodToMatch)
+            static string ScrubMethodName(MethodInfo methodToMatch)
             {
                 return methodToMatch.Name.Replace("_", string.Empty);
             }
