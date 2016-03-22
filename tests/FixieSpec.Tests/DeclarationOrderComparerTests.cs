@@ -22,6 +22,17 @@ namespace FixieSpec.Tests
             result.ShouldBe(-1);
         }
 
+        public void ShouldDeclareNullMethodAsEarlier()
+        {
+            var testee = new DeclarationOrderComparer<MethodInfo>();
+
+            var result = testee.Compare(
+                null as MethodInfo,
+                SymbolExtensions.GetMethodInfo<ClassWithDeclarations>(c => c.FirstMethod()));
+
+            result.ShouldBe(-1);
+        }
+
         public void ShouldCompareLaterDeclaredMembersAsAfter()
         {
             var testee = new DeclarationOrderComparer<MethodInfo>();
@@ -43,6 +54,28 @@ namespace FixieSpec.Tests
 
             result.ShouldBe(0);
         }
+
+        public void ShouldCompareBothNullAsSame()
+        {
+            var testee = new DeclarationOrderComparer<MethodInfo>();
+
+            var result = testee.Compare(null as MethodInfo, null as MethodInfo);
+
+            result.ShouldBe(0);
+        }
+
+        public void ShouldCompareTheSameWithBothOperandsNull()
+        {
+            var testee = new DeclarationOrderComparer<MethodInfo>();
+
+            var result = testee.Compare(
+                null as MethodInfo,
+                null as MethodInfo);
+
+            result.ShouldBe(0);
+        }
+
+
 
         sealed class ClassWithDeclarations
         {

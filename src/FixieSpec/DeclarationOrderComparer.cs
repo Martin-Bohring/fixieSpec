@@ -17,7 +17,7 @@ namespace FixieSpec
     /// The type of the <see cref="MemberInfo"/> to compare.
     /// </typeparam>
     /// <remarks>
-    /// There are doubts if this implementation iss using .Net framework implementation specific
+    /// There are doubts if this implementation is using .Net framework implementation specific
     /// properties and if it might fail in other implemenation of the CLR.
     /// </remarks>
     public class DeclarationOrderComparer<T> : IComparer<T>
@@ -26,17 +26,22 @@ namespace FixieSpec
         /// <inheritdoc/>
         public int Compare(T first, T second)
         {
-            if (first.MetadataToken < second.MetadataToken)
+            if (first == null)
             {
+                if (second == null)
+                {
+                    return 0;
+                }
+
                 return -1;
             }
 
-            if (first.MetadataToken > second.MetadataToken)
+            if (second == null)
             {
                 return 1;
             }
 
-            return 0;
+            return first.MetadataToken.CompareTo(second.MetadataToken);
         }
     }
 }
