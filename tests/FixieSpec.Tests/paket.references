@@ -1,3 +1,5 @@
 Fixie
+
 group Test
-Shouldly
+  Shouldly
+  FakeItEasy

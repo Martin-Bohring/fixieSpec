@@ -5,12 +5,12 @@
 
 namespace FixieSpec
 {
-    using System.Linq;
+    using System.Reflection;
 
     using Fixie;
 
     /// <summary>
-    /// A class that describes a Fixie test case conventions that mimics
+    /// A class that describes a Fixie test case convention that mimics
     /// BDD style style test fixtures.
     /// </summary>
     public class FixieSpecConvention : Convention
@@ -21,13 +21,17 @@ namespace FixieSpec
         public FixieSpecConvention()
         {
             Classes
-                .NameEndsWith("Specs")
-            .Where(type => type.HasOnlyDefaultConstructor());
+                .NameEndsWith("Specification")
+                .Where(type => type.HasOnlyDefaultConstructor());
 
             Methods
                 .Where(method => method.IsPublic && method.IsVoid())
-                .Where(method => method.ScanMethod() == SpecificationStepType.Then)
-                .Where(method => method.HasNoParameters());
+                .Where(method => method.HasNoParameters())
+                .Where(method => method.ScanMethod() == SpecificationStepType.Then);
+
+            ClassExecution
+                .CreateInstancePerClass()
+                .SortCases((firstCase, secondCase) => new DeclarationOrderComparer<MethodInfo>().Compare(firstCase.Method, secondCase.Method));
         }
     }
 }

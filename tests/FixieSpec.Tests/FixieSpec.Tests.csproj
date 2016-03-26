@@ -39,6 +39,7 @@
   <ItemGroup>
     <Compile Include="DeclarationOrderComparerTests.cs" />
     <Compile Include="DependencyTests.cs" />
+    <Compile Include="FixieSpecConventionTests.cs" />
     <Compile Include="InputAttribute.cs" />
     <Compile Include="InputAttributeParameterSource.cs" />
     <Compile Include="ReflectionExtensionsTests..cs" />
@@ -47,6 +48,7 @@
     <Compile Include="SelfTestConvention.cs" />
     <Compile Include="SymbolExtensions.cs" />
     <Compile Include="SymbolExtensionsTests.cs" />
+    <Compile Include="TestExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\FixieSpec\FixieSpec.csproj">
@@ -74,6 +76,44 @@
       <ItemGroup>
         <Reference Include="Fixie">
           <HintPath>..\..\packages\Fixie.1.0.0.41\lib\net45\Fixie.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETCore'">
+      <ItemGroup>
+        <Reference Include="FakeItEasy">
+          <HintPath>..\..\packages\test\FakeItEasy\lib\win8\FakeItEasy.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v3.5'">
+      <ItemGroup>
+        <Reference Include="FakeItEasy">
+          <HintPath>..\..\packages\test\FakeItEasy\lib\net35\FakeItEasy.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.0' Or $(TargetFrameworkVersion) == 'v4.5' Or $(TargetFrameworkVersion) == 'v4.5.1' Or $(TargetFrameworkVersion) == 'v4.5.2' Or $(TargetFrameworkVersion) == 'v4.5.3' Or $(TargetFrameworkVersion) == 'v4.6' Or $(TargetFrameworkVersion) == 'v4.6.1')">
+      <ItemGroup>
+        <Reference Include="FakeItEasy">
+          <HintPath>..\..\packages\test\FakeItEasy\lib\net40\FakeItEasy.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="$(TargetFrameworkIdentifier) == 'Silverlight' And $(TargetFrameworkVersion) == 'v5.0'">
+      <ItemGroup>
+        <Reference Include="FakeItEasy">
+          <HintPath>..\..\packages\test\FakeItEasy\lib\sl50\FakeItEasy.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>

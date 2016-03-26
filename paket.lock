@@ -20,4 +20,5 @@ GROUP Test
 NUGET
   remote: https://www.nuget.org/api/v2
   specs:
+    FakeItEasy (1.25.3)
     Shouldly (2.6.0)
