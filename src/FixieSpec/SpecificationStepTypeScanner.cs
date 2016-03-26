@@ -14,7 +14,7 @@ namespace FixieSpec
     /// </summary>
     public static class SpecificationStepTypeScanner
     {
-        static ConcurrentQueue<MethodNameScanner> methodNameScanners = new ConcurrentQueue<MethodNameScanner>();
+        static readonly ConcurrentQueue<MethodNameScanner> MethodNameScanners = new ConcurrentQueue<MethodNameScanner>();
 
         /// <summary>
         /// Initializes static members of the <see cref="SpecificationStepTypeScanner"/> class.
@@ -44,7 +44,7 @@ namespace FixieSpec
                 throw new ArgumentNullException(nameof(methodToScan));
             }
 
-            foreach (var methodNameScanner in methodNameScanners)
+            foreach (var methodNameScanner in MethodNameScanners)
             {
                 var matchResult = methodNameScanner.MatchMethod(methodToScan);
 
@@ -65,7 +65,7 @@ namespace FixieSpec
         /// </param>
         static void AddMethodNameScanner(MethodNameScanner methodNameScanner)
         {
-            methodNameScanners.Enqueue(methodNameScanner);
+            MethodNameScanners.Enqueue(methodNameScanner);
         }
 
         /// <summary>
