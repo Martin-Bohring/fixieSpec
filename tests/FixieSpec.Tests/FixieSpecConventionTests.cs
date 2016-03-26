@@ -6,30 +6,31 @@
 namespace FixieSpec.Tests
 {
     using System;
-
-    using FakeItEasy;
+    using System.Collections.Generic;
+    using System.Linq;
     using Fixie.Execution;
+    using Shouldly;
 
     public sealed class FixieSpecConventionTests
     {
         public void ShouldExecuteSimpleSuccessfullSpecification()
         {
-            var listener = A.Fake<Listener>();
+            var listener = new StubCaseResultListener();
 
             typeof(SimpleSuccessfullSpecification).Run(listener, new FixieSpecConvention());
 
-            A.CallTo(() => listener.CasePassed(A<PassResult>._)).MustHaveHappened();
-            A.CallTo(() => listener.CaseFailed(A<FailResult>._)).MustNotHaveHappened();
+            listener.Log.OfType<PassResult>().Count().ShouldBe(1);
+            listener.Log.OfType<FailResult>().Count().ShouldBe(0);
         }
 
         public void ShouldExecuteSimpleFailingSpecification()
         {
-            var listener = A.Fake<Listener>();
+            var listener = new StubCaseResultListener();
 
             typeof(SimpleFailingSpecification).Run(listener, new FixieSpecConvention());
 
-            A.CallTo(() => listener.CaseFailed(A<FailResult>._)).MustHaveHappened();
-            A.CallTo(() => listener.CasePassed(A<PassResult>._)).MustNotHaveHappened();
+            listener.Log.OfType<FailResult>().Count().ShouldBe(1);
+            listener.Log.OfType<PassResult>().Count().ShouldBe(0);
         }
 
         class SimpleSuccessfullSpecification
@@ -45,6 +46,19 @@ namespace FixieSpec.Tests
             {
                 throw new InvalidOperationException();
             }
+        }
+
+        public class StubCaseResultListener : Listener
+        {
+            public List<CaseResult> Log { get; set; } = new List<CaseResult>();
+
+            public void AssemblyStarted(AssemblyInfo assembly) { }
+
+            public void CaseSkipped(SkipResult result) => Log.Add(result);
+            public void CasePassed(PassResult result) => Log.Add(result);
+            public void CaseFailed(FailResult result) => Log.Add(result);
+
+            public void AssemblyCompleted(AssemblyInfo assembly, AssemblyResult result) { }
         }
     }
 }
