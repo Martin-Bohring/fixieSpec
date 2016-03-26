@@ -92,7 +92,7 @@ namespace FixieSpec.Tests
                 throw new ArgumentNullException(nameof(expression));
             }
 
-            MethodCallExpression outermostExpression = expression.Body as MethodCallExpression;
+            var outermostExpression = expression.Body as MethodCallExpression;
 
             if (outermostExpression == null)
             {
