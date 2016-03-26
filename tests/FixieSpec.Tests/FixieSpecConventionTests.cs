@@ -19,6 +19,7 @@ namespace FixieSpec.Tests
 
             typeof(SimpleSuccessfullSpecification).Run(listener, new FixieSpecConvention());
 
+            listener.Log.Count.ShouldBe(1);
             listener.Log.OfType<PassResult>().Count().ShouldBe(1);
             listener.Log.OfType<FailResult>().Count().ShouldBe(0);
         }
@@ -29,8 +30,33 @@ namespace FixieSpec.Tests
 
             typeof(SimpleFailingSpecification).Run(listener, new FixieSpecConvention());
 
+            listener.Log.Count.ShouldBe(1);
             listener.Log.OfType<FailResult>().Count().ShouldBe(1);
             listener.Log.OfType<PassResult>().Count().ShouldBe(0);
+        }
+
+        public void ShouldExecuteSpecificationWithMultipleVerificationSteps()
+        {
+            var listener = new StubCaseResultListener();
+
+            typeof(MultipleVerificationStepsSpecification).Run(listener, new FixieSpecConvention());
+
+            listener.Log.Count.ShouldBe(2);
+            listener.Log.OfType<PassResult>().Count().ShouldBe(2);
+            listener.Log.OfType<FailResult>().Count().ShouldBe(0);
+        }
+
+        public void ShouldExecuteMultipleVerificationStepsInOrder()
+        {
+            var listener = new StubCaseResultListener();
+
+            typeof(MultipleVerificationStepsSpecification).Run(listener, new FixieSpecConvention());
+
+            listener.Log.First().MethodGroup.Method.ShouldBe(
+                SymbolExtensions.GetMethodInfo<MultipleVerificationStepsSpecification>(c => c.Then_a_test_result_can_be_verified()).Name);
+
+            listener.Log.Last().MethodGroup.Method.ShouldBe(
+                SymbolExtensions.GetMethodInfo<MultipleVerificationStepsSpecification>(c => c.Then_another_test_result_can_be_verified()).Name);
         }
 
         class SimpleSuccessfullSpecification
@@ -45,6 +71,17 @@ namespace FixieSpec.Tests
             public void Then_a_failing_test_result_can_be_verified()
             {
                 throw new InvalidOperationException();
+            }
+        }
+
+        class MultipleVerificationStepsSpecification
+        {
+            public void Then_a_test_result_can_be_verified()
+            {
+            }
+
+            public void Then_another_test_result_can_be_verified()
+            {
             }
         }
 
