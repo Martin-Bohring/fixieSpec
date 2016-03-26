@@ -5,28 +5,45 @@
 
 namespace FixieSpec.Tests
 {
+    using System;
+
     using FakeItEasy;
     using Fixie.Execution;
 
     public sealed class FixieSpecConventionTests
     {
-        public void ShouldExecuteSimpleSpecification()
+        public void ShouldExecuteSimpleSuccessfullSpecification()
         {
             var listener = A.Fake<Listener>();
 
-            typeof(SimpleSpecification).Run(listener, new FixieSpecConvention());
+            typeof(SimpleSuccessfullSpecification).Run(listener, new FixieSpecConvention());
 
             A.CallTo(() => listener.CasePassed(A<PassResult>._)).MustHaveHappened();
+            A.CallTo(() => listener.CaseFailed(A<FailResult>._)).MustNotHaveHappened();
         }
 
-        class SimpleSpecification
+        public void ShouldExecuteSimpleFailingSpecification()
         {
-            public void When_executing_a_test_step()
+            var listener = A.Fake<Listener>();
+
+            typeof(SimpleFailingSpecification).Run(listener, new FixieSpecConvention());
+
+            A.CallTo(() => listener.CaseFailed(A<FailResult>._)).MustHaveHappened();
+            A.CallTo(() => listener.CasePassed(A<PassResult>._)).MustNotHaveHappened();
+        }
+
+        class SimpleSuccessfullSpecification
+        {
+            public void Then_a_successfull_test_result_can_be_verified()
             {
             }
+        }
 
-            public void Then_a_test_result_can_be_verified()
+        class SimpleFailingSpecification
+        {
+            public void Then_a_failing_test_result_can_be_verified()
             {
+                throw new InvalidOperationException();
             }
         }
     }
