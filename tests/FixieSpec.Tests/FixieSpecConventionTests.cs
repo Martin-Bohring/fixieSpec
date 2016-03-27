@@ -8,6 +8,7 @@ namespace FixieSpec.Tests
     using System;
     using System.Collections.Generic;
     using System.Linq;
+
     using Fixie.Execution;
     using Shouldly;
 
@@ -15,48 +16,49 @@ namespace FixieSpec.Tests
     {
         public void ShouldExecuteSimpleSuccessfullSpecification()
         {
-            var listener = new StubCaseResultListener();
+            var testRunResult = Run<SimpleSuccessfullSpecification>();
 
-            typeof(SimpleSuccessfullSpecification).Run(listener, new FixieSpecConvention());
-
-            listener.Log.Count.ShouldBe(1);
-            listener.Log.OfType<PassResult>().Count().ShouldBe(1);
-            listener.Log.OfType<FailResult>().Count().ShouldBe(0);
+            testRunResult.Count.ShouldBe(1);
+            testRunResult.OfType<PassResult>().Count().ShouldBe(1);
+            testRunResult.OfType<FailResult>().Count().ShouldBe(0);
         }
 
         public void ShouldExecuteSimpleFailingSpecification()
         {
-            var listener = new StubCaseResultListener();
+            var testRunResult = Run<SimpleFailingSpecification>();
 
-            typeof(SimpleFailingSpecification).Run(listener, new FixieSpecConvention());
-
-            listener.Log.Count.ShouldBe(1);
-            listener.Log.OfType<FailResult>().Count().ShouldBe(1);
-            listener.Log.OfType<PassResult>().Count().ShouldBe(0);
+            testRunResult.Count.ShouldBe(1);
+            testRunResult.OfType<FailResult>().Count().ShouldBe(1);
+            testRunResult.OfType<PassResult>().Count().ShouldBe(0);
         }
 
         public void ShouldExecuteSpecificationWithMultipleVerificationSteps()
         {
-            var listener = new StubCaseResultListener();
+            var testRunResult = Run<MultipleVerificationStepsSpecification>();
 
-            typeof(MultipleVerificationStepsSpecification).Run(listener, new FixieSpecConvention());
-
-            listener.Log.Count.ShouldBe(2);
-            listener.Log.OfType<PassResult>().Count().ShouldBe(2);
-            listener.Log.OfType<FailResult>().Count().ShouldBe(0);
+            testRunResult.Count.ShouldBe(2);
+            testRunResult.OfType<PassResult>().Count().ShouldBe(2);
+            testRunResult.OfType<FailResult>().Count().ShouldBe(0);
         }
 
         public void ShouldExecuteMultipleVerificationStepsInOrder()
         {
-            var listener = new StubCaseResultListener();
+            var testRunResult = Run<MultipleVerificationStepsSpecification>();
 
-            typeof(MultipleVerificationStepsSpecification).Run(listener, new FixieSpecConvention());
-
-            listener.Log.First().MethodGroup.Method.ShouldBe(
+            testRunResult.First().MethodGroup.Method.ShouldBe(
                 SymbolExtensions.GetMethodInfo<MultipleVerificationStepsSpecification>(c => c.Then_a_test_result_can_be_verified()).Name);
 
-            listener.Log.Last().MethodGroup.Method.ShouldBe(
+            testRunResult.Last().MethodGroup.Method.ShouldBe(
                 SymbolExtensions.GetMethodInfo<MultipleVerificationStepsSpecification>(c => c.Then_another_test_result_can_be_verified()).Name);
+        }
+
+        static List<CaseResult> Run<TSampleTestClass>()
+        {
+            var listener = new StubCaseResultListener();
+
+            typeof(TSampleTestClass).Run(listener, new FixieSpecConvention());
+
+            return listener.Log;
         }
 
         class SimpleSuccessfullSpecification
