@@ -18,47 +18,57 @@ namespace FixieSpec.Tests
         {
             var testRunResult = Run<SimpleSuccessfullSpecification>();
 
-            testRunResult.Count.ShouldBe(1);
-            testRunResult.OfType<PassResult>().Count().ShouldBe(1);
-            testRunResult.OfType<FailResult>().Count().ShouldBe(0);
+            testRunResult.CaseResults.Count.ShouldBe(1);
+            testRunResult.CaseResults.OfType<PassResult>().Count().ShouldBe(1);
+            testRunResult.CaseResults.OfType<FailResult>().Count().ShouldBe(0);
         }
 
         public void ShouldExecuteSimpleFailingSpecification()
         {
             var testRunResult = Run<SimpleFailingSpecification>();
 
-            testRunResult.Count.ShouldBe(1);
-            testRunResult.OfType<FailResult>().Count().ShouldBe(1);
-            testRunResult.OfType<PassResult>().Count().ShouldBe(0);
+            testRunResult.CaseResults.Count.ShouldBe(1);
+            testRunResult.CaseResults.OfType<FailResult>().Count().ShouldBe(1);
+            testRunResult.CaseResults.OfType<PassResult>().Count().ShouldBe(0);
         }
 
         public void ShouldExecuteSpecificationWithMultipleVerificationSteps()
         {
             var testRunResult = Run<MultipleVerificationStepsSpecification>();
 
-            testRunResult.Count.ShouldBe(2);
-            testRunResult.OfType<PassResult>().Count().ShouldBe(2);
-            testRunResult.OfType<FailResult>().Count().ShouldBe(0);
+            testRunResult.CaseResults.Count.ShouldBe(2);
+            testRunResult.CaseResults.OfType<PassResult>().Count().ShouldBe(2);
+            testRunResult.CaseResults.OfType<FailResult>().Count().ShouldBe(0);
         }
 
         public void ShouldExecuteMultipleVerificationStepsInOrder()
         {
             var testRunResult = Run<MultipleVerificationStepsSpecification>();
 
-            testRunResult.First().MethodGroup.Method.ShouldBe(
+            testRunResult.CaseResults.First().MethodGroup.Method.ShouldBe(
                 SymbolExtensions.GetMethodInfo<MultipleVerificationStepsSpecification>(c => c.Then_a_test_result_can_be_verified()).Name);
 
-            testRunResult.Last().MethodGroup.Method.ShouldBe(
+            testRunResult.CaseResults.Last().MethodGroup.Method.ShouldBe(
                 SymbolExtensions.GetMethodInfo<MultipleVerificationStepsSpecification>(c => c.Then_another_test_result_can_be_verified()).Name);
         }
 
-        static List<CaseResult> Run<TSampleTestClass>()
+        static TestRunResult Run<TSampleTestClass>()
         {
             var listener = new StubCaseResultListener();
 
             typeof(TSampleTestClass).Run(listener, new FixieSpecConvention());
 
-            return listener.Log;
+            return new TestRunResult(listener.Log);
+        }
+
+        class TestRunResult
+        {
+            public TestRunResult(List<CaseResult> caseResults)
+            {
+                CaseResults = caseResults;
+            }
+
+            public List<CaseResult> CaseResults { get; private set; }
         }
 
         class SimpleSuccessfullSpecification
