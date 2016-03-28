@@ -18,27 +18,27 @@ namespace FixieSpec.Tests
         {
             var testRunResult = Run<SimpleSuccessfullSpecification>();
 
-            testRunResult.CaseResults.Count.ShouldBe(1);
-            testRunResult.CaseResults.OfType<PassResult>().Count().ShouldBe(1);
-            testRunResult.CaseResults.OfType<FailResult>().Count().ShouldBe(0);
+            testRunResult.Total.ShouldBe(1);
+            testRunResult.Passed.ShouldBe(1);
+            testRunResult.Failed.ShouldBe(0);
         }
 
         public void ShouldExecuteSimpleFailingSpecification()
         {
             var testRunResult = Run<SimpleFailingSpecification>();
 
-            testRunResult.CaseResults.Count.ShouldBe(1);
-            testRunResult.CaseResults.OfType<FailResult>().Count().ShouldBe(1);
-            testRunResult.CaseResults.OfType<PassResult>().Count().ShouldBe(0);
+            testRunResult.Total.ShouldBe(1);
+            testRunResult.Failed.ShouldBe(1);
+            testRunResult.Passed.ShouldBe(0);
         }
 
         public void ShouldExecuteSpecificationWithMultipleVerificationSteps()
         {
             var testRunResult = Run<MultipleVerificationStepsSpecification>();
 
-            testRunResult.CaseResults.Count.ShouldBe(2);
-            testRunResult.CaseResults.OfType<PassResult>().Count().ShouldBe(2);
-            testRunResult.CaseResults.OfType<FailResult>().Count().ShouldBe(0);
+            testRunResult.Total.ShouldBe(2);
+            testRunResult.Passed.ShouldBe(2);
+            testRunResult.Failed.ShouldBe(0);
         }
 
         public void ShouldExecuteMultipleVerificationStepsInOrder()
@@ -51,24 +51,50 @@ namespace FixieSpec.Tests
             testRunResult.CaseResults.Last().MethodGroup.Method.ShouldBe(
                 SymbolExtensions.GetMethodInfo<MultipleVerificationStepsSpecification>(c => c.Then_another_test_result_can_be_verified()).Name);
         }
-
         static TestRunResult Run<TSampleTestClass>()
         {
             var listener = new StubCaseResultListener();
 
-            typeof(TSampleTestClass).Run(listener, new FixieSpecConvention());
+            var results = typeof(TSampleTestClass).Run(listener, new FixieSpecConvention());
 
-            return new TestRunResult(listener.Log);
+            return new TestRunResult(results, listener.Log);
         }
 
         class TestRunResult
         {
-            public TestRunResult(List<CaseResult> caseResults)
+            readonly AssemblyResult allResults;
+
+            public TestRunResult(AssemblyResult results, List<CaseResult> caseResults)
             {
+                allResults = results;
                 CaseResults = caseResults;
             }
 
             public List<CaseResult> CaseResults { get; private set; }
+
+            public int Passed
+            {
+                get
+                {
+                    return allResults.Passed;
+                }
+            }
+
+            public int Failed
+            {
+                get
+                {
+                    return allResults.Failed;
+                }
+            }
+
+            public int Total
+            {
+                get
+                {
+                    return allResults.Total;
+                }
+            }
         }
 
         class SimpleSuccessfullSpecification
