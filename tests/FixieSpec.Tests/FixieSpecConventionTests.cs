@@ -51,6 +51,7 @@ namespace FixieSpec.Tests
             testRunResult.CaseResults.Last().MethodGroup.Method.ShouldBe(
                 SymbolExtensions.GetMethodInfo<MultipleVerificationStepsSpecification>(c => c.Then_another_test_result_can_be_verified()).Name);
         }
+
         static TestRunResult Run<TSampleTestClass>()
         {
             var listener = new StubCaseResultListener();
