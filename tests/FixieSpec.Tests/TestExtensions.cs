@@ -24,9 +24,23 @@ namespace FixieSpec.Tests
     /// </remarks>
     public static class TestExtensions
     {
-        public static void Run(this Type sampleTestClass, Listener listener, Convention convention)
+        /// <summary>
+        /// Runs the tests of the class given by <paramref name="sampleTestClass"/> identified by the
+        /// convention given by <paramref name="convention"/>
+        /// </summary>
+        /// <param name="sampleTestClass">
+        /// The type of the test class containing the tests to run.
+        /// </param>
+        /// <param name="listener">
+        /// A test listener needed by the <see cref="Runner"/> instance used to run the tests.
+        /// </param>
+        /// <param name="convention">
+        /// The convetion being used when identifîng and runnng test cases.</param>
+        /// <returns>The results of the test run.
+        /// </returns>
+        public static AssemblyResult Run(this Type sampleTestClass, Listener listener, Convention convention)
         {
-            new Runner(listener).RunTypes(sampleTestClass.Assembly, convention, sampleTestClass);
+            return new Runner(listener).RunTypes(sampleTestClass.Assembly, convention, sampleTestClass);
         }
     }
 }
