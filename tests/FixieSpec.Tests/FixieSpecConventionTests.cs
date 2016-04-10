@@ -86,6 +86,14 @@ namespace FixieSpec.Tests
                 "Then_the_result_can_be_verified");
         }
 
+        public void ShouldFailWhenATransitionStepFails()
+        {
+            var testRunResult = Run<FailingTransitionStepSpecification>();
+
+            testRunResult.ConsoleOutput.ShouldEqual(
+                "When_exercising_the_system_under_test_fails");
+        }
+
         static void WhereAmI([CallerMemberName] string member = null)
         {
             Console.WriteLine(member);
@@ -210,6 +218,21 @@ namespace FixieSpec.Tests
             }
 
             public void Then_the_result_can_be_verified()
+            {
+                WhereAmI();
+            }
+        }
+
+        class FailingTransitionStepSpecification
+        {
+            public void When_exercising_the_system_under_test_fails()
+            {
+                WhereAmI();
+
+                throw new InvalidOperationException();
+            }
+
+            public void Then_the_result_cannot_be_verified()
             {
                 WhereAmI();
             }
