@@ -51,6 +51,15 @@ namespace FixieSpec.Tests
                 "Then_another_test_result_can_be_verified");
         }
 
+        public void ShouldExecuteMultipleVerificationStepsWithFailureInOrder()
+        {
+            var testRunResult = Run<MultipleVerificationStepsWithFailureSpecification>();
+
+            testRunResult.ConsoleOutput.ShouldEqual(
+                "Then_a_failing_result_can_be_verified",
+                "Then_another_test_result_can_be_verified");
+        }
+
         static void WhereAmI([CallerMemberName] string member = null)
         {
             Console.WriteLine(member);
@@ -127,6 +136,20 @@ namespace FixieSpec.Tests
             public void Then_a_test_result_can_be_verified()
             {
                 WhereAmI();
+            }
+
+            public void Then_another_test_result_can_be_verified()
+            {
+                WhereAmI();
+            }
+        }
+
+        class MultipleVerificationStepsWithFailureSpecification
+        {
+            public void Then_a_failing_result_can_be_verified()
+            {
+                WhereAmI();
+                throw new InvalidOperationException();
             }
 
             public void Then_another_test_result_can_be_verified()
