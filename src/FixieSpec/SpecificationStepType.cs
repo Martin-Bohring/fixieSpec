@@ -18,16 +18,16 @@ namespace FixieSpec
         /// <summary>
         /// The step is a context setup step.
         /// </summary>
-        Given,
+        Setup,
 
         /// <summary>
-        /// The step is an execution step,
+        /// The step is a transition step exercising the system under test.
         /// </summary>
-        When,
+        Transition,
 
         /// <summary>
-        /// The step is a verification step.
+        /// The step is an assertion step that asserts test execution outcomes.
         /// </summary>
-        Then
+        Assertion
     }
 }

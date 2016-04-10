@@ -12,7 +12,7 @@ namespace FixieSpec.Tests
 
     public sealed class SpecificationStepTypeScannerTests
     {
-        public void ShouldNotScanNonSpecificationMethodsAsSpecificationStep()
+        public void ShouldNotScanNonStepMethodsAsStep()
         {
             var nonTestMethod = SymbolExtensions.GetMethodInfo<object>(c => c.ToString());
 
@@ -21,49 +21,49 @@ namespace FixieSpec.Tests
             methodScanResult.ShouldBe(SpecificationStepType.Undefined);
         }
 
-        public void ShouldScanSpecificationContextMethodAsContextStep()
+        public void ShouldScanSetupMethodAsSetupStep()
         {
             var contextTestMethod = SymbolExtensions.GetMethodInfo<SimpleSpec>(c => c.Given_a_simple_spec());
 
             var methodScanResult = contextTestMethod.ScanMethod();
 
-            methodScanResult.ShouldBe(SpecificationStepType.Given);
+            methodScanResult.ShouldBe(SpecificationStepType.Setup);
         }
 
-        public void ShouldScanSpecificationExecutionMethodAsExecutionStep()
+        public void ShouldScanTransitionMethodAsTransitionStep()
         {
             var testExecutionMethod = SymbolExtensions.GetMethodInfo<SimpleSpec>(c => c.When_executing_a_test_step());
 
             var methodScanResult = testExecutionMethod.ScanMethod();
 
-            methodScanResult.ShouldBe(SpecificationStepType.When);
+            methodScanResult.ShouldBe(SpecificationStepType.Transition);
         }
 
-        public void ShouldScanAnotherSpecificationExecutionMethodAsExecutionStep()
+        public void ShouldScanAnotherTransitionMethodAsTransitionStep()
         {
             var testExecutionMethod = SymbolExtensions.GetMethodInfo<SimpleSpec>(c => c.And_when_executing_a_second_test_step());
 
             var methodScanResult = testExecutionMethod.ScanMethod();
 
-            methodScanResult.ShouldBe(SpecificationStepType.When);
+            methodScanResult.ShouldBe(SpecificationStepType.Transition);
         }
 
-        public void ShouldScanSpecificationVerificationMethodAsVerificationStep()
+        public void ShouldScanAssertionMethodAsAssertionStep()
         {
             var testExecutionMethod = SymbolExtensions.GetMethodInfo<SimpleSpec>(c => c.Then_a_test_result_can_be_verified());
 
             var methodScanResult = testExecutionMethod.ScanMethod();
 
-            methodScanResult.ShouldBe(SpecificationStepType.Then);
+            methodScanResult.ShouldBe(SpecificationStepType.Assertion);
         }
 
-        public void ShouldScanAnotherSpecificationVerificationMethodAsVerificationStep()
+        public void ShouldScanAnotherAssertionMethodAsAssertionStep()
         {
             var testExecutionMethod = SymbolExtensions.GetMethodInfo<SimpleSpec>(c => c.And_then_a_second_result_can_be_verified());
 
             var methodScanResult = testExecutionMethod.ScanMethod();
 
-            methodScanResult.ShouldBe(SpecificationStepType.Then);
+            methodScanResult.ShouldBe(SpecificationStepType.Assertion);
         }
 
         public void ShouldFailForInvalidMethodInfo()
