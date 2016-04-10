@@ -7,9 +7,10 @@ namespace FixieSpec.Tests
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
+    using System.Runtime.CompilerServices;
 
     using Fixie.Execution;
+    using Fixie.Internal;
     using Shouldly;
 
     public sealed class FixieSpecConventionTests
@@ -45,33 +46,39 @@ namespace FixieSpec.Tests
         {
             var testRunResult = Run<MultipleVerificationStepsSpecification>();
 
-            testRunResult.CaseResults.First().MethodGroup.Method.ShouldBe(
-                SymbolExtensions.GetMethodInfo<MultipleVerificationStepsSpecification>(c => c.Then_a_test_result_can_be_verified()).Name);
+            testRunResult.ConsoleOutput.ShouldEqual(
+                "Then_a_test_result_can_be_verified",
+                "Then_another_test_result_can_be_verified");
+        }
 
-            testRunResult.CaseResults.Last().MethodGroup.Method.ShouldBe(
-                SymbolExtensions.GetMethodInfo<MultipleVerificationStepsSpecification>(c => c.Then_another_test_result_can_be_verified()).Name);
+        static void WhereAmI([CallerMemberName] string member = null)
+        {
+            Console.WriteLine(member);
         }
 
         static TestRunResult Run<TSampleTestClass>()
         {
-            var listener = new StubCaseResultListener();
+            using (var console = new RedirectedConsole())
+            {
+                var listener = new NullResultListener();
 
-            var results = typeof(TSampleTestClass).Run(listener, new FixieSpecConvention());
+                var results = typeof(TSampleTestClass).Run(listener, new FixieSpecConvention());
 
-            return new TestRunResult(results, listener.Log);
+                return new TestRunResult(results, console.Lines());
+            }
         }
 
         class TestRunResult
         {
             readonly AssemblyResult allResults;
 
-            public TestRunResult(AssemblyResult results, List<CaseResult> caseResults)
+            public TestRunResult(AssemblyResult results, IEnumerable<string> consoleOutput)
             {
                 allResults = results;
-                CaseResults = caseResults;
+                ConsoleOutput = consoleOutput;
             }
 
-            public List<CaseResult> CaseResults { get; private set; }
+            public IEnumerable<string> ConsoleOutput { get; private set; }
 
             public int Passed
             {
@@ -102,6 +109,7 @@ namespace FixieSpec.Tests
         {
             public void Then_a_successfull_test_result_can_be_verified()
             {
+                WhereAmI();
             }
         }
 
@@ -109,6 +117,7 @@ namespace FixieSpec.Tests
         {
             public void Then_a_failing_test_result_can_be_verified()
             {
+                WhereAmI();
                 throw new InvalidOperationException();
             }
         }
@@ -117,22 +126,22 @@ namespace FixieSpec.Tests
         {
             public void Then_a_test_result_can_be_verified()
             {
+                WhereAmI();
             }
 
             public void Then_another_test_result_can_be_verified()
             {
+                WhereAmI();
             }
         }
 
-        public class StubCaseResultListener : Listener
+        public class NullResultListener : Listener
         {
-            public List<CaseResult> Log { get; set; } = new List<CaseResult>();
-
             public void AssemblyStarted(AssemblyInfo assembly) { }
 
-            public void CaseSkipped(SkipResult result) => Log.Add(result);
-            public void CasePassed(PassResult result) => Log.Add(result);
-            public void CaseFailed(FailResult result) => Log.Add(result);
+            public void CaseSkipped(SkipResult result) { }
+            public void CasePassed(PassResult result) { }
+            public void CaseFailed(FailResult result) { }
 
             public void AssemblyCompleted(AssemblyInfo assembly, AssemblyResult result) { }
         }
