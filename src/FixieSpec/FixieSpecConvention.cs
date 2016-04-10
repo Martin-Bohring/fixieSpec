@@ -44,7 +44,8 @@ namespace FixieSpec
             public void Execute(Fixture context, Action next)
             {
                 var transitionSteps = context.Class.Type.GetMethods()
-                    .Where(method => method.ScanMethod() == SpecificationStepType.When);
+                    .Where(method => method.ScanMethod() == SpecificationStepType.When)
+                    .OrderBy(method => method.MetadataToken);
 
                 foreach (var transitionStep in transitionSteps)
                 {

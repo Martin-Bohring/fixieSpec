@@ -62,17 +62,27 @@ namespace FixieSpec.Tests
 
         public void ShouldNotRecognizeTransitionStepsAsAssertionSteps()
         {
-            var testRunResult = Run<TransitionSTepsBeforeAssertionStepsSpecification>();
+            var testRunResult = Run<TransitionStepsBeforeAssertionStepsSpecification>();
 
             testRunResult.Total.ShouldBe(1);
         }
 
         public void ShouldExecuteTransitionStepsBeforeAssertionSteps()
         {
-            var testRunResult = Run<TransitionSTepsBeforeAssertionStepsSpecification>();
+            var testRunResult = Run<TransitionStepsBeforeAssertionStepsSpecification>();
 
             testRunResult.ConsoleOutput.ShouldEqual(
                 "When_exercising_the_system_under_test",
+                "Then_the_result_can_be_verified");
+        }
+
+        public void ShouldExecuteTransitionStepsInOrder()
+        {
+            var testRunResult = Run<MultipleTransitionStepsSpecification>();
+
+            testRunResult.ConsoleOutput.ShouldEqual(
+                "When_exercising_the_system_under_test",
+                "And_when_exercising_the_system_under_test_some_more",
                 "Then_the_result_can_be_verified");
         }
 
@@ -174,9 +184,27 @@ namespace FixieSpec.Tests
             }
         }
 
-        class TransitionSTepsBeforeAssertionStepsSpecification
+        class TransitionStepsBeforeAssertionStepsSpecification
         {
             public void When_exercising_the_system_under_test()
+            {
+                WhereAmI();
+            }
+
+            public void Then_the_result_can_be_verified()
+            {
+                WhereAmI();
+            }
+        }
+
+        class MultipleTransitionStepsSpecification
+        {
+            public void When_exercising_the_system_under_test()
+            {
+                WhereAmI();
+            }
+
+            public void And_when_exercising_the_system_under_test_some_more()
             {
                 WhereAmI();
             }
