@@ -5,7 +5,9 @@
 
 namespace FixieSpec
 {
+    using System;
     using System.Reflection;
+    using System.Linq;
 
     using Fixie;
 
@@ -32,6 +34,32 @@ namespace FixieSpec
             ClassExecution
                 .CreateInstancePerClass()
                 .SortCases((firstCase, secondCase) => new DeclarationOrderComparer<MethodInfo>().Compare(firstCase.Method, secondCase.Method));
+
+            FixtureExecution
+                .Wrap<CallSpecificationTransitionSteps>();
+        }
+
+        class CallSpecificationTransitionSteps : FixtureBehavior
+        {
+            public void Execute(Fixture context, Action next)
+            {
+                var transitionSteps = context.Class.Type.GetMethods()
+                    .Where(method => method.ScanMethod() == SpecificationStepType.When);
+
+                foreach (var transitionStep in transitionSteps)
+                {
+                    try
+                    {
+                        transitionStep.Invoke(context.Instance, null);
+                    }
+                    catch (TargetInvocationException exception)
+                    {
+                        throw new PreservedException(exception.InnerException);
+                    }
+                }
+
+                next?.Invoke();
+            }
         }
     }
 }
