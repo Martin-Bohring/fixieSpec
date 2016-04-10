@@ -11,66 +11,50 @@ namespace FixieSpec.Tests
 
     sealed class DeclarationOrderComparerTests
     {
+        readonly MethodInfo firstMethod = typeof(ClassWithDeclarations).GetMethod("FirstMethod");
+        readonly MethodInfo secondMethod = typeof(ClassWithDeclarations).GetMethod("SecondMethod");
+
+        readonly DeclarationOrderComparer<MethodInfo> testee = new DeclarationOrderComparer<MethodInfo>();
+
         public void ShouldCompareEarlierDeclaredMembersAsBefore()
         {
-            var testee = new DeclarationOrderComparer<MethodInfo>();
-
             var result = testee.Compare(
-                SymbolExtensions.GetMethodInfo<ClassWithDeclarations>(c => c.FirstMethod()),
-                SymbolExtensions.GetMethodInfo<ClassWithDeclarations>(c => c.SecondMethod()));
+                firstMethod,
+                secondMethod);
 
             result.ShouldBe(-1);
         }
 
         public void ShouldDeclareNullMethodAsEarlier()
         {
-            var testee = new DeclarationOrderComparer<MethodInfo>();
-
             var result = testee.Compare(
                 null as MethodInfo,
-                SymbolExtensions.GetMethodInfo<ClassWithDeclarations>(c => c.FirstMethod()));
+                firstMethod);
 
             result.ShouldBe(-1);
         }
 
         public void ShouldCompareLaterDeclaredMembersAsAfter()
         {
-            var testee = new DeclarationOrderComparer<MethodInfo>();
-
             var result = testee.Compare(
-                SymbolExtensions.GetMethodInfo<ClassWithDeclarations>(c => c.SecondMethod()),
-                SymbolExtensions.GetMethodInfo<ClassWithDeclarations>(c => c.FirstMethod()));
+                secondMethod,
+                firstMethod);
 
             result.ShouldBe(1);
         }
 
         public void ShouldCompareTheSameMemberAsSame()
         {
-            var testee = new DeclarationOrderComparer<MethodInfo>();
-
             var result = testee.Compare(
-                SymbolExtensions.GetMethodInfo<ClassWithDeclarations>(c => c.FirstMethod()),
-                SymbolExtensions.GetMethodInfo<ClassWithDeclarations>(c => c.FirstMethod()));
+                firstMethod,
+                firstMethod);
 
             result.ShouldBe(0);
         }
 
         public void ShouldCompareBothNullAsSame()
         {
-            var testee = new DeclarationOrderComparer<MethodInfo>();
-
             var result = testee.Compare(null as MethodInfo, null as MethodInfo);
-
-            result.ShouldBe(0);
-        }
-
-        public void ShouldCompareTheSameWithBothOperandsNull()
-        {
-            var testee = new DeclarationOrderComparer<MethodInfo>();
-
-            var result = testee.Compare(
-                null as MethodInfo,
-                null as MethodInfo);
 
             result.ShouldBe(0);
         }
