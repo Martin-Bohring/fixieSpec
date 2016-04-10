@@ -14,54 +14,54 @@ namespace FixieSpec.Tests
     {
         public void ShouldNotScanNonStepMethodsAsStep()
         {
-            var nonTestMethod = SymbolExtensions.GetMethodInfo<object>(c => c.ToString());
+            var nonStepMethod = typeof(object).GetMethod("ToString");
 
-            var methodScanResult = nonTestMethod.ScanMethod();
+            var methodScanResult = nonStepMethod.ScanMethod();
 
             methodScanResult.ShouldBe(SpecificationStepType.Undefined);
         }
 
         public void ShouldScanSetupMethodAsSetupStep()
         {
-            var contextTestMethod = SymbolExtensions.GetMethodInfo<SimpleSpec>(c => c.Given_a_simple_spec());
+            var setupStepMethod = typeof(SimpleSpec).GetMethod("Given_a_simple_spec");
 
-            var methodScanResult = contextTestMethod.ScanMethod();
+            var methodScanResult = setupStepMethod.ScanMethod();
 
             methodScanResult.ShouldBe(SpecificationStepType.Setup);
         }
 
         public void ShouldScanTransitionMethodAsTransitionStep()
         {
-            var testExecutionMethod = SymbolExtensions.GetMethodInfo<SimpleSpec>(c => c.When_executing_a_test_step());
+            var transitionStepMethod = typeof(SimpleSpec).GetMethod("When_executing_a_test_step");
 
-            var methodScanResult = testExecutionMethod.ScanMethod();
+            var methodScanResult = transitionStepMethod.ScanMethod();
 
             methodScanResult.ShouldBe(SpecificationStepType.Transition);
         }
 
         public void ShouldScanAnotherTransitionMethodAsTransitionStep()
         {
-            var testExecutionMethod = SymbolExtensions.GetMethodInfo<SimpleSpec>(c => c.And_when_executing_a_second_test_step());
+            var anotherTransitionStepMethod = typeof(SimpleSpec).GetMethod("And_when_executing_a_second_test_step");
 
-            var methodScanResult = testExecutionMethod.ScanMethod();
+            var methodScanResult = anotherTransitionStepMethod.ScanMethod();
 
             methodScanResult.ShouldBe(SpecificationStepType.Transition);
         }
 
         public void ShouldScanAssertionMethodAsAssertionStep()
         {
-            var testExecutionMethod = SymbolExtensions.GetMethodInfo<SimpleSpec>(c => c.Then_a_test_result_can_be_verified());
+            var assertionStepMethod = typeof(SimpleSpec).GetMethod("Then_a_test_result_can_be_verified");
 
-            var methodScanResult = testExecutionMethod.ScanMethod();
+            var methodScanResult = assertionStepMethod.ScanMethod();
 
             methodScanResult.ShouldBe(SpecificationStepType.Assertion);
         }
 
         public void ShouldScanAnotherAssertionMethodAsAssertionStep()
         {
-            var testExecutionMethod = SymbolExtensions.GetMethodInfo<SimpleSpec>(c => c.And_then_a_second_result_can_be_verified());
+            var anotherAssertionStepMethod = typeof(SimpleSpec).GetMethod("And_then_a_second_result_can_be_verified");
 
-            var methodScanResult = testExecutionMethod.ScanMethod();
+            var methodScanResult = anotherAssertionStepMethod.ScanMethod();
 
             methodScanResult.ShouldBe(SpecificationStepType.Assertion);
         }

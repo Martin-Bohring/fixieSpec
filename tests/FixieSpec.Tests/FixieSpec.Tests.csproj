@@ -46,8 +46,6 @@
     <Compile Include="SpecificationStepTypeScannerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SelfTestConvention.cs" />
-    <Compile Include="SymbolExtensions.cs" />
-    <Compile Include="SymbolExtensionsTests.cs" />
     <Compile Include="TestExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
