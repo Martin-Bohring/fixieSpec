@@ -127,7 +127,7 @@ namespace FixieSpec.Tests
             public void Then_a_failing_test_result_can_be_verified()
             {
                 WhereAmI();
-                throw new InvalidOperationException();
+                true.ShouldBeFalse();
             }
         }
 
@@ -149,7 +149,7 @@ namespace FixieSpec.Tests
             public void Then_a_failing_result_can_be_verified()
             {
                 WhereAmI();
-                throw new InvalidOperationException();
+                true.ShouldBeFalse();
             }
 
             public void Then_another_test_result_can_be_verified()
