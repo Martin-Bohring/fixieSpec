@@ -29,7 +29,7 @@ namespace FixieSpec
             Methods
                 .Where(method => method.IsPublic && method.IsVoid())
                 .Where(method => method.HasNoParameters())
-                .Where(method => method.ScanMethod() == SpecificationStepType.Assertion);
+                .Where(method => method.IsAssertionStep());
 
             ClassExecution
                 .CreateInstancePerClass()

@@ -16,7 +16,7 @@ namespace FixieSpec
     public static class ReflectionExtensions
     {
         /// <summary>
-        /// Detects if the met^hod given by <paramref name="method"/> has any pparameters.
+        /// Detects if the method given by <paramref name="method"/> has any parameters.
         /// </summary>
         /// <param name="method">
         /// The method to check.
@@ -55,5 +55,16 @@ namespace FixieSpec
                 .GetConstructors()
                 .All(constructorInfo => constructorInfo.GetParameters().Length == 0);
         }
+
+        /// <summary>
+        /// Detects if the method given by <paramref name="method"/> is an assertion step.
+        /// </summary>
+        /// <param name="method">
+        /// The method to check.
+        /// </param>
+        /// <returns>
+        /// <see langword="true"/>, if the method is an assertion step; <see langword="false"/> otherwise.
+        /// </returns>
+        public static bool IsAssertionStep(this MethodInfo method) => method.ScanMethod() == SpecificationStepType.Assertion;
     }
 }

@@ -47,6 +47,14 @@ namespace FixieSpec.Tests
             act.ShouldThrow<ArgumentNullException>();
         }
 
+        public void CanDetectAssertionSteps()
+        {
+            var assertionStep = SymbolExtensions.GetMethodInfo<ReflectionTarget>
+                (c => c.Then_a_result_can_be_verified());
+
+            assertionStep.IsAssertionStep().ShouldBeTrue();
+        }
+
         class ReflectionTarget
         {
             public void MethodWithOutParameter()
@@ -54,6 +62,10 @@ namespace FixieSpec.Tests
             }
 
             public void MethodWithParammeter(int value)
+            {
+            }
+
+            public void Then_a_result_can_be_verified()
             {
             }
         }
