@@ -14,16 +14,16 @@ namespace FixieSpec.Tests
     {
         public void CanDetectMethodWithoutParameters()
         {
-            var methodWithoutParameter = SymbolExtensions.GetMethodInfo<ReflectionTarget>
-                (c => c.MethodWithOutParameter());
+            var methodWithoutParameter = typeof(ReflectionTarget)
+                .GetMethod("MethodWithOutParameter");
 
             methodWithoutParameter.HasNoParameters().ShouldBeTrue();
         }
 
         public void CanDetectMethodWithParameter()
         {
-            var methodWithParameter = SymbolExtensions.GetMethodInfo<ReflectionTarget>
-                (c => c.MethodWithParammeter(5));
+            var methodWithParameter = typeof(ReflectionTarget)
+                .GetMethod("MethodWithParammeter");
 
             methodWithParameter.HasNoParameters().ShouldBeFalse();
         }
@@ -49,16 +49,16 @@ namespace FixieSpec.Tests
 
         public void CanDetectTransitionSteps()
         {
-            var assertionStep = SymbolExtensions.GetMethodInfo<ReflectionTarget>
-                (c => c.When_exercising_the_system_under_test());
+            var transitionStep = typeof(ReflectionTarget)
+                .GetMethod("When_exercising_the_system_under_test");
 
-            assertionStep.IsTransitionStep().ShouldBeTrue();
+            transitionStep.IsTransitionStep().ShouldBeTrue();
         }
 
         public void CanDetectAssertionSteps()
         {
-            var assertionStep = SymbolExtensions.GetMethodInfo<ReflectionTarget>
-                (c => c.Then_a_result_can_be_verified());
+            var assertionStep = typeof(ReflectionTarget)
+                .GetMethod("Then_a_result_can_be_verified");
 
             assertionStep.IsAssertionStep().ShouldBeTrue();
         }
