@@ -47,6 +47,14 @@ namespace FixieSpec.Tests
             act.ShouldThrow<ArgumentNullException>();
         }
 
+        public void CanDetectTransitionSteps()
+        {
+            var assertionStep = SymbolExtensions.GetMethodInfo<ReflectionTarget>
+                (c => c.When_exercising_the_system_under_test());
+
+            assertionStep.IsTransitionStep().ShouldBeTrue();
+        }
+
         public void CanDetectAssertionSteps()
         {
             var assertionStep = SymbolExtensions.GetMethodInfo<ReflectionTarget>
@@ -62,6 +70,10 @@ namespace FixieSpec.Tests
             }
 
             public void MethodWithParammeter(int value)
+            {
+            }
+
+            public void When_exercising_the_system_under_test()
             {
             }
 
