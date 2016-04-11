@@ -53,7 +53,7 @@ namespace FixieSpec
 
             return type
                 .GetConstructors()
-                .All(constructorInfo => constructorInfo.GetParameters().Length == 0);
+                .All(constructorInfo => !constructorInfo.GetParameters().Any());
         }
 
         /// <summary>
