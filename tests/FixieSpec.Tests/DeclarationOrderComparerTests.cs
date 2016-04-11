@@ -14,7 +14,7 @@ namespace FixieSpec.Tests
         readonly MethodInfo firstMethod = typeof(ClassWithDeclarations).GetMethod("FirstMethod");
         readonly MethodInfo secondMethod = typeof(ClassWithDeclarations).GetMethod("SecondMethod");
 
-        readonly DeclarationOrderComparer<MethodInfo> testee = new DeclarationOrderComparer<MethodInfo>();
+        readonly DeclarationOrderComparer testee = DeclarationOrderComparer.Default;
 
         public void ShouldCompareEarlierDeclaredMembersAsBefore()
         {

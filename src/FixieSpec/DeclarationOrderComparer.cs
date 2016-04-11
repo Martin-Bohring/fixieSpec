@@ -12,18 +12,20 @@ namespace FixieSpec
     /// An <see cref="IComparer{T}"/> implementation that compares the declaration order of
     /// <see cref="MemberInfo"/> elements of types.
     /// </summary>
-    /// <typeparam name="T">
-    /// The type of the <see cref="MemberInfo"/> to compare.
-    /// </typeparam>
     /// <remarks>
     /// There are doubts if this implementation is using .Net framework implementation specific
     /// properties and if it might fail in other implementation of the CLR.
     /// </remarks>
-    public class DeclarationOrderComparer<T> : IComparer<T>
-        where T : MemberInfo
+    public class DeclarationOrderComparer : IComparer<MemberInfo>
     {
+        /// <summary>
+        /// Gets the default declaration order comparer.
+        /// </summary>
+        public static DeclarationOrderComparer Default { get; }
+            = new DeclarationOrderComparer();
+
         /// <inheritdoc/>
-        public int Compare(T first, T second)
+        public int Compare(MemberInfo first, MemberInfo second)
         {
             if (first == null)
             {

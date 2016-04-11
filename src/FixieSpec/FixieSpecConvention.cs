@@ -33,7 +33,7 @@ namespace FixieSpec
 
             ClassExecution
                 .CreateInstancePerClass()
-                .SortCases((firstCase, secondCase) => new DeclarationOrderComparer<MethodInfo>().Compare(firstCase.Method, secondCase.Method));
+                .SortCases((firstCase, secondCase) => DeclarationOrderComparer.Default.Compare(firstCase.Method, secondCase.Method));
 
             FixtureExecution
                 .Wrap<CallSpecificationTransitionSteps>();
