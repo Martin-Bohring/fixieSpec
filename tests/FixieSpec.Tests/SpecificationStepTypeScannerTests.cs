@@ -50,7 +50,7 @@ namespace FixieSpec.Tests
 
         public void ShouldScanAnotherTransitionMethodAsTransitionStep()
         {
-            var anotherTransitionStepMethod = typeof(SimpleSpec).GetMethod("And_when_executing_a_second_test_step");
+            var anotherTransitionStepMethod = typeof(SimpleSpec).GetMethod("And_when_executing_another_test_step");
 
             var methodScanResult = anotherTransitionStepMethod.ScanMethod();
 
@@ -68,7 +68,7 @@ namespace FixieSpec.Tests
 
         public void ShouldScanAnotherAssertionMethodAsAssertionStep()
         {
-            var anotherAssertionStepMethod = typeof(SimpleSpec).GetMethod("And_then_a_second_result_can_be_verified");
+            var anotherAssertionStepMethod = typeof(SimpleSpec).GetMethod("And_then_another_result_can_be_verified");
 
             var methodScanResult = anotherAssertionStepMethod.ScanMethod();
 
@@ -96,7 +96,7 @@ namespace FixieSpec.Tests
             {
             }
 
-            public void And_when_executing_a_second_test_step()
+            public void And_when_executing_another_test_step()
             {
             }
 
@@ -104,7 +104,7 @@ namespace FixieSpec.Tests
             {
             }
 
-            public void And_then_a_second_result_can_be_verified()
+            public void And_then_another_result_can_be_verified()
             {
             }
         }
