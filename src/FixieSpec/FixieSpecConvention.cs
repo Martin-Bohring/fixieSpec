@@ -45,7 +45,7 @@ namespace FixieSpec
             {
                 var transitionSteps = context.Class.Type.GetMethods()
                     .Where(method => method.IsTransitionStep())
-                    .OrderBy(method => method.MetadataToken);
+                    .OrderBy(method => method, DeclarationOrderComparer.Default);
 
                 foreach (var transitionStep in transitionSteps)
                 {
