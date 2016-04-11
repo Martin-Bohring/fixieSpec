@@ -10,22 +10,43 @@ namespace FixieSpec
     using System.Reflection;
 
     /// <summary>
-    /// Scans the methods of a specification and identifies the <see cref="SpecificationStepType"/> of the specification methods.
+    /// Scans the methods of a specification and identifies
+    /// the <see cref="SpecificationStepType"/> of the specification methods.
     /// </summary>
     public static class SpecificationStepTypeScanner
     {
-        static readonly ConcurrentQueue<MethodNameScanner> MethodNameScanners = new ConcurrentQueue<MethodNameScanner>();
+        static readonly ConcurrentQueue<MethodNameScanner> MethodNameScanners
+            = new ConcurrentQueue<MethodNameScanner>();
 
         /// <summary>
         /// Initializes static members of the <see cref="SpecificationStepTypeScanner"/> class.
         /// </summary>
         static SpecificationStepTypeScanner()
         {
-            AddMethodNameScanner(new MethodNameScanner(s => s.StartsWith("Given", StringComparison.OrdinalIgnoreCase), SpecificationStepType.Setup));
-            AddMethodNameScanner(new MethodNameScanner(s => s.StartsWith("When", StringComparison.OrdinalIgnoreCase), SpecificationStepType.Transition));
-            AddMethodNameScanner(new MethodNameScanner(s => s.StartsWith("AndWhen", StringComparison.OrdinalIgnoreCase), SpecificationStepType.Transition));
-            AddMethodNameScanner(new MethodNameScanner(s => s.StartsWith("Then", StringComparison.OrdinalIgnoreCase), SpecificationStepType.Assertion));
-            AddMethodNameScanner(new MethodNameScanner(s => s.StartsWith("AndThen", StringComparison.OrdinalIgnoreCase), SpecificationStepType.Assertion));
+            AddMethodNameScanner(
+                new MethodNameScanner(
+                    methodName => methodName.StartsWith("Given", StringComparison.OrdinalIgnoreCase),
+                    SpecificationStepType.Setup));
+
+            AddMethodNameScanner(
+                new MethodNameScanner(
+                    methodName => methodName.StartsWith("When", StringComparison.OrdinalIgnoreCase),
+                    SpecificationStepType.Transition));
+
+            AddMethodNameScanner(
+                new MethodNameScanner(
+                    methodName => methodName.StartsWith("AndWhen", StringComparison.OrdinalIgnoreCase),
+                    SpecificationStepType.Transition));
+
+            AddMethodNameScanner(
+                new MethodNameScanner(
+                    methodName => methodName.StartsWith("Then", StringComparison.OrdinalIgnoreCase),
+                    SpecificationStepType.Assertion));
+
+            AddMethodNameScanner(
+                new MethodNameScanner(
+                    methodName => methodName.StartsWith("AndThen", StringComparison.OrdinalIgnoreCase),
+                    SpecificationStepType.Assertion));
         }
 
         /// <summary>
@@ -57,50 +78,23 @@ namespace FixieSpec
             return SpecificationStepType.Undefined;
         }
 
-        /// <summary>
-        /// Adds a method name scanner to the list of <see cref="MethodNameScanner"/>'s.
-        /// </summary>
-        /// <param name="methodNameScanner">
-        /// The method name scanner to add.
-        /// </param>
         static void AddMethodNameScanner(MethodNameScanner methodNameScanner)
         {
             MethodNameScanners.Enqueue(methodNameScanner);
         }
 
-        /// <summary>
-        /// A class that matches method names to identify the method type.
-        /// </summary>
         class MethodNameScanner
         {
             readonly Func<string, bool> matcher;
 
             readonly SpecificationStepType methodType;
 
-            /// <summary>
-            /// Initializes a new instance of the <see cref="MethodNameScanner"/> class.
-            /// </summary>
-            /// <param name="methodMatcher">
-            /// A function that attemps to match a test method by its name or parts of it.
-            /// </param>
-            /// <param name="methodTypeIfMatched">
-            /// The specification step type of the method if matched by the <paramref name="methodMatcher"/>.
-            /// </param>
             public MethodNameScanner(Func<string, bool> methodMatcher, SpecificationStepType methodTypeIfMatched)
             {
                 methodType = methodTypeIfMatched;
                 matcher = methodMatcher;
             }
 
-            /// <summary>
-            /// Attempts to match the method given by <paramref name="methodToMatch"/> to a <see cref="SpecificationStepType"/>.
-            /// </summary>
-            /// <param name="methodToMatch">
-            /// The method to match.
-            /// </param>
-            /// <returns>
-            /// The type of the method if the method can be matched or <see cref="SpecificationStepType.Undefined"/>.
-            /// </returns>
             public SpecificationStepType MatchMethod(MethodInfo methodToMatch)
             {
                 if (matcher(ScrubMethodName(methodToMatch)))
@@ -111,15 +105,6 @@ namespace FixieSpec
                 return SpecificationStepType.Undefined;
             }
 
-            /// <summary>
-            /// Scrubs the name of the method to scan, before attempting to match it.
-            /// </summary>
-            /// <param name="methodToMatch">
-            /// The method to scrub.
-            /// </param>
-            /// <returns>
-            /// The scrubbed method name.
-            /// </returns>
             static string ScrubMethodName(MethodInfo methodToMatch)
             {
                 return methodToMatch.Name.Replace("_", string.Empty);
