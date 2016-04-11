@@ -9,7 +9,7 @@ namespace FixieSpec.Tests
 
     /// <summary>
     /// An attribute used to provide parameter input values to test methods
-    /// declared in test fixture the <see cref="InputAttributeParameterSource"/>
+    /// declared in a test fixture the <see cref="InputAttributeParameterSource"/>
     /// is being applied to.
     /// </summary>
     [AttributeUsage(AttributeTargets.Method, AllowMultiple = true)]

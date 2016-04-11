@@ -39,7 +39,7 @@ namespace FixieSpec.Tests
         /// A test listener needed by the <see cref="Runner"/> instance used to run the tests.
         /// </param>
         /// <param name="convention">
-        /// The convetion being used when identifîng and runnng test cases.</param>
+        /// The convention being used when identifîng and running test cases.</param>
         /// <returns>The results of the test run.
         /// </returns>
         public static AssemblyResult Run(this Type sampleTestClass, Listener listener, Convention convention)
@@ -63,7 +63,7 @@ namespace FixieSpec.Tests
         }
 
         /// <summary>
-        /// Gest the output that has has captured by the <see cref="RedirectedConsole"/> given by
+        /// Gest the output that has been captured by the <see cref="RedirectedConsole"/> given by
         /// <paramref name="console"/>
         /// </summary>
         /// <param name="console">
@@ -89,7 +89,7 @@ namespace FixieSpec.Tests
         /// The multi-line string assumed to consist of lines seperated by <see cref="Environment.NewLine"/>.
         /// </param>
         /// <returns>
-        /// The constituent of the string given by <paramref name="multiline"/>
+        /// The constituent lines of the string given by <paramref name="multiline"/>
         /// </returns>
         public static IEnumerable<string> Lines(this string multiline)
         {

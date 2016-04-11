@@ -84,7 +84,7 @@ namespace FixieSpec
             /// A function that attemps to match a test method by its name or parts of it.
             /// </param>
             /// <param name="methodTypeIfMatched">
-            /// The type of the method if matched by the <paramref name="methodMatcher"/>.
+            /// The specification step type of the method if matched by the <paramref name="methodMatcher"/>.
             /// </param>
             public MethodNameScanner(Func<string, bool> methodMatcher, SpecificationStepType methodTypeIfMatched)
             {
@@ -93,13 +93,13 @@ namespace FixieSpec
             }
 
             /// <summary>
-            /// Uses the emthod matcher to match the method given by <paramref name="methodToMatch"/>
+            /// Attempts to match the method given by <paramref name="methodToMatch"/> to a <see cref="SpecificationStepType"/>.
             /// </summary>
             /// <param name="methodToMatch">
-            /// The method the method name is matched for.
+            /// The method to match.
             /// </param>
             /// <returns>
-            /// The type of the method if the method can be macthed or <see cref="SpecificationStepType.Undefined"/>.
+            /// The type of the method if the method can be matched or <see cref="SpecificationStepType.Undefined"/>.
             /// </returns>
             public SpecificationStepType MatchMethod(MethodInfo methodToMatch)
             {
@@ -115,10 +115,10 @@ namespace FixieSpec
             /// Scrubs the name of the method to scan, before attempting to match it.
             /// </summary>
             /// <param name="methodToMatch">
-            /// The method the name is being scrubbed.
+            /// The method to scrub.
             /// </param>
             /// <returns>
-            /// The scrubbed metod name.
+            /// The scrubbed method name.
             /// </returns>
             static string ScrubMethodName(MethodInfo methodToMatch)
             {

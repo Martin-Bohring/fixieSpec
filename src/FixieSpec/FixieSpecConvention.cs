@@ -12,8 +12,8 @@ namespace FixieSpec
     using Fixie;
 
     /// <summary>
-    /// A class that describes a Fixie test case convention that mimics
-    /// BDD style style test fixtures.
+    /// A class that describes a Fixie <see cref="Convention"/> that picks up
+    /// BDD style style specifications.
     /// </summary>
     public class FixieSpecConvention : Convention
     {
