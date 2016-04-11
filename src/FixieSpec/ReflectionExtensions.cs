@@ -57,15 +57,15 @@ namespace FixieSpec
         }
 
         /// <summary>
-        /// Detects if the method given by <paramref name="method"/> is an assertion step.
+        /// Detects if the method given by <paramref name="method"/> is a setup step.
         /// </summary>
         /// <param name="method">
         /// The method to check.
         /// </param>
         /// <returns>
-        /// <see langword="true"/>, if the method is an assertion step; <see langword="false"/> otherwise.
+        /// <see langword="true"/>, if the method is an setup step; <see langword="false"/> otherwise.
         /// </returns>
-        public static bool IsAssertionStep(this MethodInfo method) => method.ScanMethod() == SpecificationStepType.Assertion;
+        public static bool IsSetupStep(this MethodInfo method) => method.ScanMethod() == SpecificationStepType.Setup;
 
         /// <summary>
         /// Detects if the method given by <paramref name="method"/> is a transition step.
@@ -77,5 +77,16 @@ namespace FixieSpec
         /// <see langword="true"/>, if the method is an transition step; <see langword="false"/> otherwise.
         /// </returns>
         public static bool IsTransitionStep(this MethodInfo method) => method.ScanMethod() == SpecificationStepType.Transition;
+
+        /// <summary>
+        /// Detects if the method given by <paramref name="method"/> is an assertion step.
+        /// </summary>
+        /// <param name="method">
+        /// The method to check.
+        /// </param>
+        /// <returns>
+        /// <see langword="true"/>, if the method is an assertion step; <see langword="false"/> otherwise.
+        /// </returns>
+        public static bool IsAssertionStep(this MethodInfo method) => method.ScanMethod() == SpecificationStepType.Assertion;
     }
 }

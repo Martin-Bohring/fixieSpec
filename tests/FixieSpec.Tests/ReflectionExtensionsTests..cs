@@ -47,6 +47,14 @@ namespace FixieSpec.Tests
             act.ShouldThrow<ArgumentNullException>();
         }
 
+        public void CanDetectSetupSteps()
+        {
+            var transitionStep = typeof(ReflectionTarget)
+                .GetMethod("Given_some_specification_context_setup");
+
+            transitionStep.IsSetupStep().ShouldBeTrue();
+        }
+
         public void CanDetectTransitionSteps()
         {
             var transitionStep = typeof(ReflectionTarget)
@@ -70,6 +78,10 @@ namespace FixieSpec.Tests
             }
 
             public void MethodWithParammeter(int value)
+            {
+            }
+
+            public void Given_some_specification_context_setup()
             {
             }
 
