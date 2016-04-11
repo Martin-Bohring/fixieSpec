@@ -18,14 +18,14 @@ namespace FixieSpec.Tests
         [Input("Ploeh.AutoFixture")]
         [Input("Ploeh.AutoFixture.AutoFakeItEasy")]
         [Input("Shouldly")]
-        public void FixieSpecShouldNotReference(string assemblyName)
+        public void ShouldNotReference(string assemblyName)
         {
             var references = typeof(FixieSpecConvention).Assembly.GetReferencedAssemblies();
 
             references.ShouldNotContain(reference => reference.Name == assemblyName);
         }
 
-        public void ShouldtLeastRequireNet45()
+        public void ShouldAtLeastRequireNet45()
         {
             var quirksAreEnabled = Uri.EscapeDataString("'") == "'";
 
