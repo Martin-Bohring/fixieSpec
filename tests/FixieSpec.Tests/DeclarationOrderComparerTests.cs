@@ -59,6 +59,16 @@ namespace FixieSpec.Tests
             result.ShouldBe(0);
         }
 
+        public void ShouldAlwaysReturnTheSameInstanceAsDefault()
+        {
+            var firstDefaultInstance = DeclarationOrderComparer.Default;
+            var secondDefaultInstance = DeclarationOrderComparer.Default;
+
+            var isSameInstance = ReferenceEquals(firstDefaultInstance, secondDefaultInstance);
+
+            isSameInstance.ShouldBeTrue();
+        }
+
         sealed class ClassWithDeclarations
         {
             public void FirstMethod()
