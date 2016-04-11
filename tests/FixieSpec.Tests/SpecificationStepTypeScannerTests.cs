@@ -30,6 +30,15 @@ namespace FixieSpec.Tests
             methodScanResult.ShouldBe(SpecificationStepType.Setup);
         }
 
+        public void ShouldScanAnotherSetupMethodAsSetupStep()
+        {
+            var anotherSetupStep = typeof(SimpleSpec).GetMethod("And_given_some_more_context_setup");
+
+            var methodScanResult = anotherSetupStep.ScanMethod();
+
+            methodScanResult.ShouldBe(SpecificationStepType.Setup);
+        }
+
         public void ShouldScanTransitionMethodAsTransitionStep()
         {
             var transitionStepMethod = typeof(SimpleSpec).GetMethod("When_executing_a_test_step");
@@ -76,6 +85,10 @@ namespace FixieSpec.Tests
         sealed class SimpleSpec
         {
             public void Given_a_simple_spec()
+            {
+            }
+
+            public void And_given_some_more_context_setup()
             {
             }
 

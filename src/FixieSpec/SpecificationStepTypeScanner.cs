@@ -30,6 +30,11 @@ namespace FixieSpec
 
             AddMethodNameScanner(
                 new MethodNameScanner(
+                    methodName => methodName.StartsWith("AndGiven", StringComparison.OrdinalIgnoreCase),
+                    SpecificationStepType.Setup));
+
+            AddMethodNameScanner(
+                new MethodNameScanner(
                     methodName => methodName.StartsWith("When", StringComparison.OrdinalIgnoreCase),
                     SpecificationStepType.Transition));
 
