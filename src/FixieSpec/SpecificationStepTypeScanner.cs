@@ -110,10 +110,7 @@ namespace FixieSpec
                 return SpecificationStepType.Undefined;
             }
 
-            static string ScrubMethodName(MethodInfo methodToMatch)
-            {
-                return methodToMatch.Name.Replace("_", string.Empty);
-            }
+            static string ScrubMethodName(MethodInfo methodToMatch) => methodToMatch.Name.Replace("_", string.Empty);
         }
     }
 }
