@@ -161,29 +161,11 @@ namespace FixieSpec.Tests
 
             public IEnumerable<string> ConsoleOutput { get; private set; }
 
-            public int Passed
-            {
-                get
-                {
-                    return allResults.Passed;
-                }
-            }
+            public int Passed => allResults.Passed;
 
-            public int Failed
-            {
-                get
-                {
-                    return allResults.Failed;
-                }
-            }
+            public int Failed => allResults.Failed;
 
-            public int Total
-            {
-                get
-                {
-                    return allResults.Total;
-                }
-            }
+            public int Total => allResults.Total;
         }
 
         public class NullResultListener : Listener
