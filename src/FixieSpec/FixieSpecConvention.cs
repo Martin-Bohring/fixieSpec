@@ -36,7 +36,8 @@ namespace FixieSpec
                 .SortCases((firstCase, secondCase) => DeclarationOrderComparer.Default.Compare(firstCase.Method, secondCase.Method));
 
             FixtureExecution
-                .Wrap<CallSpecificationTransitionSteps>();
+                .Wrap<CallSpecificationTransitionSteps>()
+                .Wrap<CallSetupSteps>();
         }
 
         class CallSpecificationTransitionSteps : FixtureBehavior
@@ -52,6 +53,30 @@ namespace FixieSpec
                     try
                     {
                         transitionStep.Invoke(context.Instance, null);
+                    }
+                    catch (TargetInvocationException exception)
+                    {
+                        throw new PreservedException(exception.InnerException);
+                    }
+                }
+
+                next?.Invoke();
+            }
+        }
+
+        class CallSetupSteps : FixtureBehavior
+        {
+            public void Execute(Fixture context, Action next)
+            {
+                var setupSteps = context.Class.Type.GetMethods()
+                    .Where(method => method.IsSetupStep())
+                    .OrderBy(method => method, DeclarationOrderComparer.Default);
+
+                foreach (var setupStep in setupSteps)
+                {
+                    try
+                    {
+                        setupStep.Invoke(context.Instance, null);
                     }
                     catch (TargetInvocationException exception)
                     {

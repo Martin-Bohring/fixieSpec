@@ -20,6 +20,8 @@ namespace FixieSpec.Tests
             var testRunResult = Run<ExampleSpecification>();
 
             testRunResult.ConsoleOutput.ShouldEqual(
+                "Given_a_specification_context",
+                "And_given_a_secondary_specification_context",
                 "When_exercising_the_system_under_test",
                 "And_when_exercising_the_system_under_test_some_more",
                 "Then_a_result_can_be_verified",
@@ -67,6 +69,16 @@ namespace FixieSpec.Tests
 
         class ExampleSpecification
         {
+            public void Given_a_specification_context()
+            {
+                WhereAmI();
+            }
+
+            public void And_given_a_secondary_specification_context()
+            {
+                WhereAmI();
+            }
+
             public void When_exercising_the_system_under_test()
             {
                 WhereAmI();
