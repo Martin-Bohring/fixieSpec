@@ -97,9 +97,9 @@ namespace FixieSpec.Tests
                 throw new InvalidOperationException();
             }
 
-            public void And_when_exercising_the_system_under_test_some_more_is_skipped()
+            public void And_when_exercising_the_system_under_test_some_mored()
             {
-                WhereAmI();
+                throw new ShouldBeUnreachableException();
             }
 
             public void Then_the_result_cannot_be_verified()
