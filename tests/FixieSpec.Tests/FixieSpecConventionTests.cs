@@ -15,27 +15,9 @@ namespace FixieSpec.Tests
 
     public sealed class FixieSpecConventionTests
     {
-        public void ShouldExecuteSimpleSuccessfullSpecification()
+        public void ShouldExecuteAllStepsInOrder()
         {
-            var testRunResult = Run<SimpleSuccessfullSpecification>();
-
-            testRunResult.Total.ShouldBe(1);
-            testRunResult.Passed.ShouldBe(1);
-            testRunResult.Failed.ShouldBe(0);
-        }
-
-        public void ShouldExecuteMultipleAssertionSteps()
-        {
-            var testRunResult = Run<CompleteSpecification>();
-
-            testRunResult.Total.ShouldBe(2);
-            testRunResult.Passed.ShouldBe(2);
-            testRunResult.Failed.ShouldBe(0);
-        }
-
-        public void ShouldExecuteSpecificationStepsInOrder()
-        {
-            var testRunResult = Run<CompleteSpecification>();
+            var testRunResult = Run<ExampleSpecification>();
 
             testRunResult.ConsoleOutput.ShouldEqual(
                 "When_exercising_the_system_under_test",
@@ -44,18 +26,38 @@ namespace FixieSpec.Tests
                 "And_then_another_result_can_be_verified");
         }
 
-        public void ShouldExecuteSimpleFailingSpecification()
+        public void ShouldRecognizeSuccessfulAssertionSteps()
         {
-            var testRunResult = Run<SimpleFailingSpecification>();
+            var testRunResult = Run<ExampleSpecification>();
 
-            testRunResult.Total.ShouldBe(1);
+            testRunResult.Total.ShouldBe(2);
+            testRunResult.Passed.ShouldBe(2);
+            testRunResult.Failed.ShouldBe(0);
+        }
+
+        public void ShouldExecuteAllStepsInOrderEvenWithFailingAssertionSteps()
+        {
+            var testRunResult = Run<FailingAssertionStepExampleSpecification>();
+
+            testRunResult.ConsoleOutput.ShouldEqual(
+                "When_exercising_the_system_under_test",
+                "And_when_exercising_the_system_under_test_some_more",
+                "Then_a_failing_result_can_be_verified",
+                "And_then_another_result_can_be_verified");
+        }
+
+        public void ShouldRecognizeFailedAssertionSteps()
+        {
+            var testRunResult = Run<FailingAssertionStepExampleSpecification>();
+
+            testRunResult.Total.ShouldBe(2);
+            testRunResult.Passed.ShouldBe(1);
             testRunResult.Failed.ShouldBe(1);
-            testRunResult.Passed.ShouldBe(0);
         }
 
         public void ShouldFailWhenATransitionStepFails()
         {
-            var testRunResult = Run<FailingTransitionStepSpecification>();
+            var testRunResult = Run<FailingTransitionStepExampleSpecification>();
 
             testRunResult.ConsoleOutput.ShouldEqual(
                 "When_exercising_the_system_under_test_fails");
@@ -63,28 +65,7 @@ namespace FixieSpec.Tests
             testRunResult.Failed.ShouldBe(1);
         }
 
-        public void ShouldExecuteMultipleAssertionStepsWithFailureInOrder()
-        {
-            var testRunResult = Run<MultipleAssertionStepsWithFailureSpecification>();
-
-            testRunResult.ConsoleOutput.ShouldEqual(
-                "Then_a_failing_result_can_be_verified",
-                "Then_another_test_result_can_be_verified");
-
-            testRunResult.Total.ShouldBe(2);
-            testRunResult.Failed.ShouldBe(1);
-            testRunResult.Passed.ShouldBe(1);
-        }
-
-        class SimpleSuccessfullSpecification
-        {
-            public void Then_a_successfull_test_result_can_be_verified()
-            {
-                WhereAmI();
-            }
-        }
- 
-        class CompleteSpecification
+        class ExampleSpecification
         {
             public void When_exercising_the_system_under_test()
             {
@@ -106,17 +87,8 @@ namespace FixieSpec.Tests
                 WhereAmI();
             }
         }
-
-        class SimpleFailingSpecification
-        {
-            public void Then_a_failing_test_result_can_be_verified()
-            {
-                WhereAmI();
-                true.ShouldBeFalse();
-            }
-        }
-
-        class FailingTransitionStepSpecification
+ 
+        class FailingTransitionStepExampleSpecification
         {
             public void When_exercising_the_system_under_test_fails()
             {
@@ -125,21 +97,36 @@ namespace FixieSpec.Tests
                 throw new InvalidOperationException();
             }
 
+            public void And_when_exercising_the_system_under_test_some_more_is_skipped()
+            {
+                WhereAmI();
+            }
+
             public void Then_the_result_cannot_be_verified()
             {
                 WhereAmI();
             }
         }
 
-        class MultipleAssertionStepsWithFailureSpecification
+        class FailingAssertionStepExampleSpecification
         {
+            public void When_exercising_the_system_under_test()
+            {
+                WhereAmI();
+            }
+
+            public void And_when_exercising_the_system_under_test_some_more()
+            {
+                WhereAmI();
+            }
+
             public void Then_a_failing_result_can_be_verified()
             {
                 WhereAmI();
                 true.ShouldBeFalse();
             }
 
-            public void Then_another_test_result_can_be_verified()
+            public void And_then_another_result_can_be_verified()
             {
                 WhereAmI();
             }
