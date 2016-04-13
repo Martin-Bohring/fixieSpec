@@ -17,7 +17,7 @@ namespace FixieSpec.Tests
     {
         public void ShouldExecuteAllStepsInOrder()
         {
-            var testRunResult = Run<ExampleSpecification>();
+            var testRunResult = Execute<ExampleSpecification>();
 
             testRunResult.ConsoleOutput.ShouldEqual(
                 "Given_a_specification_context",
@@ -30,7 +30,7 @@ namespace FixieSpec.Tests
 
         public void ShouldRecognizeSuccessfulAssertionSteps()
         {
-            var testRunResult = Run<ExampleSpecification>();
+            var testRunResult = Execute<ExampleSpecification>();
 
             testRunResult.Total.ShouldBe(2);
             testRunResult.Passed.ShouldBe(2);
@@ -39,7 +39,7 @@ namespace FixieSpec.Tests
 
         public void ShouldExecuteAllStepsInOrderEvenWithFailingAssertionSteps()
         {
-            var testRunResult = Run<FailingAssertionStepExampleSpecification>();
+            var testRunResult = Execute<FailingAssertionStepExampleSpecification>();
 
             testRunResult.ConsoleOutput.ShouldEqual(
                 "When_exercising_the_system_under_test",
@@ -50,7 +50,7 @@ namespace FixieSpec.Tests
 
         public void ShouldRecognizeFailedAssertionSteps()
         {
-            var testRunResult = Run<FailingAssertionStepExampleSpecification>();
+            var testRunResult = Execute<FailingAssertionStepExampleSpecification>();
 
             testRunResult.Total.ShouldBe(2);
             testRunResult.Passed.ShouldBe(1);
@@ -59,7 +59,7 @@ namespace FixieSpec.Tests
 
         public void ShouldFailWhenATransitionStepFails()
         {
-            var testRunResult = Run<FailingTransitionStepExampleSpecification>();
+            var testRunResult = Execute<FailingTransitionStepExampleSpecification>();
 
             testRunResult.ConsoleOutput.ShouldEqual(
                 "When_exercising_the_system_under_test_fails");
@@ -133,18 +133,18 @@ namespace FixieSpec.Tests
                 throw new InvalidOperationException();
             }
 
-            public void And_when_exercising_the_system_under_test_some_mored()
+            public void And_when_exercising_the_system_under_test_some_more()
             {
                 throw new ShouldBeUnreachableException();
             }
 
             public void Then_the_result_cannot_be_verified()
             {
-                WhereAmI();
+                throw new ShouldBeUnreachableException();
             }
         }
 
-        static TestRunResult Run<TSampleTestClass>()
+        static SpecificationExecutionResult Execute<TSampleTestClass>()
         {
             using (var console = new RedirectedConsole())
             {
@@ -152,7 +152,7 @@ namespace FixieSpec.Tests
 
                 var results = typeof(TSampleTestClass).Run(listener, new FixieSpecConvention());
 
-                return new TestRunResult(results, console.Lines());
+                return new SpecificationExecutionResult(results, console.Lines());
             }
         }
 
@@ -161,11 +161,11 @@ namespace FixieSpec.Tests
             Console.WriteLine(member);
         }
 
-        class TestRunResult
+        class SpecificationExecutionResult
         {
             readonly AssemblyResult allResults;
 
-            public TestRunResult(AssemblyResult results, IEnumerable<string> consoleOutput)
+            public SpecificationExecutionResult(AssemblyResult results, IEnumerable<string> consoleOutput)
             {
                 allResults = results;
                 ConsoleOutput = consoleOutput;
