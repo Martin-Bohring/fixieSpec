@@ -57,12 +57,17 @@ namespace FixieSpec.Tests
             testRunResult.Failed.ShouldBe(1);
         }
 
-        public void ShouldFailWhenATransitionStepFails()
+        public void ShouldStopWhenATransitionStepFails()
         {
             var testRunResult = Execute<FailingTransitionStepExampleSpecification>();
 
             testRunResult.ConsoleOutput.ShouldEqual(
                 "When_exercising_the_system_under_test_fails");
+        }
+
+        public void ShouldFailAllAssertionStepsWhenATransitionStepFails()
+        {
+            var testRunResult = Execute<FailingTransitionStepExampleSpecification>();
 
             testRunResult.Failed.ShouldBe(1);
         }
