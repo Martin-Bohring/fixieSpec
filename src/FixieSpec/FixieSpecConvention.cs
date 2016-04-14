@@ -6,7 +6,6 @@
 namespace FixieSpec
 {
     using System;
-    using System.Collections.Generic;
     using System.Linq;
     using System.Reflection;
 
@@ -37,15 +36,24 @@ namespace FixieSpec
                 .SortCases((firstCase, secondCase) => DeclarationOrderComparer.Default.Compare(firstCase.Method, secondCase.Method));
 
             FixtureExecution
-                .Wrap<CallSpecificationTransitionSteps>()
-                .Wrap<CallSetupSteps>();
+                .Wrap(new CallSpecificationSteps((method) => method.IsTransitionStep()))
+                .Wrap(new CallSpecificationSteps((method) => method.IsSetupStep()));
         }
 
-        abstract class CallSpecificationSteps : FixtureBehavior
+        class CallSpecificationSteps : FixtureBehavior
         {
+            private readonly Func<MethodInfo, bool> stepSelector;
+
+            public CallSpecificationSteps(Func<MethodInfo, bool> predicate)
+            {
+                stepSelector = predicate;
+            }
+
             public void Execute(Fixture context, Action next)
             {
-                var specificationSteps = GetSpecificationSteps(context.Class.Type);
+                var specificationSteps = context.Class.Type.GetMethods()
+                    .Where(stepSelector)
+                    .OrderBy(method => method, DeclarationOrderComparer.Default);
 
                 foreach (var specificationStep in specificationSteps)
                 {
@@ -60,28 +68,6 @@ namespace FixieSpec
                 }
 
                 next?.Invoke();
-            }
-
-            protected abstract IEnumerable<MethodInfo> GetSpecificationSteps(Type specificationType);
-        }
-
-        class CallSpecificationTransitionSteps : CallSpecificationSteps
-        {
-            protected override IEnumerable<MethodInfo> GetSpecificationSteps(Type specificationType)
-            {
-                return specificationType.GetMethods()
-                    .Where(method => method.IsTransitionStep())
-                    .OrderBy(method => method, DeclarationOrderComparer.Default);
-            }
-        }
-
-        class CallSetupSteps : CallSpecificationSteps
-        {
-            protected override IEnumerable<MethodInfo> GetSpecificationSteps(Type specificationType)
-            {
-                return specificationType.GetMethods()
-                    .Where(method => method.IsSetupStep())
-                    .OrderBy(method => method, DeclarationOrderComparer.Default);
             }
         }
     }
