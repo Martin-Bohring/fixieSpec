@@ -17,9 +17,9 @@ namespace FixieSpec.Tests
     {
         public void ShouldExecuteAllStepsInOrder()
         {
-            var testRunResult = Execute<ExampleSpecification>();
+            var executionResult = Execute<ExampleSpecification>();
 
-            testRunResult.ConsoleOutput.ShouldEqual(
+            executionResult.ConsoleOutput.ShouldEqual(
                 "Given_a_specification_context",
                 "And_given_a_secondary_specification_context",
                 "When_exercising_the_system_under_test",
@@ -30,18 +30,18 @@ namespace FixieSpec.Tests
 
         public void ShouldRecognizeAllSuccessfulAssertionSteps()
         {
-            var testRunResult = Execute<ExampleSpecification>();
+            var executionResult = Execute<ExampleSpecification>();
 
-            testRunResult.Total.ShouldBe(2);
-            testRunResult.Passed.ShouldBe(2);
-            testRunResult.Failed.ShouldBe(0);
+            executionResult.Total.ShouldBe(2);
+            executionResult.Passed.ShouldBe(2);
+            executionResult.Failed.ShouldBe(0);
         }
 
         public void ShouldExecuteAllStepsInOrderEvenWithFailingAssertionSteps()
         {
-            var testRunResult = Execute<FailingAssertionStepExampleSpecification>();
+            var executionResult = Execute<FailingAssertionStepExampleSpecification>();
 
-            testRunResult.ConsoleOutput.ShouldEqual(
+            executionResult.ConsoleOutput.ShouldEqual(
                 "When_exercising_the_system_under_test",
                 "And_when_exercising_the_system_under_test_some_more",
                 "Then_a_failing_result_can_be_verified",
@@ -50,42 +50,42 @@ namespace FixieSpec.Tests
 
         public void ShouldRecognizeAllFailedAssertionSteps()
         {
-            var testRunResult = Execute<FailingAssertionStepExampleSpecification>();
+            var executionResult = Execute<FailingAssertionStepExampleSpecification>();
 
-            testRunResult.Total.ShouldBe(2);
-            testRunResult.Passed.ShouldBe(1);
-            testRunResult.Failed.ShouldBe(1);
+            executionResult.Total.ShouldBe(2);
+            executionResult.Passed.ShouldBe(1);
+            executionResult.Failed.ShouldBe(1);
         }
 
         public void ShouldStopWhenASetupStepFails()
         {
-            var testRunResult = Execute<FailingSetupStepExampleSpecification>();
+            var executionResult = Execute<FailingSetupStepExampleSpecification>();
 
-            testRunResult.ConsoleOutput.ShouldEqual(
+            executionResult.ConsoleOutput.ShouldEqual(
                 "Given_a_specification_context",
                 "And_given_a_secondary_setup_step_fails");
         }
 
         public void ShouldFailAllAssertionStepsWhenASetupStepFails()
         {
-            var testRunResult = Execute<FailingSetupStepExampleSpecification>();
+            var executionResult = Execute<FailingSetupStepExampleSpecification>();
 
-            testRunResult.Failed.ShouldBe(2);
+            executionResult.Failed.ShouldBe(2);
         }
 
         public void ShouldStopWhenATransitionStepFails()
         {
-            var testRunResult = Execute<FailingTransitionStepExampleSpecification>();
+            var executionResult = Execute<FailingTransitionStepExampleSpecification>();
 
-            testRunResult.ConsoleOutput.ShouldEqual(
+            executionResult.ConsoleOutput.ShouldEqual(
                 "When_exercising_the_system_under_test_fails");
         }
 
         public void ShouldFailAllAssertionStepsWhenATransitionStepFails()
         {
-            var testRunResult = Execute<FailingTransitionStepExampleSpecification>();
+            var executionResult = Execute<FailingTransitionStepExampleSpecification>();
 
-            testRunResult.Failed.ShouldBe(2);
+            executionResult.Failed.ShouldBe(2);
         }
 
         class ExampleSpecification
