@@ -28,7 +28,7 @@ namespace FixieSpec.Tests
                 "And_then_another_result_can_be_verified");
         }
 
-        public void ShouldRecognizeSuccessfulAssertionSteps()
+        public void ShouldRecognizeAllSuccessfulAssertionSteps()
         {
             var testRunResult = Execute<ExampleSpecification>();
 
@@ -48,7 +48,7 @@ namespace FixieSpec.Tests
                 "And_then_another_result_can_be_verified");
         }
 
-        public void ShouldRecognizeFailedAssertionSteps()
+        public void ShouldRecognizeAllFailedAssertionSteps()
         {
             var testRunResult = Execute<FailingAssertionStepExampleSpecification>();
 
@@ -85,7 +85,7 @@ namespace FixieSpec.Tests
         {
             var testRunResult = Execute<FailingTransitionStepExampleSpecification>();
 
-            testRunResult.Failed.ShouldBe(1);
+            testRunResult.Failed.ShouldBe(2);
         }
 
         class ExampleSpecification
@@ -160,6 +160,11 @@ namespace FixieSpec.Tests
             }
 
             public void Then_the_result_cannot_be_verified()
+            {
+                throw new ShouldBeUnreachableException();
+            }
+
+            public void And_then_a_second_result_can_also_not_be_verified()
             {
                 throw new ShouldBeUnreachableException();
             }
