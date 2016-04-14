@@ -1,9 +1,9 @@
 NUGET
   remote: https://www.nuget.org/api/v2
   specs:
-    AutoFixture (3.43.1)
-    AutoFixture.AutoFakeItEasy (3.43.1)
-      AutoFixture (>= 3.43.1)
+    AutoFixture (3.43.4)
+    AutoFixture.AutoFakeItEasy (3.43.4)
+      AutoFixture (>= 3.43.4)
       FakeItEasy (>= 1.7)
     FakeItEasy (1.25.3)
     Fixie (1.0.1) - version_in_path: true
@@ -13,7 +13,7 @@ NUGET
   remote: https://www.nuget.org/api/v2
   specs:
     codecracker.CSharp (1.0)
-    FAKE (4.25.2)
+    FAKE (4.25.4)
     StyleCop.Analyzers (1.0)
 
 GROUP Test
