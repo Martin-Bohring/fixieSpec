@@ -145,31 +145,6 @@ namespace FixieSpec.Tests
             }
         }
 
-        class FailingTransitionStepExampleSpecification
-        {
-            public void When_exercising_the_system_under_test_fails()
-            {
-                WhereAmI();
-
-                throw new InvalidOperationException();
-            }
-
-            public void And_when_exercising_the_system_under_test_some_more()
-            {
-                throw new ShouldBeUnreachableException();
-            }
-
-            public void Then_the_result_cannot_be_verified()
-            {
-                throw new ShouldBeUnreachableException();
-            }
-
-            public void And_then_a_second_result_can_also_not_be_verified()
-            {
-                throw new ShouldBeUnreachableException();
-            }
-        }
-
         class FailingSetupStepExampleSpecification
         {
             public void Given_a_specification_context()
@@ -185,6 +160,31 @@ namespace FixieSpec.Tests
             }
 
             public void When_exercising_the_system_under_test()
+            {
+                throw new ShouldBeUnreachableException();
+            }
+
+            public void Then_the_result_cannot_be_verified()
+            {
+                throw new ShouldBeUnreachableException();
+            }
+
+            public void And_then_a_second_result_can_also_not_be_verified()
+            {
+                throw new ShouldBeUnreachableException();
+            }
+        }
+
+        class FailingTransitionStepExampleSpecification
+        {
+            public void When_exercising_the_system_under_test_fails()
+            {
+                WhereAmI();
+
+                throw new InvalidOperationException();
+            }
+
+            public void And_when_exercising_the_system_under_test_some_more()
             {
                 throw new ShouldBeUnreachableException();
             }
