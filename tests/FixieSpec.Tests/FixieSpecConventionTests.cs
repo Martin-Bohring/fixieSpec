@@ -57,21 +57,6 @@ namespace FixieSpec.Tests
             testRunResult.Failed.ShouldBe(1);
         }
 
-        public void ShouldStopWhenATransitionStepFails()
-        {
-            var testRunResult = Execute<FailingTransitionStepExampleSpecification>();
-
-            testRunResult.ConsoleOutput.ShouldEqual(
-                "When_exercising_the_system_under_test_fails");
-        }
-
-        public void ShouldFailAllAssertionStepsWhenATransitionStepFails()
-        {
-            var testRunResult = Execute<FailingTransitionStepExampleSpecification>();
-
-            testRunResult.Failed.ShouldBe(1);
-        }
-
         public void ShouldStopWhenASetupStepFails()
         {
             var testRunResult = Execute<FailingSetupStepExampleSpecification>();
@@ -86,6 +71,21 @@ namespace FixieSpec.Tests
             var testRunResult = Execute<FailingSetupStepExampleSpecification>();
 
             testRunResult.Failed.ShouldBe(2);
+        }
+
+        public void ShouldStopWhenATransitionStepFails()
+        {
+            var testRunResult = Execute<FailingTransitionStepExampleSpecification>();
+
+            testRunResult.ConsoleOutput.ShouldEqual(
+                "When_exercising_the_system_under_test_fails");
+        }
+
+        public void ShouldFailAllAssertionStepsWhenATransitionStepFails()
+        {
+            var testRunResult = Execute<FailingTransitionStepExampleSpecification>();
+
+            testRunResult.Failed.ShouldBe(1);
         }
 
         class ExampleSpecification
