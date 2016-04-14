@@ -6,6 +6,7 @@
 namespace FixieSpec
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Reflection;
 
@@ -40,19 +41,17 @@ namespace FixieSpec
                 .Wrap<CallSetupSteps>();
         }
 
-        class CallSpecificationTransitionSteps : FixtureBehavior
+        abstract class CallSpecificationSteps : FixtureBehavior
         {
             public void Execute(Fixture context, Action next)
             {
-                var transitionSteps = context.Class.Type.GetMethods()
-                    .Where(method => method.IsTransitionStep())
-                    .OrderBy(method => method, DeclarationOrderComparer.Default);
+                var specificationSteps = GetSpecificationSteps(context.Class.Type);
 
-                foreach (var transitionStep in transitionSteps)
+                foreach (var specificationStep in specificationSteps)
                 {
                     try
                     {
-                        transitionStep.Invoke(context.Instance, null);
+                        specificationStep.Invoke(context.Instance, null);
                     }
                     catch (TargetInvocationException exception)
                     {
@@ -62,29 +61,27 @@ namespace FixieSpec
 
                 next?.Invoke();
             }
+
+            protected abstract IEnumerable<MethodInfo> GetSpecificationSteps(Type specificationType);
         }
 
-        class CallSetupSteps : FixtureBehavior
+        class CallSpecificationTransitionSteps : CallSpecificationSteps
         {
-            public void Execute(Fixture context, Action next)
+            protected override IEnumerable<MethodInfo> GetSpecificationSteps(Type specificationType)
             {
-                var setupSteps = context.Class.Type.GetMethods()
+                return specificationType.GetMethods()
+                    .Where(method => method.IsTransitionStep())
+                    .OrderBy(method => method, DeclarationOrderComparer.Default);
+            }
+        }
+
+        class CallSetupSteps : CallSpecificationSteps
+        {
+            protected override IEnumerable<MethodInfo> GetSpecificationSteps(Type specificationType)
+            {
+                return specificationType.GetMethods()
                     .Where(method => method.IsSetupStep())
                     .OrderBy(method => method, DeclarationOrderComparer.Default);
-
-                foreach (var setupStep in setupSteps)
-                {
-                    try
-                    {
-                        setupStep.Invoke(context.Instance, null);
-                    }
-                    catch (TargetInvocationException exception)
-                    {
-                        throw new PreservedException(exception.InnerException);
-                    }
-                }
-
-                next?.Invoke();
             }
         }
     }
