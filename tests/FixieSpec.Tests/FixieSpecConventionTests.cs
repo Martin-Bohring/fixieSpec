@@ -67,6 +67,17 @@ namespace FixieSpec.Tests
             testRunResult.Failed.ShouldBe(1);
         }
 
+        public void ShouldFailWhenASetupStepFails()
+        {
+            var testRunResult = Execute<FailingSetupStepExampleSpecification>();
+
+            testRunResult.ConsoleOutput.ShouldEqual(
+                "Given_a_specification_context",
+                "And_given_a_secondary_setup_step_fails");
+
+            testRunResult.Failed.ShouldBe(2);
+        }
+
         class ExampleSpecification
         {
             public void Given_a_specification_context()
@@ -139,6 +150,36 @@ namespace FixieSpec.Tests
             }
 
             public void Then_the_result_cannot_be_verified()
+            {
+                throw new ShouldBeUnreachableException();
+            }
+        }
+
+        class FailingSetupStepExampleSpecification
+        {
+            public void Given_a_specification_context()
+            {
+                WhereAmI();
+            }
+
+            public void And_given_a_secondary_setup_step_fails()
+            {
+                WhereAmI();
+
+                throw new InvalidOperationException();
+            }
+
+            public void When_exercising_the_system_under_test()
+            {
+                throw new ShouldBeUnreachableException();
+            }
+
+            public void Then_the_result_cannot_be_verified()
+            {
+                throw new ShouldBeUnreachableException();
+            }
+
+            public void And_then_a_second_result_can_also_not_be_verified()
             {
                 throw new ShouldBeUnreachableException();
             }
