@@ -67,13 +67,18 @@ namespace FixieSpec.Tests
             testRunResult.Failed.ShouldBe(1);
         }
 
-        public void ShouldFailWhenASetupStepFails()
+        public void ShouldStopWhenASetupStepFails()
         {
             var testRunResult = Execute<FailingSetupStepExampleSpecification>();
 
             testRunResult.ConsoleOutput.ShouldEqual(
                 "Given_a_specification_context",
                 "And_given_a_secondary_setup_step_fails");
+        }
+
+        public void ShouldFailAllAssertionStepsWhenASetupStepFails()
+        {
+            var testRunResult = Execute<FailingSetupStepExampleSpecification>();
 
             testRunResult.Failed.ShouldBe(2);
         }
