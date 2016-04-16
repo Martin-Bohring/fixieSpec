@@ -129,6 +129,5 @@ Target "All" DoNothing
 "RunTests"
   ==> "All"
 
-
 // start build
 RunTargetOrDefault "All"
