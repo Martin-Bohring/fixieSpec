@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="FixieSpec.ruleset" />
+    <None Include="paket.template" />
     <None Include="paket.references" />
     <AdditionalFiles Include="stylecop.json" />
   </ItemGroup>
