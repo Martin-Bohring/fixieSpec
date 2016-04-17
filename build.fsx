@@ -30,7 +30,7 @@ let description = "A super low friction specification test framework based on th
 let authors = [ "Martin Bohring" ]
 
 // Tags for your project (for NuGet package)
-let tags = "Fixie BDD TDD testing"
+let tags = "FixieSpec Fixie BDD TDD unit testing"
 
 // File system information 
 // (<solutionFile>.sln is built during the building process)
@@ -40,6 +40,9 @@ let solutionFile  = "FixieSpec"
 let testAssemblies = "build/*Tests*.dll"
 
 let buildDir = "build"
+
+// The url for the raw files hosted
+let gitRaw = environVarOrDefault "gitRaw" "https://raw.github.com/Martin-Bohring"
 
 // Read additional information from the release notes document
 let releaseNotesData = 
@@ -114,6 +117,17 @@ Target "RunTests" (fun _ ->
         { p with  TimeOut = TimeSpan.FromMinutes 20. })
 )
 
+// --------------------------------------------------------------------------------------
+// Build a NuGet package
+
+Target "NuGet" (fun _ ->
+    Paket.Pack(fun p ->
+        { p with
+            OutputPath = "bin"
+            Version = release.NugetVersion
+            ReleaseNotes = toLines release.Notes})
+)
+
 Target "All" DoNothing
 
 // --------------------------------------------------------------------------------------
@@ -122,11 +136,16 @@ Target "All" DoNothing
 "Clean"
   ==> "AssemblyInfo"
   ==> "Build"
+  ==> "Nuget"
 
 "Build"
   ==> "RunTests"
 
+
 "RunTests"
+  ==> "All"
+
+"Nuget"
   ==> "All"
 
 // start build
