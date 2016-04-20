@@ -30,16 +30,16 @@ let description = "A super low friction specification test framework based on th
 let authors = [ "Martin Bohring" ]
 
 // Tags for your project (for NuGet package)
-let tags = "FixieSpec Fixie BDD TDD unit testing"
+let tags = "FixieSpec, Fixie, BDD, TDD, unit testing"
 
 // File system information 
 // (<solutionFile>.sln is built during the building process)
 let solutionFile  = "FixieSpec"
 
 // Pattern specifying assemblies to be tested using Fixie
-let testAssemblies = "build/*Tests*.dll"
-
 let buildDir = "build"
+
+let testAssemblies = buildDir + "/*Tests*.dll"
 
 // The url for the raw files hosted
 let gitRaw = environVarOrDefault "gitRaw" "https://raw.github.com/Martin-Bohring"
