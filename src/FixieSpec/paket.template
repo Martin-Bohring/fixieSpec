@@ -1,5 +1,10 @@
 ﻿type project
-licenseUrl http://opensource.org/licenses/MIT
+licenseUrl
+  http://opensource.org/licenses/MIT
+
+iconUrl
+    https://raw.github.com/Martin-Bohring/fixieSpec/master/assets/fixieSpec256.png
+
 authors
   Martin Bohring
 
