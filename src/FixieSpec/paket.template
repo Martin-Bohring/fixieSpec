@@ -1,4 +1,8 @@
 ﻿type project
 licenseUrl http://opensource.org/licenses/MIT
 authors
-    Martin Bohring
+  Martin Bohring
+
+excludeddependencies
+  StyleCop.Analyzers
+  CodeCracker.CSharp
