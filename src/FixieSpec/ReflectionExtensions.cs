@@ -9,6 +9,8 @@ namespace FixieSpec
     using System.Linq;
     using System.Reflection;
 
+    using Fixie;
+
     /// <summary>
     /// An extension class that contains methods to simplify reflection based code
     /// and make it more expressive.
@@ -87,6 +89,9 @@ namespace FixieSpec
         /// <returns>
         /// <see langword="true"/>, if the method is an assertion step; <see langword="false"/> otherwise.
         /// </returns>
-        public static bool IsAssertionStep(this MethodInfo method) => method.ScanMethod() == SpecificationStepType.Assertion;
+        public static bool IsAssertionStep(this MethodInfo method) => method.IsPublic
+            && method.HasNoParameters()
+            && method.IsVoid()
+            && method.ScanMethod() == SpecificationStepType.Assertion;
     }
 }

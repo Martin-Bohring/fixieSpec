@@ -27,8 +27,6 @@ namespace FixieSpec
                 .Where(type => type.HasOnlyDefaultConstructor());
 
             Methods
-                .Where(method => method.IsPublic && method.IsVoid())
-                .Where(method => method.HasNoParameters())
                 .Where(method => method.IsAssertionStep());
 
             ClassExecution
