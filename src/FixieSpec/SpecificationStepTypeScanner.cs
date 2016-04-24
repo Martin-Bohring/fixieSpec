@@ -15,8 +15,8 @@ namespace FixieSpec
     /// </summary>
     public static class SpecificationStepTypeScanner
     {
-        static readonly ConcurrentQueue<MethodNameScanner> MethodNameScanners
-            = new ConcurrentQueue<MethodNameScanner>();
+        static readonly ConcurrentBag<MethodNameScanner> MethodNameScanners
+            = new ConcurrentBag<MethodNameScanner>();
 
         /// <summary>
         /// Initializes static members of the <see cref="SpecificationStepTypeScanner"/> class.
@@ -85,7 +85,7 @@ namespace FixieSpec
 
         static void AddMethodNameScanner(MethodNameScanner methodNameScanner)
         {
-            MethodNameScanners.Enqueue(methodNameScanner);
+            MethodNameScanners.Add(methodNameScanner);
         }
 
         class MethodNameScanner
