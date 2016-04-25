@@ -1,9 +1,9 @@
 NUGET
   remote: https://www.nuget.org/api/v2
   specs:
-    AutoFixture (3.43.4)
-    AutoFixture.AutoFakeItEasy (3.43.4)
-      AutoFixture (>= 3.43.4)
+    AutoFixture (3.45.1)
+    AutoFixture.AutoFakeItEasy (3.45.1)
+      AutoFixture (>= 3.45.1)
       FakeItEasy (>= 1.7)
     FakeItEasy (1.25.3)
     Fixie (1.0.1) - version_in_path: true
