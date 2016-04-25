@@ -12,7 +12,7 @@ namespace FixieSpec.Tests
 
     public sealed class ReflectionExtensionsTests
     {
-        public void CanDetectMethodWithoutParameters()
+        public void ShouldDetectMethodWithoutParameters()
         {
             var methodWithoutParameter = typeof(ReflectionTarget)
                 .GetMethod("MethodWithOutParameter");
@@ -20,7 +20,7 @@ namespace FixieSpec.Tests
             methodWithoutParameter.HasNoParameters().ShouldBeTrue();
         }
 
-        public void CanDetectMethodWithParameter()
+        public void ShouldDetectMethodWithParameter()
         {
             var methodWithParameter = typeof(ReflectionTarget)
                 .GetMethod("MethodWithParammeter");
@@ -28,26 +28,26 @@ namespace FixieSpec.Tests
             methodWithParameter.HasNoParameters().ShouldBeFalse();
         }
 
-        public void ShoulfFailForInvalidMethod()
+        public void ShouldFailToDetectParametersForInvalidMethod()
         {
             Action act = () => (null as MethodInfo).HasNoParameters();
 
             act.ShouldThrow<ArgumentNullException>();
         }
 
-        public void CanDetectDefaultConstructor()
+        public void ShouldDetectDefaultConstructor()
         {
             typeof(ReflectionTarget).HasOnlyDefaultConstructor().ShouldBeTrue();
         }
 
-        public void ShouldFailForInvalidType()
+        public void ShouldFailToDetectDefaultConstructorForInvalidType()
         {
             Action act = () => (null as Type).HasOnlyDefaultConstructor();
 
             act.ShouldThrow<ArgumentNullException>();
         }
 
-        public void CanDetectSetupSteps()
+        public void ShouldDetectSetupSteps()
         {
             var transitionStep = typeof(ReflectionTarget)
                 .GetMethod("Given_some_specification_context_setup");
@@ -55,7 +55,7 @@ namespace FixieSpec.Tests
             transitionStep.IsSetupStep().ShouldBeTrue();
         }
 
-        public void CanDetectTransitionSteps()
+        public void ShouldDetectTransitionSteps()
         {
             var transitionStep = typeof(ReflectionTarget)
                 .GetMethod("When_exercising_the_system_under_test");
@@ -63,7 +63,7 @@ namespace FixieSpec.Tests
             transitionStep.IsTransitionStep().ShouldBeTrue();
         }
 
-        public void CanDetectAssertionSteps()
+        public void ShouldDetectAssertionSteps()
         {
             var assertionStep = typeof(ReflectionTarget)
                 .GetMethod("Then_a_result_can_be_verified");
