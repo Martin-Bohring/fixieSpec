@@ -36,13 +36,13 @@ namespace FixieSpec
         }
 
         /// <summary>
-        /// Detects if the type given by <see paramref="type"/> only has a default constructor.
+        /// Detects if the type given by <see paramref="type"/> has only a default constructor.
         /// </summary>
         /// <param name="type">
-        /// The type too check.
+        /// The type to check.
         /// </param>
         /// <returns>
-        /// <see langword="true"/>, if the type given by <paramref name="type"/> only has a default constructor;
+        /// <see langword="true"/>, if the type given by <paramref name="type"/> has a only default constructor;
         /// <see langword="false"/> otherwise.
         /// </returns>
         public static bool HasOnlyDefaultConstructor(this Type type)
@@ -64,7 +64,7 @@ namespace FixieSpec
         /// The method to check.
         /// </param>
         /// <returns>
-        /// <see langword="true"/>, if the method is an setup step; <see langword="false"/> otherwise.
+        /// <see langword="true"/>, if the method is a setup step; <see langword="false"/> otherwise.
         /// </returns>
         public static bool IsSetupStep(this MethodInfo method) => method.ScanMethod() == SpecificationStepType.Setup;
 
