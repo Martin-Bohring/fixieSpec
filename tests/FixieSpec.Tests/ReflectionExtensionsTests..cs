@@ -49,10 +49,17 @@ namespace FixieSpec.Tests
 
         public void ShouldDetectSetupSteps()
         {
-            var transitionStep = typeof(ReflectionTarget)
+            var setupStep = typeof(ReflectionTarget)
                 .GetMethod("Given_some_specification_context_setup");
 
-            transitionStep.IsSetupStep().ShouldBeTrue();
+            setupStep.IsSetupStep().ShouldBeTrue();
+        }
+
+        public void ShouldFailToDetectSetupStepForInvalidMethod()
+        {
+            Action act = () => (null as MethodInfo).IsSetupStep();
+
+            act.ShouldThrow<ArgumentNullException>();
         }
 
         public void ShouldDetectTransitionSteps()
@@ -63,12 +70,26 @@ namespace FixieSpec.Tests
             transitionStep.IsTransitionStep().ShouldBeTrue();
         }
 
+        public void ShouldFailToDetectTransitionStepForInvalidMethod()
+        {
+            Action act = () => (null as MethodInfo).IsTransitionStep();
+
+            act.ShouldThrow<ArgumentNullException>();
+        }
+
         public void ShouldDetectAssertionSteps()
         {
             var assertionStep = typeof(ReflectionTarget)
                 .GetMethod("Then_a_result_can_be_verified");
 
             assertionStep.IsAssertionStep().ShouldBeTrue();
+        }
+
+        public void ShouldFailToDetectAssertionStepForInvalidMethod()
+        {
+            Action act = () => (null as MethodInfo).IsAssertionStep();
+
+            act.ShouldThrow<ArgumentNullException>();
         }
 
         class ReflectionTarget
