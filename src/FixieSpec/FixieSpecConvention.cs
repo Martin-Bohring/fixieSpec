@@ -40,7 +40,7 @@ namespace FixieSpec
 
         class CallSpecificationSteps : FixtureBehavior
         {
-            private readonly Func<MethodInfo, bool> stepSelector;
+            readonly Func<MethodInfo, bool> stepSelector;
 
             public CallSpecificationSteps(Func<MethodInfo, bool> predicate)
             {
