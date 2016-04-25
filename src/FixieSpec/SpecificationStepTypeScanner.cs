@@ -10,8 +10,8 @@ namespace FixieSpec
     using System.Reflection;
 
     /// <summary>
-    /// Scans the methods of a specification and identifies
-    /// the <see cref="SpecificationStepType"/> of the specification methods.
+    /// A class that scans methods (of a specification) and identifies
+    /// the <see cref="SpecificationStepType"/> of the methods.
     /// </summary>
     public static class SpecificationStepTypeScanner
     {
@@ -55,13 +55,13 @@ namespace FixieSpec
         }
 
         /// <summary>
-        /// Scans the method given by <paramref name="methodToScan"/> for its <see cref="SpecificationStepType"/>.
+        /// Scans the method given by <paramref name="methodToScan"/> to identify its <see cref="SpecificationStepType"/>.
         /// </summary>
         /// <param name="methodToScan">
         /// The method to scan.
         /// </param>
         /// <returns>
-        /// The type of the scanned method.
+        /// The <see cref="SpecificationStepType"/> of the scanned method.
         /// </returns>
         public static SpecificationStepType ScanMethod(this MethodInfo methodToScan)
         {

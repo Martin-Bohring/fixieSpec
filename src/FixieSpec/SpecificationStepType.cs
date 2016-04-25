@@ -17,6 +17,7 @@ namespace FixieSpec
 
         /// <summary>
         /// The step is a context setup step.
+        /// A setup step is used to setup a specification context.
         /// </summary>
         Setup,
 
@@ -26,7 +27,8 @@ namespace FixieSpec
         Transition,
 
         /// <summary>
-        /// The step is an assertion step that asserts test execution outcomes.
+        /// The step is an assertion step that asserts the outcomes of
+        /// exercising the system unter tests.
         /// </summary>
         Assertion
     }
