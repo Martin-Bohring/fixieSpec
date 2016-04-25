@@ -81,7 +81,8 @@ let genCSAssemblyInfo (projectPath) =
         Attribute.Description summary
         Attribute.Version release.AssemblyVersion
         Attribute.FileVersion release.AssemblyVersion
-        Attribute.InformationalVersion release.NugetVersion ]
+        Attribute.InformationalVersion release.NugetVersion
+        Attribute.ComVisible false ]
 
 // Generate assembly info files with the right version & up-to-date information
 Target "AssemblyInfo" (fun _ ->
