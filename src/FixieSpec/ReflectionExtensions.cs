@@ -8,7 +8,6 @@ namespace FixieSpec
     using System;
     using System.Linq;
     using System.Reflection;
-
     using Fixie;
 
     /// <summary>
@@ -26,7 +25,7 @@ namespace FixieSpec
         /// <returns>
         /// <see langword="true"/>, if the method has parameters; <see langword="false"/> otherwise.
         /// </returns>
-        public static bool HasNoParameters(this MethodInfo method)
+        public static bool HasNoParameters(this MethodBase method)
         {
             if (method == null)
             {
@@ -55,7 +54,7 @@ namespace FixieSpec
 
             return type
                 .GetConstructors()
-                .All(constructorInfo => !constructorInfo.GetParameters().Any());
+                .All(constructorInfo => constructorInfo.HasNoParameters());
         }
 
         /// <summary>
