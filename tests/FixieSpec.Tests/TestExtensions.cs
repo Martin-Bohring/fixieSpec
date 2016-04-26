@@ -17,49 +17,17 @@ namespace FixieSpec.Tests
 
     /// <summary>
     /// Test helper extension class taken from
-    /// https://github.com/fixie/fixie/blob/master/src/Fixie.Tests/TestExtensions.cs and stripped
-    /// down to what is needed for the https://github.com/Martin-Bohring/fixieSpec tests.
+    /// https://github.com/fixie/fixie/blob/master/src/Fixie.Tests/TestExtensions.cs.
     /// </summary>
-    /// <remarks>
-    /// We are taking a bet here and depend on the <see cref="Runner"/> class which is internal to http://fixie.github.io/.
-    ///
-    /// On the other hand I have found no good way of testing the <see cref="FixieSpecConvention"/>
-    /// without using the runner. Also http://fixie.github.io/ itself is using the runner in several
-    /// of its runners in a public way.
-    /// </remarks>
     public static class TestExtensions
     {
         const BindingFlags InstanceMethods = BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public;
 
-        /// <summary>
-        /// Gets the instance method defined by the type <paramref name="type"/>.
-        /// </summary>
-        /// <param name="type">
-        /// The type defining the instance method.
-        /// </param>
-        /// <param name="methodName">
-        /// The name of the instance method to get.
-        /// </param>
-        /// <returns></returns>
         public static MethodInfo GetInstanceMethod(this Type type, string methodName)
         {
             return type.GetMethod(methodName, InstanceMethods);
         }
 
-        /// <summary>
-        /// Runs the tests of the class given by <paramref name="sampleTestClass"/> identified by the
-        /// convention given by <paramref name="convention"/>
-        /// </summary>
-        /// <param name="sampleTestClass">
-        /// The type of the test class containing the tests to run.
-        /// </param>
-        /// <param name="listener">
-        /// A test listener needed by the <see cref="Runner"/> instance used to run the tests.
-        /// </param>
-        /// <param name="convention">
-        /// The convention being used when identifîng and running test cases.</param>
-        /// <returns>The results of the test run.
-        /// </returns>
         public static AssemblyResult Run(this Type sampleTestClass, Listener listener, Convention convention)
         {
             if (sampleTestClass == null)
@@ -80,16 +48,6 @@ namespace FixieSpec.Tests
             return new Runner(listener).RunTypes(sampleTestClass.Assembly, convention, sampleTestClass);
         }
 
-        /// <summary>
-        /// Gest the output that has been captured by the <see cref="RedirectedConsole"/> given by
-        /// <paramref name="console"/>
-        /// </summary>
-        /// <param name="console">
-        /// The <see cref="RedirectedConsole"/> that has captured console output.
-        /// </param>
-        /// <returns>
-        /// The lines that have been written to the console.
-        /// </returns>
         public static IEnumerable<string> Lines(this RedirectedConsole console)
         {
             if (console == null)
@@ -100,15 +58,6 @@ namespace FixieSpec.Tests
             return console.Output.Lines();
         }
 
-        /// <summary>
-        /// Splits a multi-line string given by <paramref name="multiline"/> into its constituent lines.
-        /// </summary>
-        /// <param name="multiline">
-        /// The multi-line string assumed to consist of lines seperated by <see cref="Environment.NewLine"/>.
-        /// </param>
-        /// <returns>
-        /// The constituent lines of the string given by <paramref name="multiline"/>
-        /// </returns>
         public static IEnumerable<string> Lines(this string multiline)
         {
             if (multiline == null)
@@ -126,19 +75,6 @@ namespace FixieSpec.Tests
             return lines;
         }
 
-        /// <summary>
-        /// Extension method to assert an enumeration given by <paramref name="actual"/> against a
-        /// list of expected values given by <paramref name="expected"/>
-        /// </summary>
-        /// <typeparam name="T">
-        /// The type of the elements in the enumeration.
-        /// </typeparam>
-        /// <param name="actual">
-        /// The enumeration to assert.
-        /// </param>
-        /// <param name="expected">
-        /// The list of expected values.
-        /// </param>
         public static void ShouldEqual<T>(this IEnumerable<T> actual, params T[] expected)
         {
             actual.ToArray().ShouldBe(expected);
