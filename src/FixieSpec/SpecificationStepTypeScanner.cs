@@ -56,6 +56,14 @@ namespace FixieSpec
                     SpecificationStepType.Assertion));
         }
 
+        enum SpecificationStepType
+        {
+            Undefined,
+            Setup,
+            Transition,
+            Assertion
+        }
+
         /// <summary>
         /// Detects if the method given by <paramref name="method"/> is a setup step.
         /// </summary>
