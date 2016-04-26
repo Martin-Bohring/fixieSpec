@@ -26,7 +26,7 @@ namespace FixieSpec.Tests
         [Input("GetHashCode")]
         [Input("GetType")]
         [Input("Equals")]
-        [Input("Given_not_a_setup_step")]
+        [Input("Given_a_non_specification_context_method")]
         public void ShouldNotDetectNonStepMethodsAsSetupStep(string methodName)
         {
             var notASetupStep = typeof(SampleSpec)
@@ -56,7 +56,7 @@ namespace FixieSpec.Tests
         [Input("GetHashCode")]
         [Input("GetType")]
         [Input("Equals")]
-        [Input("When_not_exercising_a_transition_step")]
+        [Input("And_when_not_exercising_a_transition_step")]
         public void ShouldNotDetectNonStepMethodsAsTransitionStep(string methodName)
         {
             var notATransitionStep = typeof(SampleSpec)
@@ -86,7 +86,7 @@ namespace FixieSpec.Tests
         [Input("GetHashCode")]
         [Input("GetType")]
         [Input("Equals")]
-        [Input("Then_a_method_with_parameter_is_no_assertion_step")]
+        [Input("And_then_a_method_with_parameter_is_no_assertion_step")]
         public void ShouldNotDetecNonStepMethodsAsAssertionSteps(string methodName)
         {
             var notAnAssertionStep = typeof(SampleSpec)
@@ -108,7 +108,7 @@ namespace FixieSpec.Tests
             {
             }
 
-            public void Given_not_a_setup_step(int parameter)
+            public void Given_a_non_specification_context_method(int parameter)
             {
                 var notUsed = parameter;
             }
@@ -125,7 +125,7 @@ namespace FixieSpec.Tests
             {
             }
 
-            public void When_not_exercising_a_transition_step(int parameter)
+            public void And_when_not_exercising_a_transition_step(int parameter)
             {
                 var notUsed = parameter;
 
@@ -139,7 +139,7 @@ namespace FixieSpec.Tests
             {
             }
 
-            public void Then_a_method_with_parameter_is_no_assertion_step(int parameter)
+            public void And_then_a_method_with_parameter_is_no_assertion_step(int parameter)
             {
                 var notUsed = parameter;
             }
