@@ -127,7 +127,7 @@ namespace FixieSpec
         /// <returns>
         /// The <see cref="SpecificationStepType"/> of the scanned method.
         /// </returns>
-        public static SpecificationStepType ScanMethod(this MethodInfo methodToScan)
+        static SpecificationStepType ScanMethod(this MethodInfo methodToScan)
         {
             if (methodToScan == null)
             {

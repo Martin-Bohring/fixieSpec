@@ -12,18 +12,6 @@ namespace FixieSpec.Tests
 
     public sealed class SpecificationStepTypeScannerTests
     {
-        [Input("ToString")]
-        [Input("GetHashCode")]
-        [Input("GetType")]
-        public void ShouldNotScanNonStepMethodsAsStep(string methodName)
-        {
-            var notAStep = typeof(object).GetMethod(methodName);
-
-            var methodScanResult = notAStep.ScanMethod();
-
-            methodScanResult.ShouldBe(SpecificationStepType.Undefined);
-        }
-
         [Input("Given_a_specification_context")]
         [Input("And_given_a_secondary_specification_context")]
         public void ShouldDetectSetupSteps(string methodName)
@@ -34,19 +22,22 @@ namespace FixieSpec.Tests
             setupStep.IsSetupStep().ShouldBeTrue();
         }
 
+        [Input("ToString")]
+        [Input("GetHashCode")]
+        [Input("GetType")]
+        [Input("Given_not_a_setup_step")]
+        public void ShouldNotDetectNonStepMethodsAsSetupStep(string methodName)
+        {
+            var notASetupStep = typeof(SampleSpec).GetMethod(methodName);
+
+            notASetupStep.IsSetupStep().ShouldBeFalse();
+        }
+
         public void ShouldFailToDetectSetupStepForInvalidMethod()
         {
             Action act = () => (null as MethodInfo).IsSetupStep();
 
             act.ShouldThrow<ArgumentNullException>();
-        }
-
-        public void ShouldNotDetecMethodsWithParametersAsSetupSteps()
-        {
-            var notASetupStep = typeof(SampleSpec)
-                .GetMethod("Given_not_a_setup_step");
-
-            notASetupStep.IsSetupStep().ShouldBeFalse();
         }
 
         [Input("When_exercising_the_system_under_test")]
@@ -59,19 +50,23 @@ namespace FixieSpec.Tests
             transitionStep.IsTransitionStep().ShouldBeTrue();
         }
 
+        [Input("ToString")]
+        [Input("GetHashCode")]
+        [Input("GetType")]
+        [Input("When_not_exercising_a_transition_step")]
+        public void ShouldNotDetectNonStepMethodsAsTransitionStep(string methodName)
+        {
+            var notATransitionStep = typeof(SampleSpec)
+                .GetMethod(methodName);
+
+            notATransitionStep.IsTransitionStep().ShouldBeFalse();
+        }
+
         public void ShouldFailToDetectTransitionStepForInvalidMethod()
         {
             Action act = () => (null as MethodInfo).IsTransitionStep();
 
             act.ShouldThrow<ArgumentNullException>();
-        }
-
-        public void ShouldNotDetecMethodsWithParametersAsTransitionSteps()
-        {
-            var notATransitionStep = typeof(SampleSpec)
-                .GetMethod("When_not_exercising_a_transition_step");
-
-            notATransitionStep.IsTransitionStep().ShouldBeFalse();
         }
 
         [Input("Then_a_result_can_be_verified")]
@@ -84,24 +79,21 @@ namespace FixieSpec.Tests
             assertionStep.IsAssertionStep().ShouldBeTrue();
         }
 
-        public void ShouldFailToDetectAssertionStepForInvalidMethod()
-        {
-            Action act = () => (null as MethodInfo).IsAssertionStep();
-
-            act.ShouldThrow<ArgumentNullException>();
-        }
-
-        public void ShouldNotDetecMethodsWithParametersAsAssertionSteps()
+        [Input("ToString")]
+        [Input("GetHashCode")]
+        [Input("GetType")]
+        [Input("Then_a_method_with_parameter_is_no_assertion_step")]
+        public void ShouldNotDetecNonStepMethodsAsAssertionSteps(string methodName)
         {
             var notAnAssertionStep = typeof(SampleSpec)
-                .GetMethod("Then_a_method_with_parameter_is_no_assertion_step");
+                .GetMethod(methodName);
 
             notAnAssertionStep.IsAssertionStep().ShouldBeFalse();
         }
 
-        public void ShouldFailForInvalidMethodInfo()
+        public void ShouldFailToDetectAssertionStepForInvalidMethod()
         {
-            Action act = () => ((MethodInfo)null).ScanMethod();
+            Action act = () => (null as MethodInfo).IsAssertionStep();
 
             act.ShouldThrow<ArgumentNullException>();
         }
