@@ -25,6 +25,7 @@ namespace FixieSpec.Tests
         [Input("ToString")]
         [Input("GetHashCode")]
         [Input("GetType")]
+        [Input("Equals")]
         [Input("Given_not_a_setup_step")]
         public void ShouldNotDetectNonStepMethodsAsSetupStep(string methodName)
         {
@@ -54,6 +55,7 @@ namespace FixieSpec.Tests
         [Input("ToString")]
         [Input("GetHashCode")]
         [Input("GetType")]
+        [Input("Equals")]
         [Input("When_not_exercising_a_transition_step")]
         public void ShouldNotDetectNonStepMethodsAsTransitionStep(string methodName)
         {
@@ -83,6 +85,7 @@ namespace FixieSpec.Tests
         [Input("ToString")]
         [Input("GetHashCode")]
         [Input("GetType")]
+        [Input("Equals")]
         [Input("Then_a_method_with_parameter_is_no_assertion_step")]
         public void ShouldNotDetecNonStepMethodsAsAssertionSteps(string methodName)
         {
