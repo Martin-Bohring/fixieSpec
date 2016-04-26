@@ -47,29 +47,6 @@ namespace FixieSpec.Tests
             act.ShouldThrow<ArgumentNullException>();
         }
 
-        public void ShouldDetectSetupSteps()
-        {
-            var setupStep = typeof(ReflectionTarget)
-                .GetMethod("Given_some_specification_context_setup");
-
-            setupStep.IsSetupStep().ShouldBeTrue();
-        }
-
-        public void ShouldFailToDetectSetupStepForInvalidMethod()
-        {
-            Action act = () => (null as MethodInfo).IsSetupStep();
-
-            act.ShouldThrow<ArgumentNullException>();
-        }
-
-        public void ShouldNotDetecMethodsWithParametersAsSetupSteps()
-        {
-            var notASetupStep = typeof(ReflectionTarget)
-                .GetMethod("Given_not_a_setup_step");
-
-            notASetupStep.IsSetupStep().ShouldBeFalse();
-        }
-
         public void ShouldDetectTransitionSteps()
         {
             var transitionStep = typeof(ReflectionTarget)
@@ -127,10 +104,6 @@ namespace FixieSpec.Tests
             }
 
             public void Given_some_specification_context_setup()
-            {
-            }
-
-            public void Given_not_a_setup_step(int parameter)
             {
             }
 

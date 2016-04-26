@@ -55,6 +55,26 @@ namespace FixieSpec
         }
 
         /// <summary>
+        /// Detects if the method given by <paramref name="method"/> is a setup step.
+        /// </summary>
+        /// <param name="method">
+        /// The method to check.
+        /// </param>
+        /// <returns>
+        /// <see langword="true"/>, if the method is a setup step; <see langword="false"/> otherwise.
+        /// </returns>
+        public static bool IsSetupStep(this MethodInfo method)
+        {
+            if (method == null)
+            {
+                throw new ArgumentNullException(nameof(method));
+            }
+
+            return method.HasNoParameters() &&
+                   method.ScanMethod() == SpecificationStepType.Setup;
+        }
+
+        /// <summary>
         /// Scans the method given by <paramref name="methodToScan"/> to identify its <see cref="SpecificationStepType"/>.
         /// </summary>
         /// <param name="methodToScan">

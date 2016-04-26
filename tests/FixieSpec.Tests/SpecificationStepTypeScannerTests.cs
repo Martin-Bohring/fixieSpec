@@ -21,13 +21,27 @@ namespace FixieSpec.Tests
             methodScanResult.ShouldBe(SpecificationStepType.Undefined);
         }
 
-        public void ShouldScanSetupMethodAsSetupStep()
+        public void ShouldDetectSetupSteps()
         {
-            var setupStepMethod = typeof(SimpleSpec).GetMethod("Given_a_simple_spec");
+            var setupStep = typeof(SimpleSpec)
+                .GetMethod("Given_a_simple_spec");
 
-            var methodScanResult = setupStepMethod.ScanMethod();
+            setupStep.IsSetupStep().ShouldBeTrue();
+        }
 
-            methodScanResult.ShouldBe(SpecificationStepType.Setup);
+        public void ShouldFailToDetectSetupStepForInvalidMethod()
+        {
+            Action act = () => (null as MethodInfo).IsSetupStep();
+
+            act.ShouldThrow<ArgumentNullException>();
+        }
+
+        public void ShouldNotDetecMethodsWithParametersAsSetupSteps()
+        {
+            var notASetupStep = typeof(SimpleSpec)
+                .GetMethod("Given_not_a_setup_step");
+
+            notASetupStep.IsSetupStep().ShouldBeFalse();
         }
 
         public void ShouldScanAnotherSetupMethodAsSetupStep()
@@ -91,6 +105,12 @@ namespace FixieSpec.Tests
             public void And_given_some_more_context_setup()
             {
             }
+
+            public void Given_not_a_setup_step(int parameter)
+            {
+                var notUsed = parameter;
+            }
+
 
             public void When_executing_a_test_step()
             {
