@@ -93,7 +93,8 @@ namespace FixieSpec
                 throw new ArgumentNullException(nameof(method));
             }
 
-            return method.ScanMethod() == SpecificationStepType.Transition;
+            return method.HasNoParameters() &&
+                   method.ScanMethod() == SpecificationStepType.Transition;
         }
 
         /// <summary>

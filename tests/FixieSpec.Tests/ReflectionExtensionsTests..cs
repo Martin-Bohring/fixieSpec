@@ -85,6 +85,14 @@ namespace FixieSpec.Tests
             act.ShouldThrow<ArgumentNullException>();
         }
 
+        public void ShouldNotDetecMethodsWithParametersAsTransitionSteps()
+        {
+            var notATransitionStep = typeof(ReflectionTarget)
+                .GetMethod("When_not_exercising_a_transition_step");
+
+            notATransitionStep.IsTransitionStep().ShouldBeFalse();
+        }
+
         public void ShouldDetectAssertionSteps()
         {
             var assertionStep = typeof(ReflectionTarget)
@@ -98,6 +106,14 @@ namespace FixieSpec.Tests
             Action act = () => (null as MethodInfo).IsAssertionStep();
 
             act.ShouldThrow<ArgumentNullException>();
+        }
+
+        public void ShouldNotDetecMethodsWithParametersAsAssertionSteps()
+        {
+            var notAnAssertionStep = typeof(ReflectionTarget)
+                .GetMethod("Then_a_method_with_parameter_is_no_transitionStep");
+
+            notAnAssertionStep.IsAssertionStep().ShouldBeFalse();
         }
 
         class ReflectionTarget
@@ -122,8 +138,17 @@ namespace FixieSpec.Tests
             {
             }
 
+            public void When_not_exercising_a_transition_step(int parameter)
+            {
+            }
+
             public void Then_a_result_can_be_verified()
             {
+            }
+
+            public void Then_a_method_with_parameter_is_no_transitionStep(int parameter)
+            {
+
             }
         }
     }
