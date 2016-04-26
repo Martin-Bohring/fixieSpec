@@ -79,8 +79,7 @@ namespace FixieSpec
                 throw new ArgumentNullException(nameof(method));
             }
 
-            return method.HasNoParameters() &&
-                   method.IsVoid() &&
+            return method.HasStepSignature() &&
                    method.ScanMethod() == SpecificationStepType.Setup;
         }
 
@@ -100,8 +99,7 @@ namespace FixieSpec
                 throw new ArgumentNullException(nameof(method));
             }
 
-            return method.HasNoParameters() &&
-                   method.IsVoid() &&
+            return method.HasStepSignature() &&
                    method.ScanMethod() == SpecificationStepType.Transition;
         }
 
@@ -121,21 +119,17 @@ namespace FixieSpec
                 throw new ArgumentNullException(nameof(method));
             }
 
-            return method.IsPublic &&
-                method.HasNoParameters() &&
-                method.IsVoid() &&
-                method.ScanMethod() == SpecificationStepType.Assertion;
+            return method.HasStepSignature() &&
+                   method.ScanMethod() == SpecificationStepType.Assertion;
         }
 
-        /// <summary>
-        /// Scans the method given by <paramref name="methodToScan"/> to identify its <see cref="SpecificationStepType"/>.
-        /// </summary>
-        /// <param name="methodToScan">
-        /// The method to scan.
-        /// </param>
-        /// <returns>
-        /// The <see cref="SpecificationStepType"/> of the scanned method.
-        /// </returns>
+        static bool HasStepSignature(this MethodInfo method)
+        {
+            return method.IsPublic &&
+                method.HasNoParameters() &&
+                method.IsVoid();
+        }
+
         static SpecificationStepType ScanMethod(this MethodInfo methodToScan)
         {
             if (methodToScan == null)
