@@ -111,6 +111,10 @@ namespace FixieSpec.Tests
             {
             }
 
+            public void And_given_a_secondary_specification_context()
+            {
+            }
+
             public void Given_a_non_specification_context_has_parameters(int parameter)
             {
                 var notUsed = parameter;
@@ -119,10 +123,6 @@ namespace FixieSpec.Tests
             public int Given_a_non_specification_context_returns_a_value()
             {
                 return 0;
-            }
-
-            public void And_given_a_secondary_specification_context()
-            {
             }
 
             public void When_exercising_the_system_under_test()
