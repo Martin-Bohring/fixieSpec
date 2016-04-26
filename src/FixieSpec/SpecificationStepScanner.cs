@@ -80,6 +80,7 @@ namespace FixieSpec
             }
 
             return method.HasNoParameters() &&
+                   method.IsVoid() &&
                    method.ScanMethod() == SpecificationStepType.Setup;
         }
 
@@ -100,6 +101,7 @@ namespace FixieSpec
             }
 
             return method.HasNoParameters() &&
+                   method.IsVoid() &&
                    method.ScanMethod() == SpecificationStepType.Transition;
         }
 

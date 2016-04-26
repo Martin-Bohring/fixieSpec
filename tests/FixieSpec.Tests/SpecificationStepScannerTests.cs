@@ -27,6 +27,7 @@ namespace FixieSpec.Tests
         [Input("GetType")]
         [Input("Equals")]
         [Input("Given_a_non_specification_context_has_parameters")]
+        [Input("Given_a_non_specification_context_returns_a_value")]
         public void ShouldNotDetectNonStepMethodsAsSetupStep(string methodName)
         {
             var notASetupStep = typeof(SampleSpec)
@@ -56,7 +57,8 @@ namespace FixieSpec.Tests
         [Input("GetHashCode")]
         [Input("GetType")]
         [Input("Equals")]
-        [Input("And_when_a_transition_step_has_parameters")]
+        [Input("And_when_a_non_transition_step_has_parameters")]
+        [Input("And_when_a_non_transition_step_returns_a_value")]
         public void ShouldNotDetectNonStepMethodsAsTransitionStep(string methodName)
         {
             var notATransitionStep = typeof(SampleSpec)
@@ -87,6 +89,7 @@ namespace FixieSpec.Tests
         [Input("GetType")]
         [Input("Equals")]
         [Input("And_then_a_method_with_parameter_is_no_assertion_step")]
+        [Input("And_then_a_method_that_returns_a_value_is_no_assertion_step")]
         public void ShouldNotDetecNonStepMethodsAsAssertionSteps(string methodName)
         {
             var notAnAssertionStep = typeof(SampleSpec)
@@ -113,6 +116,11 @@ namespace FixieSpec.Tests
                 var notUsed = parameter;
             }
 
+            public int Given_a_non_specification_context_returns_a_value()
+            {
+                return 0;
+            }
+
             public void And_given_a_secondary_specification_context()
             {
             }
@@ -125,10 +133,15 @@ namespace FixieSpec.Tests
             {
             }
 
-            public void And_when_a_transition_step_has_parameters(int parameter)
+            public void And_when_a_non_transition_step_has_parameters(int parameter)
             {
                 var notUsed = parameter;
 
+            }
+
+            public int And_when_a_non_transition_step_returns_a_value()
+            {
+                return 0;
             }
 
             public void Then_a_result_can_be_verified()
@@ -142,6 +155,11 @@ namespace FixieSpec.Tests
             public void And_then_a_method_with_parameter_is_no_assertion_step(int parameter)
             {
                 var notUsed = parameter;
+            }
+
+            public int And_then_a_method_that_returns_a_value_is_no_assertion_step()
+            {
+                return 0;
             }
         }
     }
