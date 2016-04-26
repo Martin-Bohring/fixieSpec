@@ -26,7 +26,7 @@ namespace FixieSpec.Tests
         [Input("GetHashCode")]
         [Input("GetType")]
         [Input("Equals")]
-        [Input("Given_a_non_specification_context_method")]
+        [Input("Given_a_non_specification_context_has_parameters")]
         public void ShouldNotDetectNonStepMethodsAsSetupStep(string methodName)
         {
             var notASetupStep = typeof(SampleSpec)
@@ -56,7 +56,7 @@ namespace FixieSpec.Tests
         [Input("GetHashCode")]
         [Input("GetType")]
         [Input("Equals")]
-        [Input("And_when_not_exercising_a_transition_step")]
+        [Input("And_when_a_transition_step_has_parameters")]
         public void ShouldNotDetectNonStepMethodsAsTransitionStep(string methodName)
         {
             var notATransitionStep = typeof(SampleSpec)
@@ -108,7 +108,7 @@ namespace FixieSpec.Tests
             {
             }
 
-            public void Given_a_non_specification_context_method(int parameter)
+            public void Given_a_non_specification_context_has_parameters(int parameter)
             {
                 var notUsed = parameter;
             }
@@ -125,7 +125,7 @@ namespace FixieSpec.Tests
             {
             }
 
-            public void And_when_not_exercising_a_transition_step(int parameter)
+            public void And_when_a_transition_step_has_parameters(int parameter)
             {
                 var notUsed = parameter;
 
