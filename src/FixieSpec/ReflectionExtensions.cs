@@ -8,7 +8,6 @@ namespace FixieSpec
     using System;
     using System.Linq;
     using System.Reflection;
-    using Fixie;
 
     /// <summary>
     /// An extension class that contains methods to simplify reflection based code
