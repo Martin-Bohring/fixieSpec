@@ -12,18 +12,17 @@ namespace FixieSpec
     using Fixie;
 
     /// <summary>
-    /// A class that scans methods (of a specification) and identifies
-    /// the <see cref="SpecificationStepType"/> of the methods.
+    /// A class that detects the specification steps of a specification type.
     /// </summary>
-    public static class SpecificationStepTypeScanner
+    public static class SpecificationStepScanner
     {
         static readonly ConcurrentBag<MethodNameScanner> MethodNameScanners
             = new ConcurrentBag<MethodNameScanner>();
 
         /// <summary>
-        /// Initializes static members of the <see cref="SpecificationStepTypeScanner"/> class.
+        /// Initializes static members of the <see cref="SpecificationStepScanner"/> class.
         /// </summary>
-        static SpecificationStepTypeScanner()
+        static SpecificationStepScanner()
         {
             AddMethodNameScanner(
                 new MethodNameScanner(

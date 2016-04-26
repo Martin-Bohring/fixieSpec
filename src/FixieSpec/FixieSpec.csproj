@@ -43,7 +43,7 @@
     <Compile Include="FixieSpecConvention.cs" />
     <Compile Include="ReflectionExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SpecificationStepTypeScanner.cs" />
+    <Compile Include="SpecificationStepScanner.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="FixieSpec.ruleset" />
