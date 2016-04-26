@@ -17,7 +17,7 @@ namespace FixieSpec.Tests
         public void ShouldDetectSetupSteps(string methodName)
         {
             var setupStep = typeof(SampleSpec)
-                .GetMethod(methodName);
+                .GetInstanceMethod(methodName);
 
             setupStep.IsSetupStep().ShouldBeTrue();
         }
@@ -28,7 +28,8 @@ namespace FixieSpec.Tests
         [Input("Given_not_a_setup_step")]
         public void ShouldNotDetectNonStepMethodsAsSetupStep(string methodName)
         {
-            var notASetupStep = typeof(SampleSpec).GetMethod(methodName);
+            var notASetupStep = typeof(SampleSpec)
+                .GetInstanceMethod(methodName);
 
             notASetupStep.IsSetupStep().ShouldBeFalse();
         }
@@ -45,7 +46,7 @@ namespace FixieSpec.Tests
         public void ShouldDetectTransitionSteps(string methodName)
         {
             var transitionStep = typeof(SampleSpec)
-                .GetMethod(methodName);
+                .GetInstanceMethod(methodName);
 
             transitionStep.IsTransitionStep().ShouldBeTrue();
         }
@@ -57,7 +58,7 @@ namespace FixieSpec.Tests
         public void ShouldNotDetectNonStepMethodsAsTransitionStep(string methodName)
         {
             var notATransitionStep = typeof(SampleSpec)
-                .GetMethod(methodName);
+                .GetInstanceMethod(methodName);
 
             notATransitionStep.IsTransitionStep().ShouldBeFalse();
         }
@@ -74,7 +75,7 @@ namespace FixieSpec.Tests
         public void ShouldDetectAssertionSteps(string methodName)
         {
             var assertionStep = typeof(SampleSpec)
-                .GetMethod(methodName);
+                .GetInstanceMethod(methodName);
 
             assertionStep.IsAssertionStep().ShouldBeTrue();
         }
@@ -86,7 +87,7 @@ namespace FixieSpec.Tests
         public void ShouldNotDetecNonStepMethodsAsAssertionSteps(string methodName)
         {
             var notAnAssertionStep = typeof(SampleSpec)
-                .GetMethod(methodName);
+                .GetInstanceMethod(methodName);
 
             notAnAssertionStep.IsAssertionStep().ShouldBeFalse();
         }

@@ -8,6 +8,7 @@ namespace FixieSpec.Tests
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Reflection;
 
     using Fixie;
     using Fixie.Execution;
@@ -28,6 +29,23 @@ namespace FixieSpec.Tests
     /// </remarks>
     public static class TestExtensions
     {
+        const BindingFlags InstanceMethods = BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public;
+
+        /// <summary>
+        /// Gets the instance method defined by the type <paramref name="type"/>.
+        /// </summary>
+        /// <param name="type">
+        /// The type defining the instance method.
+        /// </param>
+        /// <param name="methodName">
+        /// The name of the instance method to get.
+        /// </param>
+        /// <returns></returns>
+        public static MethodInfo GetInstanceMethod(this Type type, string methodName)
+        {
+            return type.GetMethod(methodName, InstanceMethods);
+        }
+
         /// <summary>
         /// Runs the tests of the class given by <paramref name="sampleTestClass"/> identified by the
         /// convention given by <paramref name="convention"/>

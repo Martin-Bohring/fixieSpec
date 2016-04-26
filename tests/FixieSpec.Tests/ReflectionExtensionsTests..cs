@@ -15,7 +15,7 @@ namespace FixieSpec.Tests
         public void ShouldDetectMethodWithoutParameters()
         {
             var methodWithoutParameter = typeof(ReflectionTarget)
-                .GetMethod("MethodWithOutParameter");
+                .GetInstanceMethod("MethodWithOutParameter");
 
             methodWithoutParameter.HasNoParameters().ShouldBeTrue();
         }
@@ -23,7 +23,7 @@ namespace FixieSpec.Tests
         public void ShouldDetectMethodWithParameter()
         {
             var methodWithParameter = typeof(ReflectionTarget)
-                .GetMethod("MethodWithParammeter");
+                .GetInstanceMethod("MethodWithParammeter");
 
             methodWithParameter.HasNoParameters().ShouldBeFalse();
         }
