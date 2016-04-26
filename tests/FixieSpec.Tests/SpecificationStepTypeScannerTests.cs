@@ -26,8 +26,8 @@ namespace FixieSpec.Tests
 
         public void ShouldDetectSetupSteps()
         {
-            var setupStep = typeof(SimpleSpec)
-                .GetMethod("Given_a_simple_spec");
+            var setupStep = typeof(SampleSpec)
+                .GetMethod("Given_a_specification_context");
 
             setupStep.IsSetupStep().ShouldBeTrue();
         }
@@ -41,15 +41,61 @@ namespace FixieSpec.Tests
 
         public void ShouldNotDetecMethodsWithParametersAsSetupSteps()
         {
-            var notASetupStep = typeof(SimpleSpec)
+            var notASetupStep = typeof(SampleSpec)
                 .GetMethod("Given_not_a_setup_step");
 
             notASetupStep.IsSetupStep().ShouldBeFalse();
         }
 
+        public void ShouldDetectTransitionSteps()
+        {
+            var transitionStep = typeof(SampleSpec)
+                .GetMethod("When_exercising_the_system_under_test");
+
+            transitionStep.IsTransitionStep().ShouldBeTrue();
+        }
+
+        public void ShouldFailToDetectTransitionStepForInvalidMethod()
+        {
+            Action act = () => (null as MethodInfo).IsTransitionStep();
+
+            act.ShouldThrow<ArgumentNullException>();
+        }
+
+        public void ShouldNotDetecMethodsWithParametersAsTransitionSteps()
+        {
+            var notATransitionStep = typeof(SampleSpec)
+                .GetMethod("When_not_exercising_a_transition_step");
+
+            notATransitionStep.IsTransitionStep().ShouldBeFalse();
+        }
+
+        public void ShouldDetectAssertionSteps()
+        {
+            var assertionStep = typeof(SampleSpec)
+                .GetMethod("Then_a_result_can_be_verified");
+
+            assertionStep.IsAssertionStep().ShouldBeTrue();
+        }
+
+        public void ShouldFailToDetectAssertionStepForInvalidMethod()
+        {
+            Action act = () => (null as MethodInfo).IsAssertionStep();
+
+            act.ShouldThrow<ArgumentNullException>();
+        }
+
+        public void ShouldNotDetecMethodsWithParametersAsAssertionSteps()
+        {
+            var notAnAssertionStep = typeof(SampleSpec)
+                .GetMethod("Then_a_method_with_parameter_is_no_transitionStep");
+
+            notAnAssertionStep.IsAssertionStep().ShouldBeFalse();
+        }
+
         public void ShouldScanAnotherSetupMethodAsSetupStep()
         {
-            var anotherSetupStep = typeof(SimpleSpec).GetMethod("And_given_some_more_context_setup");
+            var anotherSetupStep = typeof(SampleSpec).GetMethod("And_given_a_secondary_specification_context");
 
             var methodScanResult = anotherSetupStep.ScanMethod();
 
@@ -58,7 +104,7 @@ namespace FixieSpec.Tests
 
         public void ShouldScanTransitionMethodAsTransitionStep()
         {
-            var transitionStepMethod = typeof(SimpleSpec).GetMethod("When_executing_a_test_step");
+            var transitionStepMethod = typeof(SampleSpec).GetMethod("When_exercising_the_system_under_test");
 
             var methodScanResult = transitionStepMethod.ScanMethod();
 
@@ -67,7 +113,7 @@ namespace FixieSpec.Tests
 
         public void ShouldScanAnotherTransitionMethodAsTransitionStep()
         {
-            var anotherTransitionStepMethod = typeof(SimpleSpec).GetMethod("And_when_executing_another_test_step");
+            var anotherTransitionStepMethod = typeof(SampleSpec).GetMethod("And_when_exercising_the_system_under_test_some_more");
 
             var methodScanResult = anotherTransitionStepMethod.ScanMethod();
 
@@ -76,7 +122,7 @@ namespace FixieSpec.Tests
 
         public void ShouldScanAssertionMethodAsAssertionStep()
         {
-            var assertionStepMethod = typeof(SimpleSpec).GetMethod("Then_a_test_result_can_be_verified");
+            var assertionStepMethod = typeof(SampleSpec).GetMethod("Then_a_result_can_be_verified");
 
             var methodScanResult = assertionStepMethod.ScanMethod();
 
@@ -85,7 +131,7 @@ namespace FixieSpec.Tests
 
         public void ShouldScanAnotherAssertionMethodAsAssertionStep()
         {
-            var anotherAssertionStepMethod = typeof(SimpleSpec).GetMethod("And_then_another_result_can_be_verified");
+            var anotherAssertionStepMethod = typeof(SampleSpec).GetMethod("And_then_another_result_can_be_verified");
 
             var methodScanResult = anotherAssertionStepMethod.ScanMethod();
 
@@ -99,13 +145,9 @@ namespace FixieSpec.Tests
             act.ShouldThrow<ArgumentNullException>();
         }
 
-        sealed class SimpleSpec
+        sealed class SampleSpec
         {
-            public void Given_a_simple_spec()
-            {
-            }
-
-            public void And_given_some_more_context_setup()
+            public void Given_a_specification_context()
             {
             }
 
@@ -114,21 +156,35 @@ namespace FixieSpec.Tests
                 var notUsed = parameter;
             }
 
-
-            public void When_executing_a_test_step()
+            public void And_given_a_secondary_specification_context()
             {
             }
 
-            public void And_when_executing_another_test_step()
+            public void When_exercising_the_system_under_test()
             {
             }
 
-            public void Then_a_test_result_can_be_verified()
+            public void And_when_exercising_the_system_under_test_some_more()
+            {
+            }
+
+            public void When_not_exercising_a_transition_step(int parameter)
+            {
+                var notUsed = parameter;
+
+            }
+
+            public void Then_a_result_can_be_verified()
             {
             }
 
             public void And_then_another_result_can_be_verified()
             {
+            }
+
+            public void Then_a_method_with_parameter_is_no_transitionStep(int parameter)
+            {
+                var notUsed = parameter;
             }
         }
     }

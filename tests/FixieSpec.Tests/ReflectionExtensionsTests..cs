@@ -47,52 +47,6 @@ namespace FixieSpec.Tests
             act.ShouldThrow<ArgumentNullException>();
         }
 
-        public void ShouldDetectTransitionSteps()
-        {
-            var transitionStep = typeof(ReflectionTarget)
-                .GetMethod("When_exercising_the_system_under_test");
-
-            transitionStep.IsTransitionStep().ShouldBeTrue();
-        }
-
-        public void ShouldFailToDetectTransitionStepForInvalidMethod()
-        {
-            Action act = () => (null as MethodInfo).IsTransitionStep();
-
-            act.ShouldThrow<ArgumentNullException>();
-        }
-
-        public void ShouldNotDetecMethodsWithParametersAsTransitionSteps()
-        {
-            var notATransitionStep = typeof(ReflectionTarget)
-                .GetMethod("When_not_exercising_a_transition_step");
-
-            notATransitionStep.IsTransitionStep().ShouldBeFalse();
-        }
-
-        public void ShouldDetectAssertionSteps()
-        {
-            var assertionStep = typeof(ReflectionTarget)
-                .GetMethod("Then_a_result_can_be_verified");
-
-            assertionStep.IsAssertionStep().ShouldBeTrue();
-        }
-
-        public void ShouldFailToDetectAssertionStepForInvalidMethod()
-        {
-            Action act = () => (null as MethodInfo).IsAssertionStep();
-
-            act.ShouldThrow<ArgumentNullException>();
-        }
-
-        public void ShouldNotDetecMethodsWithParametersAsAssertionSteps()
-        {
-            var notAnAssertionStep = typeof(ReflectionTarget)
-                .GetMethod("Then_a_method_with_parameter_is_no_transitionStep");
-
-            notAnAssertionStep.IsAssertionStep().ShouldBeFalse();
-        }
-
         class ReflectionTarget
         {
             public void MethodWithOutParameter()
@@ -101,27 +55,7 @@ namespace FixieSpec.Tests
 
             public void MethodWithParammeter(int value)
             {
-            }
-
-            public void Given_some_specification_context_setup()
-            {
-            }
-
-            public void When_exercising_the_system_under_test()
-            {
-            }
-
-            public void When_not_exercising_a_transition_step(int parameter)
-            {
-            }
-
-            public void Then_a_result_can_be_verified()
-            {
-            }
-
-            public void Then_a_method_with_parameter_is_no_transitionStep(int parameter)
-            {
-
+                var notUsed = value;
             }
         }
     }

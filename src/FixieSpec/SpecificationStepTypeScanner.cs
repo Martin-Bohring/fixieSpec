@@ -9,6 +9,8 @@ namespace FixieSpec
     using System.Collections.Concurrent;
     using System.Reflection;
 
+    using Fixie;
+
     /// <summary>
     /// A class that scans methods (of a specification) and identifies
     /// the <see cref="SpecificationStepType"/> of the methods.
@@ -72,6 +74,48 @@ namespace FixieSpec
 
             return method.HasNoParameters() &&
                    method.ScanMethod() == SpecificationStepType.Setup;
+        }
+
+        /// <summary>
+        /// Detects if the method given by <paramref name="method"/> is a transition step.
+        /// </summary>
+        /// <param name="method">
+        /// The method to check.
+        /// </param>
+        /// <returns>
+        /// <see langword="true"/>, if the method is an transition step; <see langword="false"/> otherwise.
+        /// </returns>
+        public static bool IsTransitionStep(this MethodInfo method)
+        {
+            if (method == null)
+            {
+                throw new ArgumentNullException(nameof(method));
+            }
+
+            return method.HasNoParameters() &&
+                   method.ScanMethod() == SpecificationStepType.Transition;
+        }
+
+        /// <summary>
+        /// Detects if the method given by <paramref name="method"/> is an assertion step.
+        /// </summary>
+        /// <param name="method">
+        /// The method to check.
+        /// </param>
+        /// <returns>
+        /// <see langword="true"/>, if the method is an assertion step; <see langword="false"/> otherwise.
+        /// </returns>
+        public static bool IsAssertionStep(this MethodInfo method)
+        {
+            if (method == null)
+            {
+                throw new ArgumentNullException(nameof(method));
+            }
+
+            return method.IsPublic &&
+                method.HasNoParameters() &&
+                method.IsVoid() &&
+                method.ScanMethod() == SpecificationStepType.Assertion;
         }
 
         /// <summary>
