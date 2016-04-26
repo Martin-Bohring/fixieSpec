@@ -12,9 +12,12 @@ namespace FixieSpec.Tests
 
     public sealed class SpecificationStepTypeScannerTests
     {
-        public void ShouldNotScanNonStepMethodsAsStep()
+        [Input("ToString")]
+        [Input("GetHashCode")]
+        [Input("GetType")]
+        public void ShouldNotScanNonStepMethodsAsStep(string methodName)
         {
-            var nonStepMethod = typeof(object).GetMethod("ToString");
+            var nonStepMethod = typeof(object).GetMethod(methodName);
 
             var methodScanResult = nonStepMethod.ScanMethod();
 
