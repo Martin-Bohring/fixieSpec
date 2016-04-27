@@ -16,35 +16,35 @@ namespace FixieSpec
     /// </summary>
     public static class SpecificationStepScanner
     {
-        static readonly ConcurrentBag<MethodNameScanner> MethodNameScanners
-            = new ConcurrentBag<MethodNameScanner>();
+        static readonly ConcurrentBag<SpecificationStepConvention> MethodNameScanners
+            = new ConcurrentBag<SpecificationStepConvention>();
 
         /// <summary>
         /// Initializes static members of the <see cref="SpecificationStepScanner"/> class.
         /// </summary>
         static SpecificationStepScanner()
         {
-            AddMethodNameScanner(
+            AddSpecificationStepConvention(
                 methodName => methodName.StartsWith("Given", StringComparison.OrdinalIgnoreCase),
                 SpecificationStepType.Setup);
 
-            AddMethodNameScanner(
+            AddSpecificationStepConvention(
                     methodName => methodName.StartsWith("AndGiven", StringComparison.OrdinalIgnoreCase),
                     SpecificationStepType.Setup);
 
-            AddMethodNameScanner(
+            AddSpecificationStepConvention(
                     methodName => methodName.StartsWith("When", StringComparison.OrdinalIgnoreCase),
                     SpecificationStepType.Transition);
 
-            AddMethodNameScanner(
+            AddSpecificationStepConvention(
                     methodName => methodName.StartsWith("AndWhen", StringComparison.OrdinalIgnoreCase),
                     SpecificationStepType.Transition);
 
-            AddMethodNameScanner(
+            AddSpecificationStepConvention(
                     methodName => methodName.StartsWith("Then", StringComparison.OrdinalIgnoreCase),
                     SpecificationStepType.Assertion);
 
-            AddMethodNameScanner(
+            AddSpecificationStepConvention(
                     methodName => methodName.StartsWith("AndThen", StringComparison.OrdinalIgnoreCase),
                     SpecificationStepType.Assertion);
         }
@@ -139,18 +139,18 @@ namespace FixieSpec
             return SpecificationStepType.Undefined;
         }
 
-        static void AddMethodNameScanner(Func<string, bool> methodMatcher, SpecificationStepType methodTypeIfMatched)
+        static void AddSpecificationStepConvention(Func<string, bool> methodMatcher, SpecificationStepType methodTypeIfMatched)
         {
-            MethodNameScanners.Add(new MethodNameScanner(methodMatcher, methodTypeIfMatched));
+            MethodNameScanners.Add(new SpecificationStepConvention(methodMatcher, methodTypeIfMatched));
         }
 
-        class MethodNameScanner
+        class SpecificationStepConvention
         {
             readonly Func<string, bool> matcher;
 
             readonly SpecificationStepType methodType;
 
-            public MethodNameScanner(Func<string, bool> methodMatcher, SpecificationStepType methodTypeIfMatched)
+            public SpecificationStepConvention(Func<string, bool> methodMatcher, SpecificationStepType methodTypeIfMatched)
             {
                 methodType = methodTypeIfMatched;
                 matcher = methodMatcher;
