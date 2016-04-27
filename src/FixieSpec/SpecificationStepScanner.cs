@@ -132,11 +132,6 @@ namespace FixieSpec
 
         static SpecificationStepType ScanMethod(this MethodInfo methodToScan)
         {
-            if (methodToScan == null)
-            {
-                throw new ArgumentNullException(nameof(methodToScan));
-            }
-
             foreach (var methodNameScanner in MethodNameScanners)
             {
                 var matchResult = methodNameScanner.MatchMethod(methodToScan);
