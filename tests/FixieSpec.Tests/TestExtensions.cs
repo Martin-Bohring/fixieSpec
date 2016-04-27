@@ -30,41 +30,16 @@ namespace FixieSpec.Tests
 
         public static AssemblyResult Run(this Type sampleTestClass, Listener listener, Convention convention)
         {
-            if (sampleTestClass == null)
-            {
-                throw new ArgumentNullException(nameof(sampleTestClass));
-            }
-
-            if (listener == null)
-            {
-                throw new ArgumentNullException(nameof(listener));
-            }
-
-            if (convention == null)
-            {
-                throw new ArgumentNullException(nameof(convention));
-            }
-
             return new Runner(listener).RunTypes(sampleTestClass.Assembly, convention, sampleTestClass);
         }
 
         public static IEnumerable<string> Lines(this RedirectedConsole console)
         {
-            if (console == null)
-            {
-                throw new ArgumentNullException(nameof(console));
-            }
-
             return console.Output.Lines();
         }
 
         public static IEnumerable<string> Lines(this string multiline)
         {
-            if (multiline == null)
-            {
-                throw new ArgumentNullException(nameof(multiline));
-            }
-
             var lines = multiline.Split(new[] { Environment.NewLine }, StringSplitOptions.None).ToList();
 
             while (lines.Count > 0 && lines[lines.Count - 1] == string.Empty)
