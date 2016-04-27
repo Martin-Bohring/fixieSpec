@@ -16,35 +16,35 @@ namespace FixieSpec
     /// </summary>
     public static class SpecificationStepScanner
     {
-        static readonly ConcurrentBag<SpecificationStepConvention> MethodNameScanners
-            = new ConcurrentBag<SpecificationStepConvention>();
+        static readonly ConcurrentBag<StepConvention> MethodNameScanners
+            = new ConcurrentBag<StepConvention>();
 
         /// <summary>
         /// Initializes static members of the <see cref="SpecificationStepScanner"/> class.
         /// </summary>
         static SpecificationStepScanner()
         {
-            AddSpecificationStepConvention(
+            AddStepConvention(
                 methodName => methodName.StartsWith("Given", StringComparison.OrdinalIgnoreCase),
                 SpecificationStepType.Setup);
 
-            AddSpecificationStepConvention(
+            AddStepConvention(
                     methodName => methodName.StartsWith("AndGiven", StringComparison.OrdinalIgnoreCase),
                     SpecificationStepType.Setup);
 
-            AddSpecificationStepConvention(
+            AddStepConvention(
                     methodName => methodName.StartsWith("When", StringComparison.OrdinalIgnoreCase),
                     SpecificationStepType.Transition);
 
-            AddSpecificationStepConvention(
+            AddStepConvention(
                     methodName => methodName.StartsWith("AndWhen", StringComparison.OrdinalIgnoreCase),
                     SpecificationStepType.Transition);
 
-            AddSpecificationStepConvention(
+            AddStepConvention(
                     methodName => methodName.StartsWith("Then", StringComparison.OrdinalIgnoreCase),
                     SpecificationStepType.Assertion);
 
-            AddSpecificationStepConvention(
+            AddStepConvention(
                     methodName => methodName.StartsWith("AndThen", StringComparison.OrdinalIgnoreCase),
                     SpecificationStepType.Assertion);
         }
@@ -128,7 +128,7 @@ namespace FixieSpec
         {
             foreach (var methodNameScanner in MethodNameScanners)
             {
-                var matchResult = methodNameScanner.MatchMethod(methodToScan);
+                var matchResult = methodNameScanner.MatchMethod(methodToScan.ScrubMethodName());
 
                 if (matchResult != SpecificationStepType.Undefined)
                 {
@@ -139,34 +139,33 @@ namespace FixieSpec
             return SpecificationStepType.Undefined;
         }
 
-        static void AddSpecificationStepConvention(Func<string, bool> methodMatcher, SpecificationStepType methodTypeIfMatched)
-        {
-            MethodNameScanners.Add(new SpecificationStepConvention(methodMatcher, methodTypeIfMatched));
-        }
+        static void AddStepConvention(Func<string, bool> methodMatcher, SpecificationStepType methodTypeIfMatched)
+            => MethodNameScanners.Add(new StepConvention(methodMatcher, methodTypeIfMatched));
 
-        class SpecificationStepConvention
+        static string ScrubMethodName(this MethodInfo methodToMatch)
+            => methodToMatch.Name.Replace(@"_", string.Empty);
+
+        class StepConvention
         {
             readonly Func<string, bool> matcher;
 
             readonly SpecificationStepType methodType;
 
-            public SpecificationStepConvention(Func<string, bool> methodMatcher, SpecificationStepType methodTypeIfMatched)
+            public StepConvention(Func<string, bool> methodMatcher, SpecificationStepType methodTypeIfMatched)
             {
                 methodType = methodTypeIfMatched;
                 matcher = methodMatcher;
             }
 
-            public SpecificationStepType MatchMethod(MethodInfo methodToMatch)
+            public SpecificationStepType MatchMethod(string methodName)
             {
-                if (matcher(ScrubMethodName(methodToMatch)))
+                if (matcher(methodName))
                 {
                     return methodType;
                 }
 
                 return SpecificationStepType.Undefined;
             }
-
-            static string ScrubMethodName(MethodInfo methodToMatch) => methodToMatch.Name.Replace(@"_", string.Empty);
         }
     }
 }
