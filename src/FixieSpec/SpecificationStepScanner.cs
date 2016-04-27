@@ -25,34 +25,28 @@ namespace FixieSpec
         static SpecificationStepScanner()
         {
             AddMethodNameScanner(
-                new MethodNameScanner(
-                    methodName => methodName.StartsWith("Given", StringComparison.OrdinalIgnoreCase),
-                    SpecificationStepType.Setup));
+                methodName => methodName.StartsWith("Given", StringComparison.OrdinalIgnoreCase),
+                SpecificationStepType.Setup);
 
             AddMethodNameScanner(
-                new MethodNameScanner(
                     methodName => methodName.StartsWith("AndGiven", StringComparison.OrdinalIgnoreCase),
-                    SpecificationStepType.Setup));
+                    SpecificationStepType.Setup);
 
             AddMethodNameScanner(
-                new MethodNameScanner(
                     methodName => methodName.StartsWith("When", StringComparison.OrdinalIgnoreCase),
-                    SpecificationStepType.Transition));
+                    SpecificationStepType.Transition);
 
             AddMethodNameScanner(
-                new MethodNameScanner(
                     methodName => methodName.StartsWith("AndWhen", StringComparison.OrdinalIgnoreCase),
-                    SpecificationStepType.Transition));
+                    SpecificationStepType.Transition);
 
             AddMethodNameScanner(
-                new MethodNameScanner(
                     methodName => methodName.StartsWith("Then", StringComparison.OrdinalIgnoreCase),
-                    SpecificationStepType.Assertion));
+                    SpecificationStepType.Assertion);
 
             AddMethodNameScanner(
-                new MethodNameScanner(
                     methodName => methodName.StartsWith("AndThen", StringComparison.OrdinalIgnoreCase),
-                    SpecificationStepType.Assertion));
+                    SpecificationStepType.Assertion);
         }
 
         enum SpecificationStepType
@@ -145,9 +139,9 @@ namespace FixieSpec
             return SpecificationStepType.Undefined;
         }
 
-        static void AddMethodNameScanner(MethodNameScanner methodNameScanner)
+        static void AddMethodNameScanner(Func<string, bool> methodMatcher, SpecificationStepType methodTypeIfMatched)
         {
-            MethodNameScanners.Add(methodNameScanner);
+            MethodNameScanners.Add(new MethodNameScanner(methodMatcher, methodTypeIfMatched));
         }
 
         class MethodNameScanner
