@@ -11,8 +11,8 @@ namespace FixieSpec.Tests
 
     sealed class DeclarationOrderComparerTests
     {
-        readonly MethodInfo firstMethod = typeof(ClassWithDeclarations).GetMethod("FirstMethod");
-        readonly MethodInfo secondMethod = typeof(ClassWithDeclarations).GetMethod("SecondMethod");
+        readonly MethodInfo firstMethod = typeof(ClassWithDeclarations).GetInstanceMethod("FirstMethod");
+        readonly MethodInfo secondMethod = typeof(ClassWithDeclarations).GetInstanceMethod("SecondMethod");
 
         readonly DeclarationOrderComparer testee = DeclarationOrderComparer.Default;
 
