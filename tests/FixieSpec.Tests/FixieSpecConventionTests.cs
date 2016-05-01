@@ -37,6 +37,14 @@ namespace FixieSpec.Tests
             executionResult.Failed.ShouldBe(0);
         }
 
+        public void ShouldExecuteAllStepsOnTheSameInstance()
+        {
+            var executionResult = Execute<ExampleInstanceSpecification>();
+
+            executionResult.Total.ShouldBe(1);
+            executionResult.Passed.ShouldBe(1);
+        }
+
         public void ShouldExecuteAllStepsInOrderEvenWithFailingAssertionSteps()
         {
             var executionResult = Execute<FailingAssertionStepExampleSpecification>();
@@ -120,7 +128,32 @@ namespace FixieSpec.Tests
                 WhereAmI();
             }
         }
- 
+
+        class ExampleInstanceSpecification
+        {
+            Instance instance;
+
+            public void Given_an_instance()
+            {
+                instance = new Instance();
+            }
+
+            public void When_working_with_the_instance()
+            {
+                instance.Value = 42;
+            }
+
+            public void Then_the_result_can_be_verified()
+            {
+                instance.Value.ShouldBe(42);
+            }
+
+            class Instance
+            {
+                public int Value { get; set; }
+            }
+        }
+
         class FailingAssertionStepExampleSpecification
         {
             public void When_exercising_the_system_under_test()
