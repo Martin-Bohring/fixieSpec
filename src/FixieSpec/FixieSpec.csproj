@@ -72,6 +72,11 @@
     </Analyzer>
   </ItemGroup>
   <ItemGroup>
+    <Analyzer Include="..\..\packages\build\RefactoringEssentials\analyzers\dotnet\RefactoringEssentials.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+  </ItemGroup>
+  <ItemGroup>
     <Analyzer Include="..\..\packages\build\StyleCop.Analyzers\analyzers\dotnet\cs\Newtonsoft.Json.dll">
       <Paket>True</Paket>
     </Analyzer>

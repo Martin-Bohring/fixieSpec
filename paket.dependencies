@@ -10,6 +10,7 @@ group Build
   nuget FAKE
   nuget StyleCop.Analyzers
   nuget CodeCracker.CSharp prerelease
+  nuget RefactoringEssentials
 
 group Test
 

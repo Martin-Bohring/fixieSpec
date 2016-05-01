@@ -1,4 +1,6 @@
 Fixie
+
 group Build
-StyleCop.Analyzers
-CodeCracker.CSharp
+  StyleCop.Analyzers
+  CodeCracker.CSharp
+  RefactoringEssentials

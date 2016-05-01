@@ -11,3 +11,4 @@ authors
 excludeddependencies
   StyleCop.Analyzers
   CodeCracker.CSharp
+  RefactoringEssentials
