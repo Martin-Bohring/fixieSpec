@@ -14,16 +14,14 @@ namespace FixieSpec.Tests
     {
         public void ShouldDetectMethodWithoutParameters()
         {
-            var methodWithoutParameter = typeof(ReflectionTarget)
-                .GetInstanceMethod("MethodWithOutParameter");
+            var methodWithoutParameter = Method("MethodWithOutParameter");
 
             methodWithoutParameter.HasNoParameters().ShouldBeTrue();
         }
 
         public void ShouldDetectMethodWithParameter()
         {
-            var methodWithParameter = typeof(ReflectionTarget)
-                .GetInstanceMethod("MethodWithParammeter");
+            var methodWithParameter = Method("MethodWithParammeter");
 
             methodWithParameter.HasNoParameters().ShouldBeFalse();
         }
@@ -45,6 +43,11 @@ namespace FixieSpec.Tests
             Action act = () => (null as Type).HasOnlyDefaultConstructor();
 
             act.ShouldThrow<ArgumentNullException>();
+        }
+
+        static MethodInfo Method(string methodName)
+        {
+            return typeof(ReflectionTarget).GetInstanceMethod(methodName);
         }
 
         class ReflectionTarget

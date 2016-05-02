@@ -16,8 +16,7 @@ namespace FixieSpec.Tests
         [Input("And_given_a_secondary_specification_context")]
         public void ShouldDetectSetupSteps(string methodName)
         {
-            var setupStep = typeof(SampleSpec)
-                .GetInstanceMethod(methodName);
+            var setupStep = Method(methodName);
 
             setupStep.IsSetupStep().ShouldBeTrue();
         }
@@ -30,8 +29,7 @@ namespace FixieSpec.Tests
         [Input("Given_a_non_specification_context_returns_a_value")]
         public void ShouldNotDetectNonStepMethodsAsSetupStep(string methodName)
         {
-            var notASetupStep = typeof(SampleSpec)
-                .GetInstanceMethod(methodName);
+            var notASetupStep = Method(methodName);
 
             notASetupStep.IsSetupStep().ShouldBeFalse();
         }
@@ -47,8 +45,7 @@ namespace FixieSpec.Tests
         [Input("And_when_exercising_the_system_under_test_some_more")]
         public void ShouldDetectTransitionSteps(string methodName)
         {
-            var transitionStep = typeof(SampleSpec)
-                .GetInstanceMethod(methodName);
+            var transitionStep = Method(methodName);
 
             transitionStep.IsTransitionStep().ShouldBeTrue();
         }
@@ -61,8 +58,7 @@ namespace FixieSpec.Tests
         [Input("And_when_a_non_transition_step_returns_a_value")]
         public void ShouldNotDetectNonStepMethodsAsTransitionStep(string methodName)
         {
-            var notATransitionStep = typeof(SampleSpec)
-                .GetInstanceMethod(methodName);
+            var notATransitionStep = Method(methodName);
 
             notATransitionStep.IsTransitionStep().ShouldBeFalse();
         }
@@ -78,8 +74,7 @@ namespace FixieSpec.Tests
         [Input("And_then_another_result_can_be_verified")]
         public void ShouldDetectAssertionSteps(string methodName)
         {
-            var assertionStep = typeof(SampleSpec)
-                .GetInstanceMethod(methodName);
+            var assertionStep = Method(methodName);
 
             assertionStep.IsAssertionStep().ShouldBeTrue();
         }
@@ -92,8 +87,7 @@ namespace FixieSpec.Tests
         [Input("And_then_a_method_that_returns_a_value_is_no_assertion_step")]
         public void ShouldNotDetecNonStepMethodsAsAssertionSteps(string methodName)
         {
-            var notAnAssertionStep = typeof(SampleSpec)
-                .GetInstanceMethod(methodName);
+            var notAnAssertionStep = Method(methodName);
 
             notAnAssertionStep.IsAssertionStep().ShouldBeFalse();
         }
@@ -103,6 +97,11 @@ namespace FixieSpec.Tests
             Action act = () => (null as MethodInfo).IsAssertionStep();
 
             act.ShouldThrow<ArgumentNullException>();
+        }
+
+        static MethodInfo Method(string methodName)
+        {
+            return typeof(SampleSpec).GetInstanceMethod(methodName);
         }
 
         sealed class SampleSpec
