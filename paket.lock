@@ -15,6 +15,7 @@ NUGET
     codecracker.CSharp (1.0)
     FAKE (4.25.5)
     RefactoringEssentials (4.0)
+    SourceLink.Fake (1.1)
     StyleCop.Analyzers (1.0)
 
 GROUP Test
