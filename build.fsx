@@ -55,11 +55,6 @@ let releaseNotesData =
 
 let release = List.head releaseNotesData
 
-let stable = 
-    match releaseNotesData |> List.tryFind (fun r -> r.NugetVersion.Contains("-") |> not) with
-    | Some stable -> stable
-    | _ -> release
-
 let genFSAssemblyInfo (projectPath) =
     let projectName = System.IO.Path.GetFileNameWithoutExtension(projectPath)
     let folderName = System.IO.Path.GetFileName(System.IO.Path.GetDirectoryName(projectPath))
