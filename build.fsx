@@ -36,9 +36,9 @@ let tags = "FixieSpec, Fixie, BDD, TDD, unit testing"
 // (<solutionFile>.sln is built during the building process)
 let solutionFile  = "FixieSpec"
 
-// Pattern specifying assemblies to be tested using Fixie
 let buildDir = "build"
 
+// Pattern specifying assemblies to be tested
 let testAssemblies = buildDir + "/*Tests*.dll"
 
 // The url for the raw files hosted
