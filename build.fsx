@@ -36,7 +36,11 @@ let tags = "FixieSpec, Fixie, BDD, TDD, unit testing"
 // (<solutionFile>.sln is built during the building process)
 let solutionFile  = "FixieSpec"
 
+// The build output directory of all projects
 let buildDir = "build"
+
+// The directory for all artifacts (nugets, docs etc.)
+let artifactsDir = "artifacts"
 
 // Pattern specifying assemblies to be tested
 let testAssemblies = buildDir + "/*Tests*.dll"
@@ -124,7 +128,7 @@ Target "RunTests" (fun _ ->
 Target "NuGet" (fun _ ->
     Paket.Pack(fun p ->
         { p with
-            OutputPath = "bin"
+            OutputPath = artifactsDir
             Version = release.NugetVersion
             ReleaseNotes = toLines release.Notes
             BuildPlatform = "AnyCPU"})
