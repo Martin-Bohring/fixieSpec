@@ -151,10 +151,10 @@ Target "NuGet" (fun _ ->
             BuildPlatform = "AnyCPU"})
 )
 
-Target "All" DoNothing
-
 // --------------------------------------------------------------------------------------
-// Dependencies
+// Run all targets by default. Invoke 'build <Target>' to override
+
+Target "All" DoNothing
 
 "Clean"
   ==> "AssemblyInfo"
@@ -167,7 +167,7 @@ Target "All" DoNothing
 #else
   =?> ("SourceLink", Pdbstr.tryFind().IsSome )
 #endif
-  ==> "Nuget"
+  ==> "NuGet"
 
 // start build
 RunTargetOrDefault "All"
