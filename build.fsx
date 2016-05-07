@@ -159,17 +159,15 @@ Target "All" DoNothing
 "Clean"
   ==> "AssemblyInfo"
   ==> "Build"
-  ==> "Nuget"
-
-"Build"
   ==> "RunTests"
-
-
-"RunTests"
   ==> "All"
 
-"Nuget"
-  ==> "All"
+"All"
+#if MONO
+#else
+  =?> ("SourceLink", Pdbstr.tryFind().IsSome )
+#endif
+  ==> "Nuget"
 
 // start build
 RunTargetOrDefault "All"
