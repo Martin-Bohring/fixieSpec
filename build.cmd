@@ -11,4 +11,8 @@ if errorlevel 1 (
   exit /b %errorlevel%
 )
 
-packages\build\FAKE\tools\FAKE.exe build.fsx %*
+if [%1] == [] (
+    packages\build\FAKE\tools\FAKE.exe build.fsx --listTargets
+) else (
+    packages\build\FAKE\tools\FAKE.exe build.fsx %*
+)
