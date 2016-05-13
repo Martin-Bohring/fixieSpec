@@ -26,6 +26,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FixieSpec.AutoFixture", "sr
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{EA53D953-2F5C-45BD-8373-55238320FAD6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AV.Domain", "Samples\AV.Domain\AV.Domain.csproj", "{0518F8CB-C6B8-4B63-B820-AD11481E3C2F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AV.Specifications", "Samples\AV.Specifications\AV.Specifications.csproj", "{3E6D16B8-0C61-4AE1-9C21-2C9CDFF20176}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AV.Domain.Tests", "Samples\AV.Domain.Tests\AV.Domain.Tests.csproj", "{FBBB3E95-B84B-4244-8BED-BACE31F8772C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -48,8 +54,25 @@ Global
 		{B8297C67-EBA2-402E-84BA-BC3673CD3EE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B8297C67-EBA2-402E-84BA-BC3673CD3EE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B8297C67-EBA2-402E-84BA-BC3673CD3EE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0518F8CB-C6B8-4B63-B820-AD11481E3C2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0518F8CB-C6B8-4B63-B820-AD11481E3C2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0518F8CB-C6B8-4B63-B820-AD11481E3C2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0518F8CB-C6B8-4B63-B820-AD11481E3C2F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E6D16B8-0C61-4AE1-9C21-2C9CDFF20176}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E6D16B8-0C61-4AE1-9C21-2C9CDFF20176}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E6D16B8-0C61-4AE1-9C21-2C9CDFF20176}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E6D16B8-0C61-4AE1-9C21-2C9CDFF20176}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FBBB3E95-B84B-4244-8BED-BACE31F8772C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBBB3E95-B84B-4244-8BED-BACE31F8772C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBBB3E95-B84B-4244-8BED-BACE31F8772C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBBB3E95-B84B-4244-8BED-BACE31F8772C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0518F8CB-C6B8-4B63-B820-AD11481E3C2F} = {EA53D953-2F5C-45BD-8373-55238320FAD6}
+		{3E6D16B8-0C61-4AE1-9C21-2C9CDFF20176} = {EA53D953-2F5C-45BD-8373-55238320FAD6}
+		{FBBB3E95-B84B-4244-8BED-BACE31F8772C} = {EA53D953-2F5C-45BD-8373-55238320FAD6}
 	EndGlobalSection
 EndGlobal
