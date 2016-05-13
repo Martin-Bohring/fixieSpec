@@ -1,10 +1,10 @@
 NUGET
   remote: https://www.nuget.org/api/v2
   specs:
-    AutoFixture (3.45.1)
-    AutoFixture.AutoFakeItEasy (3.45.1)
-      AutoFixture (>= 3.45.1)
-      FakeItEasy (>= 1.7)
+    AutoFixture (3.45.3)
+    AutoFixture.AutoFakeItEasy (3.45.3)
+      AutoFixture (>= 3.45.3)
+      FakeItEasy (>= 1.7 < 2.0)
     FakeItEasy (1.25.3)
     Fixie (1.0.1) - version_in_path: true
 
@@ -13,7 +13,7 @@ NUGET
   remote: https://www.nuget.org/api/v2
   specs:
     codecracker.CSharp (1.0)
-    FAKE (4.25.5)
+    FAKE (4.26)
     RefactoringEssentials (4.0)
     SourceLink.Fake (1.1)
     StyleCop.Analyzers (1.0)
