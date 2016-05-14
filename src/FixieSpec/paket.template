@@ -12,3 +12,5 @@ excludeddependencies
   StyleCop.Analyzers
   CodeCracker.CSharp
   RefactoringEssentials
+
+include-pdbs true
