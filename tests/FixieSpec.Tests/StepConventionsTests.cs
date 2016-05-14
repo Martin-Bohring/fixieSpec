@@ -10,7 +10,7 @@ namespace FixieSpec.Tests
 
     using Shouldly;
 
-    public sealed class SpecificationStepScannerTests
+    public sealed class StepConventionsTests
     {
         [Input("Given_a_specification_context")]
         [Input("And_given_a_secondary_specification_context")]

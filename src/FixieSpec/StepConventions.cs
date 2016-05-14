@@ -12,17 +12,17 @@ namespace FixieSpec
     using Fixie;
 
     /// <summary>
-    /// A class that detects the specification steps of a specification type.
+    /// The conventions used to identify specification steps.
     /// </summary>
-    public static class SpecificationStepScanner
+    public static class StepConventions
     {
-        static readonly ConcurrentBag<StepConvention> MethodNameScanners
+        static readonly ConcurrentBag<StepConvention> Conventions
             = new ConcurrentBag<StepConvention>();
 
         /// <summary>
-        /// Initializes static members of the <see cref="SpecificationStepScanner"/> class.
+        /// Initializes static members of the <see cref="StepConventions"/> class.
         /// </summary>
-        static SpecificationStepScanner()
+        static StepConventions()
         {
             AddStepConvention(
                 methodName => methodName.StartsWith("Given", StringComparison.OrdinalIgnoreCase),
@@ -126,9 +126,9 @@ namespace FixieSpec
 
         static SpecificationStepType ScanMethod(this MethodInfo methodToScan)
         {
-            foreach (var methodNameScanner in MethodNameScanners)
+            foreach (var stepConvention in Conventions)
             {
-                var matchResult = methodNameScanner.MatchMethodName(methodToScan.ScrubMethodName());
+                var matchResult = stepConvention.MatchMethodName(methodToScan.ScrubMethodName());
 
                 if (matchResult != SpecificationStepType.Undefined)
                 {
@@ -140,7 +140,7 @@ namespace FixieSpec
         }
 
         static void AddStepConvention(Func<string, bool> methodNameMatcher, SpecificationStepType stepTypeIfMatched)
-            => MethodNameScanners.Add(new StepConvention(methodNameMatcher, stepTypeIfMatched));
+            => Conventions.Add(new StepConvention(methodNameMatcher, stepTypeIfMatched));
 
         static string ScrubMethodName(this MethodInfo methodToMatch)
             => methodToMatch.Name.Replace(@"_", string.Empty);
