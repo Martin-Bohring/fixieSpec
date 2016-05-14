@@ -128,7 +128,7 @@ namespace FixieSpec
         {
             foreach (var methodNameScanner in MethodNameScanners)
             {
-                var matchResult = methodNameScanner.MatchMethod(methodToScan.ScrubMethodName());
+                var matchResult = methodNameScanner.MatchMethodName(methodToScan.ScrubMethodName());
 
                 if (matchResult != SpecificationStepType.Undefined)
                 {
@@ -139,8 +139,8 @@ namespace FixieSpec
             return SpecificationStepType.Undefined;
         }
 
-        static void AddStepConvention(Func<string, bool> methodMatcher, SpecificationStepType methodTypeIfMatched)
-            => MethodNameScanners.Add(new StepConvention(methodMatcher, methodTypeIfMatched));
+        static void AddStepConvention(Func<string, bool> methodNameMatcher, SpecificationStepType stepTypeIfMatched)
+            => MethodNameScanners.Add(new StepConvention(methodNameMatcher, stepTypeIfMatched));
 
         static string ScrubMethodName(this MethodInfo methodToMatch)
             => methodToMatch.Name.Replace(@"_", string.Empty);
@@ -149,19 +149,19 @@ namespace FixieSpec
         {
             readonly Func<string, bool> matcher;
 
-            readonly SpecificationStepType methodType;
+            readonly SpecificationStepType stepType;
 
-            public StepConvention(Func<string, bool> methodMatcher, SpecificationStepType methodTypeIfMatched)
+            public StepConvention(Func<string, bool> methodNameMatcher, SpecificationStepType stepTypeIfMatched)
             {
-                methodType = methodTypeIfMatched;
-                matcher = methodMatcher;
+                stepType = stepTypeIfMatched;
+                matcher = methodNameMatcher;
             }
 
-            public SpecificationStepType MatchMethod(string methodName)
+            public SpecificationStepType MatchMethodName(string methodName)
             {
                 if (matcher(methodName))
                 {
-                    return methodType;
+                    return stepType;
                 }
 
                 return SpecificationStepType.Undefined;
