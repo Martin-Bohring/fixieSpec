@@ -25,6 +25,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FixieSpec.AutoFixture", "src\FixieSpec.AutoFixture\FixieSpec.AutoFixture.csproj", "{B8297C67-EBA2-402E-84BA-BC3673CD3EE9}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{EA53D953-2F5C-45BD-8373-55238320FAD6}"
+	ProjectSection(SolutionItems) = preProject
+		Samples\README.md = Samples\README.md
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AV.Domain", "Samples\AV.Domain\AV.Domain.csproj", "{0518F8CB-C6B8-4B63-B820-AD11481E3C2F}"
 EndProject
