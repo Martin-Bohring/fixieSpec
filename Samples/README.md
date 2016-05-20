@@ -13,7 +13,7 @@ Think about your Smartphone. What can it do for you. A lot it seems:
 - Recording videos
 - Voice recording
 - Playing music
-- Playing recorded ro downloaded videos
+- Playing recorded or downloaded videos
 - Playing recorded voice
 - All of that using the headset or the speaker and a microphone.
 
