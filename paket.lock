@@ -13,7 +13,7 @@ NUGET
   remote: https://www.nuget.org/api/v2
   specs:
     codecracker.CSharp (1.0)
-    FAKE (4.26)
+    FAKE (4.27)
     RefactoringEssentials (4.1)
     SourceLink.Fake (1.1)
     StyleCop.Analyzers (1.0)
