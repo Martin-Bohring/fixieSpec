@@ -7,7 +7,7 @@ Therefore I was looking for something different that still allows to test drive 
 
 Think about your Smartphone. What can it do for you. A lot it seems:
 
-- Taking and making phone calls (really, I did'nt know my phone can do that)
+- Taking and making phone calls (really, I didn't know my phone can do that)
 - Taking and making video calls using different apps
 - Taking pictures
 - Recording videos
