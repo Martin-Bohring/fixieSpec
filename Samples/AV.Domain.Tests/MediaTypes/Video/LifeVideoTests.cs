@@ -3,7 +3,7 @@
 // Licensed under the MIT license. See LICENSE.txt file in the project root for full license information.
 // </copyright>
 
-namespace AV.Domain.MediaTypes.Tests
+namespace AV.Domain.MediaTypes.Video.Tests
 {
     using Shouldly;
 

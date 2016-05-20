@@ -3,22 +3,22 @@
 // Licensed under the MIT license. See LICENSE.txt file in the project root for full license information.
 // </copyright>
 
-namespace AV.Domain.MediaTypes.Tests
+namespace AV.Domain.MediaTypes.Audio.Tests
 {
     using Shouldly;
 
-    public sealed class MusicTests
+    public sealed class VoiceTests
     {
-        readonly Music testee = new Music();
+        readonly Voice testee = new Voice();
 
         public void SutIsAudio()
         {
             testee.ShouldBeAssignableTo<Audio>();
         }
 
-        public void ShouldNotBeLife()
+        public void ShouldBeLife()
         {
-            testee.IsLive.ShouldBe(false);
+            testee.IsLive.ShouldBe(true);
         }
     }
 }

@@ -3,14 +3,12 @@
 // Licensed under the MIT license. See LICENSE.txt file in the project root for full license information.
 // </copyright>
 
-namespace AV.Domain.MediaTypes
+namespace AV.Domain.MediaTypes.Video
 {
     /// <summary>
-    /// A class that represents a life video media type.
+    /// A class that represents a video media type.
     /// </summary>
-    public class LifeVideo : Video
+    public abstract class Video : MediaBase
     {
-        /// <inheritdoc/>
-        public override bool IsLive => true;
     }
 }

@@ -36,13 +36,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="MediaTypes\Audio.cs" />
+    <Compile Include="MediaTypes\Audio\Audio.cs" />
     <Compile Include="MediaTypes\MediaBase.cs" />
-    <Compile Include="MediaTypes\Music.cs" />
-    <Compile Include="MediaTypes\RecordedVideo.cs" />
-    <Compile Include="MediaTypes\LifeVideo.cs" />
-    <Compile Include="MediaTypes\Video.cs" />
-    <Compile Include="MediaTypes\Voice.cs" />
+    <Compile Include="MediaTypes\Audio\Music.cs" />
+    <Compile Include="MediaTypes\Video\RecordedVideo.cs" />
+    <Compile Include="MediaTypes\Video\LifeVideo.cs" />
+    <Compile Include="MediaTypes\Video\Video.cs" />
+    <Compile Include="MediaTypes\Audio\Voice.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="paket.references" />
@@ -68,4 +68,5 @@
       <Paket>True</Paket>
     </Analyzer>
   </ItemGroup>
+  <ItemGroup />
 </Project>
