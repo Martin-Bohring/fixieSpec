@@ -7,8 +7,8 @@
     <ProjectGuid>{3E6D16B8-0C61-4AE1-9C21-2C9CDFF20176}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AV.Domain.Specifications</RootNamespace>
-    <AssemblyName>AV.Domain.Specifications</AssemblyName>
+    <RootNamespace>AV.Specifications</RootNamespace>
+    <AssemblyName>AV.Specifications</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
