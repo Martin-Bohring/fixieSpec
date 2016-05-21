@@ -228,7 +228,7 @@ namespace FixieSpec.Tests
                 throw new ShouldBeUnreachableException();
             }
 
-            public void And_then_a_second_result_can_also_not_be_verified()
+            public void And_then_another_result_can_also_not_be_verified()
             {
                 throw new ShouldBeUnreachableException();
             }
@@ -253,7 +253,7 @@ namespace FixieSpec.Tests
                 throw new ShouldBeUnreachableException();
             }
 
-            public void And_then_a_second_result_can_also_not_be_verified()
+            public void And_then_another_result_can_also_not_be_verified()
             {
                 throw new ShouldBeUnreachableException();
             }
@@ -291,7 +291,7 @@ namespace FixieSpec.Tests
             }
 
             [Inconclusive]
-            public void Then_a_result_can_be_verified()
+            public void Then_an_inconclusive_result_is_skipped()
             {
                 throw new ShouldBeUnreachableException();
             }
