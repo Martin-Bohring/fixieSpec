@@ -96,11 +96,30 @@ namespace FixieSpec.Tests
             executionResult.Failed.ShouldBe(2);
         }
 
-        public void ShouldDetectInconclusiveSpecifications()
+        public void ShouldRecognizenInconclusiveSpecifications()
         {
             var executionResult = Execute<InconclusiveExampleSpecification>();
 
             executionResult.Skipped.ShouldBe(1);
+        }
+        
+        public void ShouldRecognizeInconclusiveAssertionSteps()
+        {
+            var executionResult = Execute<InconclusiveStepExampleSpecification>();
+
+            executionResult.Total.ShouldBe(2);
+            executionResult.Skipped.ShouldBe(1);
+            executionResult.Passed.ShouldBe(1);
+        }
+
+        public void ShouldNotExecuteInconclusiveAssertionSteps()
+        {
+            var executionResult = Execute<InconclusiveStepExampleSpecification>();
+
+            executionResult.ConsoleOutput.ShouldEqual(
+                "Given_a_specification_context",
+                "When_exercising_the_system_under_test",
+                "And_then_another_result_can_be_verified");
         }
 
         class ExampleSpecification
@@ -256,6 +275,30 @@ namespace FixieSpec.Tests
             public void Then_a_result_can_be_verified()
             {
                 throw new ShouldBeUnreachableException();
+            }
+        }
+
+        class InconclusiveStepExampleSpecification
+        {
+            public void Given_a_specification_context()
+            {
+                WhereAmI();
+            }
+
+            public void When_exercising_the_system_under_test()
+            {
+                WhereAmI();
+            }
+
+            [Inconclusive]
+            public void Then_a_result_can_be_verified()
+            {
+                throw new ShouldBeUnreachableException();
+            }
+
+            public void And_then_another_result_can_be_verified()
+            {
+                WhereAmI();
             }
         }
 

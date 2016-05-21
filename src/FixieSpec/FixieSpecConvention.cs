@@ -34,7 +34,8 @@ namespace FixieSpec
                 .SortCases((firstCase, secondCase) => DeclarationOrderComparer.Default.Compare(firstCase.Method, secondCase.Method));
 
             CaseExecution
-                .Skip(SkipWhenSpecificationIsInconclusive);
+                .Skip(SkipWhenSpecificationIsInconclusive)
+                .Skip(SkipWhenAssertionStepInconclusive);
 
             FixtureExecution
                 .Wrap(new CallSpecificationSteps((method) => method.IsTransitionStep()))
@@ -44,6 +45,11 @@ namespace FixieSpec
         static bool SkipWhenSpecificationIsInconclusive(Case @case)
         {
             return @case.Method.DeclaringType.Has<InconclusiveAttribute>();
+        }
+
+        static bool SkipWhenAssertionStepInconclusive(Case @case)
+        {
+            return @case.Method.Has<InconclusiveAttribute>();
         }
 
         class CallSpecificationSteps : FixtureBehavior
