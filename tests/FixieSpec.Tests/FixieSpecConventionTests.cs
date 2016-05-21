@@ -96,6 +96,13 @@ namespace FixieSpec.Tests
             executionResult.Failed.ShouldBe(2);
         }
 
+        public void ShouldDetectInconclusiveSpecifications()
+        {
+            var executionResult = Execute<InconclusiveExampleSpecification>();
+
+            executionResult.Skipped.ShouldBe(1);
+        }
+
         class ExampleSpecification
         {
             public void Given_a_specification_context()
@@ -233,6 +240,25 @@ namespace FixieSpec.Tests
             }
         }
 
+        [Inconclusive]
+        class InconclusiveExampleSpecification
+        {
+            public void Given_a_specification_context()
+            {
+                WhereAmI();
+            }
+
+            public void When_exercising_the_system_under_test()
+            {
+                WhereAmI();
+            }
+
+            public void Then_a_result_can_be_verified()
+            {
+                throw new ShouldBeUnreachableException();
+            }
+        }
+
         static SpecificationExecutionResult Execute<TSampleTestClass>()
         {
             using (var console = new RedirectedConsole())
@@ -265,6 +291,8 @@ namespace FixieSpec.Tests
             public int Passed => allResults.Passed;
 
             public int Failed => allResults.Failed;
+
+            public int Skipped => allResults.Skipped;
 
             public int Total => allResults.Total;
         }

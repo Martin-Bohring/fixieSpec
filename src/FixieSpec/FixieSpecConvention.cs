@@ -33,9 +33,17 @@ namespace FixieSpec
                 .CreateInstancePerClass()
                 .SortCases((firstCase, secondCase) => DeclarationOrderComparer.Default.Compare(firstCase.Method, secondCase.Method));
 
+            CaseExecution
+                .Skip(SkipWhenSpecificationIsInconclusive);
+
             FixtureExecution
                 .Wrap(new CallSpecificationSteps((method) => method.IsTransitionStep()))
                 .Wrap(new CallSpecificationSteps((method) => method.IsSetupStep()));
+        }
+
+        static bool SkipWhenSpecificationIsInconclusive(Case @case)
+        {
+            return @case.Method.DeclaringType.Has<InconclusiveAttribute>();
         }
 
         class CallSpecificationSteps : FixtureBehavior
