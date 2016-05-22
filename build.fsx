@@ -50,6 +50,9 @@ let artifactsDir = "artifacts"
 // Pattern specifying assemblies to be tested
 let testAssemblies = buildDir + "/*Tests*.dll"
 
+// Pattern specifying assemblies with specifications
+let specAssemblies = buildDir + "/*Specifications*.dll"
+
 // The url for the raw files hosted
 let gitRaw = environVarOrDefault "gitRaw" "https://raw.github.com/Martin-Bohring"
 
@@ -121,6 +124,15 @@ Target "RunTests" (fun _ ->
         { p with  TimeOut = TimeSpan.FromMinutes 20. })
 )
 
+// --------------------------------------------------------------------------------------
+// Run the specifications using test runner
+
+Target "RunSpecifications" (fun _ ->
+    !! specAssemblies
+    |> Fixie (fun p ->
+        { p with  TimeOut = TimeSpan.FromMinutes 20. })
+)
+
 #if MONO
 #else
 // --------------------------------------------------------------------------------------
@@ -160,6 +172,7 @@ Target "All" DoNothing
   ==> "AssemblyInfo"
   ==> "Build"
   ==> "RunTests"
+  ==> "RunSpecifications"
   ==> "All"
 
 "All"
