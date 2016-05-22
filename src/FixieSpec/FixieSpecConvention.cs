@@ -35,7 +35,7 @@ namespace FixieSpec
 
             CaseExecution
                 .Skip(SkipWhenSpecificationIsInconclusive)
-                .Skip(SkipWhenAssertionStepInconclusive);
+                .Skip(SkipWhenAssertionStepIsInconclusive);
 
             FixtureExecution
                 .Wrap(new ExecuteSpecificationSteps((method) => method.IsTransitionStep()))
@@ -47,7 +47,7 @@ namespace FixieSpec
             return @case.Method.DeclaringType.Has<InconclusiveAttribute>();
         }
 
-        static bool SkipWhenAssertionStepInconclusive(Case @case)
+        static bool SkipWhenAssertionStepIsInconclusive(Case @case)
         {
             return @case.Method.Has<InconclusiveAttribute>();
         }
@@ -56,9 +56,9 @@ namespace FixieSpec
         {
             readonly Func<MethodInfo, bool> stepSelector;
 
-            public ExecuteSpecificationSteps(Func<MethodInfo, bool> predicate)
+            public ExecuteSpecificationSteps(Func<MethodInfo, bool> stepPredicate)
             {
-                stepSelector = predicate;
+                stepSelector = stepPredicate;
             }
 
             public void Execute(Fixture context, Action next)
