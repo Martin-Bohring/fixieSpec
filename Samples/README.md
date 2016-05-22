@@ -17,13 +17,50 @@ Think about your Smartphone. What can it do for you. A lot it seems:
 - Playing recorded voice
 - All of that using the headset or the speaker and a microphone.
 
+Another example of the same domain could be a sophisticated living room.
+You have your TV set, your surround system, maybe a room microphone, a webcam etc.
+
 ## What is specified using fixieSpec ##
-All of those uses cases above are competing for the same resources like:
+All of those uses cases above are competing for the same resources (devices?) like:
 
-- Speaker
-- Microphone
-- Camera
+- Speakers
+- Microphones
+- Cameras
 
-So everybody knows the domain and it is complex enough to serve as an example, but not too complex.
+Some of them are used exclusivly by a use case, some can be shared.
+Some deal with life media types (low latency, minimal buffering),
+some use recorded media types (extensive buffering less of a problem)
+
+So most people know the domain and it is complex enough to serve as an example, but not too complex.
+
+The following use cases are used as an example:
+
+### Voice Phone calls ###
+- Taking a voice phone call in headphone mode (using the builtin headset)
+- Making a voice phone call in headphone mode
+- Rejecting a voice phone call
+- Taking a voice phone call in speaker phone mode (using the builtin speaker and microphone)
+- Making a voice phone call in speaker phone mode
+- Making a voice phone call that is rejected by the callee.
+
+### Media recording ###
+- Recording a video
+- Taking a picture
+- Recording a voice memo
+
+### Playing music ###
+- Playing music on a headset (external device that may or might not be present)
+- Paying music on the internal speaker 
+- Playing music on an external speaker (also external device that may or might not be present)
+
+### Media playback ###
+- Playing a recorded video
+- Playing a recorded voice memo
+- Resuming playback after taking or making a phone call
+
+
+
+
+
 
 
