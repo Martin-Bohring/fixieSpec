@@ -6,9 +6,11 @@
 namespace AV.Domain.MediaTypes.Audio
 {
     /// <summary>
-    /// A class that represents an audio media type.
+    /// A class that represents a music media type.
     /// </summary>
-    public abstract class Audio : MediaTypeBase
+    public class MusicMediaType : AudioMediaType
     {
+        /// <inheritdoc/>
+        public override bool IsLive => false;
     }
 }

@@ -7,18 +7,18 @@ namespace AV.Domain.MediaTypes.Video.Tests
 {
     using Shouldly;
 
-    public sealed class RecordedVideoTests
+    public sealed class LifeVideoTests
     {
-        readonly RecordedVideo testee = new RecordedVideo();
+        readonly LifeVideoMediaType testee = new LifeVideoMediaType();
 
         public void SutIsVideo()
         {
-            testee.ShouldBeAssignableTo<Video>();
+            testee.ShouldBeAssignableTo<VideoTypeType>();
         }
 
-        public void ShouldNotBeLife()
+        public void ShouldBeLife()
         {
-            testee.IsLive.ShouldBe(false);
+            testee.IsLive.ShouldBe(true);
         }
     }
 }

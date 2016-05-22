@@ -3,12 +3,12 @@
 // Licensed under the MIT license. See LICENSE.txt file in the project root for full license information.
 // </copyright>
 
-namespace AV.Domain.MediaTypes.Video
+namespace AV.Domain.MediaTypes.Audio
 {
     /// <summary>
-    /// A class that represents a video media type.
+    /// A class that represents an audio media type.
     /// </summary>
-    public abstract class Video : MediaTypeBase
+    public abstract class AudioMediaType : MediaTypeBase
     {
     }
 }

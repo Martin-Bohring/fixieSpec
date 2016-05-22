@@ -7,18 +7,18 @@ namespace AV.Domain.MediaTypes.Audio.Tests
 {
     using Shouldly;
 
-    public sealed class VoiceTests
+    public sealed class MusicMediaTypeTests
     {
-        readonly Voice testee = new Voice();
+        readonly MusicMediaType testee = new MusicMediaType();
 
         public void SutIsAudio()
         {
-            testee.ShouldBeAssignableTo<Audio>();
+            testee.ShouldBeAssignableTo<AudioMediaType>();
         }
 
-        public void ShouldBeLife()
+        public void ShouldNotBeLife()
         {
-            testee.IsLive.ShouldBe(true);
+            testee.IsLive.ShouldBe(false);
         }
     }
 }
