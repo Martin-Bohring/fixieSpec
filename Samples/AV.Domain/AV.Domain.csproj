@@ -37,7 +37,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MediaTypes\Audio\Audio.cs" />
-    <Compile Include="MediaTypes\MediaBase.cs" />
+    <Compile Include="MediaTypes\MediaTypeBase.cs" />
     <Compile Include="MediaTypes\Audio\Music.cs" />
     <Compile Include="MediaTypes\Video\RecordedVideo.cs" />
     <Compile Include="MediaTypes\Video\LifeVideo.cs" />

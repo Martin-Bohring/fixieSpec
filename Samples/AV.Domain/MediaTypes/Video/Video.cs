@@ -8,7 +8,7 @@ namespace AV.Domain.MediaTypes.Video
     /// <summary>
     /// A class that represents a video media type.
     /// </summary>
-    public abstract class Video : MediaBase
+    public abstract class Video : MediaTypeBase
     {
     }
 }

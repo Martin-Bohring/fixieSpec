@@ -8,7 +8,7 @@ namespace AV.Domain.MediaTypes
     /// <summary>
     /// A base class for media types.
     /// </summary>
-    public abstract class MediaBase
+    public abstract class MediaTypeBase
     {
         /// <summary>
         /// Gets a value indicating whether this is a life media type.

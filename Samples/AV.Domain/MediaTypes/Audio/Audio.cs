@@ -8,7 +8,7 @@ namespace AV.Domain.MediaTypes.Audio
     /// <summary>
     /// A class that represents an audio media type.
     /// </summary>
-    public abstract class Audio : MediaBase
+    public abstract class Audio : MediaTypeBase
     {
     }
 }
