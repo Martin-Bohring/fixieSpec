@@ -7,8 +7,8 @@ Therefore I was looking for something different that still allows to test drive 
 
 Think about your Smartphone. What can it do for you. A lot it seems:
 
-- Taking and making phone calls (really, I didn't know my phone can do that)
-- Taking and making video calls using different apps
+- Answering and making phone calls (really, I didn't know my phone can do that)
+- Answering and making video calls using different apps
 - Taking pictures
 - Recording videos
 - Voice recording
@@ -36,10 +36,10 @@ So most people know the domain and it is complex enough to serve as an example, 
 The following use cases are used as an example:
 
 ### Voice Phone calls ###
-- Taking a voice phone call in headphone mode (using the builtin headset)
+- Answer a voice phone call in headphone mode (using the builtin headset)
 - Making a voice phone call in headphone mode
 - Rejecting a voice phone call
-- Taking a voice phone call in speaker phone mode (using the builtin speaker and microphone)
+- Answer a voice phone call in speaker phone mode (using the builtin speaker and microphone)
 - Making a voice phone call in speaker phone mode
 - Making a voice phone call that is rejected by the callee.
 

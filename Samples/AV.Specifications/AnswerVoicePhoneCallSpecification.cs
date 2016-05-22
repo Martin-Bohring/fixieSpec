@@ -8,7 +8,7 @@ namespace AV.Specifications
     using FixieSpec;
 
     [Inconclusive]
-    public class TakingVoicePhoneCallSpecification
+    public class AnswerVoicePhoneCallSpecification
     {
         public void When_the_phone_rings()
         {

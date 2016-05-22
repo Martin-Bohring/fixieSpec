@@ -35,7 +35,7 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="TakingVoicePhoneCallSpecification.cs" />
+    <Compile Include="AnswerVoicePhoneCallSpecification.cs" />
     <Compile Include="UseFixieSpec.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MakingVoicePhoneCallSpecification.cs" />
