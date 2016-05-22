@@ -5,7 +5,10 @@
 
 namespace AV.Specifications
 {
-    class MakingVoicePhoneCallSpecification
+    using FixieSpec;
+
+    [Inconclusive]
+    public class MakingVoicePhoneCallSpecification
     {
         public void When_dialing_the_number_of_the_callee()
         {
