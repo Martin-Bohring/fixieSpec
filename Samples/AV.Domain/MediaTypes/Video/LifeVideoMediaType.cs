@@ -8,7 +8,7 @@ namespace AV.Domain.MediaTypes.Video
     /// <summary>
     /// A class that represents a life video media type.
     /// </summary>
-    public class LifeVideoMediaType : VideoTypeType
+    public class LifeVideoMediaType : VideoMediaType
     {
         /// <inheritdoc/>
         public override bool IsLive => true;

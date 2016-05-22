@@ -13,7 +13,7 @@ namespace AV.Domain.MediaTypes.Video.Tests
 
         public void SutIsVideo()
         {
-            testee.ShouldBeAssignableTo<VideoTypeType>();
+            testee.ShouldBeAssignableTo<VideoMediaType>();
         }
 
         public void ShouldNotBeLife()

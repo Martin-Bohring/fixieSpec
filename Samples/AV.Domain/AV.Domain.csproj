@@ -44,7 +44,7 @@
     <Compile Include="MediaTypes\Audio\MusicMediaType.cs" />
     <Compile Include="MediaTypes\Video\RecordedVideoMediaType.cs" />
     <Compile Include="MediaTypes\Video\LifeVideoMediaType.cs" />
-    <Compile Include="MediaTypes\Video\VideoTypeType.cs" />
+    <Compile Include="MediaTypes\Video\VideoMediaType.cs" />
     <Compile Include="MediaTypes\Audio\VoiceMediaType.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -58,6 +58,7 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <Import Project="..\..\.paket\paket.targets" />
   <ItemGroup>
     <Analyzer Include="..\..\packages\build\codecracker.CSharp\analyzers\dotnet\cs\CodeCracker.CSharp.dll">
       <Paket>True</Paket>
@@ -71,6 +72,4 @@
       <Paket>True</Paket>
     </Analyzer>
   </ItemGroup>
-  <ItemGroup />
-  <Import Project="..\..\.paket\paket.targets" />
 </Project>

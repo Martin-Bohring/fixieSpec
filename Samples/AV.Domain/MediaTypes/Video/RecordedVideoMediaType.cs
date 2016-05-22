@@ -8,7 +8,7 @@ namespace AV.Domain.MediaTypes.Video
     /// <summary>
     /// a class that represents a recorded video media type.
     /// </summary>
-    public class RecordedVideoMediaType : VideoTypeType
+    public class RecordedVideoMediaType : VideoMediaType
     {
         /// <inheritdoc/>
         public override bool IsLive => false;
