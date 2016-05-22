@@ -8,9 +8,9 @@ namespace AV.Specifications
     using Fixie;
     using FixieSpec;
 
-    class AVSpecificationsAssembly : TestAssembly
+    class UseFixieSpec : TestAssembly
     {
-        public AVSpecificationsAssembly()
+        public UseFixieSpec()
         {
             Apply<FixieSpecConvention>();
         }
