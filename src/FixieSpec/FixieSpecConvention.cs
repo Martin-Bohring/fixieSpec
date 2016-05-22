@@ -38,8 +38,8 @@ namespace FixieSpec
                 .Skip(SkipWhenAssertionStepInconclusive);
 
             FixtureExecution
-                .Wrap(new CallSpecificationSteps((method) => method.IsTransitionStep()))
-                .Wrap(new CallSpecificationSteps((method) => method.IsSetupStep()));
+                .Wrap(new ExecuteSpecificationSteps((method) => method.IsTransitionStep()))
+                .Wrap(new ExecuteSpecificationSteps((method) => method.IsSetupStep()));
         }
 
         static bool SkipWhenSpecificationIsInconclusive(Case @case)
@@ -52,11 +52,11 @@ namespace FixieSpec
             return @case.Method.Has<InconclusiveAttribute>();
         }
 
-        class CallSpecificationSteps : FixtureBehavior
+        class ExecuteSpecificationSteps : FixtureBehavior
         {
             readonly Func<MethodInfo, bool> stepSelector;
 
-            public CallSpecificationSteps(Func<MethodInfo, bool> predicate)
+            public ExecuteSpecificationSteps(Func<MethodInfo, bool> predicate)
             {
                 stepSelector = predicate;
             }
