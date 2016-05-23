@@ -36,7 +36,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Devices\Audio\Headset.cs" />
-    <Compile Include="Devices\Audio\IAudioSource.cs" />
+    <Compile Include="Devices\Audio\IConsumeAudio.cs" />
+    <Compile Include="Devices\Audio\IProduceAudio.cs" />
     <Compile Include="Devices\Audio\Microphone.cs" />
     <Compile Include="Devices\Audio\Speaker.cs" />
     <Compile Include="MediaTypes\Audio\SilenceMediaType.cs" />

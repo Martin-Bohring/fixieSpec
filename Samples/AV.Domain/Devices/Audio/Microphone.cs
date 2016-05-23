@@ -3,15 +3,14 @@
 // Licensed under the MIT license. See LICENSE.txt file in the project root for full license information.
 // </copyright>
 
-using System;
-using AV.Domain.MediaTypes.Audio;
-
 namespace AV.Domain.Devices.Audio
 {
+    using MediaTypes.Audio;
+
     /// <summary>
     /// A class that represents a microphone.
     /// </summary>
-    public abstract class Microphone : IAudioSource
+    public abstract class Microphone : IProduceAudio
     {
         /// <inheritdoc/>
         public AudioMediaType GetSourceMediaType()

@@ -8,9 +8,9 @@ namespace AV.Domain.Devices.Audio
     using MediaTypes.Audio;
 
     /// <summary>
-    /// A souce of audio media types.
+    /// A souce of audio media of a given type.
     /// </summary>
-    public interface IAudioSource
+    public interface IProduceAudio
     {
         /// <summary>
         /// Gets the <see cref="AudioMediaType"/> the audio source is currently creating.

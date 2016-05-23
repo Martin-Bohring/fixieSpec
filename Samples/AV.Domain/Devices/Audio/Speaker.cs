@@ -5,10 +5,16 @@
 
 namespace AV.Domain.Devices.Audio
 {
+    using MediaTypes.Audio;
+
     /// <summary>
     /// A class that represents a speaker.
     /// </summary>
-    public abstract class Speaker
+    public abstract class Speaker : IConsumeAudio
     {
+        public bool CanConsume(AudioMediaType audioMedia)
+        {
+            return false;
+        }
     }
 }

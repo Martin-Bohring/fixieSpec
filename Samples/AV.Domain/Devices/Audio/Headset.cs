@@ -5,18 +5,21 @@
 
 namespace AV.Domain.Devices.Audio
 {
+    using MediaTypes.Audio;
+
     /// <summary>
     /// A headset is a device combining a speaker and a microphone.
     /// </summary>
-    public class Headset
+    public class Headset : IConsumeAudio, IProduceAudio
     {
-        readonly Speaker headsetSpeaker;
-        readonly Microphone headsetMicrophone;
-
-        public Headset (Microphone headsetMicrophone, Speaker headsetSpeaker)
+        public bool CanConsume(AudioMediaType audioMedia)
         {
-            this.headsetMicrophone = headsetMicrophone;
-            this.headsetSpeaker = headsetSpeaker;
+            return false;
+        }
+
+        public AudioMediaType GetSourceMediaType()
+        {
+            return new SilenceMediaType();
         }
     }
 }
