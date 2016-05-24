@@ -3,12 +3,14 @@
 // Licensed under the MIT license. See LICENSE.txt file in the project root for full license information.
 // </copyright>
 
-namespace AV.Domain.MediaTypes.Audio
+namespace AV.Domain.Audio
 {
     /// <summary>
-    /// A class that represents an audio media type.
+    /// A class that represents a human voice media type.
     /// </summary>
-    public abstract class AudioMediaType : MediaTypeBase
+    public class VoiceMediaType : AudioMediaType
     {
+        /// <inheritdoc/>
+        public override bool IsLive => true;
     }
 }

@@ -3,7 +3,7 @@
 // Licensed under the MIT license. See LICENSE.txt file in the project root for full license information.
 // </copyright>
 
-namespace AV.Domain.MediaTypes.Audio.Tests
+namespace AV.Domain.Audio.Tests
 {
     using Shouldly;
 

@@ -35,20 +35,20 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Devices\Audio\Headset.cs" />
-    <Compile Include="Devices\Audio\IConsumeAudio.cs" />
-    <Compile Include="Devices\Audio\IProduceAudio.cs" />
-    <Compile Include="Devices\Audio\Microphone.cs" />
-    <Compile Include="Devices\Audio\Speaker.cs" />
-    <Compile Include="MediaTypes\Audio\SilenceMediaType.cs" />
+    <Compile Include="Audio\Headset.cs" />
+    <Compile Include="Audio\IConsumeAudio.cs" />
+    <Compile Include="Audio\IProduceAudio.cs" />
+    <Compile Include="Audio\Microphone.cs" />
+    <Compile Include="Audio\Speaker.cs" />
+    <Compile Include="Audio\SilenceMediaType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="MediaTypes\Audio\AudioMediaType.cs" />
-    <Compile Include="MediaTypes\MediaTypeBase.cs" />
-    <Compile Include="MediaTypes\Audio\MusicMediaType.cs" />
-    <Compile Include="MediaTypes\Video\RecordedVideoMediaType.cs" />
-    <Compile Include="MediaTypes\Video\LifeVideoMediaType.cs" />
-    <Compile Include="MediaTypes\Video\VideoMediaType.cs" />
-    <Compile Include="MediaTypes\Audio\VoiceMediaType.cs" />
+    <Compile Include="Audio\AudioMediaType.cs" />
+    <Compile Include="MediaTypeBase.cs" />
+    <Compile Include="Audio\MusicMediaType.cs" />
+    <Compile Include="Video\RecordedVideoMediaType.cs" />
+    <Compile Include="Video\LifeVideoMediaType.cs" />
+    <Compile Include="Video\VideoMediaType.cs" />
+    <Compile Include="Audio\VoiceMediaType.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="paket.references" />
@@ -75,4 +75,5 @@
       <Paket>True</Paket>
     </Analyzer>
   </ItemGroup>
+  <ItemGroup />
 </Project>

@@ -3,17 +3,17 @@
 // Licensed under the MIT license. See LICENSE.txt file in the project root for full license information.
 // </copyright>
 
-namespace AV.Domain.MediaTypes.Video.Tests
+namespace AV.Domain.Audio.Tests
 {
     using Shouldly;
 
-    public sealed class RecordedVideoTests
+    public sealed class MusicMediaTypeTests
     {
-        readonly RecordedVideoMediaType testee = new RecordedVideoMediaType();
+        readonly MusicMediaType testee = new MusicMediaType();
 
-        public void SutIsVideo()
+        public void SutIsAudio()
         {
-            testee.ShouldBeAssignableTo<VideoMediaType>();
+            testee.ShouldBeAssignableTo<AudioMediaType>();
         }
 
         public void ShouldNotBeLife()

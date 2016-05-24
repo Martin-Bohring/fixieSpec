@@ -3,10 +3,8 @@
 // Licensed under the MIT license. See LICENSE.txt file in the project root for full license information.
 // </copyright>
 
-namespace AV.Domain.Devices.Audio
+namespace AV.Domain.Audio
 {
-    using MediaTypes.Audio;
-
     /// <summary>
     /// A consumer of audio media types.
     /// </summary>

@@ -3,16 +3,14 @@
 // Licensed under the MIT license. See LICENSE.txt file in the project root for full license information.
 // </copyright>
 
-namespace AV.Domain.MediaTypes.Audio
+namespace AV.Domain.Audio
 {
     /// <summary>
-    /// A class that represents an audio silence media type.
+    /// A class that represents a music media type.
     /// </summary>
-    /// <remarks>
-    /// This is moe a less the null type for <see cref="AudioMediaType"/>´s.
-    /// </remarks>
-    public class SilenceMediaType : AudioMediaType
+    public class MusicMediaType : AudioMediaType
     {
+        /// <inheritdoc/>
         public override bool IsLive => false;
     }
 }

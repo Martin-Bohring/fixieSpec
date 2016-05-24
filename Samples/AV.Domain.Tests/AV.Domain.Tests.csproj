@@ -37,10 +37,10 @@
   <ItemGroup>
     <Compile Include="AVDomainTestConventions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="MediaTypes\Audio\MusicMediaTypeTests.cs" />
-    <Compile Include="MediaTypes\Video\RecordedVideoMediaTypeTests.cs" />
-    <Compile Include="MediaTypes\Video\LifeVideoMediaTypeTests.cs" />
-    <Compile Include="MediaTypes\Audio\VoiceMediaTypeTests.cs" />
+    <Compile Include="Audio\MusicMediaTypeTests.cs" />
+    <Compile Include="Video\RecordedVideoMediaTypeTests.cs" />
+    <Compile Include="Video\LifeVideoMediaTypeTests.cs" />
+    <Compile Include="Audio\VoiceMediaTypeTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AV.Domain\AV.Domain.csproj">

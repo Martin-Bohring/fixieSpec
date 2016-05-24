@@ -3,14 +3,16 @@
 // Licensed under the MIT license. See LICENSE.txt file in the project root for full license information.
 // </copyright>
 
-namespace AV.Domain.MediaTypes.Audio
+namespace AV.Domain.Audio
 {
     /// <summary>
-    /// A class that represents a music media type.
+    /// A class that represents a speaker.
     /// </summary>
-    public class MusicMediaType : AudioMediaType
+    public abstract class Speaker : IConsumeAudio
     {
-        /// <inheritdoc/>
-        public override bool IsLive => false;
+        public bool CanConsume(AudioMediaType audioMedia)
+        {
+            return false;
+        }
     }
 }
