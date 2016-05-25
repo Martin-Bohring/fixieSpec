@@ -18,6 +18,7 @@ namespace Media.Domain.Tests
         [Input("Media.Specifications")]
         [Input("Media.Domain.Tests")]
         [Input("Shouldly")]
+        [Input("FixieSpec")]
         public void ShouldNotReference(string assemblyName)
         {
             var references = typeof(DeviceId).Assembly.GetReferencedAssemblies();
