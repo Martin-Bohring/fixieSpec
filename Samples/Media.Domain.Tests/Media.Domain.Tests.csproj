@@ -43,7 +43,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AV.Domain\Media.Domain.csproj">
+    <ProjectReference Include="..\Media.Domain\Media.Domain.csproj">
       <Project>{0518f8cb-c6b8-4b63-b820-ad11481e3c2f}</Project>
       <Name>Media.Domain</Name>
     </ProjectReference>
