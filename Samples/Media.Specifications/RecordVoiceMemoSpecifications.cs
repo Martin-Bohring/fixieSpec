@@ -16,6 +16,7 @@ namespace Media.Specifications
 
         public void Given_a_microphone_is_available()
         {
+            microphone.MakeAvailable();
         }
 
         public void When_the_microphone_is_selected_for_voice_memo_recording()

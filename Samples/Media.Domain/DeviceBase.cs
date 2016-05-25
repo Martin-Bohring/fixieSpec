@@ -10,6 +10,8 @@ namespace Media.Domain
     /// </summary>
     public abstract class DeviceBase
     {
+        DeviceRole roleInActivity = DeviceRole.Idle;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="DeviceBase"/> class.
         /// </summary>
@@ -25,5 +27,13 @@ namespace Media.Domain
         /// Gets the <see cref="DeviceId"/> of the device.
         /// </summary>
         public DeviceId DeviceId { get; private set; }
+
+        /// <summary>
+        /// Makes the device available.
+        /// </summary>
+        public void MakeAvailable()
+        {
+            roleInActivity = DeviceRole.Idle;
+        }
     }
 }
