@@ -42,6 +42,8 @@
     <Compile Include="Audio\Speaker.cs" />
     <Compile Include="Audio\SilenceMediaType.cs" />
     <Compile Include="DeviceId.cs" />
+    <Compile Include="DeviceState.cs" />
+    <Compile Include="MediaDeviceBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Audio\AudioMediaType.cs" />
     <Compile Include="MediaTypeBase.cs" />
