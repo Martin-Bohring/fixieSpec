@@ -5,6 +5,9 @@
 
 namespace AV.Domain
 {
+    /// <summary>
+    /// Describes the state of a media device.
+    /// </summary>
     public enum DeviceState
     {
         /// <summary>

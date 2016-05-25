@@ -1,13 +1,13 @@
 # About the Sample #
 This is a different sample then you are used to.
 
-## Why Audio Video ##
+## Why an example about multi media ##
 I am sick of all the bank account and calculator samples.
 Therefore I was looking for something different that still allows to test drive fixieSpec.
 
 Think about your Smartphone. What can it do for you. A lot it seems:
 
-- Answering and making phone calls (really, I didn't know my phone can do that)
+- Answering and making phone calls (really, I didn't know my smart phone can do that)
 - Answering and making video calls using different apps
 - Taking pictures
 - Recording videos

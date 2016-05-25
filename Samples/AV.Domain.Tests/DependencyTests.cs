@@ -3,7 +3,7 @@
 // Licensed under the MIT license. See LICENSE.txt file in the project root for full license information.
 // </copyright>
 
-namespace AV.Domain.Tests
+namespace Media.Domain.Tests
 {
     using System;
     using System.Linq;
@@ -15,8 +15,8 @@ namespace AV.Domain.Tests
     public sealed class DependencyTests
     {
         [Input("FakeItEasy")]
-        [Input("AV.Specifications")]
-        [Input("AV.Domain.Tests")]
+        [Input("Media.Specifications")]
+        [Input("Media.Domain.Tests")]
         [Input("Shouldly")]
         public void ShouldNotReference(string assemblyName)
         {

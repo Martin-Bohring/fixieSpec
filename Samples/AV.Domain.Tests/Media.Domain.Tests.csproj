@@ -7,8 +7,8 @@
     <ProjectGuid>{FBBB3E95-B84B-4244-8BED-BACE31F8772C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AV.Domain.Tests</RootNamespace>
-    <AssemblyName>AV.Domain.Tests</AssemblyName>
+    <RootNamespace>Media.Domain.Tests</RootNamespace>
+    <AssemblyName>Media.Domain.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -43,9 +43,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AV.Domain\AV.Domain.csproj">
+    <ProjectReference Include="..\AV.Domain\Media.Domain.csproj">
       <Project>{0518f8cb-c6b8-4b63-b820-ad11481e3c2f}</Project>
-      <Name>AV.Domain</Name>
+      <Name>Media.Domain</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
