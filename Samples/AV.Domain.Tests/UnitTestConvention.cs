@@ -8,10 +8,11 @@ namespace AV.Domain.Tests
     using System.Linq;
 
     using Fixie;
+    using Shouldly;
 
-    public class AVDomainTestConventions : Convention
+    public class UnitTestConvention : Convention
     {
-        public AVDomainTestConventions()
+        public UnitTestConvention()
         {
             Classes
                 .NameEndsWith("Tests")
@@ -19,6 +20,13 @@ namespace AV.Domain.Tests
                 .All(constructorInfo => !constructorInfo.GetParameters().Any()));
 
             Methods.Where(method => method.IsPublic && method.IsVoid());
+
+            Parameters
+                .Add<InputAttributeParameterSource>();
+
+            HideExceptionDetails
+                        .For<ShouldAssertException>()
+                        .For<ShouldCompleteInException>();
         }
     }
 }
