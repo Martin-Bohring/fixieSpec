@@ -35,23 +35,10 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Audio\Headset.cs" />
-    <Compile Include="Audio\IConsumeAudio.cs" />
-    <Compile Include="Audio\IProduceAudio.cs" />
-    <Compile Include="Audio\Microphone.cs" />
-    <Compile Include="Audio\Speaker.cs" />
-    <Compile Include="Audio\SilenceMediaType.cs" />
     <Compile Include="DeviceId.cs" />
     <Compile Include="DeviceState.cs" />
     <Compile Include="MediaDeviceBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Audio\AudioMediaType.cs" />
-    <Compile Include="MediaTypeBase.cs" />
-    <Compile Include="Audio\MusicMediaType.cs" />
-    <Compile Include="Video\RecordedVideoMediaType.cs" />
-    <Compile Include="Video\LifeVideoMediaType.cs" />
-    <Compile Include="Video\VideoMediaType.cs" />
-    <Compile Include="Audio\VoiceMediaType.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="paket.references" />
