@@ -10,11 +10,20 @@ namespace Media.Domain
     /// </summary>
     public abstract class DeviceBase
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DeviceBase"/> class.
+        /// </summary>
+        /// <param name="id">
+        /// The id of the device.
+        /// </param>
         protected DeviceBase(DeviceId id)
         {
             DeviceId = id;
         }
 
+        /// <summary>
+        /// Gets the <see cref="DeviceId"/> of the device.
+        /// </summary>
         public DeviceId DeviceId { get; private set; }
     }
 }
