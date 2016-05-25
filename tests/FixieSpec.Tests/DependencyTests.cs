@@ -18,6 +18,7 @@ namespace FixieSpec.Tests
         [Input("Ploeh.AutoFixture")]
         [Input("Ploeh.AutoFixture.AutoFakeItEasy")]
         [Input("Shouldly")]
+        [Input("FixieSpec.Tests")]
         public void ShouldNotReference(string assemblyName)
         {
             var references = typeof(FixieSpecConvention).Assembly.GetReferencedAssemblies();
