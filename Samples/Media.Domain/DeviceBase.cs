@@ -35,5 +35,25 @@ namespace Media.Domain
         {
             roleInActivity = DeviceRole.Idle;
         }
+
+        /// <summary>
+        /// Verifies if the device is available.
+        /// </summary>
+        /// <returns></returns>
+        public bool IsAvailable()
+        {
+            return roleInActivity == DeviceRole.Idle;
+        }
+
+        /// <summary>
+        /// Selects the device to assume the role given by <paramref name="roleToAssume"/>.
+        /// </summary>
+        /// <param name="roleToAssume">
+        /// The role the device needs to assume.
+        /// </param>
+        public void SelectFor(DeviceRole roleToAssume)
+        {
+            roleInActivity = roleToAssume;
+        }
     }
 }
