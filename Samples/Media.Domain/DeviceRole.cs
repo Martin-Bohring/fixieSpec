@@ -6,7 +6,7 @@
 namespace Media.Domain
 {
     /// <summary>
-    /// Describes a role a media device is currently in.
+    /// Describes the role a device plays within an activity.
     /// </summary>
     public enum DeviceRole
     {
@@ -22,6 +22,14 @@ namespace Media.Domain
         /// A background activity is for example playing music.
         /// </example>
         Background,
+
+        /// <summary>
+        /// The device is part of a playback activity
+        /// </summary>
+        /// <remarks>
+        /// Playing a recorded video is an example of a playback activity.
+        /// </remarks>
+        Playback,
 
         /// <summary>
         /// The media device is part of a media recording activity.
@@ -43,7 +51,7 @@ namespace Media.Domain
         /// The device is part of a user prompting activity.
         /// </summary>
         /// <example>
-        /// An example is playing a ringtone, indicating an incomming video conference or
+        /// An example is playing a ringtone, indicating an incoming video conference or
         /// text to speech voice output.
         /// </example>
         Prompt,
