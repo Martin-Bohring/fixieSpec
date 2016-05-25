@@ -8,9 +8,9 @@ namespace Media.Domain
     /// <summary>
     /// A base class for media devices.
     /// </summary>
-    public abstract class MediaDeviceBase
+    public abstract class DeviceBase
     {
-        protected MediaDeviceBase(DeviceId id)
+        protected DeviceBase(DeviceId id)
         {
             DeviceId = id;
         }

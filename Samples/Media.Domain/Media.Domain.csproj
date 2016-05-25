@@ -38,7 +38,7 @@
     <Compile Include="DeviceId.cs" />
     <Compile Include="DeviceRole.cs" />
     <Compile Include="DeviceState.cs" />
-    <Compile Include="MediaDeviceBase.cs" />
+    <Compile Include="DeviceBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
