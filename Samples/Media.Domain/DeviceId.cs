@@ -17,7 +17,8 @@ namespace Media.Domain
         /// <summary>
         /// Initializes a new instance of the <see cref="DeviceId"/> class.
         /// </summary>
-        public DeviceId() : this(Guid.NewGuid())
+        public DeviceId()
+            : this(Guid.NewGuid())
         {
         }
 

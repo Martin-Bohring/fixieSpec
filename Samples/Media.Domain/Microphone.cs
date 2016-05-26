@@ -3,8 +3,6 @@
 // Licensed under the MIT license. See LICENSE.txt file in the project root for full license information.
 // </copyright>
 
-using System;
-
 namespace Media.Domain
 {
     /// <summary>
@@ -15,7 +13,8 @@ namespace Media.Domain
         /// <summary>
         /// Initializes a new instance of the <see cref="Microphone"/> class.
         /// </summary>
-        public Microphone() : base(new DeviceId())
+        public Microphone()
+            : base(new DeviceId())
         {
         }
 
@@ -25,7 +24,8 @@ namespace Media.Domain
         /// <param name="id">
         /// The id of the microphone.
         /// </param>
-        public Microphone(DeviceId id) : base(id)
+        public Microphone(DeviceId id)
+            : base(id)
         {
         }
     }

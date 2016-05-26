@@ -21,7 +21,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>..\..\build\FixieSpec.XML</DocumentationFile>
-    <CodeAnalysisRuleSet>FixieSpec.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>..\..\FixieSpec.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -31,7 +31,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>..\..\build\FixieSpec.XML</DocumentationFile>
-    <CodeAnalysisRuleSet>FixieSpec.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>..\..\FixieSpec.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -47,10 +47,11 @@
     <Compile Include="StepConventions.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="FixieSpec.ruleset" />
+    <AdditionalFiles Include="..\..\stylecop.json">
+      <Link>stylecop.json</Link>
+    </AdditionalFiles>
     <None Include="paket.template" />
     <None Include="paket.references" />
-    <AdditionalFiles Include="stylecop.json" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />

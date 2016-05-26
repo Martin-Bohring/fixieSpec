@@ -39,7 +39,9 @@ namespace Media.Domain
         /// <summary>
         /// Verifies if the device is available.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>
+        /// <see langword="true"/>, if the device is a available; <see langword="false"/> otherwise.
+        /// </returns>
         public bool IsAvailable()
         {
             return roleInActivity == DeviceRole.Idle;

@@ -1,3 +1,4 @@
 group Build
+  StyleCop.Analyzers
   CodeCracker.CSharp
   RefactoringEssentials
