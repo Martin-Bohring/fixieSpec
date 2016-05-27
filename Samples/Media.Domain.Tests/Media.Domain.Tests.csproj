@@ -35,6 +35,7 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DeviceBaseTests.cs" />
     <Compile Include="MediaRecordingTests.cs" />
     <Compile Include="UnitTestConvention.cs" />
     <Compile Include="DependencyTests.cs" />
