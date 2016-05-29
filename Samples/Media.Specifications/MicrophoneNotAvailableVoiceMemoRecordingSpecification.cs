@@ -14,22 +14,22 @@ namespace Media.Specifications
 
         MediaRecording voiceMemoRecording;
 
-        public void Given_a_microphone_is_not_available()
-        {
-            microphone.SelectFor(DeviceRole.Communication);
-        }
-
-        public void When_the_microphone_is_used_for_voice_memo_recording()
+        public MicrophoneNotAvailableVoiceMemoRecordingSpecification()
         {
             voiceMemoRecording = new MediaRecording(microphone);
         }
 
-        public void Then_the_voice_recording_could_not_be_started()
+        public void Given_the_microphone_is_not_available()
+        {
+            microphone.SelectFor(DeviceRole.Communication);
+        }
+
+        public void When_the_voice_recording_is_started()
         {
             voiceMemoRecording.StartRecording().ShouldBeFalse();
         }
 
-        public void And_then_the_voice_recording_should_not_be_recording()
+        public void Then_the_voice_recording_should_not_be_recording()
         {
             voiceMemoRecording.IsRecording().ShouldBeFalse();
         }
