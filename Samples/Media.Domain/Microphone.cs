@@ -28,5 +28,16 @@ namespace Media.Domain
             : base(id)
         {
         }
+
+        /// <inheritdoc/>
+        public override bool SelectFor(DeviceRole roleToAssume)
+        {
+            if (IsAvailable())
+            {
+                return base.SelectFor(roleToAssume);
+            }
+
+            return false;
+        }
     }
 }

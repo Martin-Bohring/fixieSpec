@@ -37,6 +37,7 @@
   <ItemGroup>
     <Compile Include="DeviceBaseTests.cs" />
     <Compile Include="MediaRecordingTests.cs" />
+    <Compile Include="MicrophoneTests.cs" />
     <Compile Include="UnitTestConvention.cs" />
     <Compile Include="DependencyTests.cs" />
     <Compile Include="DeviceIdTests.cs" />

@@ -5,6 +5,8 @@
 
 namespace Media.Domain
 {
+    using System;
+
     /// <summary>
     /// A base class for media devices.
     /// </summary>
@@ -20,6 +22,11 @@ namespace Media.Domain
         /// </param>
         protected DeviceBase(DeviceId id)
         {
+            if (id == null)
+            {
+                throw new ArgumentNullException(nameof(id));
+            }
+
             DeviceId = id;
         }
 
@@ -40,7 +47,7 @@ namespace Media.Domain
         /// Verifies if the device is available.
         /// </summary>
         /// <returns>
-        /// <see langword="true"/>, if the device is a available; <see langword="false"/> otherwise.
+        /// <see langword="true"/>, if the device is available; <see langword="false"/> otherwise.
         /// </returns>
         public bool IsAvailable()
         {
@@ -53,9 +60,13 @@ namespace Media.Domain
         /// <param name="roleToAssume">
         /// The role the device needs to assume.
         /// </param>
-        public void SelectFor(DeviceRole roleToAssume)
+        /// <returns>
+        /// <see langword="true"/>, if the device can assume the role; <see langword="false"/> otherwise.
+        /// </returns>
+        public virtual bool SelectFor(DeviceRole roleToAssume)
         {
             roleInActivity = roleToAssume;
+            return true;
         }
 
         /// <summary>
