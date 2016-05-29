@@ -9,7 +9,7 @@ namespace Media.Domain.Tests
 
     using Shouldly;
 
-    public abstract class DeviceBaseTests
+    public class DeviceBaseTests
     {
         public void ShouldFailWhenConstructedUsingNullDeviceId()
         {
@@ -42,6 +42,12 @@ namespace Media.Domain.Tests
             device.IsAvailable().ShouldBeTrue();
         }
 
+        [Input(DeviceRole.Background)]
+        [Input(DeviceRole.Playback)]
+        [Input(DeviceRole.Recording)]
+        [Input(DeviceRole.Communication)]
+        [Input(DeviceRole.Prompt)]
+        [Input(DeviceRole.Alert)]
         public void ShouldAssumeRole(DeviceRole roleToAssume)
         {
             var device = new ExampleDevice(new DeviceId());
