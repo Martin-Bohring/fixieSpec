@@ -49,5 +49,14 @@ namespace Media.Domain.Tests
 
             firstDeviceId.Equals(secondDeviceId).ShouldBeFalse();
         }
+
+        public void ShouldBeEqualWithSameInstance()
+        {
+            var deviceId = new DeviceId(Guid.NewGuid());
+
+#pragma warning disable RECS0088 // Comparing equal expression for equality is usually useless
+            deviceId.Equals(deviceId).ShouldBeTrue();
+#pragma warning restore RECS0088 // Comparing equal expression for equality is usually useless
+        }
     }
 }
