@@ -12,6 +12,7 @@ namespace FixieSpec.Tests
     /// Took the idea from
     /// https://github.com/fixie/fixie/blob/master/src/Fixie.Tests/ShouldBeUnreachableException.cs.
     /// </summary>
+    [Serializable]
     public class ShouldBeUnreachableException : Exception
     {
         public ShouldBeUnreachableException([CallerMemberName] string member = null)
