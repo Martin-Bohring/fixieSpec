@@ -16,7 +16,7 @@ namespace Media.Recording.Specifications
             microphone.SelectFor(DeviceRole.Communication);
         }
 
-        public void When_the_voice_memo_recording_is_started()
+        public void When_attempting_to_start_the_voice_memo_recording()
         {
             voiceMemoRecording.StartRecording();
         }

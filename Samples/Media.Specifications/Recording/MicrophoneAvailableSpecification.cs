@@ -11,7 +11,7 @@ namespace Media.Recording.Specifications
 
     public class MicrophoneAvailableSpecification : VoiceMemoRecordingSpecificationBase
     {
-        public void Given_the_microphone_is_available()
+        public void Given_a_microphone_is_available()
         {
             microphone.MakeAvailable();
         }
@@ -31,7 +31,7 @@ namespace Media.Recording.Specifications
             microphone.IsInRole(DeviceRole.Recording).ShouldBeTrue();
         }
 
-        public void And_then_the_microphone_is_not_available_anymore()
+        public void And_then_the_selected_microphone_is_not_available_anymore()
         {
             microphone.IsAvailable().ShouldBeFalse();
         }
