@@ -36,7 +36,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DeviceBaseTests.cs" />
-    <Compile Include="Recording\MediaRecordingTests.cs" />
+    <Compile Include="Recording\AudioRecordingTests.cs" />
     <Compile Include="MicrophoneTests.cs" />
     <Compile Include="Recording\VideoRecordingTests.cs" />
     <Compile Include="UnitTestConvention.cs" />

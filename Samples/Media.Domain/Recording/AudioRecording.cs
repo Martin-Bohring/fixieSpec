@@ -10,18 +10,18 @@ namespace Media.Domain.Recording
     /// <summary>
     /// Represents an ongoing media recording.
     /// </summary>
-    public class MediaRecording
+    public class AudioRecording
     {
         readonly DeviceBase mediaSource;
         bool isRecording;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="MediaRecording"/> class.
+        /// Initializes a new instance of the <see cref="AudioRecording"/> class.
         /// </summary>
         /// <param name="mediaSource">
         /// The device providing the media to be recorded.
         /// </param>
-        public MediaRecording(DeviceBase mediaSource)
+        public AudioRecording(DeviceBase mediaSource)
         {
             if (mediaSource == null)
             {

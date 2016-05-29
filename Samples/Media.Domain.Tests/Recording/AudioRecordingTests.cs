@@ -10,11 +10,11 @@ namespace Media.Domain.Recording.Tests
     using Shouldly;
     using Domain.Tests;
 
-    public class MediaRecordingTests
+    public class AudioRecordingTests
     {
         public void ShouldFailWhenConstructedUsingNullDevice()
         {
-            Action act = () => new MediaRecording(null);
+            Action act = () => new AudioRecording(null);
 
             act.ShouldThrow<ArgumentNullException>();
         }
@@ -28,7 +28,7 @@ namespace Media.Domain.Recording.Tests
             var microphone = new Microphone(new DeviceId());
             microphone.SelectFor(sourceDeviceRole);
 
-            var mediaRecording = new MediaRecording(microphone);
+            var mediaRecording = new AudioRecording(microphone);
 
             mediaRecording.StartRecording().ShouldBe(shouldStart);
         }
@@ -36,7 +36,7 @@ namespace Media.Domain.Recording.Tests
         public void ShouldBeRecordingWhenStartedSUccessful()
         {
             var microphone = new Microphone(new DeviceId());
-            var mediaRecording = new MediaRecording(microphone);
+            var mediaRecording = new AudioRecording(microphone);
 
             mediaRecording.StartRecording();
 

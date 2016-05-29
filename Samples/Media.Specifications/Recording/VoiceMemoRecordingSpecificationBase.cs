@@ -12,11 +12,11 @@ namespace Media.Recording.Specifications
     {
         protected readonly Microphone microphone = new Microphone();
 
-        protected readonly MediaRecording voiceMemoRecording;
+        protected readonly AudioRecording voiceMemoRecording;
 
         protected VoiceMemoRecordingSpecificationBase()
         {
-            voiceMemoRecording = new MediaRecording(microphone);
+            voiceMemoRecording = new AudioRecording(microphone);
         }
     }
 }
