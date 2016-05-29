@@ -24,9 +24,9 @@ namespace Media.Domain.Tests
             var device = new Microphone(new DeviceId());
             device.SelectFor(previousRole);
 
-            var assumedRole = device.SelectFor(roleToAssume);
+            var hasAssumedRole = device.SelectFor(roleToAssume);
 
-            assumedRole.ShouldBe(shouldAssumeRole);
+            hasAssumedRole.ShouldBe(shouldAssumeRole);
         }
     }
 }
