@@ -10,7 +10,7 @@ namespace Media.Specifications
     using FixieSpec;
     using Shouldly;
 
-    public class NotSuccessfulVoiceMemoRecordingSpecification
+    public class MicrophoneNotAvailableVoiceMemoRecordingSpecification
     {
         readonly Microphone microphone = new Microphone();
 

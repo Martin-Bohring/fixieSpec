@@ -35,8 +35,8 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="NotSuccessfulVoiceMemoRecordingSpecification.cs" />
-    <Compile Include="SuccessfulVoiceMemoRecordingSpecification.cs" />
+    <Compile Include="MicrophoneNotAvailableVoiceMemoRecordingSpecification.cs" />
+    <Compile Include="MicrophoneAvailableVoiceMemoRecordingSpecification.cs" />
     <Compile Include="UseFixieSpec.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

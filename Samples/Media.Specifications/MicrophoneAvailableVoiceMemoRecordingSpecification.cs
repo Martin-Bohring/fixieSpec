@@ -8,7 +8,7 @@ namespace Media.Specifications
     using Domain;
     using Shouldly;
 
-    public class SuccessfulVoiceMemoRecordingSpecification
+    public class MicrophoneAvailableVoiceMemoRecordingSpecification
     {
         readonly Microphone microphone = new Microphone();
 
