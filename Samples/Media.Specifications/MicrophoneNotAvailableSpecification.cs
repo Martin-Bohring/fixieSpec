@@ -8,17 +8,8 @@ namespace Media.Specifications
     using Domain;
     using Shouldly;
 
-    public class MicrophoneNotAvailableVoiceMemoRecordingSpecification
+    public class MicrophoneNotAvailableSpecification : VoiceMemoRecordingSpecificationBase
     {
-        readonly Microphone microphone = new Microphone();
-
-        MediaRecording voiceMemoRecording;
-
-        public MicrophoneNotAvailableVoiceMemoRecordingSpecification()
-        {
-            voiceMemoRecording = new MediaRecording(microphone);
-        }
-
         public void Given_the_microphone_is_not_available()
         {
             microphone.SelectFor(DeviceRole.Communication);
@@ -26,7 +17,7 @@ namespace Media.Specifications
 
         public void When_the_voice_recording_is_started()
         {
-            voiceMemoRecording.StartRecording().ShouldBeFalse();
+            voiceMemoRecording.StartRecording();
         }
 
         public void Then_the_voice_recording_should_not_be_recording()

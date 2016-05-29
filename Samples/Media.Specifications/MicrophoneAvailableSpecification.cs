@@ -8,17 +8,8 @@ namespace Media.Specifications
     using Domain;
     using Shouldly;
 
-    public class MicrophoneAvailableVoiceMemoRecordingSpecification
+    public class MicrophoneAvailableSpecification : VoiceMemoRecordingSpecificationBase
     {
-        readonly Microphone microphone = new Microphone();
-
-        MediaRecording voiceMemoRecording;
-
-        public MicrophoneAvailableVoiceMemoRecordingSpecification()
-        {
-            voiceMemoRecording = new MediaRecording(microphone);
-        }
-
         public void Given_the_microphone_is_available()
         {
             microphone.MakeAvailable();
