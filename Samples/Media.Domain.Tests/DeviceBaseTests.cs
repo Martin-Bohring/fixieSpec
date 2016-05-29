@@ -9,7 +9,7 @@ namespace Media.Domain.Tests
 
     using Shouldly;
 
-    public abstract class DeviceBaseTests
+    public abstract class DeviceBaseTests<T> where T : DeviceBase
     {
         public void ShouldFailWhenConstructedUsingNullDeviceId()
         {
@@ -42,6 +42,6 @@ namespace Media.Domain.Tests
             device.IsAvailable().ShouldBeTrue();
         }
 
-        protected abstract DeviceBase CreateDevice(DeviceId id);
+        protected abstract T CreateDevice(DeviceId id);
     }
 }
