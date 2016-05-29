@@ -9,6 +9,13 @@ namespace Media.Domain.Tests
 
     public class MicrophoneTests : DeviceBaseTests<Microphone>
     {
+        public void ShouldGenerateDeviceIdWhenConstructedWithoutDeviceId()
+        {
+            var microphone = new Microphone();
+
+            microphone.DeviceId.ShouldNotBeNull();
+        }
+
         [Input(DeviceRole.Idle, DeviceRole.Recording, true)]
         [Input(DeviceRole.Background, DeviceRole.Recording, false)]
         [Input(DeviceRole.Playback, DeviceRole.Recording, false)]
@@ -21,10 +28,10 @@ namespace Media.Domain.Tests
             DeviceRole roleToAssume,
             bool shouldAssumeRole)
         {
-            var device = CreateDevice(new DeviceId());
-            device.SelectFor(previousRole);
+            var microphone = CreateDevice(new DeviceId());
+            microphone.SelectFor(previousRole);
 
-            var hasAssumedRole = device.SelectFor(roleToAssume);
+            var hasAssumedRole = microphone.SelectFor(roleToAssume);
 
             hasAssumedRole.ShouldBe(shouldAssumeRole);
         }
