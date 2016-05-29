@@ -6,13 +6,13 @@
 namespace Media.Specifications
 {
     using Domain;
-
-    using FixieSpec;
     using Shouldly;
 
     public class VoiceMemoRecordingSpecification
     {
         readonly Microphone microphone = new Microphone();
+
+        MediaRecording voiceMemoRecording;
 
         public void Given_a_microphone_is_available()
         {
@@ -21,16 +21,17 @@ namespace Media.Specifications
 
         public void When_the_microphone_is_selected_for_voice_memo_recording()
         {
-            microphone.SelectFor(DeviceRole.Recording);
+            voiceMemoRecording = new MediaRecording(microphone);
         }
 
         public void And_when_the_voice_memo_recording_is_started()
         {
+            voiceMemoRecording.StartRecording();
         }
 
-        [Inconclusive]
         public void Then_the_selected_microphone_is_used_for_recording()
         {
+            microphone.IsInRole(DeviceRole.Recording);
         }
 
         public void And_then_the_microphone_is_not_available_anymore()

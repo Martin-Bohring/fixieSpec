@@ -57,5 +57,17 @@ namespace Media.Domain
         {
             roleInActivity = roleToAssume;
         }
+
+        /// <summary>
+        /// Verifies if the device is in the role given by <paramref name="role"/>.
+        /// </summary>
+        /// <param name="role">
+        /// The role to check for.
+        /// </param>
+        /// <returns>
+        /// <see langword="true"/>, if the device is ain the role given by <paramref name="role"/>;
+        /// <see langword="false"/> otherwise.
+        /// </returns>
+        public bool IsInRole(DeviceRole role) => roleInActivity == role;
     }
 }

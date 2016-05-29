@@ -42,6 +42,15 @@ namespace Media.Domain.Tests
             device.IsAvailable().ShouldBeTrue();
         }
 
+        public void ShouldAssumeRole(DeviceRole roleToAssume)
+        {
+            var device = new ExampleDevice(new DeviceId());
+
+            device.SelectFor(roleToAssume);
+
+            device.IsInRole(roleToAssume).ShouldBeTrue();
+        }
+
         class ExampleDevice : DeviceBase
         {
             public ExampleDevice(DeviceId id) : base(id)

@@ -29,5 +29,13 @@ namespace Media.Domain
 
             this.mediaSource = mediaSource;
         }
+
+        /// <summary>
+        /// Start the media recording using the media source device.
+        /// </summary>
+        public void StartRecording()
+        {
+            mediaSource.SelectFor(DeviceRole.Recording);
+        }
     }
 }
