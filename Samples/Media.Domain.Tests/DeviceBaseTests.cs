@@ -18,6 +18,13 @@ namespace Media.Domain.Tests
             act.ShouldThrow<ArgumentNullException>();
         }
 
+        public void ShouldBeAvailableWhenConstructed()
+        {
+            var device = CreateDevice(new DeviceId());
+
+            device.IsAvailable().ShouldBeTrue();
+        }
+
         [Input(DeviceRole.Background)]
         [Input(DeviceRole.Playback)]
         [Input(DeviceRole.Recording)]
