@@ -3,11 +3,12 @@
 // Licensed under the MIT license. See LICENSE.txt file in the project root for full license information.
 // </copyright>
 
-namespace Media.Domain.Tests
+namespace Media.Domain.Recording.Tests
 {
     using System;
 
     using Shouldly;
+    using Domain.Tests;
 
     public class MediaRecordingTests
     {

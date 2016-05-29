@@ -4,9 +4,10 @@
 // </copyright>
 
 
-namespace Media.Specifications
+namespace Media.Recording.Specifications
 {
     using Domain;
+    using Domain.Recording;
 
     public abstract class VoiceMemoRecordingSpecificationBase
     {

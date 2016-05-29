@@ -3,10 +3,11 @@
 // Licensed under the MIT license. See LICENSE.txt file in the project root for full license information.
 // </copyright>
 
-namespace Media.Specifications
+namespace Media.Recording.Specifications
 {
-    using Domain;
     using Shouldly;
+
+    using Domain;
 
     public class MicrophoneNotAvailableSpecification : VoiceMemoRecordingSpecificationBase
     {
