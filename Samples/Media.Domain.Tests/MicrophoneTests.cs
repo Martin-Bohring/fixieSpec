@@ -7,7 +7,7 @@ namespace Media.Domain.Tests
 {
     using Shouldly;
 
-    public class MicrophoneTests
+    public class MicrophoneTests : DeviceBaseTests
     {
         [Input(DeviceRole.Idle, DeviceRole.Recording, true)]
         [Input(DeviceRole.Background, DeviceRole.Recording, false)]
@@ -21,12 +21,17 @@ namespace Media.Domain.Tests
             DeviceRole roleToAssume,
             bool shouldAssumeRole)
         {
-            var device = new Microphone(new DeviceId());
+            var device = CreateDevice(new DeviceId());
             device.SelectFor(previousRole);
 
             var hasAssumedRole = device.SelectFor(roleToAssume);
 
             hasAssumedRole.ShouldBe(shouldAssumeRole);
+        }
+
+        protected override DeviceBase CreateDevice(DeviceId id)
+        {
+            return new Microphone(id);
         }
     }
 }

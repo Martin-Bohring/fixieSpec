@@ -9,11 +9,11 @@ namespace Media.Domain.Tests
 
     using Shouldly;
 
-    public class DeviceBaseTests
+    public abstract class DeviceBaseTests
     {
         public void ShouldFailWhenConstructedUsingNullDeviceId()
         {
-            Action act = () => new ExampleDevice(null);
+            Action act = () => CreateDevice(null);
 
             act.ShouldThrow<ArgumentNullException>();
         }
@@ -26,7 +26,7 @@ namespace Media.Domain.Tests
         [Input(DeviceRole.Alert)]
         public void ShouldNotBeAvailableWhenInRole(DeviceRole roleToAssume)
         {
-            var device = new ExampleDevice(new DeviceId());
+            var device = CreateDevice(new DeviceId());
 
             device.SelectFor(roleToAssume);
 
@@ -35,33 +35,13 @@ namespace Media.Domain.Tests
 
         public void ShouldBeAvailableWhenInNoRole()
         {
-            var device = new ExampleDevice(new DeviceId());
+            var device = CreateDevice(new DeviceId());
 
             device.SelectFor(DeviceRole.Idle);
 
             device.IsAvailable().ShouldBeTrue();
         }
 
-        [Input(DeviceRole.Background)]
-        [Input(DeviceRole.Playback)]
-        [Input(DeviceRole.Recording)]
-        [Input(DeviceRole.Communication)]
-        [Input(DeviceRole.Prompt)]
-        [Input(DeviceRole.Alert)]
-        public void ShouldAssumeRole(DeviceRole roleToAssume)
-        {
-            var device = new ExampleDevice(new DeviceId());
-
-            device.SelectFor(roleToAssume);
-
-            device.IsInRole(roleToAssume).ShouldBeTrue();
-        }
-
-        class ExampleDevice : DeviceBase
-        {
-            public ExampleDevice(DeviceId id) : base(id)
-            {
-            }
-        }
+        protected abstract DeviceBase CreateDevice(DeviceId id);
     }
 }
