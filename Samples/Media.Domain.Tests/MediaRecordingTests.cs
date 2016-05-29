@@ -17,5 +17,29 @@ namespace Media.Domain.Tests
 
             act.ShouldThrow<ArgumentNullException>();
         }
+
+        [Input(DeviceRole.Idle, true)]
+        [Input(DeviceRole.Background, false)]
+        public void ShouldOnlyStartWhenSourceDeviceIsAvailable(
+            DeviceRole sourceDeviceRole,
+            bool shouldStart)
+        {
+            var microphone = new Microphone(new DeviceId());
+            microphone.SelectFor(sourceDeviceRole);
+
+            var mediaRecording = new MediaRecording(microphone);
+
+            mediaRecording.StartRecording().ShouldBe(shouldStart);
+        }
+
+        public void ShouldBeRecordingWhenStartedSUccessful()
+        {
+            var microphone = new Microphone(new DeviceId());
+            var mediaRecording = new MediaRecording(microphone);
+
+            mediaRecording.StartRecording();
+
+            mediaRecording.IsRecording().ShouldBeTrue();
+        }
     }
 }

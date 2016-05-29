@@ -13,6 +13,7 @@ namespace Media.Domain
     public class MediaRecording
     {
         readonly DeviceBase mediaSource;
+        bool isRecording;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MediaRecording"/> class.
@@ -33,9 +34,21 @@ namespace Media.Domain
         /// <summary>
         /// Start the media recording using the media source device.
         /// </summary>
-        public void StartRecording()
+        /// <returns>
+        /// <see langword="true"/>, if the media recording started sucessful; <see langword="false"/> otherwise.
+        /// </returns>
+        public bool StartRecording()
         {
-            mediaSource.SelectFor(DeviceRole.Recording);
+            isRecording = mediaSource.SelectFor(DeviceRole.Recording);
+            return isRecording;
         }
+
+        /// <summary>
+        /// Verfies if the media recording is active.
+        /// </summary>
+        /// <returns>
+        /// <see langword="true"/>, if the media recording is recording; <see langword="false"/> otherwise.
+        /// </returns>
+        public bool IsRecording() => isRecording;
     }
 }
