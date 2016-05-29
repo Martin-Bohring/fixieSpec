@@ -37,6 +37,7 @@
   <ItemGroup>
     <Compile Include="Recording\MicrophoneNotAvailableSpecification.cs" />
     <Compile Include="Recording\MicrophoneAvailableSpecification.cs" />
+    <Compile Include="Recording\VideoRecordingSpecification.cs" />
     <Compile Include="UseFixieSpec.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Recording\VoiceMemoRecordingSpecificationBase.cs" />
