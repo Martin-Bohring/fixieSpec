@@ -19,7 +19,7 @@ namespace Media.Domain.Recording
         /// Initializes a new instance of the <see cref="AudioRecording"/> class.
         /// </summary>
         /// <param name="mediaSource">
-        /// The device providing the media to be recorded.
+        /// The device providing the audio signal to be recorded.
         /// </param>
         public AudioRecording(DeviceBase mediaSource)
         {
