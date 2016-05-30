@@ -8,46 +8,46 @@ namespace Media.Domain.Recording
     using System;
 
     /// <summary>
-    /// Represents an ongoing media recording.
+    /// Represents an ongoing audio recording.
     /// </summary>
     public class AudioRecording
     {
-        readonly DeviceBase mediaSource;
+        readonly DeviceBase audioSource;
         bool isRecording;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="AudioRecording"/> class.
         /// </summary>
-        /// <param name="mediaSource">
+        /// <param name="audioSource">
         /// The device providing the audio signal to be recorded.
         /// </param>
-        public AudioRecording(DeviceBase mediaSource)
+        public AudioRecording(DeviceBase audioSource)
         {
-            if (mediaSource == null)
+            if (audioSource == null)
             {
-                throw new ArgumentNullException(nameof(mediaSource));
+                throw new ArgumentNullException(nameof(audioSource));
             }
 
-            this.mediaSource = mediaSource;
+            this.audioSource = audioSource;
         }
 
         /// <summary>
-        /// Start the media recording using the media source device.
+        /// Start the audio recording using the audio source device.
         /// </summary>
         /// <returns>
         /// <see langword="true"/>, if the media recording started sucessful; <see langword="false"/> otherwise.
         /// </returns>
         public bool StartRecording()
         {
-            isRecording = mediaSource.SelectFor(DeviceRole.Recording);
+            isRecording = audioSource.SelectFor(DeviceRole.Recording);
             return isRecording;
         }
 
         /// <summary>
-        /// Verfies if the media recording is active.
+        /// Verifies if the audio recording is active.
         /// </summary>
         /// <returns>
-        /// <see langword="true"/>, if the media recording is recording; <see langword="false"/> otherwise.
+        /// <see langword="true"/>, if the audio recording is recording; <see langword="false"/> otherwise.
         /// </returns>
         public bool IsRecording() => isRecording;
     }
