@@ -20,7 +20,7 @@ namespace Media.Recording.Specification
 
         public VideoRecordingSpecification()
         {
-            videoRecording = new VideoRecording(camera);
+            videoRecording = new VideoRecording();
         }
 
         public void Given_a_camera_is_available()
@@ -35,7 +35,7 @@ namespace Media.Recording.Specification
 
         public void When_the_video_recording_is_started()
         {
-            videoRecording.StartRecording();
+            videoRecording.StartRecording(camera);
         }
 
         public void Then_the_video_recording_should_be_recording()

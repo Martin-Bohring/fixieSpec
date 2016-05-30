@@ -12,43 +12,39 @@ namespace Media.Domain.Recording
     /// </summary>
     public class VideoRecording
     {
-        readonly IVideoSource videoSource;
-        bool isRecording;
+        IVideoSource videoSource;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="VideoRecording"/> class.
+        /// Start the video recording using the video recording device.
         /// </summary>
         /// <param name="videoSource">
         /// The device providing the video signal to be recorded.
         /// </param>
-        public VideoRecording(IVideoSource videoSource)
+        /// <returns>
+        /// <see langword="true"/>, if the video recording started sucessful; <see langword="false"/> otherwise.
+        /// </returns>
+        public bool StartRecording(IVideoSource videoSource)
         {
             if (videoSource == null)
             {
                 throw new ArgumentNullException(nameof(videoSource));
             }
 
-            this.videoSource = videoSource;
-        }
+            if (videoSource.StartRecording())
+            {
+                this.videoSource = videoSource;
+                return true;
+            }
 
-        /// <summary>
-        /// Start the audio recording using the video recording device.
-        /// </summary>
-        /// <returns>
-        /// <see langword="true"/>, if the media recording started sucessful; <see langword="false"/> otherwise.
-        /// </returns>
-        public bool StartRecording()
-        {
-            isRecording = videoSource.StartRecording();
-            return isRecording;
+            return false;
         }
 
         /// <summary>
         /// Verifies if the video recording is active.
         /// </summary>
         /// <returns>
-        /// <see langword="true"/>, if the audio recording is recording; <see langword="false"/> otherwise.
+        /// <see langword="true"/>, if the video recording is recording; <see langword="false"/> otherwise.
         /// </returns>
-        public bool IsRecording() => isRecording;
+        public bool IsRecording() => videoSource != null;
     }
 }

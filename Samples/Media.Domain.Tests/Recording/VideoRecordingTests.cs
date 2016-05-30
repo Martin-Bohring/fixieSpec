@@ -11,40 +11,38 @@ namespace Media.Domain.Recording.Tests
 
     public class VideoRecordingTests
     {
-        public void ShouldFailWhenConstructedUsingNullVideoSourceDevice()
+        public void ShouldFailToStartRecordingUsingNullDevice(
+            VideoRecording videoRecording)
         {
-            Action act = () => new VideoRecording(null);
+            Action act = () => videoRecording.StartRecording(null);
 
             act.ShouldThrow<ArgumentNullException>();
         }
 
-        public void ShouldStartWhenSourceDeviceIsAvailable()
+        public void ShouldStartWhenSourceDeviceIsAvailable(
+            VideoRecording videoRecording,
+            VideoCamera camera
+            )
         {
-            var camera = new VideoCamera(new DeviceId());
-
-            var videoRecording = new VideoRecording(camera);
-
-            videoRecording.StartRecording().ShouldBeTrue();
+            videoRecording.StartRecording(camera).ShouldBeTrue();
         }
 
-        public void ShouldBeRecordingWhenStartedSuccessful()
+        public void ShouldBeRecordingWhenStartedSuccessful(
+            VideoRecording videoRecording,
+            VideoCamera camera)
         {
-            var camera = new VideoCamera(new DeviceId());
-            var videoRecording = new VideoRecording(camera);
-
-            videoRecording.StartRecording();
+            videoRecording.StartRecording(camera);
 
             videoRecording.IsRecording().ShouldBeTrue();
         }
 
-        public void ShouldNotStartWhenSourceDeviceIsNotAvailable()
+        public void ShouldNotStartWhenSourceDeviceIsNotAvailable(
+            VideoRecording videoRecording,
+            VideoCamera camera)
         {
-            var camera = new VideoCamera(new DeviceId());
             camera.StartRecording();
 
-            var videoRecording = new VideoRecording(camera);
-
-            videoRecording.StartRecording().ShouldBeFalse();
+            videoRecording.StartRecording(camera).ShouldBeFalse();
         }
     }
 }
