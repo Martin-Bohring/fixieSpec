@@ -9,7 +9,7 @@ namespace Media.Recording.Specifications
 
     using Domain;
 
-    public class MicrophoneNotAvailableSpecification : VoiceMemoRecordingSpecificationBase
+    public sealed class MicrophoneNotAvailableSpecification : VoiceMemoRecordingSpecificationBase
     {
         public void Given_the_microphone_is_not_available()
         {
