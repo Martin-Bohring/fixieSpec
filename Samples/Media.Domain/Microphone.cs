@@ -8,7 +8,7 @@ namespace Media.Domain
     /// <summary>
     /// Represents a microphone.
     /// </summary>
-    public sealed class Microphone : DeviceBase
+    public sealed class Microphone : DeviceBase, IAudioSource
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Microphone"/> class.
@@ -35,6 +35,17 @@ namespace Media.Domain
             if (IsAvailable())
             {
                 return base.SelectFor(roleToAssume);
+            }
+
+            return false;
+        }
+
+        /// <inheritdoc/>
+        public bool StartRecording()
+        {
+            if (IsAvailable())
+            {
+                return base.SelectFor(DeviceRole.Recording);
             }
 
             return false;

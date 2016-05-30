@@ -36,6 +36,15 @@ namespace Media.Domain.Tests
             hasAssumedRole.ShouldBe(shouldAssumeRole);
         }
 
+        public void ShouldBeRecordingWhenRecordingIsStarted()
+        {
+            var microphone = CreateDevice(new DeviceId());
+
+            microphone.StartRecording();
+
+            microphone.IsInRole(DeviceRole.Recording).ShouldBeTrue();
+        }
+
         protected override Microphone CreateDevice(DeviceId id)
         {
             return new Microphone(id);

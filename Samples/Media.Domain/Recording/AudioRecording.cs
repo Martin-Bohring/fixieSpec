@@ -12,7 +12,7 @@ namespace Media.Domain.Recording
     /// </summary>
     public class AudioRecording
     {
-        readonly DeviceBase audioSource;
+        readonly IAudioSource audioSource;
         bool isRecording;
 
         /// <summary>
@@ -21,7 +21,7 @@ namespace Media.Domain.Recording
         /// <param name="audioSource">
         /// The device providing the audio signal to be recorded.
         /// </param>
-        public AudioRecording(DeviceBase audioSource)
+        public AudioRecording(IAudioSource audioSource)
         {
             if (audioSource == null)
             {
@@ -35,11 +35,11 @@ namespace Media.Domain.Recording
         /// Start the audio recording using the audio source device.
         /// </summary>
         /// <returns>
-        /// <see langword="true"/>, if the media recording started sucessful; <see langword="false"/> otherwise.
+        /// <see langword="true"/>, if the audio recording started sucessful; <see langword="false"/> otherwise.
         /// </returns>
         public bool StartRecording()
         {
-            isRecording = audioSource.SelectFor(DeviceRole.Recording);
+            isRecording = audioSource.StartRecording();
             return isRecording;
         }
 
