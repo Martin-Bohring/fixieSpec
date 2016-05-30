@@ -55,21 +55,6 @@ namespace Media.Domain
         }
 
         /// <summary>
-        /// Selects the device to assume the role given by <paramref name="roleToAssume"/>.
-        /// </summary>
-        /// <param name="roleToAssume">
-        /// The role the device needs to assume.
-        /// </param>
-        /// <returns>
-        /// <see langword="true"/>, if the device can assume the role; <see langword="false"/> otherwise.
-        /// </returns>
-        public virtual bool SelectFor(DeviceRole roleToAssume)
-        {
-            roleInActivity = roleToAssume;
-            return true;
-        }
-
-        /// <summary>
         /// Verifies if the device is in the role given by <paramref name="role"/>.
         /// </summary>
         /// <param name="role">
@@ -80,5 +65,20 @@ namespace Media.Domain
         /// <see langword="false"/> otherwise.
         /// </returns>
         public bool IsInRole(DeviceRole role) => roleInActivity == role;
+
+        /// <summary>
+        /// Instructs the device to assume the role given by <paramref name="roleToAssume"/>.
+        /// </summary>
+        /// <param name="roleToAssume">
+        /// The role the device needs to assume.
+        /// </param>
+        /// <returns>
+        /// <see langword="true"/>, if the device can assume the role; <see langword="false"/> otherwise.
+        /// </returns>
+        protected bool AssumeRole(DeviceRole roleToAssume)
+        {
+            roleInActivity = roleToAssume;
+            return true;
+        }
     }
 }

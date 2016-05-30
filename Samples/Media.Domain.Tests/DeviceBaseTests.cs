@@ -25,30 +25,6 @@ namespace Media.Domain.Tests
             device.IsAvailable().ShouldBeTrue();
         }
 
-        [Input(DeviceRole.Background)]
-        [Input(DeviceRole.Playback)]
-        [Input(DeviceRole.Recording)]
-        [Input(DeviceRole.Communication)]
-        [Input(DeviceRole.Prompt)]
-        [Input(DeviceRole.Alert)]
-        public void ShouldNotBeAvailableWhenInRole(DeviceRole roleToAssume)
-        {
-            var device = CreateDevice(new DeviceId());
-
-            device.SelectFor(roleToAssume);
-
-            device.IsAvailable().ShouldBeFalse();
-        }
-
-        public void ShouldBeAvailableWhenInNoRole()
-        {
-            var device = CreateDevice(new DeviceId());
-
-            device.SelectFor(DeviceRole.Idle);
-
-            device.IsAvailable().ShouldBeTrue();
-        }
-
         protected abstract T CreateDevice(DeviceId id);
     }
 }

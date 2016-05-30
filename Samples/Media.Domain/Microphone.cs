@@ -30,22 +30,11 @@ namespace Media.Domain
         }
 
         /// <inheritdoc/>
-        public override bool SelectFor(DeviceRole roleToAssume)
-        {
-            if (IsAvailable())
-            {
-                return base.SelectFor(roleToAssume);
-            }
-
-            return false;
-        }
-
-        /// <inheritdoc/>
         public bool StartRecording()
         {
             if (IsAvailable())
             {
-                return base.SelectFor(DeviceRole.Recording);
+                return AssumeRole(DeviceRole.Recording);
             }
 
             return false;

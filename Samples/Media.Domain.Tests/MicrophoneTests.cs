@@ -16,26 +16,6 @@ namespace Media.Domain.Tests
             microphone.DeviceId.ShouldNotBeNull();
         }
 
-        [Input(DeviceRole.Idle, DeviceRole.Recording, true)]
-        [Input(DeviceRole.Background, DeviceRole.Recording, false)]
-        [Input(DeviceRole.Playback, DeviceRole.Recording, false)]
-        [Input(DeviceRole.Recording, DeviceRole.Recording, false)]
-        [Input(DeviceRole.Communication, DeviceRole.Recording, false)]
-        [Input(DeviceRole.Prompt, DeviceRole.Recording, false)]
-        [Input(DeviceRole.Alert, DeviceRole.Recording, false)]
-        public void ShouldOnlyAssumeRoleWhenAvailable(
-            DeviceRole previousRole,
-            DeviceRole roleToAssume,
-            bool shouldAssumeRole)
-        {
-            var microphone = CreateDevice(new DeviceId());
-            microphone.SelectFor(previousRole);
-
-            var hasAssumedRole = microphone.SelectFor(roleToAssume);
-
-            hasAssumedRole.ShouldBe(shouldAssumeRole);
-        }
-
         public void ShouldBeRecordingWhenRecordingIsStarted()
         {
             var microphone = CreateDevice(new DeviceId());
@@ -43,6 +23,14 @@ namespace Media.Domain.Tests
             microphone.StartRecording();
 
             microphone.IsInRole(DeviceRole.Recording).ShouldBeTrue();
+        }
+
+        void ShouldFailToStartRecordingWhenAlreadyRecording()
+        {
+            var microphone = CreateDevice(new DeviceId());
+            microphone.StartRecording();
+
+            microphone.StartRecording().ShouldBeFalse();
         }
 
         protected override Microphone CreateDevice(DeviceId id)

@@ -8,7 +8,6 @@ namespace Media.Domain.Recording.Tests
     using System;
 
     using Shouldly;
-    using Domain.Tests;
 
     public class VideoRecordingTests
     {
@@ -19,18 +18,13 @@ namespace Media.Domain.Recording.Tests
             act.ShouldThrow<ArgumentNullException>();
         }
 
-        [Input(DeviceRole.Idle, true)]
-        [Input(DeviceRole.Background, false)]
-        public void ShouldOnlyStartWhenSourceDeviceIsAvailable(
-            DeviceRole sourceDeviceRole,
-            bool shouldStart)
+        public void ShouldStartWhenSourceDeviceIsAvailable()
         {
             var camera = new VideoCamera(new DeviceId());
-            camera.SelectFor(sourceDeviceRole);
 
             var videoRecording = new VideoRecording(camera);
 
-            videoRecording.StartRecording().ShouldBe(shouldStart);
+            videoRecording.StartRecording().ShouldBeTrue();
         }
 
         public void ShouldBeRecordingWhenStartedSuccessful()
@@ -41,6 +35,16 @@ namespace Media.Domain.Recording.Tests
             videoRecording.StartRecording();
 
             videoRecording.IsRecording().ShouldBeTrue();
+        }
+
+        public void ShouldNotStartWhenSourceDeviceIsNotAvailable()
+        {
+            var camera = new VideoCamera(new DeviceId());
+            camera.StartRecording();
+
+            var videoRecording = new VideoRecording(camera);
+
+            videoRecording.StartRecording().ShouldBeFalse();
         }
     }
 }

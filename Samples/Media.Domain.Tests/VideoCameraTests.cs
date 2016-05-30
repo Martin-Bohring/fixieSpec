@@ -16,26 +16,6 @@ namespace Media.Domain.Tests
             videoCamera.DeviceId.ShouldNotBeNull();
         }
 
-        [Input(DeviceRole.Idle, DeviceRole.Recording, true)]
-        [Input(DeviceRole.Background, DeviceRole.Recording, false)]
-        [Input(DeviceRole.Playback, DeviceRole.Recording, false)]
-        [Input(DeviceRole.Recording, DeviceRole.Recording, false)]
-        [Input(DeviceRole.Communication, DeviceRole.Recording, false)]
-        [Input(DeviceRole.Prompt, DeviceRole.Recording, false)]
-        [Input(DeviceRole.Alert, DeviceRole.Recording, false)]
-        public void ShouldOnlyAssumeRoleWhenAvailable(
-            DeviceRole previousRole,
-            DeviceRole roleToAssume,
-            bool shouldAssumeRole)
-        {
-            var videoCamera = CreateDevice(new DeviceId());
-            videoCamera.SelectFor(previousRole);
-
-            var hasAssumedRole = videoCamera.SelectFor(roleToAssume);
-
-            hasAssumedRole.ShouldBe(shouldAssumeRole);
-        }
-
         public void ShouldBeRecordingWhenRecordingIsStarted()
         {
             var videoCamera = CreateDevice(new DeviceId());
@@ -43,6 +23,14 @@ namespace Media.Domain.Tests
             videoCamera.StartRecording();
 
             videoCamera.IsInRole(DeviceRole.Recording).ShouldBeTrue();
+        }
+
+        void ShouldFailToStartRecordingWhenAlreadyRecording()
+        {
+            var videoCamera = CreateDevice(new DeviceId());
+            videoCamera.StartRecording();
+
+            videoCamera.StartRecording().ShouldBeFalse();
         }
 
         protected override VideoCamera CreateDevice(DeviceId id)

@@ -8,7 +8,6 @@ namespace Media.Domain.Recording.Tests
     using System;
 
     using Shouldly;
-    using Domain.Tests;
 
     public class AudioRecordingTests
     {
@@ -19,28 +18,33 @@ namespace Media.Domain.Recording.Tests
             act.ShouldThrow<ArgumentNullException>();
         }
 
-        [Input(DeviceRole.Idle, true)]
-        [Input(DeviceRole.Background, false)]
-        public void ShouldOnlyStartWhenSourceDeviceIsAvailable(
-            DeviceRole sourceDeviceRole,
-            bool shouldStart)
+        public void ShouldStartWhenSourceDeviceIsAvailable()
         {
             var microphone = new Microphone(new DeviceId());
-            microphone.SelectFor(sourceDeviceRole);
 
-            var mediaRecording = new AudioRecording(microphone);
+            var audioRecording = new AudioRecording(microphone);
 
-            mediaRecording.StartRecording().ShouldBe(shouldStart);
+            audioRecording.StartRecording().ShouldBeTrue();
         }
 
         public void ShouldBeRecordingWhenStartedSuccessful()
         {
             var microphone = new Microphone(new DeviceId());
-            var mediaRecording = new AudioRecording(microphone);
+            var audioRecording = new AudioRecording(microphone);
 
-            mediaRecording.StartRecording();
+            audioRecording.StartRecording();
 
-            mediaRecording.IsRecording().ShouldBeTrue();
+            audioRecording.IsRecording().ShouldBeTrue();
+        }
+
+        public void ShouldNotStartWhenSourceDeviceIsNotAvailable()
+        {
+            var microphone = new Microphone(new DeviceId());
+            microphone.StartRecording();
+
+            var audioRecording = new AudioRecording(microphone);
+
+            audioRecording.StartRecording().ShouldBeFalse();
         }
     }
 }
