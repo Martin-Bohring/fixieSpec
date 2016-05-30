@@ -33,7 +33,7 @@ namespace Media.Domain.Recording.Tests
             mediaRecording.StartRecording().ShouldBe(shouldStart);
         }
 
-        public void ShouldBeRecordingWhenStartedSUccessful()
+        public void ShouldBeRecordingWhenStartedSuccessful()
         {
             var microphone = new Microphone(new DeviceId());
             var mediaRecording = new AudioRecording(microphone);
