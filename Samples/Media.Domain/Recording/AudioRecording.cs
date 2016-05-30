@@ -12,35 +12,31 @@ namespace Media.Domain.Recording
     /// </summary>
     public class AudioRecording
     {
-        readonly IAudioSource audioSource;
-        bool isRecording;
+        IAudioSource audioSource;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AudioRecording"/> class.
+        /// Start the audio recording using the audio source device.
         /// </summary>
         /// <param name="audioSource">
         /// The device providing the audio signal to be recorded.
         /// </param>
-        public AudioRecording(IAudioSource audioSource)
+        /// <returns>
+        /// <see langword="true"/>, if the audio recording started sucessful; <see langword="false"/> otherwise.
+        /// </returns>
+        public bool StartRecording(IAudioSource audioSource)
         {
             if (audioSource == null)
             {
                 throw new ArgumentNullException(nameof(audioSource));
             }
 
-            this.audioSource = audioSource;
-        }
+            if (audioSource.StartRecording())
+            {
+                this.audioSource = audioSource;
+                return true;
+            }
 
-        /// <summary>
-        /// Start the audio recording using the audio source device.
-        /// </summary>
-        /// <returns>
-        /// <see langword="true"/>, if the audio recording started sucessful; <see langword="false"/> otherwise.
-        /// </returns>
-        public bool StartRecording()
-        {
-            isRecording = audioSource.StartRecording();
-            return isRecording;
+            return false;
         }
 
         /// <summary>
@@ -49,6 +45,6 @@ namespace Media.Domain.Recording
         /// <returns>
         /// <see langword="true"/>, if the audio recording is recording; <see langword="false"/> otherwise.
         /// </returns>
-        public bool IsRecording() => isRecording;
+        public bool IsRecording() => audioSource != null;
     }
 }

@@ -18,7 +18,7 @@ namespace Media.Recording.Specifications
 
         public SucessfulAudioRecordingSpecification()
         {
-            audioRecording = new AudioRecording(microphone);
+            audioRecording = new AudioRecording();
         }
         public void Given_a_microphone_is_available()
         {
@@ -27,7 +27,7 @@ namespace Media.Recording.Specifications
 
         public void When_the_voice_memo_recording_is_started()
         {
-            audioRecording.StartRecording();
+            audioRecording.StartRecording(microphone);
         }
 
         public void Then_the_voice_recording_should_be_recording()

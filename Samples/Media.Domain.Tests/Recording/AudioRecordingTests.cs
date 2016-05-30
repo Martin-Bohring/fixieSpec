@@ -11,40 +11,37 @@ namespace Media.Domain.Recording.Tests
 
     public class AudioRecordingTests
     {
-        public void ShouldFailWhenConstructedUsingNullDevice()
+        public void ShouldFailToStartRecordingUsingNullDevice(
+            AudioRecording audioRecording)
         {
-            Action act = () => new AudioRecording(null);
+            Action act = () => audioRecording.StartRecording(null);
 
             act.ShouldThrow<ArgumentNullException>();
         }
 
-        public void ShouldStartWhenSourceDeviceIsAvailable()
+        public void ShouldStartWhenSourceDeviceIsAvailable(
+            AudioRecording audioRecording,
+            Microphone microphone)
         {
-            var microphone = new Microphone(new DeviceId());
-
-            var audioRecording = new AudioRecording(microphone);
-
-            audioRecording.StartRecording().ShouldBeTrue();
+            audioRecording.StartRecording(microphone).ShouldBeTrue();
         }
 
-        public void ShouldBeRecordingWhenStartedSuccessful()
+        public void ShouldBeRecordingWhenStartedSuccessful(
+            AudioRecording audioRecording,
+            Microphone microphone)
         {
-            var microphone = new Microphone(new DeviceId());
-            var audioRecording = new AudioRecording(microphone);
-
-            audioRecording.StartRecording();
+            audioRecording.StartRecording(microphone);
 
             audioRecording.IsRecording().ShouldBeTrue();
         }
 
-        public void ShouldNotStartWhenSourceDeviceIsNotAvailable()
+        public void ShouldNotStartWhenSourceDeviceIsNotAvailable(
+            AudioRecording audioRecording,
+            Microphone microphone)
         {
-            var microphone = new Microphone(new DeviceId());
             microphone.StartRecording();
 
-            var audioRecording = new AudioRecording(microphone);
-
-            audioRecording.StartRecording().ShouldBeFalse();
+            audioRecording.StartRecording(microphone).ShouldBeFalse();
         }
     }
 }

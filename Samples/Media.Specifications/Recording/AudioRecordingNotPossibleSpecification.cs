@@ -19,7 +19,7 @@ namespace Media.Recording.Specifications
 
         public AudioRecordingNotPossibleSpecification()
         {
-            audioRecording = new AudioRecording(microphone);
+            audioRecording = new AudioRecording();
         }
         public void Given_the_microphone_is_not_available()
         {
@@ -28,7 +28,7 @@ namespace Media.Recording.Specifications
 
         public void When_attempting_to_start_the_audio_recording()
         {
-            audioRecording.StartRecording();
+            audioRecording.StartRecording(microphone);
         }
 
         public void Then_the_audio_recording_should_not_be_recording()
