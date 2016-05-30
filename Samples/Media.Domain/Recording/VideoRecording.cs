@@ -12,7 +12,7 @@ namespace Media.Domain.Recording
     /// </summary>
     public class VideoRecording
     {
-        readonly DeviceBase videoSource;
+        readonly IVideoSource videoSource;
         bool isRecording;
 
         /// <summary>
@@ -21,7 +21,7 @@ namespace Media.Domain.Recording
         /// <param name="videoSource">
         /// The device providing the video signal to be recorded.
         /// </param>
-        public VideoRecording(DeviceBase videoSource)
+        public VideoRecording(IVideoSource videoSource)
         {
             if (videoSource == null)
             {
@@ -39,7 +39,7 @@ namespace Media.Domain.Recording
         /// </returns>
         public bool StartRecording()
         {
-            isRecording = videoSource.SelectFor(DeviceRole.Recording);
+            isRecording = videoSource.StartRecording();
             return isRecording;
         }
 

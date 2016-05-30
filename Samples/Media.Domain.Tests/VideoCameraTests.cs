@@ -36,6 +36,15 @@ namespace Media.Domain.Tests
             hasAssumedRole.ShouldBe(shouldAssumeRole);
         }
 
+        public void ShouldBeRecordingWhenRecordingIsStarted()
+        {
+            var videoCamera = CreateDevice(new DeviceId());
+
+            videoCamera.StartRecording();
+
+            videoCamera.IsInRole(DeviceRole.Recording).ShouldBeTrue();
+        }
+
         protected override VideoCamera CreateDevice(DeviceId id)
         {
             return new VideoCamera(id);

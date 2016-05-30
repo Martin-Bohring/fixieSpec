@@ -6,15 +6,15 @@
 namespace Media.Domain
 {
     /// <summary>
-    /// An interface the provides the capabilties of an audio source.
+    /// An interface the provides the capabilties of a video source.
     /// </summary>
-    public interface IAudioSource
+    public interface IVideoSource
     {
         /// <summary>
-        /// Starts audio recording of the audio source.
+        /// Starts video recording of the video.
         /// </summary>
         /// <returns>
-        /// <see langword="true"/>, if the audio recording started sucessful; <see langword="false"/> otherwise.
+        /// <see langword="true"/>, if the video recording started sucessful; <see langword="false"/> otherwise.
         /// </returns>
         bool StartRecording();
     }
