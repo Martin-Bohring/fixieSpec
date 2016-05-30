@@ -6,30 +6,46 @@
 namespace Media.Recording.Specification
 {
     using FixieSpec;
+    using Shouldly;
 
-    [Inconclusive]
-    public class VideoRecordingSpecification
+    using Domain;
+    using Domain.Recording;
+
+    public sealed class VideoRecordingSpecification
     {
+        readonly Microphone microphone = new Microphone();
+        readonly VideoCamera camera = new VideoCamera();
+
+        readonly VideoRecording videoRecording;
+
+        public VideoRecordingSpecification()
+        {
+            videoRecording = new VideoRecording(camera);
+        }
+
         public void Given_a_camera_is_available()
         {
+            camera.MakeAvailable();
         }
 
         public void And_given_a_microphone_is_available()
         {
+            microphone.MakeAvailable();
         }
 
         public void When_the_video_recording_is_started()
         {
+            videoRecording.StartRecording();
         }
 
-        [Inconclusive]
         public void Then_the_video_recording_should_be_recording()
         {
+            videoRecording.IsRecording().ShouldBeTrue();
         }
 
-        [Inconclusive]
         public void Then_the_selected_camera_is_used_for_recording()
         {
+            camera.IsInRole(DeviceRole.Recording).ShouldBeTrue();
         }
 
         [Inconclusive]
@@ -37,9 +53,9 @@ namespace Media.Recording.Specification
         {
         }
 
-        [Inconclusive]
         public void And_then_the_selected_camera_is_not_available_anymore()
         {
+            camera.IsAvailable().ShouldBeFalse();
         }
 
         [Inconclusive]
