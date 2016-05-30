@@ -7,7 +7,7 @@ namespace Media.Domain.Tests
 {
     using Shouldly;
 
-    public class MicrophoneTests : DeviceBaseTests<Microphone>
+    public sealed class MicrophoneTests : DeviceBaseTests<Microphone>
     {
         public void ShouldGenerateDeviceIdWhenConstructedWithoutDeviceId()
         {
