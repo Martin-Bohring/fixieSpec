@@ -8,9 +8,18 @@ namespace Media.Recording.Specifications
     using Shouldly;
 
     using Domain;
+    using Domain.Recording;
 
-    public sealed class MicrophoneAvailableSpecification : VoiceMemoRecordingSpecificationBase
+    public sealed class SucessfulAudioRecordingSpecification
     {
+        readonly Microphone microphone = new Microphone();
+
+        readonly AudioRecording audioRecording;
+
+        public SucessfulAudioRecordingSpecification()
+        {
+            audioRecording = new AudioRecording(microphone);
+        }
         public void Given_a_microphone_is_available()
         {
             microphone.MakeAvailable();
@@ -18,12 +27,12 @@ namespace Media.Recording.Specifications
 
         public void When_the_voice_memo_recording_is_started()
         {
-            voiceMemoRecording.StartRecording();
+            audioRecording.StartRecording();
         }
 
         public void Then_the_voice_recording_should_be_recording()
         {
-            voiceMemoRecording.IsRecording().ShouldBeTrue();
+            audioRecording.IsRecording().ShouldBeTrue();
         }
 
         public void Then_the_selected_microphone_is_used_for_recording()

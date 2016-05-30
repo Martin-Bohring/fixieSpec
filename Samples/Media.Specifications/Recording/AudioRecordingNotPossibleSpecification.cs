@@ -8,9 +8,17 @@ namespace Media.Recording.Specifications
     using Shouldly;
 
     using Domain;
-
-    public sealed class MicrophoneNotAvailableSpecification : VoiceMemoRecordingSpecificationBase
+    using Domain.Recording;
+    public sealed class AudioRecordingNotPossibleSpecification
     {
+        readonly Microphone microphone = new Microphone();
+
+        readonly AudioRecording audioRecording;
+
+        public AudioRecordingNotPossibleSpecification()
+        {
+            audioRecording = new AudioRecording(microphone);
+        }
         public void Given_the_microphone_is_not_available()
         {
             microphone.SelectFor(DeviceRole.Communication);
@@ -18,12 +26,12 @@ namespace Media.Recording.Specifications
 
         public void When_attempting_to_start_the_voice_memo_recording()
         {
-            voiceMemoRecording.StartRecording();
+            audioRecording.StartRecording();
         }
 
         public void Then_the_voice_recording_should_not_be_recording()
         {
-            voiceMemoRecording.IsRecording().ShouldBeFalse();
+            audioRecording.IsRecording().ShouldBeFalse();
         }
 
         public void And_then_the_selected_microphone_is_not_used_for_recording()
