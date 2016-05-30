@@ -22,7 +22,8 @@ namespace Media.Domain.Tests
             Methods.Where(method => method.IsPublic && method.IsVoid());
 
             Parameters
-                .Add<InputAttributeParameterSource>();
+                .Add<InputAttributeParameterSource>()
+                .Add<AutoFixtureParameterSource>();
 
             HideExceptionDetails
                         .For<ShouldAssertException>()

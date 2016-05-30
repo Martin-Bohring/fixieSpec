@@ -5,37 +5,40 @@
 
 namespace Media.Domain.Tests
 {
+    using System;
     using Shouldly;
 
-    public sealed class VideoCameraTests : DeviceBaseTests<VideoCamera>
+    public sealed class VideoCameraTests
     {
-        public void ShouldGenerateDeviceIdWhenConstructedWithoutDeviceId()
+        public void ShouldFailWhenConstructedUsingNullDeviceId()
         {
-            var videoCamera = new VideoCamera();
+            Action act = () => new VideoCamera(null);
 
+            act.ShouldThrow<ArgumentNullException>();
+        }
+
+        public void ShouldBeAvailableWhenConstructed(VideoCamera videoCamera)
+        {
+            videoCamera.IsAvailable().ShouldBeTrue();
+        }
+
+        public void ShouldGenerateDeviceIdWhenConstructedWithoutDeviceId(VideoCamera videoCamera)
+        {
             videoCamera.DeviceId.ShouldNotBeNull();
         }
 
-        public void ShouldBeRecordingWhenRecordingIsStarted()
+        public void ShouldBeRecordingWhenRecordingIsStarted(VideoCamera videoCamera)
         {
-            var videoCamera = CreateDevice(new DeviceId());
-
             videoCamera.StartRecording();
 
             videoCamera.IsInRole(DeviceRole.Recording).ShouldBeTrue();
         }
 
-        void ShouldFailToStartRecordingWhenAlreadyRecording()
+        void ShouldFailToStartRecordingWhenAlreadyRecording(VideoCamera videoCamera)
         {
-            var videoCamera = CreateDevice(new DeviceId());
             videoCamera.StartRecording();
 
             videoCamera.StartRecording().ShouldBeFalse();
-        }
-
-        protected override VideoCamera CreateDevice(DeviceId id)
-        {
-            return new VideoCamera(id);
         }
     }
 }

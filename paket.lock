@@ -22,6 +22,7 @@ GROUP Test
 NUGET
   remote: https://www.nuget.org/api/v2
   specs:
+    AutoFixture (3.46)
     Shouldly (2.7)
       System.Collections (>= 4.0) - framework: dnxcore50
       System.Diagnostics.Debug (>= 4.0) - framework: dnxcore50

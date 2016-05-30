@@ -5,37 +5,40 @@
 
 namespace Media.Domain.Tests
 {
+    using System;
     using Shouldly;
 
-    public sealed class MicrophoneTests : DeviceBaseTests<Microphone>
+    public sealed class MicrophoneTests
     {
-        public void ShouldGenerateDeviceIdWhenConstructedWithoutDeviceId()
+        public void ShouldFailWhenConstructedUsingNullDeviceId()
         {
-            var microphone = new Microphone();
+            Action act = () => new Microphone(null);
 
+            act.ShouldThrow<ArgumentNullException>();
+        }
+
+        public void ShouldBeAvailableWhenConstructed(Microphone microphone)
+        {
+            microphone.IsAvailable().ShouldBeTrue();
+        }
+
+        public void ShouldGenerateDeviceIdWhenConstructedWithoutDeviceId(Microphone microphone)
+        {
             microphone.DeviceId.ShouldNotBeNull();
         }
 
-        public void ShouldBeRecordingWhenRecordingIsStarted()
+        public void ShouldBeRecordingWhenRecordingIsStarted(Microphone microphone)
         {
-            var microphone = CreateDevice(new DeviceId());
-
             microphone.StartRecording();
 
             microphone.IsInRole(DeviceRole.Recording).ShouldBeTrue();
         }
 
-        void ShouldFailToStartRecordingWhenAlreadyRecording()
+        void ShouldFailToStartRecordingWhenAlreadyRecording(Microphone microphone)
         {
-            var microphone = CreateDevice(new DeviceId());
             microphone.StartRecording();
 
             microphone.StartRecording().ShouldBeFalse();
-        }
-
-        protected override Microphone CreateDevice(DeviceId id)
-        {
-            return new Microphone(id);
         }
     }
 }
