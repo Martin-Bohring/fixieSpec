@@ -22,11 +22,7 @@ namespace Media.Domain.Tests
         /// <inheritdoc/>
         public IEnumerable<object[]> GetParameters(MethodInfo method)
         {
- 
             IFixture fixture = new Fixture();
-
-            fixture.Register<IAudioSource>(()=> new Microphone());
-            fixture.Register<IVideoSource>(() => new VideoCamera());
 
             yield return GetParameterValues(method.GetParameters(), fixture);
         }
