@@ -14,9 +14,6 @@ namespace Media.Domain.Tests
     using Ploeh.AutoFixture.Kernel;
     using Fixture = Ploeh.AutoFixture.Fixture;
 
-    /// <summary>
-    /// A <see cref="ParameterSource"/> that creates parameter values using AutoFîxture.
-    /// </summary>
     public class AutoFixtureParameterSource : ParameterSource
     {
         /// <inheritdoc/>
