@@ -307,8 +307,11 @@ namespace FixieSpec.Tests
             using (var console = new RedirectedConsole())
             {
                 var listener = new NullResultListener();
+                var convention = new FixieSpecConvention();
 
-                var results = typeof(TSampleTestClass).Run(listener, new FixieSpecConvention());
+                convention.Parameters.Add<InputAttributeParameterSource>();
+
+                var results = typeof(TSampleTestClass).Run(listener, convention);
 
                 return new SpecificationExecutionResult(results, console.Lines());
             }
