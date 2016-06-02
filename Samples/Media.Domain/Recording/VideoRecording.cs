@@ -13,9 +13,10 @@ namespace Media.Domain.Recording
     public class VideoRecording
     {
         IVideoRecordingSource videoSource;
+        IAudioRecordingSource audioSource;
 
         /// <summary>
-        /// Start the video recording using the video recording device.
+        /// Start the video recording using the video and audio recording sources.
         /// </summary>
         /// <param name="videoSource">
         /// The device providing the video signal to be recorded.
@@ -41,6 +42,7 @@ namespace Media.Domain.Recording
             if (videoSource.UseForVideoRecording() && audioSource.UseForAudioRecording())
             {
                 this.videoSource = videoSource;
+                this.audioSource = audioSource;
                 return true;
             }
 
