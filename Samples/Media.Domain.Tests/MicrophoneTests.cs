@@ -34,7 +34,7 @@ namespace Media.Domain.Tests
             microphone.IsInRole(DeviceRole.Recording).ShouldBeTrue();
         }
 
-        void CannotUserForAudioRecordingWhenAlreadyRecording(Microphone microphone)
+        void CannotUseForAudioRecordingWhenAlreadyRecording(Microphone microphone)
         {
             microphone.UseForAudioRecording();
 
