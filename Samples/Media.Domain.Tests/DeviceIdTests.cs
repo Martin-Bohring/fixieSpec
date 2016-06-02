@@ -9,7 +9,7 @@ namespace Media.Domain.Tests
 
     using Shouldly;
 
-    class DeviceIdTests
+    public sealed class DeviceIdTests
     {
         public void ShouldFailWhenConstructedUsingEmptyId()
         {
