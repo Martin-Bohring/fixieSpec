@@ -27,18 +27,18 @@ namespace Media.Domain.Tests
             microphone.DeviceId.ShouldNotBeNull();
         }
 
-        public void ShouldBeRecordingWhenRecordingIsStarted(Microphone microphone)
+        public void ShouldBeRecordingWhenUsedForAudioRecording(Microphone microphone)
         {
-            microphone.StartRecording();
+            microphone.UseForAudioRecording();
 
             microphone.IsInRole(DeviceRole.Recording).ShouldBeTrue();
         }
 
-        void ShouldFailToStartRecordingWhenAlreadyRecording(Microphone microphone)
+        void CannotUserForAudioRecordingWhenAlreadyRecording(Microphone microphone)
         {
-            microphone.StartRecording();
+            microphone.UseForAudioRecording();
 
-            microphone.StartRecording().ShouldBeFalse();
+            microphone.UseForAudioRecording().ShouldBeFalse();
         }
     }
 }

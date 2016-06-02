@@ -27,18 +27,18 @@ namespace Media.Domain.Tests
             videoCamera.DeviceId.ShouldNotBeNull();
         }
 
-        public void ShouldBeRecordingWhenRecordingIsStarted(VideoCamera videoCamera)
+        public void ShouldBeRecordingWhenUsedForVideoRecording(VideoCamera videoCamera)
         {
-            videoCamera.StartRecording();
+            videoCamera.UseForVideoRecording();
 
             videoCamera.IsInRole(DeviceRole.Recording).ShouldBeTrue();
         }
 
-        void ShouldFailToStartRecordingWhenAlreadyRecording(VideoCamera videoCamera)
+        void CannotUSeForVideoRecordingWhenAlreadyRecording(VideoCamera videoCamera)
         {
-            videoCamera.StartRecording();
+            videoCamera.UseForVideoRecording();
 
-            videoCamera.StartRecording().ShouldBeFalse();
+            videoCamera.UseForVideoRecording().ShouldBeFalse();
         }
     }
 }

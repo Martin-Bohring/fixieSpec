@@ -8,7 +8,7 @@ namespace Media.Domain
     /// <summary>
     /// Represents a video camera.
     /// </summary>
-    public class VideoCamera : DeviceBase, IVideoSource
+    public class VideoCamera : DeviceBase, IVideoRecordingSource
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="VideoCamera"/> class.
@@ -30,7 +30,7 @@ namespace Media.Domain
         }
 
         /// <inheritdoc/>
-        public bool StartRecording()
+        public bool UseForVideoRecording()
         {
             if (IsAvailable())
             {

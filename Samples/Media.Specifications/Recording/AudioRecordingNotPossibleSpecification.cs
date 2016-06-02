@@ -23,7 +23,7 @@ namespace Media.Recording.Specifications
         }
         public void Given_the_microphone_is_not_available()
         {
-            microphone.StartRecording();
+            microphone.UseForAudioRecording();
         }
 
         public void When_attempting_to_start_the_audio_recording()

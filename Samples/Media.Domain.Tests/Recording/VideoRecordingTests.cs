@@ -40,7 +40,7 @@ namespace Media.Domain.Recording.Tests
             VideoRecording videoRecording,
             VideoCamera camera)
         {
-            camera.StartRecording();
+            camera.UseForVideoRecording();
 
             videoRecording.StartRecording(camera).ShouldBeFalse();
         }

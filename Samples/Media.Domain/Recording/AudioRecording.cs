@@ -12,7 +12,7 @@ namespace Media.Domain.Recording
     /// </summary>
     public class AudioRecording
     {
-        IAudioSource audioSource;
+        IAudioRecordingSource audioSource;
 
         /// <summary>
         /// Start the audio recording using the audio source device.
@@ -23,14 +23,14 @@ namespace Media.Domain.Recording
         /// <returns>
         /// <see langword="true"/>, if the audio recording started sucessful; <see langword="false"/> otherwise.
         /// </returns>
-        public bool StartRecording(IAudioSource audioSource)
+        public bool StartRecording(IAudioRecordingSource audioSource)
         {
             if (audioSource == null)
             {
                 throw new ArgumentNullException(nameof(audioSource));
             }
 
-            if (audioSource.StartRecording())
+            if (audioSource.UseForAudioRecording())
             {
                 this.audioSource = audioSource;
                 return true;

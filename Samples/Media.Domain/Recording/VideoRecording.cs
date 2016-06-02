@@ -12,7 +12,7 @@ namespace Media.Domain.Recording
     /// </summary>
     public class VideoRecording
     {
-        IVideoSource videoSource;
+        IVideoRecordingSource videoSource;
 
         /// <summary>
         /// Start the video recording using the video recording device.
@@ -23,14 +23,14 @@ namespace Media.Domain.Recording
         /// <returns>
         /// <see langword="true"/>, if the video recording started sucessful; <see langword="false"/> otherwise.
         /// </returns>
-        public bool StartRecording(IVideoSource videoSource)
+        public bool StartRecording(IVideoRecordingSource videoSource)
         {
             if (videoSource == null)
             {
                 throw new ArgumentNullException(nameof(videoSource));
             }
 
-            if (videoSource.StartRecording())
+            if (videoSource.UseForVideoRecording())
             {
                 this.videoSource = videoSource;
                 return true;

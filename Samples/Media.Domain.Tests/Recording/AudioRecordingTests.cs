@@ -39,7 +39,7 @@ namespace Media.Domain.Recording.Tests
             AudioRecording audioRecording,
             Microphone microphone)
         {
-            microphone.StartRecording();
+            microphone.UseForAudioRecording();
 
             audioRecording.StartRecording(microphone).ShouldBeFalse();
         }
