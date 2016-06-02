@@ -11,38 +11,50 @@ namespace Media.Domain.Recording.Tests
 
     public class VideoRecordingTests
     {
-        public void ShouldFailToStartRecordingUsingNullDevice(
-            VideoRecording videoRecording)
+        public void ShouldFailToStartRecordingUsingNullVideoRecordingSource(
+            VideoRecording videoRecording,
+            Microphone microphone)
         {
-            Action act = () => videoRecording.StartRecording(null);
+            Action act = () => videoRecording.StartRecording(null, microphone);
 
             act.ShouldThrow<ArgumentNullException>();
         }
 
-        public void ShouldStartWhenSourceDeviceIsAvailable(
+        public void ShouldFailToStartRecordingUsingNullAudioRecordingSource(
             VideoRecording videoRecording,
-            VideoCamera camera
-            )
+            VideoCamera camera)
         {
-            videoRecording.StartRecording(camera).ShouldBeTrue();
+            Action act = () => videoRecording.StartRecording(camera, null);
+
+            act.ShouldThrow<ArgumentNullException>();
+        }
+
+        public void ShouldStartWhenVideoRecordingSourceIsAvailable(
+            VideoRecording videoRecording,
+            VideoCamera camera,
+            Microphone microphone)
+        {
+            videoRecording.StartRecording(camera, microphone).ShouldBeTrue();
         }
 
         public void ShouldBeRecordingWhenStartedSuccessful(
             VideoRecording videoRecording,
-            VideoCamera camera)
+            VideoCamera camera,
+            Microphone microphone)
         {
-            videoRecording.StartRecording(camera);
+            videoRecording.StartRecording(camera, microphone);
 
             videoRecording.IsRecording().ShouldBeTrue();
         }
 
-        public void ShouldNotStartWhenSourceDeviceIsNotAvailable(
+        public void ShouldNotStartWhenVideoRecordingSourceIsNotAvailable(
             VideoRecording videoRecording,
-            VideoCamera camera)
+            VideoCamera camera,
+            Microphone microphone)
         {
             camera.UseForVideoRecording();
 
-            videoRecording.StartRecording(camera).ShouldBeFalse();
+            videoRecording.StartRecording(camera, microphone).ShouldBeFalse();
         }
     }
 }

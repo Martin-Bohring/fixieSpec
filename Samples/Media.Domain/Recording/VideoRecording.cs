@@ -20,17 +20,25 @@ namespace Media.Domain.Recording
         /// <param name="videoSource">
         /// The device providing the video signal to be recorded.
         /// </param>
+        /// <param name="audioSource">
+        /// The device providing the audio signal to be recorded
+        /// </param>
         /// <returns>
         /// <see langword="true"/>, if the video recording started sucessful; <see langword="false"/> otherwise.
         /// </returns>
-        public bool StartRecording(IVideoRecordingSource videoSource)
+        public bool StartRecording(IVideoRecordingSource videoSource, IAudioRecordingSource audioSource)
         {
             if (videoSource == null)
             {
                 throw new ArgumentNullException(nameof(videoSource));
             }
 
-            if (videoSource.UseForVideoRecording())
+            if (audioSource == null)
+            {
+                throw new ArgumentNullException(nameof(audioSource));
+            }
+
+            if (videoSource.UseForVideoRecording() && audioSource.UseForAudioRecording())
             {
                 this.videoSource = videoSource;
                 return true;

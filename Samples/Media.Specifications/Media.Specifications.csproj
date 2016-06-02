@@ -37,7 +37,7 @@
   <ItemGroup>
     <Compile Include="Recording\AudioRecordingNotPossibleSpecification.cs" />
     <Compile Include="Recording\SucessfulAudioRecordingSpecification.cs" />
-    <Compile Include="Recording\VideoRecordingSpecification.cs" />
+    <Compile Include="Recording\VideoWithAudioRecordingSpecification.cs" />
     <Compile Include="UseFixieSpec.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
