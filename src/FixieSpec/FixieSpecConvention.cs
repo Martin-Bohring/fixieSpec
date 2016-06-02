@@ -23,8 +23,7 @@ namespace FixieSpec
         public FixieSpecConvention()
         {
             Classes
-                .NameEndsWith("Specification")
-                .Where(type => type.HasOnlyDefaultConstructor());
+                .NameEndsWith("Specification");
 
             Methods
                 .Where(method => method.IsAssertionStep());
