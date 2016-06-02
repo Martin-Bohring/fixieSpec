@@ -15,12 +15,7 @@ namespace Media.Recording.Specification
         readonly Microphone microphone = new Microphone();
         readonly VideoCamera camera = new VideoCamera();
 
-        readonly VideoRecording videoRecording;
-
-        public VideoWithAudioRecordingSpecification()
-        {
-            videoRecording = new VideoRecording();
-        }
+        readonly VideoRecording videoRecording = new VideoRecording();
 
         public void Given_a_camera_is_available()
         {

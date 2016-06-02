@@ -14,12 +14,8 @@ namespace Media.Recording.Specifications
     {
         readonly Microphone microphone = new Microphone();
 
-        readonly AudioRecording audioRecording;
+        readonly AudioRecording audioRecording = new AudioRecording();
 
-        public SucessfulAudioRecordingSpecification()
-        {
-            audioRecording = new AudioRecording();
-        }
         public void Given_a_microphone_is_available()
         {
             microphone.MakeAvailable();
