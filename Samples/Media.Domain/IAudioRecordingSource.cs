@@ -6,7 +6,8 @@
 namespace Media.Domain
 {
     /// <summary>
-    /// An interface that describes an audio recording source.
+    /// An interface that describes an audio recording source
+    /// proving audio signals to be recorded.
     /// </summary>
     public interface IAudioRecordingSource
     {

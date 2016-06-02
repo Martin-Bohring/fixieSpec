@@ -6,7 +6,8 @@
 namespace Media.Domain
 {
     /// <summary>
-    /// An interface that describes a video recording source.
+    /// An interface that describes a video recording source
+    /// providing video signals to be recorded.
     /// </summary>
     public interface IVideoRecordingSource
     {
