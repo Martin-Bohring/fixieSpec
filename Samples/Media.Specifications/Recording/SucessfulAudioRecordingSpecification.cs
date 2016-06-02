@@ -31,7 +31,7 @@ namespace Media.Recording.Specifications
             audioRecording.IsRecording().ShouldBeTrue();
         }
 
-        public void Then_the_selected_microphone_is_used_for_recording()
+        public void And_then_the_selected_microphone_is_used_for_recording()
         {
             microphone.IsInRole(DeviceRole.Recording).ShouldBeTrue();
         }

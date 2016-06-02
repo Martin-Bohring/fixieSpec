@@ -37,7 +37,7 @@ namespace Media.Recording.Specification
             videoRecording.IsRecording().ShouldBeTrue();
         }
 
-        public void Then_the_selected_camera_is_used_for_recording()
+        public void And_Then_the_selected_camera_is_used_for_recording()
         {
             camera.IsInRole(DeviceRole.Recording).ShouldBeTrue();
         }
