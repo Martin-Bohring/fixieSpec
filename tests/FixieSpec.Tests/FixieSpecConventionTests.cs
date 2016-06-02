@@ -169,7 +169,7 @@ namespace FixieSpec.Tests
                 instance.Value = 42;
             }
 
-            public void Then_the_result_can_be_verified()
+            public void Then_a_result_can_be_verified()
             {
                 instance.Value.ShouldBe(42);
             }
@@ -272,7 +272,7 @@ namespace FixieSpec.Tests
                 WhereAmI();
             }
 
-            public void Then_a_result_can_be_verified()
+            public void Then_a_result_cannot_be_verified()
             {
                 throw new ShouldBeUnreachableException();
             }
