@@ -19,7 +19,7 @@ namespace FixieSpec.Tests
     /// Test helper extension class taken from
     /// https://github.com/fixie/fixie/blob/master/src/Fixie.Tests/TestExtensions.cs.
     /// </summary>
-    public static class TestExtensions
+    static class TestExtensions
     {
         const BindingFlags InstanceMethods = BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public;
 
