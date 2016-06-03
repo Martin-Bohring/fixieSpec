@@ -3,7 +3,7 @@
 // Licensed under the MIT license. See LICENSE.txt file in the project root for full license information.
 // </copyright>
 
-namespace Media.Specifications.Recording
+namespace Media.Recording.Specifications
 {
     using FixieSpec;
     using Shouldly;
@@ -30,7 +30,7 @@ namespace Media.Specifications.Recording
         [Inconclusive]
         public void Then_the_video_recording_should_be_recording()
         {
-            videoRecording.IsRecording().ShouldBeTrue();
+            videoRecording.ShouldBeRecording();
         }
 
         [Inconclusive]

@@ -29,7 +29,7 @@ namespace Media.Recording.Specifications
 
         public void Then_the_audio_recording_should_not_be_recording()
         {
-            audioRecording.IsRecording().ShouldBeFalse();
+            audioRecording.ShouldNotBeRecording();
         }
 
         [Inconclusive("Find a different way to verify if the microphone is recording")]

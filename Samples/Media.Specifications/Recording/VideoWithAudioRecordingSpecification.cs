@@ -3,7 +3,7 @@
 // Licensed under the MIT license. See LICENSE.txt file in the project root for full license information.
 // </copyright>
 
-namespace Media.Recording.Specification
+namespace Media.Recording.Specifications
 {
     using Shouldly;
 
@@ -34,7 +34,7 @@ namespace Media.Recording.Specification
 
         public void Then_the_video_recording_should_be_recording()
         {
-            videoRecording.IsRecording().ShouldBeTrue();
+            videoRecording.ShouldBeRecording();
         }
 
         public void And_Then_the_selected_camera_is_used_for_recording()

@@ -28,7 +28,7 @@ namespace Media.Recording.Specifications
 
         public void Then_the_voice_recording_should_be_recording()
         {
-            audioRecording.IsRecording().ShouldBeTrue();
+            audioRecording.ShouldBeRecording();
         }
 
         public void And_then_the_selected_microphone_is_used_for_recording()

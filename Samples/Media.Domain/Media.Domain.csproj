@@ -49,6 +49,7 @@
     <Compile Include="Recording\AudioRecording.cs" />
     <Compile Include="Microphone.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Recording\IMediaRecording.cs" />
     <Compile Include="Recording\VideoRecording.cs" />
     <Compile Include="VideoCamera.cs" />
   </ItemGroup>
