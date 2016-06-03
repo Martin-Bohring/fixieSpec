@@ -10,7 +10,7 @@ namespace Media.Domain.Recording
     /// <summary>
     /// Represents an ongoing video recording.
     /// </summary>
-    public class VideoRecording
+    public class VideoRecording : IMediaRecording
     {
         IVideoRecordingSource videoSource;
         IAudioRecordingSource audioSource;
@@ -49,12 +49,7 @@ namespace Media.Domain.Recording
             return false;
         }
 
-        /// <summary>
-        /// Verifies if the video recording is active.
-        /// </summary>
-        /// <returns>
-        /// <see langword="true"/>, if the video recording is recording; <see langword="false"/> otherwise.
-        /// </returns>
+        /// <inheritdoc/>
         public bool IsRecording() => videoSource != null;
     }
 }
