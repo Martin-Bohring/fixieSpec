@@ -49,6 +49,31 @@ namespace Media.Domain.Recording
             return false;
         }
 
+        /// <summary>
+        /// Start the video recording using the video recording source given by <paramref name="videoSource"/>.
+        /// </summary>
+        /// <param name="videoSource">
+        /// The device providing the video signal to be recorded.
+        /// </param>
+        /// <returns>
+        /// <see langword="true"/>, if the video recording started sucessful; <see langword="false"/> otherwise.
+        /// </returns>
+        public bool StartRecording(IVideoRecordingSource videoSource)
+        {
+            if (videoSource == null)
+            {
+                throw new ArgumentNullException(nameof(videoSource));
+            }
+
+            if (videoSource.UseForVideoRecording())
+            {
+                this.videoSource = videoSource;
+                return true;
+            }
+
+            return false;
+        }
+
         /// <inheritdoc/>
         public bool IsRecording() => videoSource != null;
     }

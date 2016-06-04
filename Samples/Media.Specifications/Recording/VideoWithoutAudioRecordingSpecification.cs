@@ -22,24 +22,21 @@ namespace Media.Recording.Specifications
             camera.MakeAvailable();
         }
 
-        [Inconclusive]
         public void When_a_video_recording_is_started()
         {
+            videoRecording.StartRecording(camera);
         }
 
-        [Inconclusive]
         public void Then_the_video_recording_should_be_recording()
         {
             videoRecording.ShouldBeRecording();
         }
 
-        [Inconclusive]
         public void And_Then_the_selected_camera_is_used_for_recording()
         {
             camera.IsInRole(DeviceRole.Recording).ShouldBeTrue();
         }
 
-        [Inconclusive]
         public void And_then_the_selected_camera_is_not_available_anymore()
         {
             camera.IsAvailable().ShouldBeFalse();

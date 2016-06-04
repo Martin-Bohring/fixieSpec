@@ -20,6 +20,14 @@ namespace Media.Domain.Recording.Tests
             act.ShouldThrow<ArgumentNullException>();
         }
 
+        public void ShouldFailToStartRecordingUsingNullVideoRecordingSource(
+            VideoRecording videoRecording)
+        {
+            Action act = () => videoRecording.StartRecording(null);
+
+            act.ShouldThrow<ArgumentNullException>();
+        }
+
         public void ShouldFailToStartRecordingUsingNullAudioRecordingSource(
             VideoRecording videoRecording,
             VideoCamera camera)
@@ -29,12 +37,19 @@ namespace Media.Domain.Recording.Tests
             act.ShouldThrow<ArgumentNullException>();
         }
 
-        public void ShouldStartWhenVideoRecordingSourceIsAvailable(
+        public void ShouldStartWhenVideoRecordingSourcesAreAvailable(
             VideoRecording videoRecording,
             VideoCamera camera,
             Microphone microphone)
         {
             videoRecording.StartRecording(camera, microphone).ShouldBeTrue();
+        }
+
+        public void ShouldStartWhenVideoRecordingSourcesAreAvailable(
+            VideoRecording videoRecording,
+            VideoCamera camera)
+        {
+            videoRecording.StartRecording(camera).ShouldBeTrue();
         }
 
         public void ShouldBeRecordingWhenStartedSuccessful(
@@ -47,6 +62,15 @@ namespace Media.Domain.Recording.Tests
             videoRecording.IsRecording().ShouldBeTrue();
         }
 
+        public void ShouldBeRecordingWhenStartedSuccessful(
+            VideoRecording videoRecording,
+            VideoCamera camera)
+        {
+            videoRecording.StartRecording(camera);
+
+            videoRecording.IsRecording().ShouldBeTrue();
+        }
+
         public void ShouldNotStartWhenVideoRecordingSourceIsNotAvailable(
             VideoRecording videoRecording,
             VideoCamera camera,
@@ -55,6 +79,15 @@ namespace Media.Domain.Recording.Tests
             camera.UseForVideoRecording();
 
             videoRecording.StartRecording(camera, microphone).ShouldBeFalse();
+        }
+
+        public void ShouldNotStartWhenVideoRecordingSourceIsNotAvailable(
+            VideoRecording videoRecording,
+            VideoCamera camera)
+        {
+            camera.UseForVideoRecording();
+
+            videoRecording.StartRecording(camera).ShouldBeFalse();
         }
     }
 }
