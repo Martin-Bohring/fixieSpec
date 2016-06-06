@@ -10,7 +10,7 @@ namespace Media.Recording.Specifications
     using Domain;
     using Domain.Recording;
 
-    public sealed class VideoWithAudioRecordingSpecification
+    public sealed class SuccessfulVideoWithAudioRecording
     {
         readonly Microphone microphone = new Microphone();
         readonly VideoCamera camera = new VideoCamera();

@@ -10,7 +10,7 @@ namespace Media.Recording.Specifications
     using Domain;
     using Domain.Recording;
 
-    public sealed class SucessfulAudioRecordingSpecification
+    public sealed class SucessfulAudioRecording
     {
         readonly Microphone microphone = new Microphone();
 

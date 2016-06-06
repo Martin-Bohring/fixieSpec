@@ -5,13 +5,12 @@
 
 namespace Media.Recording.Specifications
 {
-    using FixieSpec;
     using Shouldly;
 
     using Domain;
     using Domain.Recording;
 
-    public sealed class VideoWithoutAudioRecordingSpecification
+    public sealed class SuccessfulVideoOnlyRecording
     {
         readonly VideoCamera camera = new VideoCamera();
 

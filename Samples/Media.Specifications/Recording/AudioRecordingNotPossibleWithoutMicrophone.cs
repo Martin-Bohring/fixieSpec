@@ -5,13 +5,12 @@
 
 namespace Media.Recording.Specifications
 {
-    using Shouldly;
     using FixieSpec;
 
     using Domain;
     using Domain.Recording;
 
-    public sealed class AudioRecordingNotPossibleSpecification
+    public sealed class AudioRecordingNotPossibleWithoutMicrophone
     {
         readonly Microphone microphone = new Microphone();
 
