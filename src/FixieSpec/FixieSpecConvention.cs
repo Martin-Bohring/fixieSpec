@@ -22,9 +22,6 @@ namespace FixieSpec
         /// </summary>
         public FixieSpecConvention()
         {
-            Classes
-                .NameEndsWith("Specification");
-
             Methods
                 .Where(method => method.IsAssertionStep());
 

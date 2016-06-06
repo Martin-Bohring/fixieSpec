@@ -17,7 +17,7 @@ namespace FixieSpec.Tests
     {
         public void ShouldExecuteAllStepsInOrder()
         {
-            var executionResult = Execute<ExampleSpecification>();
+            var executionResult = Execute<Example>();
 
             executionResult.ConsoleOutput.ShouldEqual(
                 "Given_a_specification_context",
@@ -30,7 +30,7 @@ namespace FixieSpec.Tests
 
         public void ShouldRecognizeAllSuccessfulAssertionSteps()
         {
-            var executionResult = Execute<ExampleSpecification>();
+            var executionResult = Execute<Example>();
 
             executionResult.Total.ShouldBe(2);
             executionResult.Passed.ShouldBe(2);
@@ -39,7 +39,7 @@ namespace FixieSpec.Tests
 
         public void ShouldExecuteAllStepsOnTheSameInstance()
         {
-            var executionResult = Execute<ExampleInstanceSpecification>();
+            var executionResult = Execute<ExampleWithInstance>();
 
             executionResult.Total.ShouldBe(1);
             executionResult.Passed.ShouldBe(1);
@@ -47,7 +47,7 @@ namespace FixieSpec.Tests
 
         public void ShouldExecuteAllStepsInOrderEvenWithFailingAssertionSteps()
         {
-            var executionResult = Execute<FailingAssertionStepExampleSpecification>();
+            var executionResult = Execute<FailingAssertionStepExample>();
 
             executionResult.ConsoleOutput.ShouldEqual(
                 "When_exercising_the_system_under_test",
@@ -58,7 +58,7 @@ namespace FixieSpec.Tests
 
         public void ShouldRecognizeAllFailedAssertionSteps()
         {
-            var executionResult = Execute<FailingAssertionStepExampleSpecification>();
+            var executionResult = Execute<FailingAssertionStepExample>();
 
             executionResult.Total.ShouldBe(2);
             executionResult.Passed.ShouldBe(1);
@@ -67,7 +67,7 @@ namespace FixieSpec.Tests
 
         public void ShouldStopWhenASetupStepFails()
         {
-            var executionResult = Execute<FailingSetupStepExampleSpecification>();
+            var executionResult = Execute<FailingSetupStepExample>();
 
             executionResult.ConsoleOutput.ShouldEqual(
                 "Given_a_specification_context",
@@ -76,14 +76,14 @@ namespace FixieSpec.Tests
 
         public void ShouldFailAllAssertionStepsWhenASetupStepFails()
         {
-            var executionResult = Execute<FailingSetupStepExampleSpecification>();
+            var executionResult = Execute<FailingSetupStepExample>();
 
             executionResult.Failed.ShouldBe(2);
         }
 
         public void ShouldStopWhenATransitionStepFails()
         {
-            var executionResult = Execute<FailingTransitionStepExampleSpecification>();
+            var executionResult = Execute<FailingTransitionStepExample>();
 
             executionResult.ConsoleOutput.ShouldEqual(
                 "When_exercising_the_system_under_test_fails");
@@ -91,21 +91,21 @@ namespace FixieSpec.Tests
 
         public void ShouldFailAllAssertionStepsWhenATransitionStepFails()
         {
-            var executionResult = Execute<FailingTransitionStepExampleSpecification>();
+            var executionResult = Execute<FailingTransitionStepExample>();
 
             executionResult.Failed.ShouldBe(2);
         }
 
         public void ShouldRecognizenInconclusiveSpecifications()
         {
-            var executionResult = Execute<InconclusiveExampleSpecification>();
+            var executionResult = Execute<InconclusiveExample>();
 
             executionResult.Skipped.ShouldBe(1);
         }
         
         public void ShouldRecognizeInconclusiveAssertionSteps()
         {
-            var executionResult = Execute<InconclusiveStepExampleSpecification>();
+            var executionResult = Execute<InconclusiveStepExample>();
 
             executionResult.Total.ShouldBe(2);
             executionResult.Skipped.ShouldBe(1);
@@ -114,7 +114,7 @@ namespace FixieSpec.Tests
 
         public void ShouldNotExecuteInconclusiveAssertionSteps()
         {
-            var executionResult = Execute<InconclusiveStepExampleSpecification>();
+            var executionResult = Execute<InconclusiveStepExample>();
 
             executionResult.ConsoleOutput.ShouldEqual(
                 "Given_a_specification_context",
@@ -122,7 +122,7 @@ namespace FixieSpec.Tests
                 "And_then_another_result_can_be_verified");
         }
 
-        class ExampleSpecification
+        class Example
         {
             public void Given_a_specification_context()
             {
@@ -155,7 +155,7 @@ namespace FixieSpec.Tests
             }
         }
 
-        class ExampleInstanceSpecification
+        class ExampleWithInstance
         {
             Instance instance;
 
@@ -180,7 +180,7 @@ namespace FixieSpec.Tests
             }
         }
 
-        class FailingAssertionStepExampleSpecification
+        class FailingAssertionStepExample
         {
             public void When_exercising_the_system_under_test()
             {
@@ -204,7 +204,7 @@ namespace FixieSpec.Tests
             }
         }
 
-        class FailingSetupStepExampleSpecification
+        class FailingSetupStepExample
         {
             public void Given_a_specification_context()
             {
@@ -234,7 +234,7 @@ namespace FixieSpec.Tests
             }
         }
 
-        class FailingTransitionStepExampleSpecification
+        class FailingTransitionStepExample
         {
             public void When_exercising_the_system_under_test_fails()
             {
@@ -260,7 +260,7 @@ namespace FixieSpec.Tests
         }
 
         [Inconclusive]
-        class InconclusiveExampleSpecification
+        class InconclusiveExample
         {
             public void Given_a_specification_context()
             {
@@ -278,7 +278,7 @@ namespace FixieSpec.Tests
             }
         }
 
-        class InconclusiveStepExampleSpecification
+        class InconclusiveStepExample
         {
             public void Given_a_specification_context()
             {
