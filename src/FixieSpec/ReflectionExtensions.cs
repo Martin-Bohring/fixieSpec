@@ -41,8 +41,8 @@ namespace FixieSpec
         /// The type to check.
         /// </param>
         /// <returns>
-        /// <see langword="true"/>, if the type given by <paramref name="type"/> has a only default constructor;
-        /// <see langword="false"/> otherwise.
+        /// <see langword="true"/>, if the type given by <paramref name="type"/> has a
+        /// only default constructor; <see langword="false"/> otherwise.
         /// </returns>
         public static bool HasOnlyDefaultConstructor(this Type type)
         {
@@ -54,6 +54,29 @@ namespace FixieSpec
             return type
                 .GetConstructors()
                 .All(constructorInfo => constructorInfo.HasNoParameters());
+        }
+
+        /// <summary>
+        /// Detects if the type given by <see paramref="type"/> has only a constructor
+        /// with a single parameter.
+        /// </summary>
+        /// <param name="type">
+        /// The type to check.
+        /// </param>
+        /// <returns>
+        /// <see langword="true"/>, if the type given by <paramref name="type"/> has a only a
+        /// single parameter constructor; <see langword="false"/> otherwise.
+        /// </returns>
+        public static bool HasOnlySingleParameterConstructor(this Type type)
+        {
+            if (type == null)
+            {
+                throw new ArgumentNullException(nameof(type));
+            }
+
+            return type
+                .GetConstructors()
+                .FirstOrDefault(constructorInfo => constructorInfo.GetParameters().Length == 1) != null;
         }
     }
 }

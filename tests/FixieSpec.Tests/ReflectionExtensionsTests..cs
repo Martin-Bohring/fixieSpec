@@ -14,19 +14,19 @@ namespace FixieSpec.Tests
     {
         public void ShouldDetectMethodWithoutParameters()
         {
-            var methodWithoutParameter = Method("MethodWithOutParameter");
+            var methodWithoutParameter = Method<TypeWithDefaultConstructor>("MethodWithOutParameter");
 
             methodWithoutParameter.HasNoParameters().ShouldBeTrue();
         }
 
         public void ShouldDetectMethodWithParameter()
         {
-            var methodWithParameter = Method("MethodWithParammeter");
+            var methodWithParameter = Method<TypeWithDefaultConstructor>("MethodWithParammeter");
 
             methodWithParameter.HasNoParameters().ShouldBeFalse();
         }
 
-        public void ShouldFailToDetectParametersForInvalidMethod()
+        public void ShouldFailToDetectParametersUsingNullMethod()
         {
             Action act = () => (null as MethodInfo).HasNoParameters();
 
@@ -35,22 +35,44 @@ namespace FixieSpec.Tests
 
         public void ShouldDetectDefaultConstructor()
         {
-            typeof(ReflectionTarget).HasOnlyDefaultConstructor().ShouldBeTrue();
+            typeof(TypeWithDefaultConstructor).HasOnlyDefaultConstructor().ShouldBeTrue();
         }
 
-        public void ShouldFailToDetectDefaultConstructorForInvalidType()
+        public void ShouldNotDetectDefaultConstructorForTypesWithOtherConstructors()
+        {
+            typeof(TypeWithSingleParameterConstructor).HasOnlyDefaultConstructor().ShouldBeFalse();
+        }
+
+        public void ShouldFailToDetectDefaultConstructorUsingNullType()
         {
             Action act = () => (null as Type).HasOnlyDefaultConstructor();
 
             act.ShouldThrow<ArgumentNullException>();
         }
 
-        static MethodInfo Method(string methodName)
+        public void ShouldDetectSingleParameterConstructor()
         {
-            return typeof(ReflectionTarget).GetInstanceMethod(methodName);
+            typeof(TypeWithSingleParameterConstructor).HasOnlySingleParameterConstructor().ShouldBeTrue();
         }
 
-        class ReflectionTarget
+        public void ShouldNotDetectSingleParameterConstructorForTypesWithOnlyDefaultConstructor()
+        {
+            typeof(TypeWithDefaultConstructor).HasOnlySingleParameterConstructor().ShouldBeFalse();
+        }
+
+        public void ShouldFailToDetectSingleParameterConstructorUsingNullType()
+        {
+            Action act = () => (null as Type).HasOnlySingleParameterConstructor();
+
+            act.ShouldThrow<ArgumentNullException>();
+        }
+
+        static MethodInfo Method<T>(string methodName)
+        {
+            return typeof(T).GetInstanceMethod(methodName);
+        }
+
+        class TypeWithDefaultConstructor
         {
             public void MethodWithOutParameter()
             {
@@ -59,6 +81,13 @@ namespace FixieSpec.Tests
             public void MethodWithParammeter(int value)
             {
                 var notUsed = value;
+            }
+        }
+
+        class TypeWithSingleParameterConstructor
+        {
+            public TypeWithSingleParameterConstructor(int singleParameter)
+            {
             }
         }
     }
