@@ -7,33 +7,13 @@ namespace FixieSpec
 {
     using System;
     using System.Linq;
-    using System.Reflection;
 
     /// <summary>
-    /// An extension class that contains methods to simplify reflection based code
+    /// An extension class that contains methods to simplify reflection on types
     /// and make it more expressive.
     /// </summary>
-    public static class ReflectionExtensions
+    public static class TypeExtensions
     {
-        /// <summary>
-        /// Detects if the method given by <paramref name="method"/> has any parameters.
-        /// </summary>
-        /// <param name="method">
-        /// The method to check.
-        /// </param>
-        /// <returns>
-        /// <see langword="true"/>, if the method has parameters; <see langword="false"/> otherwise.
-        /// </returns>
-        public static bool HasNoParameters(this MethodBase method)
-        {
-            if (method == null)
-            {
-                throw new ArgumentNullException(nameof(method));
-            }
-
-            return !method.GetParameters().Any();
-        }
-
         /// <summary>
         /// Detects if the type given by <see paramref="type"/> has only a default constructor.
         /// </summary>

@@ -6,33 +6,11 @@
 namespace FixieSpec.Tests
 {
     using System;
-    using System.Reflection;
 
     using Shouldly;
 
-    public sealed class ReflectionExtensionsTests
+    public sealed class TypeExtensionsTests
     {
-        public void ShouldDetectMethodWithoutParameters()
-        {
-            var methodWithoutParameter = Method<TypeWithDefaultConstructor>("MethodWithOutParameter");
-
-            methodWithoutParameter.HasNoParameters().ShouldBeTrue();
-        }
-
-        public void ShouldDetectMethodWithParameter()
-        {
-            var methodWithParameter = Method<TypeWithDefaultConstructor>("MethodWithParammeter");
-
-            methodWithParameter.HasNoParameters().ShouldBeFalse();
-        }
-
-        public void ShouldFailToDetectParametersUsingNullMethod()
-        {
-            Action act = () => (null as MethodInfo).HasNoParameters();
-
-            act.ShouldThrow<ArgumentNullException>();
-        }
-
         public void ShouldDetectDefaultConstructor()
         {
             typeof(TypeWithDefaultConstructor).HasOnlyDefaultConstructor().ShouldBeTrue();
@@ -65,11 +43,6 @@ namespace FixieSpec.Tests
             Action act = () => (null as Type).HasOnlySingleParameterConstructor();
 
             act.ShouldThrow<ArgumentNullException>();
-        }
-
-        static MethodInfo Method<T>(string methodName)
-        {
-            return typeof(T).GetInstanceMethod(methodName);
         }
 
         class TypeWithDefaultConstructor

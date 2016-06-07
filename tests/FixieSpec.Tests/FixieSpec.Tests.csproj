@@ -43,7 +43,8 @@
     <Compile Include="FixieSpecConventionTests.cs" />
     <Compile Include="InputAttribute.cs" />
     <Compile Include="InputAttributeParameterSource.cs" />
-    <Compile Include="ReflectionExtensionsTests..cs" />
+    <Compile Include="MethodBaseExtensionsTests.cs" />
+    <Compile Include="TypeExtensionsTests.cs" />
     <Compile Include="ShouldBeUnreachableException.cs" />
     <Compile Include="StepConventionsTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
