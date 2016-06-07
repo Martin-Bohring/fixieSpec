@@ -35,6 +35,7 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DeviceExtensions.cs" />
     <Compile Include="Recording\AudioRecordingNotPossibleWithoutMicrophone.cs" />
     <Compile Include="Recording\SucessfulAudioRecording.cs" />
     <Compile Include="Recording\SuccessfulVideoWithAudioRecording.cs" />

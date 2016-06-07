@@ -10,6 +10,8 @@ namespace Media.Recording.Specifications
     using Domain;
     using Domain.Recording;
 
+    using Media.Specifications;
+
     public sealed class SuccessfulVideoWithAudioRecording
     {
         readonly Microphone microphone = new Microphone();
@@ -39,12 +41,12 @@ namespace Media.Recording.Specifications
 
         public void And_Then_the_selected_camera_is_used_for_recording()
         {
-            camera.IsInRole(DeviceRole.Recording).ShouldBeTrue();
+            camera.ShouldBeRecording();
         }
 
         public void And_then_the_selected_microphone_is_used_for_recording()
         {
-            microphone.IsInRole(DeviceRole.Recording).ShouldBeTrue();
+            microphone.ShouldBeRecording();
         }
 
         public void And_then_the_selected_camera_is_not_available_anymore()
