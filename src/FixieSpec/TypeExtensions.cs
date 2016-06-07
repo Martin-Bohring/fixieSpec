@@ -31,9 +31,8 @@ namespace FixieSpec
                 throw new ArgumentNullException(nameof(type));
             }
 
-            return type
-                .GetConstructors().Count() == 1 &&
-                type.GetConstructors().Count(constructorInfo => constructorInfo.HasNoParameters()) == 1;
+            return type.HasSingleConstuctor() &&
+                   type.GetConstructors().Count(constructorInfo => constructorInfo.HasNoParameters()) == 1;
         }
 
         /// <summary>
@@ -54,9 +53,13 @@ namespace FixieSpec
                 throw new ArgumentNullException(nameof(type));
             }
 
-            return type
-                .GetConstructors().Count() == 1 &&
-                type.GetConstructors().Count(constructorInfo => constructorInfo.HasParameters()) == 1;
+            return type.HasSingleConstuctor() &&
+                   type.GetConstructors().Count(constructorInfo => constructorInfo.HasParameters()) == 1;
+        }
+
+        static bool HasSingleConstuctor(this Type type)
+        {
+            return type.GetConstructors().Count() == 1;
         }
     }
 }
