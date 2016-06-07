@@ -13,7 +13,7 @@ namespace Media.Specifications
         public SpecificationConvention()
         {
             Classes
-                .Where(type => type.HasOnlyDefaultConstructor() || type.HasOnlySingleParameterConstructor());
+                .Where(type => type.HasOnlyDefaultConstructor() || type.HasOnlyParameterConstructor());
         }
     }
 }

@@ -32,22 +32,22 @@ namespace FixieSpec
             }
 
             return type
-                .GetConstructors()
-                .All(constructorInfo => constructorInfo.HasNoParameters());
+                .GetConstructors().Count() == 1 &&
+                type.GetConstructors().Count(constructorInfo => constructorInfo.HasNoParameters()) == 1;
         }
 
         /// <summary>
         /// Detects if the type given by <see paramref="type"/> has only a constructor
-        /// with a single parameter.
+        /// with with parameters.
         /// </summary>
         /// <param name="type">
         /// The type to check.
         /// </param>
         /// <returns>
         /// <see langword="true"/>, if the type given by <paramref name="type"/> has a only a
-        /// single parameter constructor; <see langword="false"/> otherwise.
+        /// constructor with parameters; <see langword="false"/> otherwise.
         /// </returns>
-        public static bool HasOnlySingleParameterConstructor(this Type type)
+        public static bool HasOnlyParameterConstructor(this Type type)
         {
             if (type == null)
             {
@@ -55,8 +55,8 @@ namespace FixieSpec
             }
 
             return type
-                .GetConstructors()
-                .FirstOrDefault(constructorInfo => constructorInfo.GetParameters().Length == 1) != null;
+                .GetConstructors().Count() == 1 &&
+                type.GetConstructors().Count(constructorInfo => constructorInfo.HasParameters()) == 1;
         }
     }
 }

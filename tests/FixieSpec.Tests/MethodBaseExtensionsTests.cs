@@ -17,6 +17,7 @@ namespace FixieSpec.Tests
             var methodWithoutParameter = Method("MethodWithoutParameter");
 
             methodWithoutParameter.HasNoParameters().ShouldBeTrue();
+            methodWithoutParameter.HasParameters().ShouldBeFalse();
         }
 
         public void ShouldDetectMethodWithParameter()
@@ -24,11 +25,12 @@ namespace FixieSpec.Tests
             var methodWithParameter = Method("MethodWithParammeter");
 
             methodWithParameter.HasNoParameters().ShouldBeFalse();
+            methodWithParameter.HasParameters().ShouldBeTrue();
         }
 
         public void ShouldFailToDetectParametersUsingNullMethod()
         {
-            Action act = () => (null as MethodInfo).HasNoParameters();
+            Action act = () => (null as MethodInfo).HasParameters();
 
             act.ShouldThrow<ArgumentNullException>();
         }

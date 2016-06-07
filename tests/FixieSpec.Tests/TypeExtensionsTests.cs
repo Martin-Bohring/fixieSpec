@@ -11,55 +11,72 @@ namespace FixieSpec.Tests
 
     public sealed class TypeExtensionsTests
     {
-        public void ShouldDetectDefaultConstructor()
+        public void ShouldDetectDefaultOnlyConstructor()
         {
-            typeof(TypeWithDefaultConstructor).HasOnlyDefaultConstructor().ShouldBeTrue();
+            typeof(TypeWithDefaultConstructorOnly).HasOnlyDefaultConstructor().ShouldBeTrue();
         }
 
-        public void ShouldNotDetectDefaultConstructorForTypesWithOtherConstructors()
+        public void ShouldNotDetectDefaultOnlyConstructorForTypeWithParameterConstructor()
         {
-            typeof(TypeWithSingleParameterConstructor).HasOnlyDefaultConstructor().ShouldBeFalse();
+            typeof(TypeWithParameterConstructorOnly).HasOnlyDefaultConstructor().ShouldBeFalse();
         }
 
-        public void ShouldFailToDetectDefaultConstructorUsingNullType()
+        public void ShouldNotDetectDefaultOnlyConstructorForTypeWithMultipleConstructors()
+        {
+            typeof(TypeWithDefaultConstructorAndParameterConstructor).HasOnlyDefaultConstructor().ShouldBeFalse();
+        }
+
+        public void ShouldFailToDetectDefaultConstructorOnlyUsingNullType()
         {
             Action act = () => (null as Type).HasOnlyDefaultConstructor();
 
             act.ShouldThrow<ArgumentNullException>();
         }
 
-        public void ShouldDetectSingleParameterConstructor()
+        public void ShouldDetectParameterOnlyConstructor()
         {
-            typeof(TypeWithSingleParameterConstructor).HasOnlySingleParameterConstructor().ShouldBeTrue();
+            typeof(TypeWithParameterConstructorOnly).HasOnlyParameterConstructor().ShouldBeTrue();
         }
 
-        public void ShouldNotDetectSingleParameterConstructorForTypesWithOnlyDefaultConstructor()
+        public void ShouldNotDetectParameterOnlyConstructorForTypeWithDefaultConstructor()
         {
-            typeof(TypeWithDefaultConstructor).HasOnlySingleParameterConstructor().ShouldBeFalse();
+            typeof(TypeWithDefaultConstructorOnly).HasOnlyParameterConstructor().ShouldBeFalse();
+        }
+
+        public void ShouldNotDetectParameterOnlyConstructorForTypeWithMultipleConstructors()
+        {
+            typeof(TypeWithDefaultConstructorAndParameterConstructor).HasOnlyParameterConstructor().ShouldBeFalse();
         }
 
         public void ShouldFailToDetectSingleParameterConstructorUsingNullType()
         {
-            Action act = () => (null as Type).HasOnlySingleParameterConstructor();
+            Action act = () => (null as Type).HasOnlyParameterConstructor();
 
             act.ShouldThrow<ArgumentNullException>();
         }
 
-        class TypeWithDefaultConstructor
+        class TypeWithDefaultConstructorOnly
         {
-            public void MethodWithOutParameter()
-            {
-            }
+        }
 
-            public void MethodWithParammeter(int value)
+        class TypeWithParameterConstructorOnly
+        {
+            public TypeWithParameterConstructorOnly(
+                int firstParameter,
+                string secondParameter)
             {
-                var notUsed = value;
             }
         }
 
-        class TypeWithSingleParameterConstructor
+        class TypeWithDefaultConstructorAndParameterConstructor
         {
-            public TypeWithSingleParameterConstructor(int singleParameter)
+            public TypeWithDefaultConstructorAndParameterConstructor()
+            {
+            }
+
+            public TypeWithDefaultConstructorAndParameterConstructor(
+                int firstParameter,
+                string secondParameter)
             {
             }
         }

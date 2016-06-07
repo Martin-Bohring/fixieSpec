@@ -33,5 +33,19 @@ namespace FixieSpec
 
             return !method.GetParameters().Any();
         }
+
+        /// <summary>
+        /// Detects if the method given by <paramref name="method"/> has parameters.
+        /// </summary>
+        /// <param name="method">
+        /// The method to check.
+        /// </param>
+        /// <returns>
+        /// <see langword="true"/>, if the method has parameters; <see langword="false"/> otherwise.
+        /// </returns>
+        public static bool HasParameters(this MethodBase method)
+        {
+            return !method.HasNoParameters();
+        }
     }
 }
