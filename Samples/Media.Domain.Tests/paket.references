@@ -5,4 +5,5 @@ group Build
 
 group Test
   AutoFixture
+  AutoFixture.Idioms
   Shouldly

@@ -17,7 +17,11 @@ GROUP Test
 NUGET
   remote: https://www.nuget.org/api/v2
   specs:
+    Albedo (1.0.2)
     AutoFixture (3.47.4)
+    AutoFixture.Idioms (3.47.4)
+      Albedo (>= 1.0.1)
+      AutoFixture (>= 3.47.4)
     Shouldly (2.7)
       System.Collections (>= 4.0) - framework: dnxcore50
       System.Diagnostics.Debug (>= 4.0) - framework: dnxcore50
