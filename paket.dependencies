@@ -17,4 +17,6 @@ group Test
   source https://nuget.org/api/v2
   
   nuget AutoFixture.Idioms
+    redirects: force
+    strategy: min
   nuget Shouldly
