@@ -45,6 +45,7 @@
     <Compile Include="DeviceRole.cs" />
     <Compile Include="DeviceState.cs" />
     <Compile Include="DeviceBase.cs" />
+    <Compile Include="IActivity.cs" />
     <Compile Include="IAudioRecordingSource.cs" />
     <Compile Include="IVideoRecordingSource.cs" />
     <Compile Include="Recording\AudioRecording.cs" />
