@@ -8,7 +8,7 @@ namespace Media.Domain
     using System;
 
     /// <summary>
-    /// Represents the unique id of a <see cref="DeviceBase"/>.
+    /// Represents the unique id of a <see cref="Device"/>.
     /// </summary>
     public class DeviceId : IEquatable<DeviceId>
     {

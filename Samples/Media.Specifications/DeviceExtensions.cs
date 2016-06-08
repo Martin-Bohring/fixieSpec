@@ -11,7 +11,7 @@ namespace Media.Specifications
 
     public static class DeviceExtensions
     {
-        public static void ShouldBeRecording(this DeviceBase self)
+        public static void ShouldBeRecording(this Device self)
         {
             self.IsInRole(DeviceRole.Recording).ShouldBeTrue();
         }

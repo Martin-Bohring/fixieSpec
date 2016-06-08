@@ -10,17 +10,17 @@ namespace Media.Domain
     /// <summary>
     /// A base class for media devices.
     /// </summary>
-    public abstract class DeviceBase
+    public abstract class Device
     {
         DeviceRole roleInActivity = DeviceRole.Idle;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DeviceBase"/> class.
+        /// Initializes a new instance of the <see cref="Device"/> class.
         /// </summary>
         /// <param name="id">
         /// The id of the device.
         /// </param>
-        protected DeviceBase(DeviceId id)
+        protected Device(DeviceId id)
         {
             if (id == null)
             {

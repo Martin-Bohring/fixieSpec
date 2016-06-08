@@ -8,7 +8,7 @@ namespace Media.Domain
     /// <summary>
     /// Represents a video camera.
     /// </summary>
-    public class VideoCamera : DeviceBase, IVideoRecordingSource
+    public class VideoCamera : Device, IVideoRecordingSource
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="VideoCamera"/> class.

@@ -8,7 +8,7 @@ namespace Media.Domain
     /// <summary>
     /// Represents a microphone.
     /// </summary>
-    public sealed class Microphone : DeviceBase, IAudioRecordingSource
+    public sealed class Microphone : Device, IAudioRecordingSource
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Microphone"/> class.
