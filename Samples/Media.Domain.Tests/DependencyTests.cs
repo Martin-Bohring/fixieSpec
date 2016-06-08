@@ -14,6 +14,8 @@ namespace Media.Domain.Tests
 
     public sealed class DependencyTests
     {
+        [Input("AutoFixture")]
+        [Input("AutoFixture.Idioms")]
         [Input("FakeItEasy")]
         [Input("Media.Specifications")]
         [Input("Media.Domain.Tests")]
