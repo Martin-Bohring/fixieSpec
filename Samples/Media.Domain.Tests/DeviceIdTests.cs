@@ -7,29 +7,18 @@ namespace Media.Domain.Tests
 {
     using System;
 
+    using Ploeh.AutoFixture;
+    using Ploeh.AutoFixture.Idioms;
     using Shouldly;
 
     public sealed class DeviceIdTests
     {
-        public void ShouldFailWhenConstructedUsingEmptyId()
+        public void ShouldGuardConstructorParameters()
         {
-            Action act = () => new DeviceId(Guid.Empty);
+            var fixture = new Fixture();
+            var expectation = new GuardClauseAssertion(fixture);
 
-            act.ShouldThrow<ArgumentException>();
-        }
-
-        public void ShouldSucceedWhenConstructedWithValidId()
-        {
-            Action act = () => new DeviceId(Guid.NewGuid());
-
-            act.ShouldNotThrow();
-        }
-
-        public void ShouldSucceedWhenConstructedWithoutId()
-        {
-            Action act = () => new DeviceId();
-
-            act.ShouldNotThrow();
+            expectation.Verify(typeof(DeviceId).GetConstructors());
         }
 
         public void ShouldBeEqualWithIdenticalId()
@@ -50,13 +39,12 @@ namespace Media.Domain.Tests
             firstDeviceId.Equals(secondDeviceId).ShouldBeFalse();
         }
 
-        public void ShouldBeEqualWithSameInstance()
+        public void ShouldBeEqualWithSelf()
         {
-            var deviceId = new DeviceId(Guid.NewGuid());
+            var fixture = new Fixture();
+            var expectation = new EqualsSelfAssertion(fixture);
 
-#pragma warning disable RECS0088 // Comparing equal expression for equality is usually useless
-            deviceId.Equals(deviceId).ShouldBeTrue();
-#pragma warning restore RECS0088 // Comparing equal expression for equality is usually useless
+            expectation.Verify(typeof(DeviceId));
         }
     }
 }
