@@ -5,46 +5,32 @@
 
 namespace Media.Domain.Tests
 {
-    using System;
 
     using Ploeh.AutoFixture;
     using Ploeh.AutoFixture.Idioms;
-    using Shouldly;
 
     public sealed class DeviceIdTests
     {
         public void ShouldGuardConstructorParameters()
         {
             var fixture = new Fixture();
+
             var expectation = new GuardClauseAssertion(fixture);
 
             expectation.Verify(typeof(DeviceId).GetConstructors());
         }
 
-        public void ShouldBeEqualWithIdenticalId()
-        {
-            Guid identicalId = Guid.NewGuid();
-
-            var firstDeviceId = new DeviceId(identicalId);
-            var secondDeviceId = new DeviceId(identicalId);
-
-            firstDeviceId.Equals(secondDeviceId).ShouldBeTrue();
-        }
-
-        public void ShouldNotBeEqualWithDifferentId()
-        {
-            var firstDeviceId = new DeviceId(Guid.NewGuid());
-            var secondDeviceId = new DeviceId(Guid.NewGuid());
-
-            firstDeviceId.Equals(secondDeviceId).ShouldBeFalse();
-        }
-
-        public void ShouldBeEqualWithSelf()
+        public void ShouldHaveValueSemantics()
         {
             var fixture = new Fixture();
-            var expectation = new EqualsSelfAssertion(fixture);
 
-            expectation.Verify(typeof(DeviceId));
+            var equalitySemanticAssertion = new CompositeIdiomaticAssertion(
+                new EqualsNewObjectAssertion(fixture),
+                new EqualsNullAssertion(fixture),
+                new EqualsSelfAssertion(fixture),
+                new EqualsSuccessiveAssertion(fixture));
+
+            equalitySemanticAssertion.Verify(typeof(DeviceId));
         }
     }
 }
