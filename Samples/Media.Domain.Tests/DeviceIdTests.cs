@@ -19,18 +19,5 @@ namespace Media.Domain.Tests
 
             expectation.Verify(typeof(DeviceId).GetConstructors());
         }
-
-        public void ShouldHaveValueSemantics()
-        {
-            var fixture = new Fixture();
-
-            var equalitySemanticAssertion = new CompositeIdiomaticAssertion(
-                new EqualsNewObjectAssertion(fixture),
-                new EqualsNullAssertion(fixture),
-                new EqualsSelfAssertion(fixture),
-                new EqualsSuccessiveAssertion(fixture));
-
-            equalitySemanticAssertion.Verify(typeof(DeviceId));
-        }
     }
 }

@@ -18,27 +18,5 @@ namespace Media.Domain.Tests
 
             guardsConstructorsAssertion.Verify(typeof(ActivityId).GetConstructors());
         }
-
-        public void ShouldHaveValueSemantics()
-        {
-            var fixture = new Fixture();
-
-            var equalitySemanticAssertion = new CompositeIdiomaticAssertion(
-                new EqualsNewObjectAssertion(fixture),
-                new EqualsNullAssertion(fixture),
-                new EqualsSelfAssertion(fixture),
-                new EqualsSuccessiveAssertion(fixture));
-
-            equalitySemanticAssertion.Verify(typeof(ActivityId));
-        }
-
-        public void ShouldCorrectlyCalculateHashCode()
-        {
-            var fixture = new Fixture();
-
-            var calculatesHashCodeAssertion = new GetHashCodeSuccessiveAssertion(fixture);
-
-            calculatesHashCodeAssertion.Verify(typeof(ActivityId));
-        }
     }
 }
