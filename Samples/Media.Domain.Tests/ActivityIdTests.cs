@@ -5,58 +5,40 @@
 
 namespace Media.Domain.Tests
 {
-    using System;
-
-    using Shouldly;
+    using Ploeh.AutoFixture;
+    using Ploeh.AutoFixture.Idioms;
 
     public sealed class ActivityIdTests
     {
-        public void ShouldFailWhenConstructedUsingEmptyId()
+        public void ShouldGuardConstructorParameters()
         {
-            Action act = () => new ActivityId(Guid.Empty);
+            var fixture = new Fixture();
 
-            act.ShouldThrow<ArgumentException>();
+            var guardsConstructorsAssertion = new GuardClauseAssertion(fixture);
+
+            guardsConstructorsAssertion.Verify(typeof(ActivityId).GetConstructors());
         }
 
-        public void ShouldSucceedWhenConstructedWithValidId()
+        public void ShouldHaveValueSemantics()
         {
-            Action act = () => new ActivityId(Guid.NewGuid());
+            var fixture = new Fixture();
 
-            act.ShouldNotThrow();
+            var equalitySemanticAssertion = new CompositeIdiomaticAssertion(
+                new EqualsNewObjectAssertion(fixture),
+                new EqualsNullAssertion(fixture),
+                new EqualsSelfAssertion(fixture),
+                new EqualsSuccessiveAssertion(fixture));
+
+            equalitySemanticAssertion.Verify(typeof(ActivityId));
         }
 
-        public void ShouldSucceedWhenConstructedWithoutId()
+        public void ShouldCorrectlyCalculateHashCode()
         {
-            Action act = () => new ActivityId();
+            var fixture = new Fixture();
 
-            act.ShouldNotThrow();
-        }
+            var calculatesHashCodeAssertion = new GetHashCodeSuccessiveAssertion(fixture);
 
-        public void ShouldBeEqualWithIdenticalId()
-        {
-            Guid identicalId = Guid.NewGuid();
-
-            var firstActivityId = new ActivityId(identicalId);
-            var secondActivityId = new ActivityId(identicalId);
-
-            firstActivityId.Equals(secondActivityId).ShouldBeTrue();
-        }
-
-        public void ShouldNotBeEqualWithDifferentId()
-        {
-            var firstActivityId = new ActivityId(Guid.NewGuid());
-            var secondActivityId = new ActivityId(Guid.NewGuid());
-
-            firstActivityId.Equals(secondActivityId).ShouldBeFalse();
-        }
-
-        public void ShouldBeEqualWithSameInstance()
-        {
-            var activityId = new ActivityId(Guid.NewGuid());
-
-#pragma warning disable RECS0088 // Comparing equal expression for equality is usually useless
-            activityId.Equals(activityId).ShouldBeTrue();
-#pragma warning restore RECS0088 // Comparing equal expression for equality is usually useless
+            calculatesHashCodeAssertion.Verify(typeof(ActivityId));
         }
     }
 }

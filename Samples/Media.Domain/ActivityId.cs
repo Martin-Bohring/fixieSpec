@@ -6,11 +6,12 @@
 namespace Media.Domain
 {
     using System;
+    using System.Collections.Generic;
 
     /// <summary>
     /// Represents the unique id of an activity.
     /// </summary>
-    public class ActivityId : IEquatable<ActivityId>
+    public class ActivityId : ValueObject<ActivityId>
     {
         readonly Guid activityId;
 
@@ -32,16 +33,16 @@ namespace Media.Domain
         {
             if (id == Guid.Empty)
             {
-                throw new ArgumentException("Invalid device id", nameof(id));
+                throw new ArgumentException("Invalid activity id", nameof(id));
             }
 
             activityId = id;
         }
 
         /// <inheritdoc/>
-        public bool Equals(ActivityId other)
+        protected override IEnumerable<object> Reflect()
         {
-            return activityId == other.activityId;
+            yield return activityId;
         }
     }
 }

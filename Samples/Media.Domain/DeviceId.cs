@@ -6,11 +6,12 @@
 namespace Media.Domain
 {
     using System;
+    using System.Collections.Generic;
 
     /// <summary>
     /// Represents the unique id of a <see cref="Device"/>.
     /// </summary>
-    public class DeviceId : IEquatable<DeviceId>
+    public class DeviceId : ValueObject<DeviceId>
     {
         readonly Guid deviceId;
 
@@ -38,80 +39,10 @@ namespace Media.Domain
             deviceId = id;
         }
 
-        /// <summary>
-        /// The equality operator.
-        /// </summary>
-        /// <param name="lhs">
-        /// The left hand side of the operator.
-        /// </param>
-        /// <param name="rhs">
-        /// The right hand side of the operator.
-        /// </param>
-        /// <returns>
-        /// <see langword="true"/>, if the values of its operands are equal; <see langword="false"/> otherwise.
-        /// </returns>
-        public static bool operator ==(DeviceId lhs, DeviceId rhs)
-        {
-            if (ReferenceEquals(lhs, null))
-            {
-                return true;
-            }
-
-            return lhs.Equals(rhs);
-        }
-
-        /// <summary>
-        /// The inequality operator.
-        /// </summary>
-        /// <param name="lhs">
-        /// The left hand side of the operator.
-        /// </param>
-        /// <param name="rhs">
-        /// The right hand side of the operator.
-        /// </param>
-        /// <returns>
-        /// <see langword="true"/>, if the values of its operands are not equal; <see langword="false"/> otherwise.
-        /// </returns>
-        public static bool operator !=(DeviceId lhs, DeviceId rhs) => !(lhs == rhs);
-
         /// <inheritdoc/>
-        public bool Equals(DeviceId other)
+        protected override IEnumerable<object> Reflect()
         {
-            if (ReferenceEquals(other, null))
-            {
-                return false;
-            }
-
-            if (ReferenceEquals(this, other))
-            {
-                return true;
-            }
-
-            return deviceId == other.deviceId;
-        }
-
-        /// <inheritdoc/>
-        public override bool Equals(object obj)
-        {
-            if (ReferenceEquals(obj, null))
-            {
-                return false;
-            }
-
-            if (obj.GetType() != GetType())
-            {
-                return false;
-            }
-
-            var other = obj as DeviceId;
-
-            return Equals(other);
-        }
-
-        /// <inheritdoc/>
-        public override int GetHashCode()
-        {
-            return deviceId.GetHashCode();
+            yield return deviceId;
         }
     }
 }
