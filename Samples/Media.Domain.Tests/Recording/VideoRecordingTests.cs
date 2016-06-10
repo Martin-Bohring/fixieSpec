@@ -20,9 +20,9 @@ namespace Media.Domain.Recording.Tests
             fixture.Register<IAudioRecordingSource>(() => new Microphone());
             fixture.Register<IVideoRecordingSource>(() => new VideoCamera());
 
-            var guardsConstructorsAssertion = new GuardClauseAssertion(fixture);
+            var guardMethodParametersAssertion = new GuardClauseAssertion(fixture);
 
-            guardsConstructorsAssertion.Verify(typeof(VideoRecording).GetMethods());
+            guardMethodParametersAssertion.Verify(typeof(VideoRecording).GetMethods());
         }
 
         public void ShouldStartWhenVideoRecordingSourcesAreAvailable(

@@ -17,9 +17,9 @@ namespace Media.Domain.Recording.Tests
             var fixture = new Fixture();
             fixture.Register<IAudioRecordingSource>(() => new Microphone());
 
-            var guardsConstructorsAssertion = new GuardClauseAssertion(fixture);
+            var guardMethodParametersAssertion = new GuardClauseAssertion(fixture);
 
-            guardsConstructorsAssertion.Verify(typeof(AudioRecording).GetMethods());
+            guardMethodParametersAssertion.Verify(typeof(AudioRecording).GetMethods());
         }
 
         public void ShouldStartWhenSourceDeviceIsAvailable(
