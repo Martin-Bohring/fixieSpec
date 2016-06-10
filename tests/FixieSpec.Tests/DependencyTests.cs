@@ -14,9 +14,8 @@ namespace FixieSpec.Tests
 
     public sealed class DependencyTests
     {
-        [Input("FakeItEasy")]
         [Input("Ploeh.AutoFixture")]
-        [Input("Ploeh.AutoFixture.AutoFakeItEasy")]
+        [Input("Ploeh.AutoFixture.Idioms")]
         [Input("Shouldly")]
         [Input("FixieSpec.Tests")]
         public void ShouldNotReference(string assemblyName)

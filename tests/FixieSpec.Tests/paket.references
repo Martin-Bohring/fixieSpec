@@ -1,4 +1,5 @@
 Fixie
 
 group Test
+  AutoFixture.Idioms
   Shouldly
