@@ -15,7 +15,6 @@ namespace Media.Domain.Recording.Tests
         public void ShouldGuardConstructorParameters()
         {
             var fixture = new Fixture();
-            fixture.Register<IAudioRecordingSource>(() => new Microphone());
 
             var guardMethodParametersAssertion = new GuardClauseAssertion(fixture);
 
