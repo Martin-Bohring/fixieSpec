@@ -17,9 +17,9 @@ namespace Media.Domain.Recording.Tests
         public void ShouldGuardConstructorParameters()
         {
             var fixture = new Fixture();
-            var guardMethodParametersAssertion = new GuardClauseAssertion(fixture);
+            var guardConstructorParametersAssertion = new GuardClauseAssertion(fixture);
 
-            guardMethodParametersAssertion.Verify(typeof(VideoRecording).GetConstructors());
+            guardConstructorParametersAssertion.Verify(typeof(VideoRecording).GetConstructors());
         }
 
         public void ShouldGuardMethodParameters()
