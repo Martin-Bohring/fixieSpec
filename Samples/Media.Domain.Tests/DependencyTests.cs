@@ -16,7 +16,6 @@ namespace Media.Domain.Tests
     {
         [Input("AutoFixture")]
         [Input("AutoFixture.Idioms")]
-        [Input("FakeItEasy")]
         [Input("Media.Specifications")]
         [Input("Media.Domain.Tests")]
         [Input("Shouldly")]
