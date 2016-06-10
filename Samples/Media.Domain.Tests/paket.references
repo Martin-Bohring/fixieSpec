@@ -1,6 +1,8 @@
 Fixie
+
 group Build
-RefactoringEssentials
+  RefactoringEssentials
+
 group Test
-AutoFixture.Idioms
-Shouldly
+  AutoFixture.Idioms
+  Shouldly
