@@ -10,10 +10,37 @@ namespace Media.Domain.Recording
     /// <summary>
     /// Represents an ongoing video recording.
     /// </summary>
-    public class VideoRecording : IMediaRecording
+    public class VideoRecording : IMediaRecording, IActivity
     {
         IVideoRecordingSource videoSource;
         IAudioRecordingSource audioSource;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="VideoRecording"/> class.
+        /// </summary>
+        public VideoRecording()
+            : this(new ActivityId())
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="VideoRecording"/> class.
+        /// </summary>
+        /// <param name="activityId">
+        /// The unique <see cref="ActivityId"/> of this video recording activity.
+        /// </param>
+        public VideoRecording(ActivityId activityId)
+        {
+            if (activityId == null)
+            {
+                throw new ArgumentNullException(nameof(activityId));
+            }
+
+            ActivityId = activityId;
+        }
+
+        /// <inheritdoc/>
+        public ActivityId ActivityId { get; private set; }
 
         /// <summary>
         /// Start the video recording using the video and audio recording sources.
