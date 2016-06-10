@@ -11,7 +11,7 @@ namespace Media.Domain
     public interface IActivity
     {
         /// <summary>
-        /// Gets the <see cref="ActivityId"/> of the activity.
+        /// Gets the unique <see cref="ActivityId"/> of the activity.
         /// </summary>
         ActivityId ActivityId { get; }
     }

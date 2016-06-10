@@ -10,9 +10,36 @@ namespace Media.Domain.Recording
     /// <summary>
     /// Represents an ongoing audio recording.
     /// </summary>
-    public class AudioRecording : IMediaRecording
+    public class AudioRecording : IMediaRecording, IActivity
     {
         IAudioRecordingSource audioSource;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AudioRecording"/> class.
+        /// </summary>
+        public AudioRecording()
+            : this(new ActivityId())
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AudioRecording"/> class.
+        /// </summary>
+        /// <param name="activityId">
+        /// The unique <see cref="ActivityId"/> of this audio recording activity.
+        /// </param>
+        public AudioRecording(ActivityId activityId)
+        {
+            if (activityId == null)
+            {
+                throw new ArgumentNullException(nameof(activityId));
+            }
+
+            ActivityId = activityId;
+        }
+
+        /// <inheritdoc/>
+        public ActivityId ActivityId { get; private set; }
 
         /// <summary>
         /// Start the audio recording using the audio source device.
