@@ -23,12 +23,12 @@ namespace Media.Recording.Specifications
             microphone.MakeAvailable();
         }
 
-        public void When_the_voice_memo_recording_is_started()
+        public void When_the_audio_recording_is_started()
         {
             audioRecording.StartRecording(microphone);
         }
 
-        public void Then_the_voice_recording_should_be_recording()
+        public void Then_the_audio_recording_should_be_recording()
         {
             audioRecording.ShouldBeRecording();
         }

@@ -34,7 +34,7 @@ namespace Media.Recording.Specifications
         }
 
         [Inconclusive("Find a different way to verify if the camera is recording")]
-        public void And_Then_the_selected_camera_is_not_used_for_recording()
+        public void And_then_the_selected_camera_is_not_used_for_recording()
         {
             camera.ShouldBeRecording();
         }

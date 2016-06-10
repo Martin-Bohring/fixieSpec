@@ -39,7 +39,7 @@ namespace Media.Recording.Specifications
             videoRecording.ShouldBeRecording();
         }
 
-        public void And_Then_the_selected_camera_is_used_for_recording()
+        public void And_then_the_selected_camera_is_used_for_recording()
         {
             camera.ShouldBeRecording();
         }
