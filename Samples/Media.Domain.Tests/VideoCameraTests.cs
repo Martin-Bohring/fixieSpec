@@ -5,16 +5,20 @@
 
 namespace Media.Domain.Tests
 {
-    using System;
+
     using Shouldly;
+    using Ploeh.AutoFixture.Idioms;
+    using Ploeh.AutoFixture;
 
     public sealed class VideoCameraTests
     {
-        public void ShouldFailWhenConstructedUsingNullDeviceId()
+        public void ShouldGuardConstructorParameters()
         {
-            Action act = () => new VideoCamera(null);
+            var fixture = new Fixture();
 
-            act.ShouldThrow<ArgumentNullException>();
+            var guardsConstructorsAssertion = new GuardClauseAssertion(fixture);
+
+            guardsConstructorsAssertion.Verify(typeof(Microphone).GetConstructors());
         }
 
         public void ShouldBeAvailableWhenConstructed(VideoCamera videoCamera)

@@ -5,18 +5,21 @@
 
 namespace Media.Domain.Recording.Tests
 {
-    using System;
 
     using Shouldly;
+    using Ploeh.AutoFixture;
+    using Ploeh.AutoFixture.Idioms;
 
     public class AudioRecordingTests
     {
-        public void ShouldFailToStartRecordingUsingNullDevice(
-            AudioRecording audioRecording)
+        public void ShouldGuardMethodParameters()
         {
-            Action act = () => audioRecording.StartRecording(null);
+            var fixture = new Fixture();
+            fixture.Register<IAudioRecordingSource>(() => new Microphone());
 
-            act.ShouldThrow<ArgumentNullException>();
+            var guardsConstructorsAssertion = new GuardClauseAssertion(fixture);
+
+            guardsConstructorsAssertion.Verify(typeof(AudioRecording).GetMethods());
         }
 
         public void ShouldStartWhenSourceDeviceIsAvailable(

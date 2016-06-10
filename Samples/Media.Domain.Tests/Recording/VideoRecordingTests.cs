@@ -5,36 +5,24 @@
 
 namespace Media.Domain.Recording.Tests
 {
-    using System;
+
+    using Domain;
 
     using Shouldly;
+    using Ploeh.AutoFixture.Idioms;
+    using Ploeh.AutoFixture;
 
     public class VideoRecordingTests
     {
-        public void ShouldFailToStartRecordingUsingNullVideoRecordingSource(
-            VideoRecording videoRecording,
-            Microphone microphone)
+        public void ShouldGuardMethodParameters()
         {
-            Action act = () => videoRecording.StartRecording(null, microphone);
+            var fixture = new Fixture();
+            fixture.Register<IAudioRecordingSource>(() => new Microphone());
+            fixture.Register<IVideoRecordingSource>(() => new VideoCamera());
 
-            act.ShouldThrow<ArgumentNullException>();
-        }
+            var guardsConstructorsAssertion = new GuardClauseAssertion(fixture);
 
-        public void ShouldFailToStartRecordingUsingNullVideoRecordingSource(
-            VideoRecording videoRecording)
-        {
-            Action act = () => videoRecording.StartRecording(null);
-
-            act.ShouldThrow<ArgumentNullException>();
-        }
-
-        public void ShouldFailToStartRecordingUsingNullAudioRecordingSource(
-            VideoRecording videoRecording,
-            VideoCamera camera)
-        {
-            Action act = () => videoRecording.StartRecording(camera, null);
-
-            act.ShouldThrow<ArgumentNullException>();
+            guardsConstructorsAssertion.Verify(typeof(VideoRecording).GetMethods());
         }
 
         public void ShouldStartWhenVideoRecordingSourcesAreAvailable(
