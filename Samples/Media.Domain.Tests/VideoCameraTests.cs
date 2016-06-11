@@ -5,7 +5,6 @@
 
 namespace Media.Domain.Tests
 {
-
     using Shouldly;
     using Ploeh.AutoFixture.Idioms;
     using Ploeh.AutoFixture;

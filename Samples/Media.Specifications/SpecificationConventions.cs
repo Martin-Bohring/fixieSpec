@@ -10,7 +10,6 @@ namespace Media.Specifications
     using Ploeh.AutoFixture.Kernel;
     using Fixture = Ploeh.AutoFixture.Fixture;
 
-
     public class SpecificationConvention : FixieSpecConvention
     {
         public SpecificationConvention()

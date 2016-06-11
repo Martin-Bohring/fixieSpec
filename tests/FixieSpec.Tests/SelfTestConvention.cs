@@ -5,7 +5,6 @@
 
 namespace FixieSpec.Tests
 {
-
     using Fixie;
     using Shouldly;
 
