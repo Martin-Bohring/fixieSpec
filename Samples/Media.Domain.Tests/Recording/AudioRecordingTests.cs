@@ -5,8 +5,6 @@
 
 namespace Media.Domain.Recording.Tests
 {
-
-    using Shouldly;
     using Ploeh.AutoFixture;
     using Ploeh.AutoFixture.Idioms;
 
@@ -29,31 +27,6 @@ namespace Media.Domain.Recording.Tests
             var guardMethodParametersAssertion = new GuardClauseAssertion(fixture);
 
             guardMethodParametersAssertion.Verify(typeof(AudioRecording).GetMethods());
-        }
-
-        public void ShouldStartWhenSourceDeviceIsAvailable(
-            AudioRecording audioRecording,
-            Microphone microphone)
-        {
-            audioRecording.StartRecording(microphone).ShouldBeTrue();
-        }
-
-        public void ShouldBeRecordingWhenStartedSuccessful(
-            AudioRecording audioRecording,
-            Microphone microphone)
-        {
-            audioRecording.StartRecording(microphone);
-
-            audioRecording.IsRecording().ShouldBeTrue();
-        }
-
-        public void ShouldNotStartWhenSourceDeviceIsNotAvailable(
-            AudioRecording audioRecording,
-            Microphone microphone)
-        {
-            microphone.UseForAudioRecording();
-
-            audioRecording.StartRecording(microphone).ShouldBeFalse();
         }
     }
 }

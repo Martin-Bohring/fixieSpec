@@ -7,8 +7,6 @@ namespace Media.Domain.Recording.Tests
 {
 
     using Domain;
-
-    using Shouldly;
     using Ploeh.AutoFixture.Idioms;
     using Ploeh.AutoFixture;
 
@@ -31,59 +29,6 @@ namespace Media.Domain.Recording.Tests
             var guardMethodParametersAssertion = new GuardClauseAssertion(fixture);
 
             guardMethodParametersAssertion.Verify(typeof(VideoRecording).GetMethods());
-        }
-
-        public void ShouldStartWhenVideoRecordingSourcesAreAvailable(
-            VideoRecording videoRecording,
-            VideoCamera camera,
-            Microphone microphone)
-        {
-            videoRecording.StartRecording(camera, microphone).ShouldBeTrue();
-        }
-
-        public void ShouldStartWhenVideoRecordingSourcesAreAvailable(
-            VideoRecording videoRecording,
-            VideoCamera camera)
-        {
-            videoRecording.StartRecording(camera).ShouldBeTrue();
-        }
-
-        public void ShouldBeRecordingWhenStartedSuccessful(
-            VideoRecording videoRecording,
-            VideoCamera camera,
-            Microphone microphone)
-        {
-            videoRecording.StartRecording(camera, microphone);
-
-            videoRecording.IsRecording().ShouldBeTrue();
-        }
-
-        public void ShouldBeRecordingWhenStartedSuccessful(
-            VideoRecording videoRecording,
-            VideoCamera camera)
-        {
-            videoRecording.StartRecording(camera);
-
-            videoRecording.IsRecording().ShouldBeTrue();
-        }
-
-        public void ShouldNotStartWhenVideoRecordingSourceIsNotAvailable(
-            VideoRecording videoRecording,
-            VideoCamera camera,
-            Microphone microphone)
-        {
-            camera.UseForVideoRecording();
-
-            videoRecording.StartRecording(camera, microphone).ShouldBeFalse();
-        }
-
-        public void ShouldNotStartWhenVideoRecordingSourceIsNotAvailable(
-            VideoRecording videoRecording,
-            VideoCamera camera)
-        {
-            camera.UseForVideoRecording();
-
-            videoRecording.StartRecording(camera).ShouldBeFalse();
         }
     }
 }
