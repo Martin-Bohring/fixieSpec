@@ -14,9 +14,17 @@ namespace Media.Recording.Specifications
 
     public sealed class SucessfulAudioRecording
     {
-        readonly Microphone microphone = new Microphone();
+        readonly Microphone microphone;
 
-        readonly AudioRecording audioRecording = new AudioRecording();
+        readonly AudioRecording audioRecording;
+
+        public SucessfulAudioRecording(
+            AudioRecording anAudioRecording,
+            Microphone aMicrophone)
+        {
+            audioRecording = anAudioRecording;
+            microphone = aMicrophone;
+        }
 
         public void Given_a_microphone_is_available()
         {

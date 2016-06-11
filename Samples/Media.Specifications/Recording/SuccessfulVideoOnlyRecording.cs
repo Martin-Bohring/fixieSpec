@@ -14,9 +14,17 @@ namespace Media.Recording.Specifications
 
     public sealed class SuccessfulVideoOnlyRecording
     {
-        readonly VideoCamera camera = new VideoCamera();
+        readonly VideoCamera camera;
 
-        readonly VideoRecording videoRecording = new VideoRecording();
+        readonly VideoRecording videoRecording;
+
+        public SuccessfulVideoOnlyRecording(
+            VideoRecording aVideoRecording,
+            VideoCamera aCamera)
+        {
+            videoRecording = aVideoRecording;
+            camera = aCamera;
+        }
 
         public void Given_a_camera_is_available()
         {

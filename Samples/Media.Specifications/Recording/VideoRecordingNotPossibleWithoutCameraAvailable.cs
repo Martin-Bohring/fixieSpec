@@ -14,9 +14,20 @@ namespace Media.Recording.Specifications
 
     public sealed class VideoRecordingNotPossibleWithoutCameraAvailable
     {
-        readonly VideoCamera camera = new VideoCamera();
+        readonly VideoCamera camera;
+        readonly Microphone microphone;
 
-        readonly VideoRecording videoRecording = new VideoRecording();
+        readonly VideoRecording videoRecording;
+
+        public VideoRecordingNotPossibleWithoutCameraAvailable(
+            VideoRecording aVideoRecording,
+            VideoCamera aCamera,
+            Microphone aMicrophone)
+        {
+            videoRecording = aVideoRecording;
+            camera = aCamera;
+            microphone = aMicrophone;
+        }
 
         public void Given_a_camera_is_not_available()
         {
@@ -25,7 +36,7 @@ namespace Media.Recording.Specifications
 
         public void When_a_video_recording_is_started()
         {
-            videoRecording.StartRecording(camera);
+            videoRecording.StartRecording(camera, microphone);
         }
 
         public void Then_the_video_recording_should_be_recording()
@@ -33,7 +44,7 @@ namespace Media.Recording.Specifications
             videoRecording.ShouldNotBeRecording();
         }
 
-        [Inconclusive("Find a different way to verify if the camera is recording")]
+        [Inconclusive("Find a different way to verify if the camera is not recording")]
         public void And_then_the_selected_camera_is_not_used_for_recording()
         {
             camera.ShouldBeRecording();

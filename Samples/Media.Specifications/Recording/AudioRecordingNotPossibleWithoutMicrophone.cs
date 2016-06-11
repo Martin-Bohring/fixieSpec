@@ -39,7 +39,7 @@ namespace Media.Recording.Specifications
             audioRecording.ShouldNotBeRecording();
         }
 
-        [Inconclusive("Find a different way to verify if the microphone is recording")]
+        [Inconclusive("Find a different way to verify if the microphone is not recording")]
         public void And_then_the_selected_microphone_is_not_used_for_recording()
         {
         }

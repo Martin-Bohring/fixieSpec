@@ -14,10 +14,20 @@ namespace Media.Recording.Specifications
 
     public sealed class SuccessfulVideoWithAudioRecording
     {
-        readonly Microphone microphone = new Microphone();
-        readonly VideoCamera camera = new VideoCamera();
+        readonly VideoCamera camera;
+        readonly Microphone microphone;
 
-        readonly VideoRecording videoRecording = new VideoRecording();
+        readonly VideoRecording videoRecording;
+
+        public SuccessfulVideoWithAudioRecording(
+            VideoRecording aVideoRecording,
+            VideoCamera aCamera,
+            Microphone aMicrophone)
+        {
+            videoRecording = aVideoRecording;
+            camera = aCamera;
+            microphone = aMicrophone;
+        }
 
         public void Given_a_camera_is_available()
         {
