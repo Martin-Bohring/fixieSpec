@@ -6,14 +6,12 @@
 namespace Media.Specifications
 {
     using System;
-
-    using Fixie;
     using FixieSpec;
     using Ploeh.AutoFixture.Kernel;
     using Fixture = Ploeh.AutoFixture.Fixture;
 
 
-    public class SpecificationConvention : Convention
+    public class SpecificationConvention : FixieSpecConvention
     {
         public SpecificationConvention()
         {
@@ -21,6 +19,8 @@ namespace Media.Specifications
                 .Where(type => type.HasOnlyDefaultConstructor() || type.HasOnlyParameterConstructor());
 
             ClassExecution
+                .CreateInstancePerClass()
+                .SortCases((firstCase, secondCase) => DeclarationOrderComparer.Default.Compare(firstCase.Method, secondCase.Method))
                 .UsingFactory(CreateFromFixture);
         }
 
@@ -28,7 +28,9 @@ namespace Media.Specifications
         {
             var fixture = new Fixture();
 
-            return new SpecimenContext(fixture).Resolve(type);
+            var instance = new SpecimenContext(fixture).Resolve(type);
+
+            return instance;
         }
     }
 }

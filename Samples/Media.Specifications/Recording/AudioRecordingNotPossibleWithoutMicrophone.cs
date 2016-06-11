@@ -12,9 +12,17 @@ namespace Media.Recording.Specifications
 
     public sealed class AudioRecordingNotPossibleWithoutMicrophone
     {
-        readonly Microphone microphone = new Microphone();
+        readonly Microphone microphone;
 
-        readonly AudioRecording audioRecording = new AudioRecording();
+        readonly AudioRecording audioRecording;
+
+        public AudioRecordingNotPossibleWithoutMicrophone(
+            AudioRecording anAudioRecording,
+            Microphone aMicrophone)
+        {
+            audioRecording = anAudioRecording;
+            microphone = aMicrophone;
+        }
 
         public void Given_the_microphone_is_not_available()
         {

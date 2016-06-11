@@ -42,7 +42,6 @@
     <Compile Include="Recording\SuccessfulVideoWithAudioRecording.cs" />
     <Compile Include="Recording\SuccessfulVideoOnlyRecording.cs" />
     <Compile Include="SpecificationConventions.cs" />
-    <Compile Include="UseFixieSpec.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Recording\MediaRecordingExtensions.cs" />
   </ItemGroup>
