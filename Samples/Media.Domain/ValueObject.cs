@@ -98,12 +98,6 @@ namespace Media.Domain
                                     hashCode : hashCode ^ value.GetHashCode());
         }
 
-        /// <inheritdoc/>
-        public override string ToString()
-        {
-            return "{ " + (string)Reflect().Aggregate((l, r) => l + ", " + r) + " }";
-        }
-
         /// <summary>
         /// Gest the values to be taken into account for equality and
         /// hash code generation.
