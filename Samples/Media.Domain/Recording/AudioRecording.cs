@@ -10,7 +10,7 @@ namespace Media.Domain.Recording
     /// <summary>
     /// Represents an ongoing audio recording.
     /// </summary>
-    public class AudioRecording : IMediaRecording, IActivity
+    public class AudioRecording : IMediaRecording
     {
         IAudioRecordingSource audioSource;
 

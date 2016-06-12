@@ -8,7 +8,7 @@ namespace Media.Domain.Recording
     /// <summary>
     /// Represents a media recording
     /// </summary>
-    public interface IMediaRecording
+    public interface IMediaRecording : IActivity
     {
         /// <summary>
         /// Verifies if recording is active.
