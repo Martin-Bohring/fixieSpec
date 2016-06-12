@@ -20,6 +20,15 @@ namespace Media.Domain.Tests
             guardsConstructorsAssertion.Verify(typeof(Microphone).GetConstructors());
         }
 
+        public void ShouldInitializeReadOnlyPropertiesByConstructor()
+        {
+            var fixture = new Fixture();
+
+            var intializeReadOnlyPropertiesAssertion = new ConstructorInitializedMemberAssertion(fixture);
+
+            intializeReadOnlyPropertiesAssertion.Verify(typeof(Microphone).GetProperties());
+        }
+
         public void ShouldBeAvailableWhenConstructed(Microphone microphone)
         {
             microphone.IsAvailable().ShouldBeTrue();
@@ -27,7 +36,7 @@ namespace Media.Domain.Tests
 
         public void ShouldGenerateDeviceIdWhenConstructedWithoutDeviceId(Microphone microphone)
         {
-            microphone.DeviceId.ShouldNotBeNull();
+            microphone.Id.ShouldNotBeNull();
         }
 
         public void ShouldBeRecordingWhenUsedForAudioRecording(Microphone microphone)

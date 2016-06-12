@@ -27,13 +27,13 @@ namespace Media.Domain
                 throw new ArgumentNullException(nameof(id));
             }
 
-            DeviceId = id;
+            Id = id;
         }
 
         /// <summary>
-        /// Gets the <see cref="DeviceId"/> of the device.
+        /// Gets the <see cref="Id"/> of the device.
         /// </summary>
-        public DeviceId DeviceId { get; private set; }
+        public DeviceId Id { get; private set; }
 
         /// <summary>
         /// Makes the device available.

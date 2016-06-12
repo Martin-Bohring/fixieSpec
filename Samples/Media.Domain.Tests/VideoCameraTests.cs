@@ -17,8 +17,18 @@ namespace Media.Domain.Tests
 
             var guardsConstructorsAssertion = new GuardClauseAssertion(fixture);
 
-            guardsConstructorsAssertion.Verify(typeof(Microphone).GetConstructors());
+            guardsConstructorsAssertion.Verify(typeof(VideoCamera).GetConstructors());
         }
+
+        public void ShouldInitializeReadOnlyPropertiesByConstructor()
+        {
+            var fixture = new Fixture();
+
+            var intializeReadOnlyPropertiesAssertion = new ConstructorInitializedMemberAssertion(fixture);
+
+            intializeReadOnlyPropertiesAssertion.Verify(typeof(VideoCamera).GetProperties());
+        }
+
 
         public void ShouldBeAvailableWhenConstructed(VideoCamera videoCamera)
         {
@@ -27,7 +37,7 @@ namespace Media.Domain.Tests
 
         public void ShouldGenerateDeviceIdWhenConstructedWithoutDeviceId(VideoCamera videoCamera)
         {
-            videoCamera.DeviceId.ShouldNotBeNull();
+            videoCamera.Id.ShouldNotBeNull();
         }
 
         public void ShouldBeRecordingWhenUsedForVideoRecording(VideoCamera videoCamera)
