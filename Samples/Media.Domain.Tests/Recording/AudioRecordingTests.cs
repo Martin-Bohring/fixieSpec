@@ -19,6 +19,15 @@ namespace Media.Domain.Recording.Tests
             guardConstructorParametersAssertion.Verify(typeof(AudioRecording).GetConstructors());
         }
 
+        public void ShouldInitializeReadOnlyPropertiesByConstructor()
+        {
+            var fixture = new Fixture();
+
+            var intializeReadOnlyPropertiesAssertion = new ConstructorInitializedMemberAssertion(fixture);
+
+            intializeReadOnlyPropertiesAssertion.Verify(typeof(AudioRecording).GetProperties());
+        }
+
         public void ShouldGuardMethodParameters()
         {
             var fixture = new Fixture();
