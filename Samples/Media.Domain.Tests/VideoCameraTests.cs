@@ -29,7 +29,6 @@ namespace Media.Domain.Tests
             intializeReadOnlyPropertiesAssertion.Verify(typeof(VideoCamera).GetProperties());
         }
 
-
         public void ShouldBeAvailableWhenConstructed(VideoCamera videoCamera)
         {
             videoCamera.IsAvailable().ShouldBeTrue();
