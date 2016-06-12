@@ -23,4 +23,5 @@ group Test
   
   nuget AutoFixture.Idioms
     redirects: force
+    strategy: min
   nuget Shouldly
