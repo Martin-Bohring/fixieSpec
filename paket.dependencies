@@ -1,9 +1,11 @@
+redirects: on
+
 source https://nuget.org/api/v2
 
 nuget Fixie version_in_path: true
 
 group Build
-
+  redirects: on
   source https://nuget.org/api/v2
   
   nuget SourceLink.Fake
@@ -13,6 +15,7 @@ group Build
   nuget RefactoringEssentials
 
 group Test
+  redirects: on
 
   source https://nuget.org/api/v2
   
@@ -20,5 +23,4 @@ group Test
   
   nuget AutoFixture.Idioms
     redirects: force
-    strategy: min
   nuget Shouldly
