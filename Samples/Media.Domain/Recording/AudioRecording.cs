@@ -57,7 +57,7 @@ namespace Media.Domain.Recording
                 throw new ArgumentNullException(nameof(audioSource));
             }
 
-            if (audioSource.UseForAudioRecording())
+            if (audioSource.UseForAudioRecording(this.ActivityId))
             {
                 this.audioSource = audioSource;
                 return true;

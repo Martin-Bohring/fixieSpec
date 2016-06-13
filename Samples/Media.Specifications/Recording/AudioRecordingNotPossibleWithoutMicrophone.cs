@@ -14,19 +14,22 @@ namespace Media.Recording.Specifications
     {
         readonly Microphone microphone;
 
+        readonly AudioRecording previousAudioRecording;
         readonly AudioRecording audioRecording;
 
         public AudioRecordingNotPossibleWithoutMicrophone(
-            AudioRecording anAudioRecording,
+            AudioRecording aPreviousAudioRecording,
+            AudioRecording aNewAudioRecording,
             Microphone aMicrophone)
         {
-            audioRecording = anAudioRecording;
+            previousAudioRecording = aPreviousAudioRecording;
+            audioRecording = aNewAudioRecording;
             microphone = aMicrophone;
         }
 
         public void Given_the_microphone_is_not_available()
         {
-            microphone.UseForAudioRecording();
+            microphone.UseForAudioRecording(previousAudioRecording.ActivityId);
         }
 
         public void When_attempting_to_start_the_audio_recording()

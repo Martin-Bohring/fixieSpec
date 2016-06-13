@@ -30,7 +30,7 @@ namespace Media.Domain
         }
 
         /// <inheritdoc/>
-        public bool UseForAudioRecording()
+        public bool UseForAudioRecording(ActivityId audioRecording)
         {
             if (IsAvailable())
             {
