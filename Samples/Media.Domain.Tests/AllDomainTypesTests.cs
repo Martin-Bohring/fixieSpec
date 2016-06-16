@@ -38,8 +38,8 @@ namespace Media.Domain.Tests
                 typeof(DeviceId) // Does not expose an Id property and doing so is not needed
             };
 
-            intializeReadOnlyPropertiesAssertion.Verify
-                (DomainTypes()
+            intializeReadOnlyPropertiesAssertion.Verify(
+                DomainTypes()
                 .Except(typesToExclude));
         }
 
@@ -51,8 +51,9 @@ namespace Media.Domain.Tests
                 typeof(DeviceState) // AutoFixture pukes on enum types
             };
 
-            return typeof(Device).Assembly.GetExportedTypes()
-                .Where(type => !type.IsAbstract)
+            return typeof(Device).Assembly
+                .GetExportedTypes()
+                .Where(type => !type.IsAbstract && !type.IsInterface)
                 .Except(typesToExclude);
         }
     }
