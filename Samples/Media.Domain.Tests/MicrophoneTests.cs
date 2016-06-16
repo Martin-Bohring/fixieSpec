@@ -14,11 +14,6 @@ namespace Media.Domain.Tests
             microphone.IsAvailable().ShouldBeTrue();
         }
 
-        public void ShouldGenerateDeviceIdWhenConstructedWithoutDeviceId(Microphone microphone)
-        {
-            microphone.Id.ShouldNotBeNull();
-        }
-
         public void ShouldBeRecordingWhenUsedForAudioRecording(
             Microphone microphone,
             ActivityId audioRecording)

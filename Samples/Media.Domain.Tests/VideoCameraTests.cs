@@ -14,11 +14,6 @@ namespace Media.Domain.Tests
             videoCamera.IsAvailable().ShouldBeTrue();
         }
 
-        public void ShouldGenerateDeviceIdWhenConstructedWithoutDeviceId(VideoCamera videoCamera)
-        {
-            videoCamera.Id.ShouldNotBeNull();
-        }
-
         public void ShouldBeRecordingWhenUsedForVideoRecording(
             VideoCamera videoCamera,
             ActivityId videoRecording)
