@@ -1,14 +1,12 @@
 REDIRECTS: ON
 NUGET
   remote: https://www.nuget.org/api/v2
-  specs:
     Fixie (1.0.1) - version_in_path: true
 
 GROUP Build
 REDIRECTS: ON
 NUGET
   remote: https://www.nuget.org/api/v2
-  specs:
     codecracker.CSharp (1.0)
     FAKE (4.28)
     RefactoringEssentials (4.1)
@@ -19,12 +17,11 @@ GROUP Test
 STRATEGY: MIN
 NUGET
   remote: https://www.nuget.org/api/v2
-  specs:
     Albedo (1.0.1)
-    AutoFixture (3.47.5)
-    AutoFixture.Idioms (3.47.5)
+    AutoFixture (3.47.6)
+    AutoFixture.Idioms (3.47.6)
       Albedo (>= 1.0.1)
-      AutoFixture (>= 3.47.5)
+      AutoFixture (>= 3.47.6)
     Shouldly (2.7)
       System.Collections (>= 4.0) - framework: dnxcore50
       System.Diagnostics.Debug (>= 4.0) - framework: dnxcore50
