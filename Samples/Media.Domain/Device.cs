@@ -13,6 +13,7 @@ namespace Media.Domain
     public abstract class Device
     {
         DeviceRole roleInActivity = DeviceRole.Idle;
+        ActivityId currentActiviy;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Device"/> class.
@@ -72,12 +73,14 @@ namespace Media.Domain
         /// <param name="roleToAssume">
         /// The role the device needs to assume.
         /// </param>
+        /// <param name="activity">todo: describe activity parameter on AssumeRole</param>
         /// <returns>
         /// <see langword="true"/>, if the device can assume the role; <see langword="false"/> otherwise.
         /// </returns>
-        protected bool AssumeRole(DeviceRole roleToAssume)
+        protected bool AssumeRole(DeviceRole roleToAssume, ActivityId activity)
         {
             roleInActivity = roleToAssume;
+            currentActiviy = activity;
             return true;
         }
     }
