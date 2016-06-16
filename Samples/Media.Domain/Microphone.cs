@@ -1,10 +1,12 @@
-﻿    // <copyright>
+﻿// <copyright>
 // Copyright (c) Martin Bohring. All rights reserved.
 // Licensed under the MIT license. See LICENSE.txt file in the project root for full license information.
 // </copyright>
 
 namespace Media.Domain
 {
+    using System;
+
     /// <summary>
     /// Represents a microphone.
     /// </summary>
@@ -32,6 +34,11 @@ namespace Media.Domain
         /// <inheritdoc/>
         public bool UseForAudioRecording(ActivityId audioRecording)
         {
+            if (audioRecording == null)
+            {
+                throw new ArgumentNullException(nameof(audioRecording));
+            }
+
             if (IsAvailable())
             {
                 return AssumeRole(DeviceRole.Recording, audioRecording);

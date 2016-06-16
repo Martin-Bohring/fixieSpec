@@ -5,6 +5,8 @@
 
 namespace Media.Domain
 {
+    using System;
+
     /// <summary>
     /// Represents a video camera.
     /// </summary>
@@ -32,6 +34,11 @@ namespace Media.Domain
         /// <inheritdoc/>
         public bool UseForVideoRecording(ActivityId videoRecording)
         {
+            if (videoRecording == null)
+            {
+                throw new ArgumentNullException(nameof(videoRecording));
+            }
+
             if (IsAvailable())
             {
                 return AssumeRole(DeviceRole.Recording, videoRecording);

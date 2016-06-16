@@ -20,6 +20,15 @@ namespace Media.Domain.Tests
             guardsConstructorsAssertion.Verify(typeof(VideoCamera).GetConstructors());
         }
 
+        public void ShouldGuardMethodParameters()
+        {
+            var fixture = new Fixture();
+
+            var guardMethodParametersAssertion = new GuardClauseAssertion(fixture);
+
+            guardMethodParametersAssertion.Verify(typeof(VideoCamera).GetMethods());
+        }
+
         public void ShouldInitializeReadOnlyPropertiesByConstructor()
         {
             var fixture = new Fixture();
