@@ -31,7 +31,7 @@ namespace Media.Recording.Specifications
 
         public void Given_a_camera_is_not_available()
         {
-            camera.UseForVideoRecording();
+            camera.UseForVideoRecording(new ActivityId());
         }
 
         public void When_a_video_recording_is_started()

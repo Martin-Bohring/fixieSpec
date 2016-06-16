@@ -30,11 +30,11 @@ namespace Media.Domain
         }
 
         /// <inheritdoc/>
-        public bool UseForVideoRecording()
+        public bool UseForVideoRecording(ActivityId videoRecording)
         {
             if (IsAvailable())
             {
-                return AssumeRole(DeviceRole.Recording, new ActivityId());
+                return AssumeRole(DeviceRole.Recording, videoRecording);
             }
 
             return false;

@@ -14,6 +14,10 @@ namespace Media.Domain
         /// <summary>
         /// Uses the video recording source for video recording.
         /// </summary>
+        /// <param name="audioRecording">
+        /// The <see cref="ActivityId"/> of the audio recording that wants to use
+        /// microphone
+        /// </param>
         /// <returns>
         /// <see langword="true"/>, if the video recording source is
         /// used for video recording; <see langword="false"/> otherwise.
@@ -21,6 +25,6 @@ namespace Media.Domain
         /// <remarks>
         /// Still not a good name, but the best I can find for now.
         /// </remarks>
-        bool UseForVideoRecording();
+        bool UseForVideoRecording(ActivityId audioRecording);
     }
 }

@@ -39,18 +39,23 @@ namespace Media.Domain.Tests
             videoCamera.Id.ShouldNotBeNull();
         }
 
-        public void ShouldBeRecordingWhenUsedForVideoRecording(VideoCamera videoCamera)
+        public void ShouldBeRecordingWhenUsedForVideoRecording(
+            VideoCamera videoCamera,
+            ActivityId videoRecording)
         {
-            videoCamera.UseForVideoRecording();
+            videoCamera.UseForVideoRecording(videoRecording);
 
             videoCamera.IsInRole(DeviceRole.Recording).ShouldBeTrue();
         }
 
-        void CannotUseForVideoRecordingWhenAlreadyRecording(VideoCamera videoCamera)
+        void CannotUseForVideoRecordingWhenAlreadyRecording(
+            VideoCamera videoCamera,
+            ActivityId previousVideoRecording,
+            ActivityId newVideoRecording)
         {
-            videoCamera.UseForVideoRecording();
+            videoCamera.UseForVideoRecording(previousVideoRecording);
 
-            videoCamera.UseForVideoRecording().ShouldBeFalse();
+            videoCamera.UseForVideoRecording(newVideoRecording).ShouldBeFalse();
         }
     }
 }

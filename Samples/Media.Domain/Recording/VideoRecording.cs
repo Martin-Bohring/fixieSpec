@@ -66,7 +66,7 @@ namespace Media.Domain.Recording
                 throw new ArgumentNullException(nameof(audioSource));
             }
 
-            if (videoSource.UseForVideoRecording() && audioSource.UseForAudioRecording(this.ActivityId))
+            if (videoSource.UseForVideoRecording(this.ActivityId) && audioSource.UseForAudioRecording(this.ActivityId))
             {
                 this.videoSource = videoSource;
                 this.audioSource = audioSource;
@@ -92,7 +92,7 @@ namespace Media.Domain.Recording
                 throw new ArgumentNullException(nameof(videoSource));
             }
 
-            if (videoSource.UseForVideoRecording())
+            if (videoSource.UseForVideoRecording(this.ActivityId))
             {
                 this.videoSource = videoSource;
                 return true;
