@@ -6,20 +6,9 @@
 namespace Media.Domain.Tests
 {
     using Shouldly;
-    using Ploeh.AutoFixture.Idioms;
-    using Ploeh.AutoFixture;
 
     public sealed class VideoCameraTests
     {
-        public void ShouldInitializeReadOnlyPropertiesByConstructor()
-        {
-            var fixture = new Fixture();
-
-            var intializeReadOnlyPropertiesAssertion = new ConstructorInitializedMemberAssertion(fixture);
-
-            intializeReadOnlyPropertiesAssertion.Verify(typeof(VideoCamera).GetProperties());
-        }
-
         public void ShouldBeAvailableWhenConstructed(VideoCamera videoCamera)
         {
             videoCamera.IsAvailable().ShouldBeTrue();

@@ -6,20 +6,9 @@
 namespace Media.Domain.Tests
 {
     using Shouldly;
-    using Ploeh.AutoFixture.Idioms;
-    using Ploeh.AutoFixture;
 
     public sealed class MicrophoneTests
     {
-        public void ShouldInitializeReadOnlyPropertiesByConstructor()
-        {
-            var fixture = new Fixture();
-
-            var intializeReadOnlyPropertiesAssertion = new ConstructorInitializedMemberAssertion(fixture);
-
-            intializeReadOnlyPropertiesAssertion.Verify(typeof(Microphone).GetProperties());
-        }
-
         public void ShouldBeAvailableWhenConstructed(Microphone microphone)
         {
             microphone.IsAvailable().ShouldBeTrue();
