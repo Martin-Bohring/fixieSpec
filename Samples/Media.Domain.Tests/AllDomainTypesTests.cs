@@ -12,7 +12,7 @@ namespace Media.Domain.Tests
     using Ploeh.AutoFixture;
     using Ploeh.AutoFixture.Idioms;
 
-    public sealed class DomainTypesTests
+    public sealed class AllDomainTypesTests
     {
         public void ShouldGuardMethodParameters()
         {

@@ -13,7 +13,7 @@ namespace Media.Domain.Tests
     using Ploeh.AutoFixture;
     using Ploeh.AutoFixture.Idioms;
 
-    public sealed class ValueObjectTests
+    public sealed class AllValueObjectTests
     {
         public void ShouldHaveValueSemantics()
         {
@@ -25,7 +25,7 @@ namespace Media.Domain.Tests
                 new EqualsSelfAssertion(fixture),
                 new EqualsSuccessiveAssertion(fixture));
 
-            equalitySemanticAssertion.Verify(AllValueTypesOfValueObject());
+            equalitySemanticAssertion.Verify(ValueTypes());
         }
 
         public void ShouldCorrectlyCalculateHashCode()
@@ -34,10 +34,10 @@ namespace Media.Domain.Tests
 
             var calculatesHashCodeAssertion = new GetHashCodeSuccessiveAssertion(fixture);
 
-            calculatesHashCodeAssertion.Verify(AllValueTypesOfValueObject());
+            calculatesHashCodeAssertion.Verify(ValueTypes());
         }
 
-        static IEnumerable<Type> AllValueTypesOfValueObject()
+        static IEnumerable<Type> ValueTypes()
         {
             var allValueTypesOfValueObject =
                 from x in Assembly.GetAssembly(typeof(ValueObject<>)).GetTypes()
