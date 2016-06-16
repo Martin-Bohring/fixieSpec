@@ -38,6 +38,7 @@
   <ItemGroup>
     <Compile Include="AutoFixtureParameterSource.cs" />
     <Compile Include="ActivityIdTests.cs" />
+    <Compile Include="DomainTypeTests.cs" />
     <Compile Include="Recording\AudioRecordingTests.cs" />
     <Compile Include="MicrophoneTests.cs" />
     <Compile Include="Recording\VideoRecordingTests.cs" />

@@ -3,7 +3,7 @@
 // Licensed under the MIT license. See LICENSE.txt file in the project root for full license information.
 // </copyright>
 
-namespace AV.Domain
+namespace Media.Domain
 {
     /// <summary>
     /// Describes the state of a media device.
