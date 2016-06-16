@@ -13,7 +13,7 @@ namespace Media.Domain.Tests
     using Ploeh.AutoFixture;
     using Ploeh.AutoFixture.Idioms;
 
-    public sealed class AllValueObjectTests
+    public sealed class AllValueObjectsTests
     {
         public void ShouldHaveValueSemantics()
         {
