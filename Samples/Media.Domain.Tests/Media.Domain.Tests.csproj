@@ -37,14 +37,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AutoFixtureParameterSource.cs" />
-    <Compile Include="ActivityIdTests.cs" />
-    <Compile Include="DomainTypeTests.cs" />
+    <Compile Include="DomainTypesTests.cs" />
     <Compile Include="Recording\AudioRecordingTests.cs" />
     <Compile Include="MicrophoneTests.cs" />
     <Compile Include="Recording\VideoRecordingTests.cs" />
     <Compile Include="UnitTestConvention.cs" />
     <Compile Include="DependencyTests.cs" />
-    <Compile Include="DeviceIdTests.cs" />
     <Compile Include="InputAttribute.cs" />
     <Compile Include="InputAttributeParameterSource.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

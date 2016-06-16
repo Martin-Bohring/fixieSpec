@@ -11,24 +11,6 @@ namespace Media.Domain.Tests
 
     public sealed class MicrophoneTests
     {
-        public void ShouldGuardConstructorParameters()
-        {
-            var fixture = new Fixture();
-
-            var guardsConstructorsAssertion = new GuardClauseAssertion(fixture);
-
-            guardsConstructorsAssertion.Verify(typeof(Microphone).GetConstructors());
-        }
-
-        public void ShouldGuardMethodParameters()
-        {
-            var fixture = new Fixture();
-
-            var guardMethodParametersAssertion = new GuardClauseAssertion(fixture);
-
-            guardMethodParametersAssertion.Verify(typeof(Microphone).GetMethods());
-        }
-
         public void ShouldInitializeReadOnlyPropertiesByConstructor()
         {
             var fixture = new Fixture();
