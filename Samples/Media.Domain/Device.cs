@@ -57,37 +57,37 @@ namespace Media.Domain
         }
 
         /// <summary>
-        /// Verifies if the device is in the role given by <paramref name="role"/> during
-        /// the activity given by <paramref name="activity"/>.
+        /// Verifies if the device is in a role during an activity given by <paramref name="roleInActivty"/>.
         /// </summary>
-        /// <param name="role">
-        /// The role to check for.
-        /// </param>
-        /// <param name="activity">
-        /// The activity the device plays a role in.
+        /// <param name="roleInActivty">
+        /// The role in an activity the device playsmight be part of.
         /// </param>
         /// <returns>
-        /// <see langword="true"/>, if the device is ain the role given by <paramref name="role"/>;
+        /// <see langword="true"/>, if the device is ain the role;
         /// <see langword="false"/> otherwise.
         /// </returns>
-        public bool IsInRole(DeviceRole role, ActivityId activity) => currentRoleInActivity == new RoleInActivity(role, activity);
+        public bool IsInRole(RoleInActivity roleInActivty)
+        {
+            if (roleInActivty == null)
+            {
+                throw new ArgumentNullException(nameof(roleInActivty));
+            }
+
+            return currentRoleInActivity == roleInActivty;
+        }
 
         /// <summary>
-        /// Instructs the device to assume the role given by <paramref name="roleToAssume"/>
-        /// within the activity given by <paramref name="activity"/>.
+        /// Attempts to assume a role in an activty given by <paramref name="roleInActivty"/>
         /// </summary>
-        /// <param name="roleToAssume">
-        /// The role the device needs to assume.
-        /// </param>
-        /// <param name="activity">
-        /// The activity the device plays a role in.
+        /// <param name="roleInActivty">
+        /// The role in an activty the device should to assume.
         /// </param>
         /// <returns>
         /// <see langword="true"/>, if the device can assume the role; <see langword="false"/> otherwise.
         /// </returns>
-        protected bool AssumeRole(DeviceRole roleToAssume, ActivityId activity)
+        protected bool AssumeRole(RoleInActivity roleInActivty)
         {
-            currentRoleInActivity = new RoleInActivity(roleToAssume, activity);
+            currentRoleInActivity = roleInActivty;
             return true;
         }
     }
