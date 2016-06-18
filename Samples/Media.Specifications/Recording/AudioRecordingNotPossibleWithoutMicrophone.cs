@@ -5,10 +5,10 @@
 
 namespace Media.Recording.Specifications
 {
-    using FixieSpec;
-
     using Domain;
     using Domain.Recording;
+
+    using Media.Specifications;
 
     public sealed class AudioRecordingNotPossibleWithoutMicrophone
     {
@@ -42,9 +42,9 @@ namespace Media.Recording.Specifications
             audioRecording.ShouldNotBeRecording();
         }
 
-        [Inconclusive("Find a different way to verify if the microphone is not recording")]
         public void And_then_the_selected_microphone_is_not_used_for_recording()
         {
+            microphone.ShouldNotBeRecording(audioRecording);
         }
     }
 }

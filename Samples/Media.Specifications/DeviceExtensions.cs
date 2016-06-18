@@ -8,12 +8,18 @@ namespace Media.Specifications
     using Shouldly;
 
     using Domain;
+    using Domain.Recording;
 
     public static class DeviceExtensions
     {
-        public static void ShouldBeRecording(this Device self)
+        public static void ShouldBeRecording(this Device self, IMediaRecording recording)
         {
-            self.IsInRole(DeviceRole.Recording).ShouldBeTrue();
+            self.IsInRole(DeviceRole.Recording, recording.ActivityId).ShouldBeTrue();
+        }
+
+        public static void ShouldNotBeRecording(this Device self, IMediaRecording recording)
+        {
+            self.IsInRole(DeviceRole.Recording, recording.ActivityId).ShouldBeFalse();
         }
     }
 }

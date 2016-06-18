@@ -12,8 +12,9 @@ namespace Media.Domain
     /// </summary>
     public abstract class Device
     {
-        DeviceRole roleInActivity = DeviceRole.Idle;
-        ActivityId currentActiviy;
+        static readonly RoleInActivity None = new RoleInActivity(DeviceRole.Idle, new ActivityId());
+
+        RoleInActivity currentRoleInActivity = None;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Device"/> class.
@@ -41,7 +42,7 @@ namespace Media.Domain
         /// </summary>
         public void MakeAvailable()
         {
-            roleInActivity = DeviceRole.Idle;
+            currentRoleInActivity = None;
         }
 
         /// <summary>
@@ -52,35 +53,41 @@ namespace Media.Domain
         /// </returns>
         public bool IsAvailable()
         {
-            return roleInActivity == DeviceRole.Idle;
+            return currentRoleInActivity == None;
         }
 
         /// <summary>
-        /// Verifies if the device is in the role given by <paramref name="role"/>.
+        /// Verifies if the device is in the role given by <paramref name="role"/> during
+        /// the activity given by <paramref name="activity"/>.
         /// </summary>
         /// <param name="role">
         /// The role to check for.
+        /// </param>
+        /// <param name="activity">
+        /// The activity the device plays a role in.
         /// </param>
         /// <returns>
         /// <see langword="true"/>, if the device is ain the role given by <paramref name="role"/>;
         /// <see langword="false"/> otherwise.
         /// </returns>
-        public bool IsInRole(DeviceRole role) => roleInActivity == role;
+        public bool IsInRole(DeviceRole role, ActivityId activity) => currentRoleInActivity == new RoleInActivity(role, activity);
 
         /// <summary>
-        /// Instructs the device to assume the role given by <paramref name="roleToAssume"/>.
+        /// Instructs the device to assume the role given by <paramref name="roleToAssume"/>
+        /// within the activity given by <paramref name="activity"/>.
         /// </summary>
         /// <param name="roleToAssume">
         /// The role the device needs to assume.
         /// </param>
-        /// <param name="activity">todo: describe activity parameter on AssumeRole</param>
+        /// <param name="activity">
+        /// The activity the device plays a role in.
+        /// </param>
         /// <returns>
         /// <see langword="true"/>, if the device can assume the role; <see langword="false"/> otherwise.
         /// </returns>
         protected bool AssumeRole(DeviceRole roleToAssume, ActivityId activity)
         {
-            roleInActivity = roleToAssume;
-            currentActiviy = activity;
+            currentRoleInActivity = new RoleInActivity(roleToAssume, activity);
             return true;
         }
     }

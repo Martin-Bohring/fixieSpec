@@ -43,7 +43,7 @@ namespace Media.Recording.Specifications
 
         public void And_then_the_selected_microphone_is_used_for_recording()
         {
-            microphone.ShouldBeRecording();
+            microphone.ShouldBeRecording(audioRecording);
         }
 
         public void And_then_the_selected_microphone_is_not_available_anymore()

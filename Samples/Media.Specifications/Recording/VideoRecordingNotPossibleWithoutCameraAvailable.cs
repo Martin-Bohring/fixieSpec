@@ -5,8 +5,6 @@
 
 namespace Media.Recording.Specifications
 {
-    using FixieSpec;
-
     using Media.Specifications;
 
     using Domain;
@@ -44,10 +42,9 @@ namespace Media.Recording.Specifications
             videoRecording.ShouldNotBeRecording();
         }
 
-        [Inconclusive("Find a different way to verify if the camera is not recording")]
         public void And_then_the_selected_camera_is_not_used_for_recording()
         {
-            camera.ShouldBeRecording();
+            camera.ShouldNotBeRecording(videoRecording);
         }
     }
 }

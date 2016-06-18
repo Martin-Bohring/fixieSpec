@@ -51,12 +51,12 @@ namespace Media.Recording.Specifications
 
         public void And_then_the_selected_camera_is_used_for_recording()
         {
-            camera.ShouldBeRecording();
+            camera.ShouldBeRecording(videoRecording);
         }
 
         public void And_then_the_selected_microphone_is_used_for_recording()
         {
-            microphone.ShouldBeRecording();
+            microphone.ShouldBeRecording(videoRecording);
         }
 
         public void And_then_the_selected_camera_is_not_available_anymore()
