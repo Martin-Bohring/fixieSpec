@@ -12,9 +12,7 @@ namespace Media.Domain
     /// </summary>
     public abstract class Device
     {
-        static readonly RoleInActivity None = new RoleInActivity(DeviceRole.Idle, ActivityId.Empty);
-
-        RoleInActivity currentRoleInActivity = None;
+        RoleInActivity currentRoleInActivity = RoleInActivity.None();
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Device"/> class.
@@ -42,7 +40,7 @@ namespace Media.Domain
         /// </summary>
         public void MakeAvailable()
         {
-            currentRoleInActivity = None;
+            currentRoleInActivity = RoleInActivity.None();
         }
 
         /// <summary>
@@ -51,10 +49,7 @@ namespace Media.Domain
         /// <returns>
         /// <see langword="true"/>, if the device is available; <see langword="false"/> otherwise.
         /// </returns>
-        public bool IsAvailable()
-        {
-            return currentRoleInActivity == None;
-        }
+        public bool IsAvailable() => currentRoleInActivity == RoleInActivity.None();
 
         /// <summary>
         /// Verifies if the device is in a role during an activity given by <paramref name="roleInActivty"/>.
