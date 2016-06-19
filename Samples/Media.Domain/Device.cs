@@ -12,7 +12,7 @@ namespace Media.Domain
     /// </summary>
     public abstract class Device
     {
-        static readonly RoleInActivity None = new RoleInActivity(DeviceRole.Idle, new ActivityId());
+        static readonly RoleInActivity None = new RoleInActivity(DeviceRole.Idle, ActivityId.Empty);
 
         RoleInActivity currentRoleInActivity = None;
 
