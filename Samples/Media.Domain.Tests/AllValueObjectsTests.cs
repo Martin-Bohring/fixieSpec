@@ -8,7 +8,6 @@ namespace Media.Domain.Tests
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Reflection;
 
     using Ploeh.AutoFixture;
     using Ploeh.AutoFixture.Idioms;
@@ -39,15 +38,11 @@ namespace Media.Domain.Tests
 
         static IEnumerable<Type> ValueTypes()
         {
-            var allValueTypesOfValueObject =
-                from x in Assembly.GetAssembly(typeof(ValueObject<>)).GetTypes()
-                    let y = x.BaseType
-                    where !x.IsAbstract && !x.IsInterface &&
-                    y != null && y.IsGenericType &&
-                    y.GetGenericTypeDefinition() == typeof(ValueObject<>)
-                    select x;
-
-            return allValueTypesOfValueObject;
+            return from type in typeof(ValueObject<>).Assembly.CreatableTypesInAssembly()
+                   let baseType = type.BaseType
+                   where baseType != null && baseType.IsGenericType &&
+                   baseType.GetGenericTypeDefinition() == typeof(ValueObject<>)
+                   select type;
         }
     }
 }
