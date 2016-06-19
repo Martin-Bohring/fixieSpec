@@ -41,6 +41,7 @@
     <Compile Include="AutoFixtureParameterSource.cs" />
     <Compile Include="AllDomainTypesTests.cs" />
     <Compile Include="MicrophoneTests.cs" />
+    <Compile Include="RoleInActivityTests.cs" />
     <Compile Include="TestExtensions.cs" />
     <Compile Include="UnitTestConvention.cs" />
     <Compile Include="DependencyTests.cs" />

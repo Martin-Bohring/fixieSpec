@@ -43,6 +43,21 @@ namespace Media.Domain
         /// </summary>
         public DeviceRole Role { get; private set; }
 
+        /// <summary>
+        /// Creates a <see cref="RoleInActivity"/> instance indicating a recording role.
+        /// within an activity.
+        /// </summary>
+        /// <param name="activity">
+        /// The activity during that the the rcording happens.
+        /// </param>
+        /// <returns>
+        /// The <see cref="RoleInActivity"/> instance indicating a recording role
+        /// </returns>
+        public static RoleInActivity Recording(ActivityId activity)
+        {
+            return new RoleInActivity(DeviceRole.Recording, activity);
+        }
+
         /// <inheritdoc/>
         protected override IEnumerable<object> Reflect()
         {

@@ -41,7 +41,7 @@ namespace Media.Domain
 
             if (IsAvailable())
             {
-                return AssumeRole(new RoleInActivity(DeviceRole.Recording, videoRecording));
+                return AssumeRole(RoleInActivity.Recording(videoRecording));
             }
 
             return false;

@@ -14,12 +14,12 @@ namespace Media.Specifications
     {
         public static void ShouldBeRecording(this Device self, IMediaRecording recording)
         {
-            self.IsInRole(new RoleInActivity(DeviceRole.Recording, recording.ActivityId)).ShouldBeTrue();
+            self.IsInRole(RoleInActivity.Recording(recording.ActivityId)).ShouldBeTrue();
         }
 
         public static void ShouldNotBeRecording(this Device self, IMediaRecording recording)
         {
-            self.IsInRole(new RoleInActivity(DeviceRole.Recording, recording.ActivityId)).ShouldBeFalse();
+            self.IsInRole( RoleInActivity.Recording(recording.ActivityId)).ShouldBeFalse();
         }
     }
 }
