@@ -9,7 +9,7 @@ namespace Media.Domain
     using System.Collections.Generic;
 
     /// <summary>
-    /// Represents a role within an activity.
+    /// Represents a role during an activity.
     /// </summary>
     public class RoleInActivity : ValueObject<RoleInActivity>
     {
@@ -17,10 +17,10 @@ namespace Media.Domain
         /// Initializes a new instance of the <see cref="RoleInActivity"/> class.
         /// </summary>
         /// <param name="role">
-        /// The role within the activity.
+        /// The role during the activity.
         /// </param>
         /// <param name="activity">
-        /// The activity a role.
+        /// The activity during that the role is played.
         /// </param>
         public RoleInActivity(DeviceRole role, ActivityId activity)
         {
@@ -34,28 +34,40 @@ namespace Media.Domain
         }
 
         /// <summary>
-        /// Gets the activity a role is being played in.
+        /// Gets the activity during that the role is being played.
         /// </summary>
         public ActivityId Activity { get; private set; }
 
         /// <summary>
-        /// Gets the role within the activity.
+        /// Gets the role during the activity.
         /// </summary>
         public DeviceRole Role { get; private set; }
 
         /// <summary>
         /// Creates a <see cref="RoleInActivity"/> instance indicating a recording role.
-        /// within an activity.
+        /// during an activity.
         /// </summary>
         /// <param name="activity">
-        /// The activity during that the the rcording happens.
+        /// The activity during that the the recording happens.
         /// </param>
         /// <returns>
-        /// The <see cref="RoleInActivity"/> instance indicating a recording role
+        /// The <see cref="RoleInActivity"/> instance indicating a recording role.
         /// </returns>
         public static RoleInActivity Recording(ActivityId activity)
         {
             return new RoleInActivity(DeviceRole.Recording, activity);
+        }
+
+        /// <summary>
+        /// Creates a <see cref="RoleInActivity"/> instance indicating no role.
+        /// during an activity.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="RoleInActivity"/> instance indicating no role.
+        /// </returns>
+        public static RoleInActivity None()
+        {
+            return new RoleInActivity(DeviceRole.Idle, ActivityId.Empty);
         }
 
         /// <inheritdoc/>

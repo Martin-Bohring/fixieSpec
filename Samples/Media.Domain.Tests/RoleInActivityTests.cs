@@ -16,5 +16,13 @@ namespace Media.Domain.Tests
             recordingRoleInActivity.Activity.ShouldBe(activity);
             recordingRoleInActivity.Role.ShouldBe(DeviceRole.Recording);
         }
+
+        public void ShouldCreateNoneRole()
+        {
+            var noRoleInActivity = RoleInActivity.None();
+
+            noRoleInActivity.Activity.ShouldBe(ActivityId.Empty);
+            noRoleInActivity.Role.ShouldBe(DeviceRole.Idle);
+        }
     }
 }
