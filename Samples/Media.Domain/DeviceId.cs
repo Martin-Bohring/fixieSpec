@@ -13,6 +13,11 @@ namespace Media.Domain
     /// </summary>
     public class DeviceId : ValueObject<DeviceId>
     {
+        /// <summary>
+        /// Represents the empty <see cref="DeviceId"/>.
+        /// </summary>
+        public static readonly DeviceId Empty = new DeviceId(Guid.Empty);
+
         readonly Guid deviceId;
 
         /// <summary>
@@ -29,13 +34,8 @@ namespace Media.Domain
         /// <param name="id">
         /// The id of the device.
         /// </param>
-        public DeviceId(Guid id)
+        DeviceId(Guid id)
         {
-            if (id == Guid.Empty)
-            {
-                throw new ArgumentException("Invalid device id", nameof(id));
-            }
-
             deviceId = id;
         }
 

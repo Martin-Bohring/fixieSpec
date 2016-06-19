@@ -13,6 +13,11 @@ namespace Media.Domain
     /// </summary>
     public class ActivityId : ValueObject<ActivityId>
     {
+        /// <summary>
+        /// Represents the empty <see cref="ActivityId"/>.
+        /// </summary>
+        public static readonly ActivityId Empty = new ActivityId(Guid.Empty);
+
         readonly Guid activityId;
 
         /// <summary>
@@ -29,13 +34,8 @@ namespace Media.Domain
         /// <param name="id">
         /// The id of the activity.
         /// </param>
-        public ActivityId(Guid id)
+        ActivityId(Guid id)
         {
-            if (id == Guid.Empty)
-            {
-                throw new ArgumentException("Invalid activity id", nameof(id));
-            }
-
             activityId = id;
         }
 
