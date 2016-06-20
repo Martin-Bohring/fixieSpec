@@ -39,6 +39,7 @@
   <ItemGroup>
     <Compile Include="DeviceExtensions.cs" />
     <Compile Include="Recording\AudioRecordingFailsWithoutMicrophone.cs" />
+    <Compile Include="Recording\AudioRecordingStopsAfterRecording.cs" />
     <Compile Include="Recording\VideoRecordingFailsWithoutCamera.cs" />
     <Compile Include="Recording\AudioRecordingSucceedsWithMicrophone.cs" />
     <Compile Include="Recording\VideoRecordingSucceedsWithCameraAndMicrophone.cs" />
