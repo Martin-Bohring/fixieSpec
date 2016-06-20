@@ -5,50 +5,46 @@
 
 namespace Media.Recording.Specifications
 {
-    using Shouldly;
+    using Media.Specifications;
 
     using Domain;
     using Domain.Recording;
 
-    using Media.Specifications;
-
-    public sealed class SuccessfulVideoOnlyRecording
+    public sealed class VideoRecordingFailsWithoutCamera
     {
         readonly VideoCamera camera;
+        readonly Microphone microphone;
 
         readonly VideoRecording videoRecording;
 
-        public SuccessfulVideoOnlyRecording(
+        public VideoRecordingFailsWithoutCamera(
             VideoRecording aVideoRecording,
-            VideoCamera aCamera)
+            VideoCamera aCamera,
+            Microphone aMicrophone)
         {
             videoRecording = aVideoRecording;
             camera = aCamera;
+            microphone = aMicrophone;
         }
 
-        public void Given_a_camera_is_available()
+        public void Given_a_camera_is_not_available()
         {
-            camera.MakeAvailable();
+            camera.UseForVideoRecording(new ActivityId());
         }
 
         public void When_a_video_recording_is_started()
         {
-            videoRecording.StartRecording(camera);
+            videoRecording.StartRecording(camera, microphone);
         }
 
         public void Then_the_video_recording_should_be_recording()
         {
-            videoRecording.ShouldBeRecording();
+            videoRecording.ShouldNotBeRecording();
         }
 
-        public void And_then_the_selected_camera_is_used_for_recording()
+        public void And_then_the_selected_camera_is_not_used_for_recording()
         {
-            camera.ShouldBeRecording(videoRecording);
-        }
-
-        public void And_then_the_selected_camera_is_not_available_anymore()
-        {
-            camera.IsAvailable().ShouldBeFalse();
+            camera.ShouldNotBeRecording(videoRecording);
         }
     }
 }

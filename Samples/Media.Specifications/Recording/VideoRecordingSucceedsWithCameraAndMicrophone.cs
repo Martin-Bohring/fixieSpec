@@ -12,14 +12,14 @@ namespace Media.Recording.Specifications
 
     using Media.Specifications;
 
-    public sealed class SuccessfulVideoWithAudioRecording
+    public sealed class VideoRecordingSucceedsWithCameraAndMicrophone
     {
         readonly VideoCamera camera;
         readonly Microphone microphone;
 
         readonly VideoRecording videoRecording;
 
-        public SuccessfulVideoWithAudioRecording(
+        public VideoRecordingSucceedsWithCameraAndMicrophone(
             VideoRecording aVideoRecording,
             VideoCamera aCamera,
             Microphone aMicrophone)

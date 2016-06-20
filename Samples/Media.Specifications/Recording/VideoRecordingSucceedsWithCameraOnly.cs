@@ -5,46 +5,50 @@
 
 namespace Media.Recording.Specifications
 {
-    using Media.Specifications;
+    using Shouldly;
 
     using Domain;
     using Domain.Recording;
 
-    public sealed class VideoRecordingNotPossibleWithoutCameraAvailable
+    using Media.Specifications;
+
+    public sealed class VideoRecordingSucceedsWithCameraOnly
     {
         readonly VideoCamera camera;
-        readonly Microphone microphone;
 
         readonly VideoRecording videoRecording;
 
-        public VideoRecordingNotPossibleWithoutCameraAvailable(
+        public VideoRecordingSucceedsWithCameraOnly(
             VideoRecording aVideoRecording,
-            VideoCamera aCamera,
-            Microphone aMicrophone)
+            VideoCamera aCamera)
         {
             videoRecording = aVideoRecording;
             camera = aCamera;
-            microphone = aMicrophone;
         }
 
-        public void Given_a_camera_is_not_available()
+        public void Given_a_camera_is_available()
         {
-            camera.UseForVideoRecording(new ActivityId());
+            camera.MakeAvailable();
         }
 
         public void When_a_video_recording_is_started()
         {
-            videoRecording.StartRecording(camera, microphone);
+            videoRecording.StartRecording(camera);
         }
 
         public void Then_the_video_recording_should_be_recording()
         {
-            videoRecording.ShouldNotBeRecording();
+            videoRecording.ShouldBeRecording();
         }
 
-        public void And_then_the_selected_camera_is_not_used_for_recording()
+        public void And_then_the_selected_camera_is_used_for_recording()
         {
-            camera.ShouldNotBeRecording(videoRecording);
+            camera.ShouldBeRecording(videoRecording);
+        }
+
+        public void And_then_the_selected_camera_is_not_available_anymore()
+        {
+            camera.IsAvailable().ShouldBeFalse();
         }
     }
 }

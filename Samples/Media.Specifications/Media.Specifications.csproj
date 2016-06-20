@@ -38,11 +38,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DeviceExtensions.cs" />
-    <Compile Include="Recording\AudioRecordingNotPossibleWithoutMicrophone.cs" />
-    <Compile Include="Recording\VideoRecordingNotPossibleWithoutCameraAvailable.cs" />
-    <Compile Include="Recording\SucessfulAudioRecording.cs" />
-    <Compile Include="Recording\SuccessfulVideoWithAudioRecording.cs" />
-    <Compile Include="Recording\SuccessfulVideoOnlyRecording.cs" />
+    <Compile Include="Recording\AudioRecordingFailsWithoutMicrophone.cs" />
+    <Compile Include="Recording\VideoRecordingFailsWithoutCamera.cs" />
+    <Compile Include="Recording\AudioRecordingSucceedsWithMicrophone.cs" />
+    <Compile Include="Recording\VideoRecordingSucceedsWithCameraAndMicrophone.cs" />
+    <Compile Include="Recording\VideoRecordingSucceedsWithCameraOnly.cs" />
     <Compile Include="SpecificationConventions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Recording\MediaRecordingExtensions.cs" />

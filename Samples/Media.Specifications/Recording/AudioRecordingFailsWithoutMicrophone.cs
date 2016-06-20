@@ -10,14 +10,14 @@ namespace Media.Recording.Specifications
 
     using Media.Specifications;
 
-    public sealed class AudioRecordingNotPossibleWithoutMicrophone
+    public sealed class AudioRecordingFailsWithoutMicrophone
     {
         readonly Microphone microphone;
 
         readonly AudioRecording previousAudioRecording;
         readonly AudioRecording audioRecording;
 
-        public AudioRecordingNotPossibleWithoutMicrophone(
+        public AudioRecordingFailsWithoutMicrophone(
             AudioRecording aPreviousAudioRecording,
             AudioRecording aNewAudioRecording,
             Microphone aMicrophone)
