@@ -32,5 +32,16 @@ namespace Media.Domain.Tests
 
             microphone.UseForAudioRecording(newAudioRecording).ShouldBeFalse();
         }
+
+        void ShouldBeAvailableWhenStoppingUseForAudioRecording(
+            Microphone microphone,
+            ActivityId audioRecording)
+        {
+            microphone.UseForAudioRecording(audioRecording);
+
+            microphone.StopUsingForAudioRecording(audioRecording);
+
+            microphone.IsAvailable().ShouldBe(true);
+        }
     }
 }

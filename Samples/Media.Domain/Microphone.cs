@@ -46,5 +46,27 @@ namespace Media.Domain
 
             return false;
         }
+
+        /// <inheritdoc/>
+        public bool StopUsingForAudioRecording(ActivityId audioRecording)
+        {
+            if (audioRecording == null)
+            {
+                throw new ArgumentNullException(nameof(audioRecording));
+            }
+
+            if (IsAudioRecording(audioRecording))
+            {
+                MakeAvailable();
+                return true;
+            }
+
+            return false;
+        }
+
+        bool IsAudioRecording(ActivityId audioRecording)
+        {
+            return IsInRole(RoleInActivity.Recording(audioRecording));
+        }
     }
 }

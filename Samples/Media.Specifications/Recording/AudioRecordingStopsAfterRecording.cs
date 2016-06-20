@@ -7,8 +7,6 @@ namespace Media.Recording.Specifications
 {
     using Domain;
     using Domain.Recording;
-
-    using FixieSpec;
     using Shouldly;
 
     public sealed class AudioRecordingStopsAfterRecording
@@ -32,15 +30,14 @@ namespace Media.Recording.Specifications
 
         public void When_the_audio_recording_is_stopped()
         {
+            audioRecording.StopRecording();
         }
 
-        [Inconclusive]
         public void Then_the_audio_recording_is_no_more_recording()
         {
             audioRecording.ShouldNotBeRecording();
         }
 
-        [Inconclusive]
         public void And_then_the_microphone_is_available_again()
         {
             microphone.IsAvailable().ShouldBeTrue();

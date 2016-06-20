@@ -16,7 +16,7 @@ namespace Media.Domain
         /// </summary>
         /// <param name="audioRecording">
         /// The <see cref="ActivityId"/> of the audio recording that wants to use
-        /// microphone
+        /// the audio recording source.
         /// </param>
         /// <returns>
         /// <see langword="true"/>, if the audio recording source is
@@ -26,5 +26,18 @@ namespace Media.Domain
         /// Still not a good name, but the best I can find for now.
         /// </remarks>
         bool UseForAudioRecording(ActivityId audioRecording);
+
+        /// <summary>
+        /// Stops using the audio recording source for audio recording.
+        /// </summary>
+        /// <param name="audioRecording">
+        /// The <see cref="ActivityId"/> of the audio recording that wants to stop
+        /// using the audio recording source.
+        /// </param>
+        /// <returns>
+        /// <see langword="true"/>, if the audio recording source is
+        /// no used for audio recording; <see langword="false"/> otherwise.
+        /// </returns>
+        bool StopUsingForAudioRecording(ActivityId audioRecording);
     }
 }

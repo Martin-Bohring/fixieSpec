@@ -57,9 +57,31 @@ namespace Media.Domain.Recording
                 throw new ArgumentNullException(nameof(audioSource));
             }
 
-            if (audioSource.UseForAudioRecording(this.ActivityId))
+            if (audioSource.UseForAudioRecording(ActivityId))
             {
                 this.audioSource = audioSource;
+                return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Stops the audio recording and releases the used audio recording source.
+        /// </summary>
+        /// <returns>
+        /// <see langword="true"/>, if the audio recording stopped sucessful; <see langword="false"/> otherwise.
+        /// </returns>
+        public bool StopRecording()
+        {
+            if (!IsRecording())
+            {
+                return false;
+            }
+
+            if (audioSource.StopUsingForAudioRecording(ActivityId))
+            {
+                audioSource = null;
                 return true;
             }
 
