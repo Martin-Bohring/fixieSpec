@@ -14,7 +14,7 @@ There are so many good ones already. And you would be right.
 But I always have the feeling I have to do a lot for those frameworks until they start to do something for me.
 Your mileage might vary depending on the choosen framework. I tried a lot of them believe me.
 
-Either you have to use code generation (not a bad thing in itself), play some tricks with lambdas or
+Either you have to use code generation (not a bad thing in itself, but friction), play some tricks with lambdas or
 being comitted to a certain assertion library.
 
 **Make no mistake here:**
@@ -96,7 +96,9 @@ As you can see this is a simple class with no frills, but a lot is happening in 
 - Multiple assertion steps are executed in the order of their declaration
 
 How is that done? If you follow the next steps, then you will understand how all that magic happens.
-### Naming conventions used to find specifications ###
+
+### Conventions used to write specifications ###
+Fixie is a conventional test framework and so is fixieSpec.
 
 ## Advanced scenarios ##
 ### Create your system under test (SUT) automatically ###
@@ -108,4 +110,4 @@ How is that done? If you follow the next steps, then you will understand how all
 
 ## Icon ##
 Copyright by Paul Eichenberger, who contributed it.
-I like how it combines a fixi bike (having one wheel only) with a checklist.
+I like how it combines a fixie bike (having one wheel only) with a checklist.
