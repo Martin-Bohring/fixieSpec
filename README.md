@@ -93,8 +93,9 @@ As you can see this is a simple class with no frills, but a lot is happening in 
 - The class is instanciated and its constructor parameters are resolved from somewhere
 - The context setup step is executed after the class has been constructed
 - A scenario specific transition step is executed on the SUT
-- Multiple assertion steps are executed n the order of their declaration
+- Multiple assertion steps are executed in the order of their declaration
 
+How is that done? If you follow the next steps, then you will understand how all that magic happens.
 
 ### Naming conventions used to find specifications ###
 
