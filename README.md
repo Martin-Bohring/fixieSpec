@@ -40,7 +40,7 @@ It is an opinionated framework for a start.
 fixieSpec is not yet published on Nuget.
 So for the moment you can grab the [Latest build](https://ci.appveyor.com/project/Martin-Bohring/fixiespec "Latest build") or just pull the source and start from there.
 
-I will setup Nuget publishing from the latest build in thenear future. I just have to make up my mind what the versioning and branching strategy should be. This is easy to get wrong and difficult to fix when packages are already published.
+I will setup Nuget publishing from the latest build in the near future. I just have to make up my mind what the versioning and branching strategy should be. This is easy to get wrong and difficult to fix when packages are already published.
 
 ### Writing you first specification ###
 A specification is a simple public class like the following from the [Sample application](https://github.com/Martin-Bohring/fixieSpec/tree/master/Samples "Samples"):
@@ -91,10 +91,9 @@ As you can see this is a simple class with no frills, but a lot is happening in 
 
 - The specification class is found by convention
 - The class is instanciated and its constructor parameters are resolved from somewhere
-- The context setup step is executed after the class has been constructed
+- A context setup step is executed after the class has been constructed
 - A scenario specific transition step is executed on the SUT
 - Multiple assertion steps are executed n the order of their declaration
-
 
 ### Naming conventions used to find specifications ###
 
