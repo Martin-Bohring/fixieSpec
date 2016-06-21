@@ -1,103 +1,52 @@
 # fixieSpec #
 
+![fixieSpec Logo](https://raw.github.com/Martin-Bohring/fixieSpec/master/assets/Fixiespec-256-01.png)
+
 [![Build status](https://ci.appveyor.com/api/projects/status/0e3c8ei5n1297y9g?svg=true)](https://ci.appveyor.com/project/Martin-Bohring/fixiespec)
 
-Not much to see here yet.
-This is a personal project for now to test drive my personal best of breed development stack (opinionated).
+A super low friction specification framework based on the fantastic [Fixie](https://github.com/fixie/fixie "Fixie") test framework.
 
-**Still here? OK.**
+## Why fixieSpec? ##
 
-So you might wonder what I consider a good development stack in the .Net space.
-As a general rule: **Things should be easly and low friction**.
+You might ask: Why create another specification framework?
+There are so many good ones already. And you would be right.
 
-**The follwing tools and frameworks I decided to test drive:**
+But I always have the feeling I have to do a lot for those frameworks until they start to do something for me.
+Your mileage might vary depending on the choosen framework. I tried a lot of them believe me.
 
-## Building automation ##
-There are build automation tools available in the .Net space that go further than plain MSBuild.
-At the same time I want to avoid paying the XML tax as much as possible.
-
-Therefore I tried [https://github.com/psake/psake](https://github.com/psake/psake "psake").
-But I really never got the hang of the PowerShell syntax.
+Either you have to use code generation (not a bad thing in itself), play some tricks with lambdas or
+being comitted to a certain assertion library.
 
 **Make no mistake here:**
-It is a very good build automation tool, just not my kind of build automation tool.
+There are advantages and disadvantages for all approaches. So this approach has also not only advantages.
+It is an opinionated framework for a start.  
 
-The next thing I looked into is [https://github.com/fsharp/FAKE](https://github.com/fsharp/FAKE "FAKE").
-That one has won me over. It has everything I want from build automation.
-A rich eco-system, a great supportive community, and they address the right kind of problems.
+**So what tradeoffs does this framework make?**
 
-An yes I am aware of [https://github.com/ruby/rake](https://github.com/ruby/rake "rake") and [https://github.com/cake-build/cake](https://github.com/cake-build/cake "Cake").
+- **Super low friction specifcation authoring**
+  But that comes not for free. You have to follow a naming convention for your specifications. More on that later on.
 
-In my opinion Cake is the runner-up to Fake and might overtake it in the not to far future, but for now it is Fake.
+- **Minimal ceromony**
+  Specifications are picked up automatically by using the [Fixie](https://github.com/fixie/fixie "Fixie") test framework for specification execution. Fixie is much more open to different styles of testing than fixieSpec.
 
-## Continous Integration ##
-Not to far back in time there were no free CI offerings available.
-Boy have things changed by now (and no I have not lived in a cave for 10 years).
+- **One test class per scenario**
+  I strongly believe in independent unit tests (FIRST principle), however when it comes to specifications I value other traits higher. I very much favour a test class per scenario lifecycle here. This allows to setup a context, execute some transitions (exercising the system under test) followed by one or more assertions. The different scenario classes should still be as independend from each other as possible.
 
-There are the following contenders I know of that offer free CI for open source projects:
+- **From nothing to a specification in 10 minutes**
+  That is a bold statement, but after following the getting started guide, you decide if it is true.
 
-- [http://codebetter.com/codebetter-ci/](http://codebetter.com/codebetter-ci/ "Codebetter Teamcity")
-- [https://travis-ci.org/](https://travis-ci.org/ "Travis")
-- [https://www.appveyor.com/](https://www.appveyor.com/ "AppVeyor")
+## Getting started ##
+### How to get fixieSpec ###
+### Writing you first specification ###
+### Naming conventions used to find specifications ###
 
-Currently the AppVeyor CI server seems to be the most attractive option for me.
+## Advanced scenarios ##
+### Create your system under test (SUT) automatically ###
+### SUT creation using AutoFixture ###
+### SUT creation using a DI container ###
 
-**Make no mistake here as well:**
-All the offerings are free for open source projects, but for me AppVeyor seems to introduce the least amount of friction.
+## What is missing ##
 
-BTW: Fake already supports reporting build progress to all of them.
-
-I might consider [https://github.com/GitTools/GitLink](https://github.com/GitTools/GitLink "GitLink") and [https://www.nuget.org/](https://www.nuget.org/ "nuget") in case my little experiment ends up as a published Nuget package.
-
-## Testing ##
-
-### Test Framework ###
-I have used [https://github.com/nunit](https://github.com/nunit "NUnit") professional in the past. It was a good option back then, but extending the test runner or changing the test class life cycle was always a hassle.
-Also the test setup and test cleanup attributes always fetlt unnatural to me (remember low friction)
-
-The [https://github.com/xunit/xunit](https://github.com/xunit/xunit "xunit") and relived from some of the pain.
-Test class lifecycle is a more natural match with the expectations of a .Net developer.
-
-Extending it is also possible, but still somewhat of a pain (and yes xunit2 has improved things in that area).
-
-And then came [https://github.com/fixie/fixie](https://github.com/fixie/fixie "Fixie").
-Its developer Patrick Lioi started developing it over the course of more than a year in the open.
-His blog serie [https://lostechies.com/patricklioi/2013/07/23/fixies-elevator-pitch/](https://lostechies.com/patricklioi/2013/07/23/fixies-elevator-pitch/) is a must read for every fixie user.
-
-All the decisions, doubts, mistakes, course changes etc. are laid out in plain sight.
-So everybody can watch a great developer at work.
-
-### Assertion Framework ###
-I am a long time user of [https://github.com/dennisdoomen/FluentAssertions](https://github.com/dennisdoomen/FluentAssertions "Fluent Assertions"). It is simple the most complete fluent asserion library.
-
-No matter what unit test framework I used in the past, I always had trouble what parameter comes first in its assertion methods:
-
-Is it the actual value or the excpected value. Since both are of the same type (most of the time), the method signature is not helpfull. Fluent Assertions solves that and a lot more [https://github.com/dennisdoomen/FluentAssertions/wiki](https://github.com/dennisdoomen/FluentAssertions/wiki "Fluent Assertions Wiki").
-
-The only draw back is that some of the exception messages are difficult to decipher.
-
-But I want to learn something new. Therefore I will give [https://github.com/shouldly/shouldly](https://github.com/shouldly/shouldly "Shouldly") a try. I am aware of other Assertion Frameworks.
-
-It is not as complete as Fluent Assertions, but they have worked exspecially on improving the error messages ([http://docs.shouldly-lib.net/v2.4.0/docs](http://docs.shouldly-lib.net/v2.4.0/docs "Documentation") look at the error message examples). 
-
-### Mocking Library ###
-Over the years I have used almost all of the mocking libraries in the .Net space that are freely available.
-
-- [https://github.com/ayende/rhino-mocks](https://github.com/ayende/rhino-mocks "rhino-mocks")
-- [https://github.com/moq/moq](https://github.com/moq/moq "moq")
-- [https://github.com/FakeItEasy/FakeItEasy](https://github.com/FakeItEasy/FakeItEasy "FakeItEasy")
-
-And yes I am aware of [https://github.com/nsubstitute/NSubstitute](https://github.com/nsubstitute/NSubstitute "NSubsitute"), but never used it professionally.
-
-But for this endavour it will be **FakeItEasy**. It has the most clean syntax (personal opinion again, feel free to have your own)
-It is super low friction, does the right thing out of the box, (Deep mocking anybody? Yes I am locking at you RhinoMocks and Moq) and just gets out of the way.
-
-## fixieSpec ##
-
-To test things out I decided to create a small specification framework.
-
-You might ask: Why create a new specification framework?
-There so many good ones already. And you would be right.
-As mentioned already I am creating it to learn something new.
-There is a lot to learn out there. Things change fast. A good approach from 2 years ago becomes outdated very quickly.
-
+## Icon ##
+Copyright by Paul Eichenberger, who contributed it.
+I like how it combines a fixi bike (having one wheel only) with a checklist.
