@@ -37,13 +37,72 @@ It is an opinionated framework for a start.
 
 ## Getting started ##
 ### How to get fixieSpec ###
+fixieSpec is not yet published on Nuget.
+So for the moment you can grab the [Latest build](https://ci.appveyor.com/project/Martin-Bohring/fixiespec "Latest build") or just pull the source and start from there.
+
+I will setup Nuget publishing from the latest build in thenear future. I just have to make up my mind what the versioning and branching strategy should be. This is easy to get wrong and difficult to fix when packages are already published.
+
 ### Writing you first specification ###
+A specification is a simple public class like the following from the [Sample application](https://github.com/Martin-Bohring/fixieSpec/tree/master/Samples "Samples"):
+
+```c#
+public sealed class AudioRecordingSucceedsWithMicrophone
+{
+    readonly Microphone microphone;
+
+    readonly AudioRecording audioRecording;
+
+    public AudioRecordingSucceedsWithMicrophone(
+        AudioRecording anAudioRecording,
+        Microphone aMicrophone)
+    {
+        audioRecording = anAudioRecording;
+        microphone = aMicrophone;
+    }
+
+    public void Given_a_microphone_is_available()
+    {
+        microphone.MakeAvailable();
+    }
+
+    public void When_the_audio_recording_is_started()
+    {
+        audioRecording.StartRecording(microphone);
+    }
+
+    public void Then_the_audio_recording_should_be_recording()
+    {
+        audioRecording.ShouldBeRecording();
+    }
+
+    public void And_then_the_selected_microphone_is_used_for_recording()
+    {
+        microphone.ShouldBeRecording(audioRecording);
+    }
+
+    public void And_then_the_selected_microphone_is_not_available_anymore()
+    {
+        microphone.IsAvailable().ShouldBeFalse();
+    }
+}
+```
+
+As you can see this is a simple class with no frills, but a lot is happening in the background:
+
+- The specification class is found by convention
+- The class is instanciated and its constructor parameters are resolved from somewhere
+- The context setup step is executed after the class has been constructed
+- A scenario specific transition step is executed on the SUT
+- Multiple assertion steps are executed n the order of their declaration
+
+
 ### Naming conventions used to find specifications ###
 
 ## Advanced scenarios ##
 ### Create your system under test (SUT) automatically ###
 ### SUT creation using AutoFixture ###
 ### SUT creation using a DI container ###
+### Building from source ###
 
 ## What is missing ##
 
