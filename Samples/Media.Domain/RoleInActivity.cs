@@ -11,7 +11,7 @@ namespace Media.Domain
     /// <summary>
     /// Represents a role during an activity.
     /// </summary>
-    public class RoleInActivity : ValueObject<RoleInActivity>
+    public sealed class RoleInActivity : ValueObject<RoleInActivity>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="RoleInActivity"/> class.

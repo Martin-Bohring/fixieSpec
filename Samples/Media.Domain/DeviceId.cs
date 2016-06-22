@@ -11,7 +11,7 @@ namespace Media.Domain
     /// <summary>
     /// Represents the unique id of a <see cref="Device"/>.
     /// </summary>
-    public class DeviceId : ValueObject<DeviceId>
+    public sealed class DeviceId : ValueObject<DeviceId>
     {
         /// <summary>
         /// Represents the empty <see cref="DeviceId"/>.

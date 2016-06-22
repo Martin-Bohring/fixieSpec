@@ -11,7 +11,7 @@ namespace Media.Domain
     /// <summary>
     /// Represents the unique id of an activity.
     /// </summary>
-    public class ActivityId : ValueObject<ActivityId>
+    public sealed class ActivityId : ValueObject<ActivityId>
     {
         /// <summary>
         /// Represents the empty <see cref="ActivityId"/>.
