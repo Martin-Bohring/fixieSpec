@@ -50,5 +50,27 @@ namespace Media.Domain
         {
             return devices.Values.OfType<TDevice>();
         }
+
+        /// <summary>
+        /// Attempts to find a device by its id given by <paramref name="deviceId"/>
+        /// </summary>
+        /// <param name="deviceId">
+        /// The id of the device to find.
+        /// </param>
+        /// <param name="foundDevice">
+        /// The device that has been found or <see langword="null"/> if the device has not beed found.
+        /// </param>
+        /// <returns>
+        /// <see langword="true"/>, if the device has been found; <see langword="false"/> otherwise.
+        /// </returns>
+        public bool FindDeviceById(DeviceId deviceId, out Device foundDevice)
+        {
+            if (deviceId == null)
+            {
+                throw new ArgumentNullException(nameof(deviceId));
+            }
+
+            return devices.TryGetValue(deviceId, out foundDevice);
+        }
     }
 }

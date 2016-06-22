@@ -36,9 +36,46 @@ namespace Media.Domain.Tests
             devices.FindDevicesByType<Microphone>().ShouldContain(aDevice);
         }
 
-        public void ShouldNotFindDevicesByTypeWhenNoDevicesRegistered(Devices devices)
+        public void ShouldNotFindDevicesByTypeWhenNoDevicesAreRegistered(
+            Devices devices)
         {
             devices.FindDevicesByType<Microphone>().ShouldBeEmpty();
+        }
+
+        public void ShouldNotFindDeviceByIdWhenNoDeviceAreRegistered
+            (Devices devices,
+             DeviceId anyDeviceId)
+        {
+            Device notFoundDevice = null;
+
+            devices.FindDeviceById(anyDeviceId, out notFoundDevice).ShouldBeFalse();
+            notFoundDevice.ShouldBeNull();
+        }
+
+        public void ShouldFindDeviceByIdWhenDeviceIsRegistered(
+            Devices devices,
+            Microphone aDevice,
+            VideoCamera anotherDevice)
+        {
+            devices.RegisterNewDevice(aDevice);
+            devices.RegisterNewDevice(anotherDevice);
+            Device foundDevice = null;
+
+            devices.FindDeviceById(aDevice.Id, out foundDevice).ShouldBeTrue();
+
+            foundDevice.ShouldBe(aDevice);
+        }
+
+        public void ShouldNotFindDeviceByIdWhenDeviceIsNotRegistered(
+            Devices devices,
+            Microphone aDevice,
+            DeviceId anyDeviceId)
+        {
+            devices.RegisterNewDevice(aDevice);
+            Device notFoundDevice = null;
+
+            devices.FindDeviceById(anyDeviceId, out notFoundDevice).ShouldBeFalse();
+            notFoundDevice.ShouldBeNull();
         }
     }
 }
