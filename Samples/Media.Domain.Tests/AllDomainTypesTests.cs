@@ -20,6 +20,7 @@ namespace Media.Domain.Tests
 
             fixture.Register<IAudioRecordingSource>(() => new Microphone());
             fixture.Register<IVideoRecordingSource>(() => new VideoCamera());
+            fixture.Register<Device>(() => new Microphone());
 
             var guardMethodParametersAssertion = new GuardClauseAssertion(fixture);
 

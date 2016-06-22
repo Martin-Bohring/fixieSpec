@@ -46,6 +46,7 @@
     <Compile Include="Device.cs" />
     <Compile Include="DeviceId.cs" />
     <Compile Include="DeviceRole.cs" />
+    <Compile Include="Devices.cs" />
     <Compile Include="DeviceState.cs" />
     <Compile Include="IActivity.cs" />
     <Compile Include="IAudioRecordingSource.cs" />

@@ -40,6 +40,7 @@
   <ItemGroup>
     <Compile Include="AutoFixtureParameterSource.cs" />
     <Compile Include="AllDomainTypesTests.cs" />
+    <Compile Include="DevicesTests.cs" />
     <Compile Include="MicrophoneTests.cs" />
     <Compile Include="RoleInActivityTests.cs" />
     <Compile Include="TestExtensions.cs" />
