@@ -14,12 +14,15 @@ namespace Media.Domain.Tests
     using Ploeh.AutoFixture.Kernel;
     using Fixture = Ploeh.AutoFixture.Fixture;
 
+    using Customizations;
+
     public class AutoFixtureParameterSource : ParameterSource
     {
-        /// <inheritdoc/>
         public IEnumerable<object[]> GetParameters(MethodInfo method)
         {
             IFixture fixture = new Fixture();
+
+            CustomizeAutoFixture(fixture);
 
             yield return GetParameterValues(method.GetParameters(), fixture);
         }
@@ -29,6 +32,11 @@ namespace Media.Domain.Tests
             return parameters
                 .Select(p => new SpecimenContext(fixture).Resolve(p.ParameterType))
                 .ToArray();
+        }
+        
+        static void CustomizeAutoFixture(IFixture fixture)
+        {
+            fixture.Customize(new MediaDomainCustomization());
         }
     }
 }

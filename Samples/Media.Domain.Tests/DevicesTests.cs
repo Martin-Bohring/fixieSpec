@@ -28,7 +28,7 @@ namespace Media.Domain.Tests
         public void ShouldFindDevicesByType(
             Devices devices,
             Microphone aDevice,
-            VideoCamera anotherDevice)
+            Device anotherDevice)
         {
             devices.RegisterNewDevice(aDevice);
             devices.RegisterNewDevice(anotherDevice);
@@ -55,7 +55,7 @@ namespace Media.Domain.Tests
         public void ShouldFindDeviceByIdWhenDeviceIsRegistered(
             Devices devices,
             Microphone aDevice,
-            VideoCamera anotherDevice)
+            Device anotherDevice)
         {
             devices.RegisterNewDevice(aDevice);
             devices.RegisterNewDevice(anotherDevice);

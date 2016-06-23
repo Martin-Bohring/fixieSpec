@@ -12,15 +12,13 @@ namespace Media.Domain.Tests
     using Ploeh.AutoFixture;
     using Ploeh.AutoFixture.Idioms;
 
+    using Customizations;
+
     public sealed class AllDomainTypesTests
     {
         public void ShouldGuardMethodParameters()
         {
-            var fixture = new Fixture();
-
-            fixture.Register<IAudioRecordingSource>(() => new Microphone());
-            fixture.Register<IVideoRecordingSource>(() => new VideoCamera());
-            fixture.Register<Device>(() => new Microphone());
+            var fixture = new Fixture().Customize(new MediaDomainCustomization());
 
             var guardMethodParametersAssertion = new GuardClauseAssertion(fixture);
 
