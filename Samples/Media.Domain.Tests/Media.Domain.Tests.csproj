@@ -43,6 +43,7 @@
     <Compile Include="Customizations\AudioRecordingSourceCustomization.cs" />
     <Compile Include="Customizations\DeviceCustomization.cs" />
     <Compile Include="Customizations\MediaDomainCustomization.cs" />
+    <Compile Include="Customizations\PickRandomFromFixedSequenceCustomization.cs" />
     <Compile Include="Customizations\VideoRecordingSourceCustomization.cs" />
     <Compile Include="DevicesTests.cs" />
     <Compile Include="MicrophoneTests.cs" />

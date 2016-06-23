@@ -5,14 +5,26 @@
 
 namespace Media.Domain.Tests.Customizations
 {
+    using System;
 
     using Ploeh.AutoFixture;
+    using Ploeh.AutoFixture.Kernel;
 
-    class DeviceCustomization : ICustomization
+    class DeviceCustomization : PickRandomItemFromFixedSequenceCustomization<Type>
     {
-        public void Customize(IFixture fixture)
+        public DeviceCustomization() : base (new Type[] {typeof(Microphone), typeof(VideoCamera) })
         {
-            fixture.Register<Device>(() => new Microphone());
+        }
+
+        public override void Customize(IFixture fixture)
+        {
+            fixture.Register(() => CreateDeviceOfRandomType(fixture));
+        }
+
+        public Device CreateDeviceOfRandomType(IFixture fixture)
+        {
+            return (Device)new SpecimenContext(fixture)
+                .Resolve(PickRandomIngredientFromSequence());
         }
     }
 }
