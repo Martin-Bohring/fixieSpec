@@ -40,13 +40,12 @@ namespace Media.Domain
         /// Gets all devices of type given by <typeparamref name="TDevice"/>
         /// </summary>
         /// <typeparam name="TDevice">
-        /// The type of the devices to find.
+        /// The type of devices to find.
         /// </typeparam>
         /// <returns>
         /// All found devices of type <typeparamref name="TDevice"/>
         /// </returns>
         public IEnumerable<TDevice> FindDevicesByType<TDevice>()
-            where TDevice : Device
         {
             return devices.Values.OfType<TDevice>();
         }
