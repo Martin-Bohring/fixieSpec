@@ -20,7 +20,7 @@ namespace Media.Domain.Tests
         {
             videoCamera.UseForVideoRecording(videoRecording);
 
-            videoCamera.IsInRole(new RoleInActivity(DeviceRole.Recording, videoRecording)).ShouldBeTrue();
+            videoCamera.IsInRole(RoleInActivity.Recording(videoRecording)).ShouldBeTrue();
         }
 
         void CannotUseForVideoRecordingWhenAlreadyRecording(

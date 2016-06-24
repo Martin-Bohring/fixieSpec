@@ -10,7 +10,7 @@ namespace Media.Domain.Tests
     using System.Linq;
     using System.Reflection;
 
-    public static class TestExtensions
+    static class TestExtensions
     {
         public static IEnumerable<Type> CreatableTypesInAssembly(this Assembly self)
         {

@@ -42,7 +42,7 @@ namespace Media.Domain.Tests
             devices.FindDevicesByType<Microphone>().ShouldBeEmpty();
         }
 
-        public void ShouldNotFindDeviceByIdWhenNoDeviceAreRegistered
+        public void ShouldNotFindDeviceByIdWhenNoDevicesAreRegistered
             (Devices devices,
              DeviceId anyDeviceId)
         {

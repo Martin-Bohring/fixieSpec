@@ -16,7 +16,7 @@ namespace Media.Domain.Tests
 
     using Customizations;
 
-    public class AutoFixtureParameterSource : ParameterSource
+    sealed class AutoFixtureParameterSource : ParameterSource
     {
         public IEnumerable<object[]> GetParameters(MethodInfo method)
         {
