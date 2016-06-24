@@ -7,7 +7,7 @@ namespace Media.Domain.Tests.Customizations
 {
     using Ploeh.AutoFixture;
 
-    class MediaDomainCustomization : CompositeCustomization
+    sealed class MediaDomainCustomization : CompositeCustomization
     {
         public MediaDomainCustomization()
         : base(

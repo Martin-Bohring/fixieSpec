@@ -10,7 +10,7 @@ namespace Media.Domain.Tests.Customizations
     using Ploeh.AutoFixture;
     using Ploeh.AutoFixture.Kernel;
 
-    class DeviceCustomization : PickRandomItemFromFixedSequenceCustomization<Type>
+    sealed class DeviceCustomization : PickRandomItemFromFixedSequenceCustomization<Type>
     {
         public DeviceCustomization() : base (new Type[] {typeof(Microphone), typeof(VideoCamera) })
         {

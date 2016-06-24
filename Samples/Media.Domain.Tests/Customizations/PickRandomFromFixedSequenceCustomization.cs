@@ -11,20 +11,17 @@ namespace Media.Domain.Tests.Customizations
 
     using Ploeh.AutoFixture;
 
-    class PickRandomItemFromFixedSequenceCustomization<TItem> : ICustomization
+    abstract class PickRandomItemFromFixedSequenceCustomization<TItem> : ICustomization
     {
         readonly Random randomizer = new Random(DateTime.Now.Millisecond);
         readonly IEnumerable<TItem> sequence;
 
-        public PickRandomItemFromFixedSequenceCustomization(IEnumerable<TItem> sequence)
+        protected PickRandomItemFromFixedSequenceCustomization(IEnumerable<TItem> sequence)
         {
             this.sequence = sequence;
         }
 
-        public virtual void Customize(IFixture fixture)
-        {
-            fixture.Register(PickRandomIngredientFromSequence);
-        }
+        public abstract void Customize(IFixture fixture);
 
         protected TItem PickRandomIngredientFromSequence()
         {

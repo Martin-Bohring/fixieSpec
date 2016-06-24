@@ -7,7 +7,7 @@ namespace Media.Domain.Tests.Customizations
 {
     using Ploeh.AutoFixture;
 
-    class AudioRecordingSourceCustomization : ICustomization
+    sealed class AudioRecordingSourceCustomization : ICustomization
     {
         public void Customize(IFixture fixture)
         {
