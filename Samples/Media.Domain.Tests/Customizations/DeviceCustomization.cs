@@ -8,7 +8,6 @@ namespace Media.Domain.Tests.Customizations
     using System;
 
     using Ploeh.AutoFixture;
-    using Ploeh.AutoFixture.Kernel;
 
     sealed class DeviceCustomization : PickRandomItemFromFixedSequenceCustomization<Type>
     {
@@ -23,8 +22,7 @@ namespace Media.Domain.Tests.Customizations
 
         public Device CreateDeviceOfRandomType(IFixture fixture)
         {
-            return (Device)new SpecimenContext(fixture)
-                .Resolve(PickRandomIngredientFromSequence());
+            return (Device)fixture.Resolve(PickRandomIngredientFromSequence());
         }
     }
 }

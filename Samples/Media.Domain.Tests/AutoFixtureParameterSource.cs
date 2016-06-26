@@ -11,7 +11,6 @@ namespace Media.Domain.Tests
 
     using Fixie;
     using Ploeh.AutoFixture;
-    using Ploeh.AutoFixture.Kernel;
     using Fixture = Ploeh.AutoFixture.Fixture;
 
     using Customizations;
@@ -30,7 +29,7 @@ namespace Media.Domain.Tests
         object[] GetParameterValues(ParameterInfo[] parameters, IFixture fixture)
         {
             return parameters
-                .Select(p => new SpecimenContext(fixture).Resolve(p.ParameterType))
+                .Select(p => fixture.Resolve(p.ParameterType))
                 .ToArray();
         }
         

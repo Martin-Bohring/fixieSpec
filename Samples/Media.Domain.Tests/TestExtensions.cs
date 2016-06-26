@@ -10,6 +10,9 @@ namespace Media.Domain.Tests
     using System.Linq;
     using System.Reflection;
 
+    using Ploeh.AutoFixture;
+    using Ploeh.AutoFixture.Kernel;
+
     static class TestExtensions
     {
         public static IEnumerable<Type> CreatableTypesInAssembly(this Assembly self)
@@ -17,6 +20,11 @@ namespace Media.Domain.Tests
             return self
                 .GetExportedTypes()
                 .Where(type => !type.IsAbstract && !type.IsInterface);
+        }
+
+        public static object Resolve(this IFixture fixture, Type typeToResolve)
+        {
+            return new SpecimenContext(fixture).Resolve(typeToResolve);
         }
     }
 }
