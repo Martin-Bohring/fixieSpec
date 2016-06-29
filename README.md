@@ -21,16 +21,16 @@ It is an opinionated framework for a start.
 
 **So what tradeoffs does this framework make?**
 
-- **Super low friction specifcation authoring**
+- **Super low friction specifcation authoring**  
   But that comes not for free. You have to follow a naming convention for your specifications. More on that later on.
 
-- **Minimal ceromony**
+- **Minimal ceromony**  
   Specifications are picked up automatically by using the [Fixie](https://github.com/fixie/fixie "Fixie") test framework for specification execution. Fixie is much more open to different styles of testing than fixieSpec.
 
-- **One test class per scenario**
+- **One test class per scenario**  
   I strongly believe in independent unit tests (FIRST principle), however when it comes to specifications I value other traits higher. I very much favour a test class per scenario lifecycle here. This allows to setup a context, execute some transitions (exercising the system under test) followed by one or more assertions. The different scenario classes should still be as independend from each other as possible.
 
-- **From nothing to a specification in 10 minutes**
+- **From nothing to a specification in 10 minutes**  
   That is a bold statement, but after following the getting started guide, you decide if it is true or not.
 
 ## Getting started
@@ -96,7 +96,46 @@ As you can see this is a simple class with no frills, but a lot is happening in 
 How is that done? If you follow the next steps, then you will understand how all that magic happens.
 
 ### Conventions used to write specifications
-Fixie is a conventional test framework and so is fixieSpec.
+[Fixie](https://github.com/fixie/fixie "Fixie")  is a conventional test framework and so is fixieSpec. So it makes sense to consult the [Fixie documentation](http://fixie.github.io/ "Fixie documentation") before continuing.
+
+Are you back? Fine. Now you know about the power of conventions and that is important, because fixieSpec leverages on that. Fixie allows to apply multiple convetions at the same time by using the [TestAssembly](http://fixie.github.io/docs/reusing-conventions/ "TestAssembly") class. But it is only usefull when combining conventions that are not applied to the same set of tests or specifications for that matter.
+
+Since fixieSpec has an opinion about test case naming and test class lifecycle, its conventions need to be applied. To do that you need to create your own convention and inherit that from the **FixieSpecConvention** class.
+
+The following convention class from the sample project shows how to do that:
+
+```c#
+public class SpecificationConvention : FixieSpecConvention
+{
+    public SpecificationConvention()
+    {
+        Classes
+            .Where(type => type.HasOnlyDefaultConstructor() || type.HasOnlyParameterConstructor());
+
+        ClassExecution
+            .UsingFactory(CreateFromFixture);
+    }
+
+    object CreateFromFixture(Type type)
+    {
+        var fixture = new Fixture();
+
+        var instance = new SpecimenContext(fixture).Resolve(type);
+
+        return instance;
+    }
+}
+```
+
+**So what do we have here?**
+
+- Specifications are limited to classes with either a default constructor or a constructor with parameters.
+  The base FixieSpecConvention makes no assumption about the names of specification classes or how the are instanciated.
+  As a user of fixieSpec you can limit the number of classes that are considered as specifications
+
+- The lifecycle of specifications is already defined as instance per class to share the common state between the assertions.
+  But additionaly the instance creation happens through the **CreateFromFixture** method. More on that later.
+
 
 ## Advanced scenarios
 ### Create your system under test (SUT) automatically ###
