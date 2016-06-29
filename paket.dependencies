@@ -1,4 +1,4 @@
-framework: auto-detect
+framework: net45
 redirects: on
 
 source https://nuget.org/api/v2

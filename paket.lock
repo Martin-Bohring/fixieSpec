@@ -1,5 +1,5 @@
 REDIRECTS: ON
-FRAMEWORK: NET45, NET452
+FRAMEWORK: NET45
 NUGET
   remote: https://www.nuget.org/api/v2
     Fixie (1.0.1) - version_in_path: true
