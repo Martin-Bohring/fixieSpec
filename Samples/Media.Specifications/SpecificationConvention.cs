@@ -18,8 +18,6 @@ namespace Media.Specifications
                 .Where(type => type.HasOnlyDefaultConstructor() || type.HasOnlyParameterConstructor());
 
             ClassExecution
-                .CreateInstancePerClass()
-                .SortCases((firstCase, secondCase) => DeclarationOrderComparer.Default.Compare(firstCase.Method, secondCase.Method))
                 .UsingFactory(CreateFromFixture);
         }
 
