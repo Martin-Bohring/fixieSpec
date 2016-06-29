@@ -45,7 +45,7 @@
     <Compile Include="Recording\AudioRecordingSucceedsWithMicrophone.cs" />
     <Compile Include="Recording\VideoRecordingSucceedsWithCameraAndMicrophone.cs" />
     <Compile Include="Recording\VideoRecordingSucceedsWithCameraOnly.cs" />
-    <Compile Include="SpecificationConventions.cs" />
+    <Compile Include="SpecificationConvention.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Recording\MediaRecordingExtensions.cs" />
   </ItemGroup>
