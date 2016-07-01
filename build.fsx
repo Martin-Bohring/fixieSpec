@@ -102,7 +102,7 @@ Target "AssemblyInfo" (fun _ ->
 // Clean build results
 
 Target "Clean" (fun _ ->
-    CleanDirs [ buildDir ]
+    CleanDirs [ buildDir; artifactsDir]
 )
 
 // --------------------------------------------------------------------------------------
