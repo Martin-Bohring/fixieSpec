@@ -3,18 +3,12 @@ version: '{build}'
 pull_requests:
   do_not_increment_build_number: true
 
-# configuration for "master" branch
--
-  branches:
-    only:
-      master
+branches:
+only:
+    master
 
-  configuration: Release
-  deploy: NuGet
-
-# Fall back configuration for all other branches
--
-  configuration: Debug
+configuration: Release
+deploy: NuGet
 
 build_script:
   - cmd: build.cmd NuGet
