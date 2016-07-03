@@ -8,7 +8,6 @@ only:
     master
 
 configuration: Release
-deploy: NuGet
 
 build_script:
   - cmd: build.cmd NuGet
