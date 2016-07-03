@@ -5,9 +5,12 @@ pull_requests:
 
 branches:
   only:
-    master
+    - master
 
 configuration: Release
+
+nuget:
+  disable_publish_on_pr: true
 
 build_script:
   - cmd: build.cmd NuGet
@@ -17,9 +20,6 @@ test: off
 artifacts:
   - path: artifacts\*.nupkg
     name: Nuget
-
-nuget:
-  disable_publish_on_pr: true
 
 deploy:
 - provider: NuGet
