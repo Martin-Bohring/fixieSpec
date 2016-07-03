@@ -6,6 +6,7 @@
 
 open Fake
 open Fake.AssemblyInfoFile
+open Fake.Git
 open Fake.ReleaseNotesHelper
 open System
 open System.IO
@@ -165,23 +166,31 @@ Target "NuGet" (fun _ ->
 )
 
 // --------------------------------------------------------------------------------------
+// Creates a commit indication a published release and adds a version tag
+
+Target "Release" (fun _ ->
+    StageAll ""
+    Commit "" (sprintf "Bump version to %s" release.NugetVersion)
+    Branches.push ""
+
+    Branches.tag "" release.NugetVersion
+    Branches.pushTag "" "origin" release.NugetVersion
+)
+
+// --------------------------------------------------------------------------------------
 // Run all targets by default. Invoke 'build <Target>' to override
 
-Target "All" DoNothing
+Target "Default" DoNothing
 
 "Clean"
   ==> "AssemblyInfo"
   ==> "Build"
   ==> "RunTests"
   ==> "RunSpecifications"
-  ==> "All"
-
-"All"
-#if MONO
-#else
-  =?> ("SourceLink", Pdbstr.tryFind().IsSome )
-#endif
   ==> "NuGet"
+  ==> "Default"
+  =?> ("SourceLink", not isLinux)
+  ==> "Release"
 
 // start build
-RunTargetOrDefault "All"
+RunTargetOrDefault "Default"

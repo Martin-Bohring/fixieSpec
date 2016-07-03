@@ -1,4 +1,5 @@
 @echo off
+SETLOCAL
 cls
 
 .paket\paket.bootstrapper.exe
@@ -12,7 +13,7 @@ if errorlevel 1 (
 )
 
 if [%1] == [] (
-    packages\build\FAKE\tools\FAKE.exe build.fsx --listTargets
+    packages\build\FAKE\tools\FAKE.exe build.fsx "Default"
 ) else (
     packages\build\FAKE\tools\FAKE.exe build.fsx %*
 )

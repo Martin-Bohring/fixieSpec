@@ -1,9 +1,32 @@
+branches:
+  only:
+    master:
+      configuration: Release
+      deploy: NuGet
+  except:
+    - gh-pages
+
+configuration: Debug
+
 init:
   - git config --global core.autocrlf input
 build_script:
   - cmd: build.cmd NuGet
 test: off
-version: 0.0.1.{build}
+version: {build}
+
 artifacts:
-  - path: artifacts
-    name: artifacts
+  - path: artifacts\*.nupkg
+    name: Nuget
+
+nuget:
+  disable_publish_on_pr: true
+
+deploy:
+- provider: NuGet
+  name: production
+  api_key:
+    secure: 34adee4b-cbc2-4a78-bede-ce0e8ada13c8
+  on:
+    branch: master
+    appveyor_repo_tag: true
