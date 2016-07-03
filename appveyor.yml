@@ -1,24 +1,25 @@
+version: '{build}'
+
+pull_requests:
+  do_not_increment_build_number: true
+
 # configuration for "master" branch
-branches:
-  only:
-    master
+-
+  branches:
+    only:
+      master
 
-configuration: Release
-deploy: NuGet
+  configuration: Release
+  deploy: NuGet
 
-# configuration for all other branches
-branches:
-  except:
-    - gh-pages
+# Fall back configuration for all other branches
+-
+  configuration: Debug
 
-configuration: Debug
-
-init:
-  - git config --global core.autocrlf input
 build_script:
   - cmd: build.cmd NuGet
+
 test: off
-version: {build}
 
 artifacts:
   - path: artifacts\*.nupkg
