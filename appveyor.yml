@@ -1,8 +1,13 @@
+# configuration for "master" branch
 branches:
   only:
     master
-      configuration: Release
-      deploy: NuGet
+
+configuration: Release
+deploy: NuGet
+
+# configuration for all other branches
+branches:
   except:
     - gh-pages
 
