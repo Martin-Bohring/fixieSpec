@@ -42,10 +42,10 @@ let tags = "FixieSpec Fixie BDD TDD unit testing"
 let solutionFile  = "FixieSpec"
 
 // The build output directory of all projects
-let buildDir = "build"
+let buildDir = "./build"
 
 // The directory for all artifacts (nugets, docs etc.)
-let artifactsDir = "artifacts"
+let artifactsDir = "./artifacts"
 
 // Pattern specifying assemblies to be tested
 let testAssemblies = buildDir + "/*Tests*.dll"
@@ -68,6 +68,7 @@ let (|Fsproj|Csproj|Vbproj|Shproj|) (projFileName:string) =
     | f when f.EndsWith("shproj") -> Shproj
     | _                           -> failwith (sprintf "Project file %s not supported. Unknown project type." projFileName)
 
+// --------------------------------------------------------------------------------------
 // Generate assembly info files with the right version & up-to-date information
 Target "AssemblyInfo" (fun _ ->
     let getAssemblyInfoAttributes projectName =
