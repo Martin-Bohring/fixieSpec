@@ -37,12 +37,7 @@ namespace Media.Domain
         /// </returns>
         public static bool operator ==(ValueObject<T> lhs, ValueObject<T> rhs)
         {
-            if (ReferenceEquals(lhs, null))
-            {
-                return true;
-            }
-
-            return lhs.Equals(rhs);
+            return ReferenceEquals(lhs, null) || lhs.Equals(rhs);
         }
 
         /// <summary>

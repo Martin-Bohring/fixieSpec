@@ -28,7 +28,7 @@ namespace FixieSpec.Tests
         public void ShouldDeclareNullMethodAsEarlier()
         {
             var result = testee.Compare(
-                null as MethodInfo,
+                null,
                 firstMethod);
 
             result.ShouldBe(-1);
@@ -54,7 +54,7 @@ namespace FixieSpec.Tests
 
         public void ShouldCompareBothNullAsSame()
         {
-            var result = testee.Compare(null as MethodInfo, null as MethodInfo);
+            var result = testee.Compare(null, null);
 
             result.ShouldBe(0);
         }

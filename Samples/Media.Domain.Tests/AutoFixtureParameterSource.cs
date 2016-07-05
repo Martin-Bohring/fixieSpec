@@ -26,7 +26,7 @@ namespace Media.Domain.Tests
             yield return GetParameterValues(method.GetParameters(), fixture);
         }
 
-        object[] GetParameterValues(ParameterInfo[] parameters, IFixture fixture)
+        static object[] GetParameterValues(IEnumerable<ParameterInfo> parameters, IFixture fixture)
         {
             return parameters
                 .Select(p => fixture.Resolve(p.ParameterType))
