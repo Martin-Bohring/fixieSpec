@@ -23,7 +23,7 @@ namespace Media.Domain.Tests
             microphone.IsInRole(RoleInActivity.Recording(audioRecording)).ShouldBeTrue();
         }
 
-        void CannotUseForAudioRecordingWhenAlreadyRecording(
+        public void CannotUseForAudioRecordingWhenAlreadyRecording(
             Microphone microphone,
             ActivityId previousAudioRecording,
             ActivityId newAudioRecording)
@@ -33,7 +33,7 @@ namespace Media.Domain.Tests
             microphone.UseForAudioRecording(newAudioRecording).ShouldBeFalse();
         }
 
-        void ShouldBeAvailableWhenStoppingUseForAudioRecording(
+        public void ShouldBeAvailableWhenStoppingUseForAudioRecording(
             Microphone microphone,
             ActivityId audioRecording)
         {
