@@ -2,6 +2,7 @@ Fixie
 
 group Build
   RefactoringEssentials
+  Microsoft.Net.Compilers
 
 group Test
   AutoFixture

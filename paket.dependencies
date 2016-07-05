@@ -14,8 +14,8 @@ group Build
   nuget StyleCop.Analyzers
   nuget CodeCracker.CSharp prerelease
   nuget RefactoringEssentials
-  github fsharp/FAKE modules/Octokit/Octokit.fsx
-
+  nuget Microsoft.Net.Compilers
+  
 group Test
   redirects: on
 
