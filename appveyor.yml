@@ -1,27 +1,55 @@
-version: '{build}'
+# All branches are debug build on all commits, but are not published
+-
+  version: '{build}'
 
-pull_requests:
-  do_not_increment_build_number: true
+  branches:
+    except:
+      - master
 
-configuration: Release
+  pull_requests:
+    do_not_increment_build_number: true
 
-nuget:
-  disable_publish_on_pr: true
+  configuration: Debug
 
-build_script:
-  - cmd: build.cmd NuGet
+  build_script:
+    - cmd: build.cmd NuGet
 
-test: off
+  test: off
 
-artifacts:
-  - path: artifacts\*.nupkg
-    name: Nuget
+  artifacts:
+    - path: artifacts\*.nupkg
+      name: Nuget
 
-deploy:
-- provider: NuGet
-  name: production
-  api_key:
-    secure: 34adee4b-cbc2-4a78-bede-ce0e8ada13c8
-  on:
-    branch: master
-    appveyor_repo_tag: true
+# Master branch are release builds only on version tags and published to Nuget
+-
+  version: '{build}'
+
+  branches:
+    only:
+      - master
+
+  pull_requests:
+    do_not_increment_build_number: true
+
+  configuration: Release
+
+  nuget:
+    disable_publish_on_pr: true
+
+  build_script:
+    - cmd: build.cmd NuGet
+
+  test: off
+
+  artifacts:
+    - path: artifacts\*.nupkg
+      name: Nuget
+
+  deploy:
+  - provider: NuGet
+    name: production
+    api_key:
+      secure: 34adee4b-cbc2-4a78-bede-ce0e8ada13c8
+    on:
+      branch: master
+      appveyor_repo_tag: true
