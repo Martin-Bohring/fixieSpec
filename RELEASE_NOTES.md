@@ -1,3 +1,8 @@
+#### 0.1.0-alpha3 - 06.07.2016
+
+* Implemented semtantic versioning an a matching CI build- https://github.com/Martin-Bohring/fixieSpec/issues/13
+* Pull in the Roslyn Compiler to allow building in .Net 4.5 environments
+
 #### 0.1.0-alpha2 - 01.07.2016
 
 * Created sample project
