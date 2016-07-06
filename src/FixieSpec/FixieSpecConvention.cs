@@ -34,8 +34,8 @@ namespace FixieSpec
                 .Skip(SkipWhenAssertionStepIsInconclusive);
 
             FixtureExecution
-                .Wrap(new ExecuteSpecificationSteps((method) => method.IsTransitionStep()))
-                .Wrap(new ExecuteSpecificationSteps((method) => method.IsSetupStep()));
+                .Wrap(new ExecuteSpecificationSteps(method => method.IsTransitionStep()))
+                .Wrap(new ExecuteSpecificationSteps(method => method.IsSetupStep()));
         }
 
         static bool SkipWhenSpecificationIsInconclusive(Case @case)

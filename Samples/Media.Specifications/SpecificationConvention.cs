@@ -21,7 +21,7 @@ namespace Media.Specifications
                 .UsingFactory(CreateFromFixture);
         }
 
-        object CreateFromFixture(Type type)
+        static object CreateFromFixture(Type type)
         {
             var fixture = new Fixture();
 

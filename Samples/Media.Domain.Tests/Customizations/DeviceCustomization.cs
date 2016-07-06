@@ -11,7 +11,7 @@ namespace Media.Domain.Tests.Customizations
 
     sealed class DeviceCustomization : PickRandomItemFromFixedSequenceCustomization<Type>
     {
-        public DeviceCustomization() : base (new Type[] {typeof(Microphone), typeof(VideoCamera) })
+        public DeviceCustomization() : base (new[] {typeof(Microphone), typeof(VideoCamera) })
         {
         }
 

@@ -2,3 +2,6 @@ group Build
   StyleCop.Analyzers
   CodeCracker.CSharp
   RefactoringEssentials
+  Microsoft.Net.Compilers
+
+  

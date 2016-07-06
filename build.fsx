@@ -6,6 +6,7 @@
 
 open Fake
 open Fake.AssemblyInfoFile
+open Fake.Git
 open Fake.ReleaseNotesHelper
 open System
 open System.IO
@@ -35,17 +36,17 @@ let description = "A super low friction specification test framework based on th
 let authors = [ "Martin Bohring" ]
 
 // Tags for your project (for NuGet package)
-let tags = "FixieSpec, Fixie, BDD, TDD, unit testing"
+let tags = "FixieSpec Fixie BDD TDD unit testing"
 
 // File system information 
 // (<solutionFile>.sln is built during the building process)
 let solutionFile  = "FixieSpec"
 
 // The build output directory of all projects
-let buildDir = "build"
+let buildDir = "./build"
 
 // The directory for all artifacts (nugets, docs etc.)
-let artifactsDir = "artifacts"
+let artifactsDir = "./artifacts"
 
 // Pattern specifying assemblies to be tested
 let testAssemblies = buildDir + "/*Tests*.dll"
@@ -68,6 +69,7 @@ let (|Fsproj|Csproj|Vbproj|Shproj|) (projFileName:string) =
     | f when f.EndsWith("shproj") -> Shproj
     | _                           -> failwith (sprintf "Project file %s not supported. Unknown project type." projFileName)
 
+// --------------------------------------------------------------------------------------
 // Generate assembly info files with the right version & up-to-date information
 Target "AssemblyInfo" (fun _ ->
     let getAssemblyInfoAttributes projectName =
@@ -164,23 +166,31 @@ Target "NuGet" (fun _ ->
 )
 
 // --------------------------------------------------------------------------------------
+// Creates a commit indication a published release and adds a version tag
+
+Target "Release" (fun _ ->
+    StageAll ""
+    Commit "" (sprintf "Bump version to %s" release.NugetVersion)
+    Branches.push ""
+
+    Branches.tag "" release.NugetVersion
+    Branches.pushTag "" "origin" release.NugetVersion
+)
+
+// --------------------------------------------------------------------------------------
 // Run all targets by default. Invoke 'build <Target>' to override
 
-Target "All" DoNothing
+Target "Default" DoNothing
 
 "Clean"
   ==> "AssemblyInfo"
   ==> "Build"
   ==> "RunTests"
   ==> "RunSpecifications"
-  ==> "All"
-
-"All"
-#if MONO
-#else
-  =?> ("SourceLink", Pdbstr.tryFind().IsSome )
-#endif
   ==> "NuGet"
+  ==> "Default"
+  =?> ("SourceLink", not isLinux)
+  ==> "Release"
 
 // start build
-RunTargetOrDefault "All"
+RunTargetOrDefault "Default"

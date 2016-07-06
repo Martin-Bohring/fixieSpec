@@ -14,7 +14,8 @@ group Build
   nuget StyleCop.Analyzers
   nuget CodeCracker.CSharp prerelease
   nuget RefactoringEssentials
-
+  nuget Microsoft.Net.Compilers
+  
 group Test
   redirects: on
 
