@@ -187,9 +187,9 @@ Target "Default" DoNothing
   ==> "Build"
   ==> "RunTests"
   ==> "RunSpecifications"
+  =?> ("SourceLink", not isLinux)
   ==> "NuGet"
   ==> "Default"
-  =?> ("SourceLink", not isLinux)
   ==> "Release"
 
 // start build
