@@ -35,14 +35,16 @@ It is an opinionated framework for a start.
 
 ## Getting started
 
-### How to get fixieSpec
+### Install fixieSpec via NuGet
 
-`fixieSpec` is not yet published on Nuget.
-So for the moment you can grab the [Latest build](https://ci.appveyor.com/project/Martin-Bohring/fixiespec "Latest build") or just pull the source and start from there.
+To install `fixieSpec` via NuGet, run the following command in the Package Manager Console:
 
-I will setup Nuget publishing from the latest build in the near future. I just have to make up my mind what the versioning and branching strategy should be. This is easy to get wrong and difficult to fix when packages are already published.
 
-### Writing you first specification
+```
+PM> Install-Package fixieSpec
+```
+
+### Writing your first specification
 
 A specification is a simple public class like the following from the [Sample application](https://github.com/Martin-Bohring/fixieSpec/tree/master/Samples "Samples"):
 
