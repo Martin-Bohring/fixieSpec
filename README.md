@@ -4,6 +4,8 @@
 
 [![Build status](https://ci.appveyor.com/api/projects/status/0e3c8ei5n1297y9g?svg=true)](https://ci.appveyor.com/project/Martin-Bohring/fixiespec)
 
+[![Build history](https://buildstats.info/appveyor/chart/Martin-Bohring/fixieSpec)](https://ci.appveyor.com/project/Martin-Bohring/fixiespec/history)
+
 A super low friction specification framework based on the fantastic [Fixie](https://github.com/fixie/fixie "Fixie") test framework.
 
 ## Why fixieSpec?
@@ -37,8 +39,9 @@ It is an opinionated framework for a start.
 
 ### Install fixieSpec via NuGet
 
-To install `fixieSpec` via NuGet, run the following command in the Package Manager Console:
+[![NuGet Badge](https://buildstats.info/nuget/fixieSpec)](https://www.nuget.org/packages/fixieSpec/)
 
+To install `fixieSpec` via NuGet, run the following command in the Package Manager Console:
 
 ```
 PM> Install-Package fixieSpec
