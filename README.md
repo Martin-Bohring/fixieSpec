@@ -2,9 +2,10 @@
 
 ![fixieSpec Logo](https://raw.github.com/Martin-Bohring/fixieSpec/master/assets/Fixiespec-256-01.png)
 
-[![Build status](https://ci.appveyor.com/api/projects/status/0e3c8ei5n1297y9g?svg=true)](https://ci.appveyor.com/project/Martin-Bohring/fixiespec)
-
-[![Build history](https://buildstats.info/appveyor/chart/Martin-Bohring/fixieSpec)](https://ci.appveyor.com/project/Martin-Bohring/fixiespec/history)
+| Build Status | Main | Develop |
+|--------------|------|---------|
+| |  [![Build status](https://ci.appveyor.com/api/projects/status/0e3c8ei5n1297y9g?svg=true)](https://ci.appveyor.com/project/Martin-Bohring/fixiespec)    |         |
+| |  [![Build history](https://buildstats.info/appveyor/chart/Martin-Bohring/fixieSpec)](https://ci.appveyor.com/project/Martin-Bohring/fixiespec/history)    |         |
 
 A super low friction specification framework based on the fantastic [Fixie](https://github.com/fixie/fixie "Fixie") test framework.
 
