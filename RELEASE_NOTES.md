@@ -1,6 +1,6 @@
 #### 0.1.0-alpha4 - 06.07.2016
 
-* Fixed Fixed SourceLink not happening for non master branch builds e55aeeeca90a44c45820f44ab40f09d04d823a8d
+* Fixed SourceLink not happening for non master branch builds e55aeeeca90a44c45820f44ab40f09d04d823a8d
 
 #### 0.1.0-alpha3 - 06.07.2016
 
