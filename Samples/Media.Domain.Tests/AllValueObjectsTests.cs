@@ -38,7 +38,7 @@ namespace Media.Domain.Tests
 
         static IEnumerable<Type> ValueTypes()
         {
-            return from type in typeof(ValueObject<>).Assembly.CreatableTypesInAssembly()
+            return from type in typeof(ValueObject<>).Assembly.ConcreteTypesInAssembly()
                    let baseType = type.BaseType
                    where baseType != null && baseType.IsGenericType &&
                    baseType.GetGenericTypeDefinition() == typeof(ValueObject<>)
