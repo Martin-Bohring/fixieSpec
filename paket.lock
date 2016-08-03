@@ -20,10 +20,10 @@ STRATEGY: MIN
 NUGET
   remote: https://www.nuget.org/api/v2
     Albedo (1.0.1)
-    AutoFixture (3.49)
-    AutoFixture.Idioms (3.49)
+    AutoFixture (3.49.1)
+    AutoFixture.Idioms (3.49.1)
       Albedo (>= 1.0.1)
-      AutoFixture (>= 3.49)
+      AutoFixture (>= 3.49.1)
     Microsoft.CSharp (4.0.1) - framework: >= netstandard13
       System.Collections (>= 4.0.11) - framework: dnxcore50, >= netstandard13
       System.Diagnostics.Debug (>= 4.0.11) - framework: dnxcore50, >= netstandard13
