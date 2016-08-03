@@ -4,7 +4,7 @@
 
 | Build Status | Main | Develop |
 |--------------|------|---------|
-| |  [![Build status](https://ci.appveyor.com/api/projects/status/0e3c8ei5n1297y9g?svg=true)](https://ci.appveyor.com/project/Martin-Bohring/fixiespec)    |         |
+| |  [![Build status](https://ci.appveyor.com/api/projects/status/0e3c8ei5n1297y9g/branch/master?svg=true)](https://ci.appveyor.com/project/Martin-Bohring/fixiespec/branch/master)    |         |
 | |  [![Build history](https://buildstats.info/appveyor/chart/Martin-Bohring/fixieSpec)](https://ci.appveyor.com/project/Martin-Bohring/fixiespec/history)    |         |
 
 A super low friction specification framework based on the fantastic [Fixie](https://github.com/fixie/fixie "Fixie") test framework.
