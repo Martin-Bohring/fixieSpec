@@ -42,7 +42,23 @@ It is an opinionated framework for a start.
 
 [![NuGet Badge](https://buildstats.info/nuget/fixieSpec)](https://www.nuget.org/packages/fixieSpec/)
 
-To install `fixieSpec` via NuGet, run the following command in the Package Manager Console:
+#### Released versions
+
+To install released versions of `fixieSpec` via NuGet, run the following command in the Package Manager Console:
+
+```
+PM> Install-Package fixieSpec
+```
+
+#### Develop versions
+
+To install develop versions of `fixieSpec` from Myget, you need to add the following url as package source
+
+```
+https://www.myget.org/F/fixiespecdev/api/v2
+```
+
+After that, run the following command in the Package Manager Console:
 
 ```
 PM> Install-Package fixieSpec
