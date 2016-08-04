@@ -2,7 +2,10 @@
 
 ![fixieSpec Logo](https://raw.github.com/Martin-Bohring/fixieSpec/master/assets/Fixiespec-256-01.png)
 
-[![Build status](https://ci.appveyor.com/api/projects/status/0e3c8ei5n1297y9g?svg=true)](https://ci.appveyor.com/project/Martin-Bohring/fixiespec)
+| Build Status | Master | Dev |
+|--------------|------|---------|
+| |  [![Build status](https://ci.appveyor.com/api/projects/status/0e3c8ei5n1297y9g/branch/master?svg=true)](https://ci.appveyor.com/project/Martin-Bohring/fixiespec/branch/master) | [![Build status](https://ci.appveyor.com/api/projects/status/0e3c8ei5n1297y9g/branch/dev?svg=true)](https://ci.appveyor.com/project/Martin-Bohring/fixiespec/branch/dev) |
+| |  [![Build history](https://buildstats.info/appveyor/chart/Martin-Bohring/fixieSpec?branch=master)](https://ci.appveyor.com/project/Martin-Bohring/fixiespec/history?branch=master) | [![Build history](https://buildstats.info/appveyor/chart/Martin-Bohring/fixieSpec?branch=dev)](https://ci.appveyor.com/project/Martin-Bohring/fixiespec/history?branch=dev) |
 
 A super low friction specification framework based on the fantastic [Fixie](https://github.com/fixie/fixie "Fixie") test framework.
 
@@ -35,14 +38,35 @@ It is an opinionated framework for a start.
 
 ## Getting started
 
-### How to get fixieSpec
+### Install fixieSpec via NuGet
 
-`fixieSpec` is not yet published on Nuget.
-So for the moment you can grab the [Latest build](https://ci.appveyor.com/project/Martin-Bohring/fixiespec "Latest build") or just pull the source and start from there.
+#### Released versions
 
-I will setup Nuget publishing from the latest build in the near future. I just have to make up my mind what the versioning and branching strategy should be. This is easy to get wrong and difficult to fix when packages are already published.
+[![NuGet Badge](https://buildstats.info/nuget/fixieSpec)](https://www.nuget.org/packages/fixieSpec/)
 
-### Writing you first specification
+To install released versions of `fixieSpec` via NuGet, run the following command in the Package Manager Console:
+
+```
+PM> Install-Package fixieSpec
+```
+
+#### Develop versions
+
+[![MyGet Badge](https://buildstats.info/myget/fixieSpecdev/fixiespec)](https://www.myget.org/feed/fixieSpecdev/package/nuget/fixieSpec)
+
+To install develop versions of `fixieSpec` from Myget, you need to add the following url as package source
+
+```
+https://www.myget.org/F/fixiespecdev/api/v2
+```
+
+After that, run the following command in the Package Manager Console:
+
+```
+PM> Install-Package fixieSpec
+```
+
+### Writing your first specification
 
 A specification is a simple public class like the following from the [Sample application](https://github.com/Martin-Bohring/fixieSpec/tree/master/Samples "Samples"):
 

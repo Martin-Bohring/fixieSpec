@@ -50,7 +50,7 @@ namespace Media.Domain.Tests
                 typeof(DeviceState) // AutoFixture pukes on enum types
             };
 
-            return typeof(Device).Assembly.CreatableTypesInAssembly()
+            return typeof(Device).Assembly.ConcreteTypesInAssembly()
                 .Except(typesToExclude);
         }
     }

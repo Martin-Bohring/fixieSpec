@@ -5,6 +5,7 @@
   branches:
     except:
       - master
+      - dev
 
   pull_requests:
     do_not_increment_build_number: true
@@ -20,13 +21,14 @@
     - path: artifacts\*.nupkg
       name: Nuget
 
-# Master branch are release builds only on version tags and published to Nuget
+# Master and dev branch are release builds
 -
   version: '{build}'
 
   branches:
     only:
       - master
+      - dev
 
   pull_requests:
     do_not_increment_build_number: true
@@ -47,9 +49,18 @@
 
   deploy:
   - provider: NuGet
+    name: develop
+    server: https://www.myget.org/F/fixiespecdev/api/v2/package
+    api_key:
+      secure: u0/+rHTyWZLMHoK0IwptlN6eLVdEUE3TBuIT0oexWzIDNCvM4IyQE7vAPDQRLVsS
+    skip_symbols: true
+    on:
+      branch: dev
+  
+  - provider: NuGet
     name: production
     api_key:
       secure: rqb2UniaLXwEyM8bKTLzxlmVETPl7JSioUQRw6L9ebqFNmfVZzehlE7ZPAh7hVRR
     on:
       branch: master
-      appveyor_repo_tag: true
+      appveyor_repo_tag: true      

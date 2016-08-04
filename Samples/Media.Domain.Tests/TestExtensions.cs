@@ -15,7 +15,7 @@ namespace Media.Domain.Tests
 
     static class TestExtensions
     {
-        public static IEnumerable<Type> CreatableTypesInAssembly(this Assembly self)
+        public static IEnumerable<Type> ConcreteTypesInAssembly(this Assembly self)
         {
             return self
                 .GetExportedTypes()
