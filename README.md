@@ -52,7 +52,7 @@ PM> Install-Package fixieSpec
 
 #### Develop versions
 
-[![MyGet Badge](https://buildstats.info/myget/fixieSpecdev/fixiespec)](https://www.myget.org/feed/fixieSpecdev/package/nuget/fixieSpec)
+[![MyGet Badge](https://buildstats.info/myget/fixiespecdev/FixieSpec)](https://www.myget.org/feed/fixiespecdev/package/nuget/FixieSpec)
 
 To install develop versions of `fixieSpec` from Myget, you need to add the following url as package source
 
