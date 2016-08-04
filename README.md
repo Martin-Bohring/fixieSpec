@@ -2,10 +2,10 @@
 
 ![fixieSpec Logo](https://raw.github.com/Martin-Bohring/fixieSpec/master/assets/Fixiespec-256-01.png)
 
-| Build Status | Main | Develop |
+| Build Status | Master | Dev |
 |--------------|------|---------|
-| |  [![Build status](https://ci.appveyor.com/api/projects/status/0e3c8ei5n1297y9g/branch/master?svg=true)](https://ci.appveyor.com/project/Martin-Bohring/fixiespec/branch/master)    |         |
-| |  [![Build history](https://buildstats.info/appveyor/chart/Martin-Bohring/fixieSpec)](https://ci.appveyor.com/project/Martin-Bohring/fixiespec/history)    |         |
+| |  [![Build status](https://ci.appveyor.com/api/projects/status/0e3c8ei5n1297y9g/branch/master?svg=true)](https://ci.appveyor.com/project/Martin-Bohring/fixiespec/branch/master) | [![Build status](https://ci.appveyor.com/api/projects/status/0e3c8ei5n1297y9g/branch/dev?svg=true)](https://ci.appveyor.com/project/Martin-Bohring/fixiespec/branch/dev) |
+| |  [![Build history](https://buildstats.info/appveyor/chart/Martin-Bohring/fixieSpec?branch=master)](https://ci.appveyor.com/project/Martin-Bohring/fixiespec/history?branch=master) | [![Build history](https://buildstats.info/appveyor/chart/Martin-Bohring/fixieSpec?branch=dev)](https://ci.appveyor.com/project/Martin-Bohring/fixiespec/history?branch=dev) |
 
 A super low friction specification framework based on the fantastic [Fixie](https://github.com/fixie/fixie "Fixie") test framework.
 
