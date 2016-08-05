@@ -117,12 +117,9 @@ namespace FixieSpec
                    method.ScanMethod() == SpecificationStepType.Assertion;
         }
 
-        static bool HasStepSignature(this MethodInfo method)
-        {
-            return method.IsPublic &&
+        static bool HasStepSignature(this MethodInfo method) => method.IsPublic &&
                 method.HasNoParameters() &&
-                method.IsVoid();
-        }
+                (method.IsVoid() || method.IsAsync());
 
         static SpecificationStepType ScanMethod(this MethodInfo methodToScan)
         {

@@ -9,6 +9,7 @@ namespace FixieSpec.Tests
     using System.Reflection;
 
     using Shouldly;
+    using System.Threading.Tasks;
 
     public sealed class StepConventionsTests
     {
@@ -72,6 +73,7 @@ namespace FixieSpec.Tests
 
         [Input("Then_a_result_can_be_verified")]
         [Input("And_then_another_result_can_be_verified")]
+        [Input("And_then_asynchronous_results_can_be_verified")]
         public void ShouldDetectAssertionSteps(string methodName)
         {
             var assertionStep = Method(methodName);
@@ -85,6 +87,7 @@ namespace FixieSpec.Tests
         [Input("Equals")]
         [Input("And_then_a_method_with_parameter_is_no_assertion_step")]
         [Input("And_then_a_method_that_returns_a_value_is_no_assertion_step")]
+        [Input("And_then_an_asynchronous_method_with_parameter_is_no_assertion_step")]
         public void ShouldNotDetecNonStepMethodsAsAssertionSteps(string methodName)
         {
             var notAnAssertionStep = Method(methodName);
@@ -151,6 +154,11 @@ namespace FixieSpec.Tests
             {
             }
 
+            public async Task And_then_asynchronous_results_can_be_verified()
+            {
+                await Task.FromResult(true);
+            } 
+
             public void And_then_a_method_with_parameter_is_no_assertion_step(int parameter)
             {
                 var notUsed = parameter;
@@ -159,6 +167,11 @@ namespace FixieSpec.Tests
             public int And_then_a_method_that_returns_a_value_is_no_assertion_step()
             {
                 return 0;
+            }
+
+            public async Task And_then_an_asynchronous_method_with_parameter_is_no_assertion_step(int parameter)
+            {
+                await Task.FromResult(true);
             }
         }
     }
