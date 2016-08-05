@@ -10,10 +10,10 @@ namespace FixieSpec.Tests
     using System.Runtime.CompilerServices;
     using System.Threading.Tasks;
 
-
     using Fixie.Execution;
     using Fixie.Internal;
     using Shouldly;
+
     public sealed class FixieSpecConventionTests
     {
         public void ShouldExecuteAllStepsInOrder()
