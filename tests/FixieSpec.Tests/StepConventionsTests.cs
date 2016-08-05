@@ -7,10 +7,10 @@ namespace FixieSpec.Tests
 {
     using System;
     using System.Reflection;
-
-    using Shouldly;
     using System.Threading.Tasks;
 
+    using Shouldly;
+ 
     public sealed class StepConventionsTests
     {
         [Input("Given_a_specification_context")]
