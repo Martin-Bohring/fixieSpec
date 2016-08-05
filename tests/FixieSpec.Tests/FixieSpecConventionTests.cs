@@ -47,6 +47,15 @@ namespace FixieSpec.Tests
                 "Then_an_asynchronous_result_can_be_verified");
         }
 
+        public void ShouldRecognizeSuccessfulAsyncronousassertionSteps()
+        {
+            var executionResult = Execute<AsynchronousAssertionStepExample>();
+
+            executionResult.Total.ShouldBe(1);
+            executionResult.Passed.ShouldBe(1);
+            executionResult.Failed.ShouldBe(0);
+        }
+
         public void ShouldExecuteAllStepsOnTheSameInstance()
         {
             var executionResult = Execute<ExampleWithInstance>();
