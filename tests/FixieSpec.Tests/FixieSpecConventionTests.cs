@@ -8,11 +8,12 @@ namespace FixieSpec.Tests
     using System;
     using System.Collections.Generic;
     using System.Runtime.CompilerServices;
+    using System.Threading.Tasks;
+
 
     using Fixie.Execution;
     using Fixie.Internal;
     using Shouldly;
-
     public sealed class FixieSpecConventionTests
     {
         public void ShouldExecuteAllStepsInOrder()
@@ -35,6 +36,15 @@ namespace FixieSpec.Tests
             executionResult.Total.ShouldBe(2);
             executionResult.Passed.ShouldBe(2);
             executionResult.Failed.ShouldBe(0);
+        }
+
+        public void ShouldExecuteAsynchronousAssertionSteps()
+        {
+            var executionResult = Execute<AsynchronousAssertionStepExample>();
+
+            executionResult.ConsoleOutput.ShouldEqual(
+                "Given_a_specification_context",
+                "Then_an_asynchronous_result_can_be_verified");
         }
 
         public void ShouldExecuteAllStepsOnTheSameInstance()
@@ -201,6 +211,20 @@ namespace FixieSpec.Tests
             public void And_then_another_result_can_be_verified()
             {
                 WhereAmI();
+            }
+        }
+
+        class AsynchronousAssertionStepExample
+        {
+            public void Given_a_specification_context()
+            {
+                WhereAmI();
+            }
+
+            public async Task Then_an_asynchronous_result_can_be_verified()
+            {
+                WhereAmI();
+                await Task.FromResult(true);
             }
         }
 
