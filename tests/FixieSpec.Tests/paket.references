@@ -4,5 +4,4 @@ group Build
   Microsoft.Net.Compilers
 
 group Test
-  AutoFixture.Idioms
   Shouldly
