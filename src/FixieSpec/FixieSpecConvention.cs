@@ -8,6 +8,7 @@ namespace FixieSpec
     using System;
     using System.Linq;
     using System.Reflection;
+    using System.Threading.Tasks;
 
     using Fixie;
 
@@ -59,13 +60,31 @@ namespace FixieSpec
 
             public static void InvokeStep(MethodInfo specificationStep, Fixture context)
             {
+                var isAsync = specificationStep.IsAsync();
+
+                object invocationResult;
+
                 try
                 {
-                    specificationStep.Invoke(context.Instance, null);
+                    invocationResult = specificationStep.Invoke(context.Instance, null);
                 }
                 catch (TargetInvocationException exception)
                 {
                     throw new PreservedException(exception.InnerException);
+                }
+
+                if (isAsync)
+                {
+                    var task = (Task)invocationResult;
+
+                    try
+                    {
+                        task.Wait();
+                    }
+                    catch (AggregateException exception)
+                    {
+                        throw new PreservedException(exception.InnerExceptions.First());
+                    }
                 }
             }
 
