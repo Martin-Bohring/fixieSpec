@@ -14,7 +14,7 @@ namespace FixieSpec.Specifications
 
     public abstract class FixieSpecSpecificationBase
     {
-        static SpecificationExecutionResult Execute<TSampleTestClass>()
+        protected static SpecificationExecutionResult Execute<TSampleTestClass>()
         {
             using (var console = new RedirectedConsole())
             {
@@ -26,12 +26,12 @@ namespace FixieSpec.Specifications
             }
         }
 
-        static void WhereAmI([CallerMemberName] string member = null)
+        protected static void WhereAmI([CallerMemberName] string member = null)
         {
             Console.WriteLine(member);
         }
 
-        class SpecificationExecutionResult
+        protected class SpecificationExecutionResult
         {
             readonly AssemblyResult allResults;
 
@@ -52,7 +52,7 @@ namespace FixieSpec.Specifications
             public int Total => allResults.Total;
         }
 
-        public class NullResultListener : Listener
+        protected class NullResultListener : Listener
         {
             public void AssemblyStarted(AssemblyInfo assembly) { }
 
