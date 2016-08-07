@@ -38,22 +38,25 @@ namespace FixieSpec.Tests
             executionResult.Failed.ShouldBe(0);
         }
 
-        public void ShouldExecuteAsynchronousAssertionSteps()
+        public void ShouldExecuteAsynchronousSteps()
         {
-            var executionResult = Execute<AsynchronousAssertionStepExample>();
+            var executionResult = Execute<AsynchronousExample>();
 
             executionResult.ConsoleOutput.ShouldEqual(
-                "Given_a_specification_context",
+                "Given_an_asynchronous_specification_context",
+                "And_given_a_secondary_asynchronous_specification_context",
                 "When_exercising_the_system_under_test_asynchronously",
-                "Then_an_asynchronous_result_can_be_verified");
+                "And_when_exercising_the_system_under_test_asynchronously_some_more",
+                "Then_an_asynchronous_result_can_be_verified",
+                "And_then_another_asynchronous_result_can_be_verified");
         }
 
-        public void ShouldRecognizeSuccessfulAsyncronousAssertionSteps()
+        public void ShouldRecognizeAllSuccessfulAsyncronousAssertionSteps()
         {
-            var executionResult = Execute<AsynchronousAssertionStepExample>();
+            var executionResult = Execute<AsynchronousExample>();
 
-            executionResult.Total.ShouldBe(1);
-            executionResult.Passed.ShouldBe(1);
+            executionResult.Total.ShouldBe(2);
+            executionResult.Passed.ShouldBe(2);
             executionResult.Failed.ShouldBe(0);
         }
 
@@ -190,6 +193,45 @@ namespace FixieSpec.Tests
             }
         }
 
+        class AsynchronousExample
+        {
+            public async Task Given_an_asynchronous_specification_context()
+            {
+                WhereAmI();
+                await Task.FromResult(true);
+            }
+
+            public async Task And_given_a_secondary_asynchronous_specification_context()
+            {
+                WhereAmI();
+                await Task.FromResult(true);
+            }
+
+            public async Task When_exercising_the_system_under_test_asynchronously()
+            {
+                WhereAmI();
+                await Task.FromResult(true);
+            }
+
+            public async Task And_when_exercising_the_system_under_test_asynchronously_some_more()
+            {
+                WhereAmI();
+                await Task.FromResult(true);
+            }
+
+            public async Task Then_an_asynchronous_result_can_be_verified()
+            {
+                WhereAmI();
+                await Task.FromResult(true);
+            }
+
+            public async Task And_then_another_asynchronous_result_can_be_verified()
+            {
+                WhereAmI();
+                await Task.FromResult(true);
+            }
+        }
+
         class ExampleWithInstance
         {
             Instance instance;
@@ -238,27 +280,6 @@ namespace FixieSpec.Tests
                 WhereAmI();
             }
         }
-
-        class AsynchronousAssertionStepExample
-        {
-            public void Given_a_specification_context()
-            {
-                WhereAmI();
-            }
-
-            public async Task When_exercising_the_system_under_test_asynchronously()
-            {
-                WhereAmI();
-                await Task.FromResult(true);
-            }
-
-            public async Task Then_an_asynchronous_result_can_be_verified()
-            {
-                WhereAmI();
-                await Task.FromResult(true);
-            }
-        }
-
         class FailingSetupStepExample
         {
             public void Given_a_specification_context()
