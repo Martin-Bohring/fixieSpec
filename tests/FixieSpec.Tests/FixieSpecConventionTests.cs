@@ -16,14 +16,6 @@ namespace FixieSpec.Tests
 
     public sealed class FixieSpecConventionTests
     {
-        public void ShouldExecuteAllStepsOnTheSameInstance()
-        {
-            var executionResult = Execute<ExampleWithInstance>();
-
-            executionResult.Total.ShouldBe(1);
-            executionResult.Passed.ShouldBe(1);
-        }
-
         public void ShouldExecuteAllStepsInOrderEvenWithFailingAssertionSteps()
         {
             var executionResult = Execute<FailingAssertionStepExample>();
@@ -114,31 +106,6 @@ namespace FixieSpec.Tests
                 "Given_a_specification_context",
                 "When_exercising_the_system_under_test",
                 "And_then_another_result_can_be_verified");
-        }
-
-        class ExampleWithInstance
-        {
-            Instance instance;
-
-            public void Given_an_instance()
-            {
-                instance = new Instance();
-            }
-
-            public void When_working_with_the_instance()
-            {
-                instance.Value = 42;
-            }
-
-            public void Then_a_result_can_be_verified()
-            {
-                instance.Value.ShouldBe(42);
-            }
-
-            class Instance
-            {
-                public int Value { get; set; }
-            }
         }
 
         class FailingAssertionStepExample
