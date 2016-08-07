@@ -1,10 +1,16 @@
+#### 0.2.0-alpha1 - 07.08.2016
+
+* Implemented asynchronous assertion steps - https://github.com/Martin-Bohring/fixieSpec/issues/5
+* Implemented asynchronous setup steps - https://github.com/Martin-Bohring/fixieSpec/issues/3
+* Implemented asynchronous transition steps - https://github.com/Martin-Bohring/fixieSpec/issues/4
+
 #### 0.1.0-alpha4 - 06.07.2016
 
-* Fixed SourceLink not happening for non master branch builds e55aeeeca90a44c45820f44ab40f09d04d823a8d
+* BUGFIX: Fixed SourceLink not happening for non master branch builds e55aeeeca90a44c45820f44ab40f09d04d823a8d
 
 #### 0.1.0-alpha3 - 06.07.2016
 
-* Implemented semtantic versioning an a matching CI build- https://github.com/Martin-Bohring/fixieSpec/issues/13
+* Implemented semantic versioning an a matching CI build- https://github.com/Martin-Bohring/fixieSpec/issues/13
 * Pull in the Roslyn Compiler to allow building in .Net 4.5 environments
 
 #### 0.1.0-alpha2 - 01.07.2016
