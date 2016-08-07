@@ -40,7 +40,7 @@ namespace FixieSpec.Tests
 
         public void ShouldExecuteAsynchronousAssertionSteps()
         {
-            var executionResult = Execute<AsynchronousAssertionExample>();
+            var executionResult = Execute<AsynchronousAssertionStepExample>();
 
             executionResult.ConsoleOutput.ShouldEqual(
                 "Given_a_specification_context",
@@ -50,7 +50,7 @@ namespace FixieSpec.Tests
 
         public void ShouldRecognizeSuccessfulAsyncronousAssertionSteps()
         {
-            var executionResult = Execute<AsynchronousAssertionExample>();
+            var executionResult = Execute<AsynchronousAssertionStepExample>();
 
             executionResult.Total.ShouldBe(1);
             executionResult.Passed.ShouldBe(1);
@@ -239,7 +239,7 @@ namespace FixieSpec.Tests
             }
         }
 
-        class AsynchronousAssertionExample
+        class AsynchronousAssertionStepExample
         {
             public void Given_a_specification_context()
             {
