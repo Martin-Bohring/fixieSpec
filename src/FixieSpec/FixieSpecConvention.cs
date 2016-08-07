@@ -8,6 +8,7 @@ namespace FixieSpec
     using System;
     using System.Linq;
     using System.Reflection;
+    using System.Threading.Tasks;
 
     using Fixie;
 
@@ -57,6 +58,36 @@ namespace FixieSpec
                 stepSelector = stepPredicate;
             }
 
+            public static void InvokeStep(MethodInfo specificationStep, Fixture context)
+            {
+                var isAsync = specificationStep.IsAsync();
+
+                object invocationResult;
+
+                try
+                {
+                    invocationResult = specificationStep.Invoke(context.Instance, null);
+                }
+                catch (TargetInvocationException exception)
+                {
+                    throw new PreservedException(exception.InnerException);
+                }
+
+                if (isAsync)
+                {
+                    var task = (Task)invocationResult;
+
+                    try
+                    {
+                        task.Wait();
+                    }
+                    catch (AggregateException exception)
+                    {
+                        throw new PreservedException(exception.InnerExceptions.First());
+                    }
+                }
+            }
+
             public void Execute(Fixture context, Action next)
             {
                 var specificationSteps = context.Class.Type.GetMethods()
@@ -65,14 +96,7 @@ namespace FixieSpec
 
                 foreach (var specificationStep in specificationSteps)
                 {
-                    try
-                    {
-                        specificationStep.Invoke(context.Instance, null);
-                    }
-                    catch (TargetInvocationException exception)
-                    {
-                        throw new PreservedException(exception.InnerException);
-                    }
+                    InvokeStep(specificationStep, context);
                 }
 
                 next?.Invoke();
