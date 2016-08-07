@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FixieSpec", "src\FixieSpec\FixieSpec.csproj", "{BAC77003-DF6E-489C-B40B-7AA7C67C4716}"
 EndProject
@@ -33,6 +33,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Media.Specifications", "Sam
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Media.Domain.Tests", "Samples\Media.Domain.Tests\Media.Domain.Tests.csproj", "{FBBB3E95-B84B-4244-8BED-BACE31F8772C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FixieSpec.Specifications", "tests\FixieSpec.Specifications\FixieSpec.Specifications.csproj", "{B286E42C-0409-41C3-9F70-33C0E759653B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,6 +61,10 @@ Global
 		{FBBB3E95-B84B-4244-8BED-BACE31F8772C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FBBB3E95-B84B-4244-8BED-BACE31F8772C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FBBB3E95-B84B-4244-8BED-BACE31F8772C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B286E42C-0409-41C3-9F70-33C0E759653B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B286E42C-0409-41C3-9F70-33C0E759653B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B286E42C-0409-41C3-9F70-33C0E759653B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B286E42C-0409-41C3-9F70-33C0E759653B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
