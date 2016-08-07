@@ -16,50 +16,6 @@ namespace FixieSpec.Tests
 
     public sealed class FixieSpecConventionTests
     {
-        public void ShouldExecuteAllStepsInOrder()
-        {
-            var executionResult = Execute<Example>();
-
-            executionResult.ConsoleOutput.ShouldEqual(
-                "Given_a_specification_context",
-                "And_given_a_secondary_specification_context",
-                "When_exercising_the_system_under_test",
-                "And_when_exercising_the_system_under_test_some_more",
-                "Then_a_result_can_be_verified",
-                "And_then_another_result_can_be_verified");
-        }
-
-        public void ShouldRecognizeAllSuccessfulAssertionSteps()
-        {
-            var executionResult = Execute<Example>();
-
-            executionResult.Total.ShouldBe(2);
-            executionResult.Passed.ShouldBe(2);
-            executionResult.Failed.ShouldBe(0);
-        }
-
-        public void ShouldExecuteAsynchronousSteps()
-        {
-            var executionResult = Execute<AsynchronousExample>();
-
-            executionResult.ConsoleOutput.ShouldEqual(
-                "Given_an_asynchronous_specification_context",
-                "And_given_a_secondary_asynchronous_specification_context",
-                "When_exercising_the_system_under_test_asynchronously",
-                "And_when_exercising_the_system_under_test_asynchronously_some_more",
-                "Then_an_asynchronous_result_can_be_verified",
-                "And_then_another_asynchronous_result_can_be_verified");
-        }
-
-        public void ShouldRecognizeAllSuccessfulAsyncronousAssertionSteps()
-        {
-            var executionResult = Execute<AsynchronousExample>();
-
-            executionResult.Total.ShouldBe(2);
-            executionResult.Passed.ShouldBe(2);
-            executionResult.Failed.ShouldBe(0);
-        }
-
         public void ShouldExecuteAllStepsOnTheSameInstance()
         {
             var executionResult = Execute<ExampleWithInstance>();
@@ -158,78 +114,6 @@ namespace FixieSpec.Tests
                 "Given_a_specification_context",
                 "When_exercising_the_system_under_test",
                 "And_then_another_result_can_be_verified");
-        }
-
-        class Example
-        {
-            public void Given_a_specification_context()
-            {
-                WhereAmI();
-            }
-
-            public void And_given_a_secondary_specification_context()
-            {
-                WhereAmI();
-            }
-
-            public void When_exercising_the_system_under_test()
-            {
-                WhereAmI();
-            }
-
-            public void And_when_exercising_the_system_under_test_some_more()
-            {
-                WhereAmI();
-            }
-
-            public void Then_a_result_can_be_verified()
-            {
-                WhereAmI();
-            }
-
-            public void And_then_another_result_can_be_verified()
-            {
-                WhereAmI();
-            }
-        }
-
-        class AsynchronousExample
-        {
-            public async Task Given_an_asynchronous_specification_context()
-            {
-                WhereAmI();
-                await Task.FromResult(true);
-            }
-
-            public async Task And_given_a_secondary_asynchronous_specification_context()
-            {
-                WhereAmI();
-                await Task.FromResult(true);
-            }
-
-            public async Task When_exercising_the_system_under_test_asynchronously()
-            {
-                WhereAmI();
-                await Task.FromResult(true);
-            }
-
-            public async Task And_when_exercising_the_system_under_test_asynchronously_some_more()
-            {
-                WhereAmI();
-                await Task.FromResult(true);
-            }
-
-            public async Task Then_an_asynchronous_result_can_be_verified()
-            {
-                WhereAmI();
-                await Task.FromResult(true);
-            }
-
-            public async Task And_then_another_asynchronous_result_can_be_verified()
-            {
-                WhereAmI();
-                await Task.FromResult(true);
-            }
         }
 
         class ExampleWithInstance
