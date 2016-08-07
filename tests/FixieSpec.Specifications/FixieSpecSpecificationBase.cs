@@ -5,7 +5,62 @@
 
 namespace FixieSpec.Specifications
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Runtime.CompilerServices;
+
+    using Fixie.Execution;
+    using Fixie.Internal;
+
     public abstract class FixieSpecSpecificationBase
     {
+        static SpecificationExecutionResult Execute<TSampleTestClass>()
+        {
+            using (var console = new RedirectedConsole())
+            {
+                var listener = new NullResultListener();
+
+                var results = typeof(TSampleTestClass).Run(listener, new FixieSpecConvention());
+
+                return new SpecificationExecutionResult(results, console.Lines());
+            }
+        }
+
+        static void WhereAmI([CallerMemberName] string member = null)
+        {
+            Console.WriteLine(member);
+        }
+
+        class SpecificationExecutionResult
+        {
+            readonly AssemblyResult allResults;
+
+            public SpecificationExecutionResult(AssemblyResult results, IEnumerable<string> consoleOutput)
+            {
+                allResults = results;
+                ConsoleOutput = consoleOutput;
+            }
+
+            public IEnumerable<string> ConsoleOutput { get; private set; }
+
+            public int Passed => allResults.Passed;
+
+            public int Failed => allResults.Failed;
+
+            public int Skipped => allResults.Skipped;
+
+            public int Total => allResults.Total;
+        }
+
+        public class NullResultListener : Listener
+        {
+            public void AssemblyStarted(AssemblyInfo assembly) { }
+
+            public void CaseSkipped(SkipResult result) { }
+            public void CasePassed(PassResult result) { }
+            public void CaseFailed(FailResult result) { }
+
+            public void AssemblyCompleted(AssemblyInfo assembly, AssemblyResult result) { }
+        }
     }
 }
