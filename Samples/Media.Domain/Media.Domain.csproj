@@ -75,6 +75,7 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <Import Project="..\..\.paket\paket.targets" />
   <ItemGroup>
     <Analyzer Include="..\..\packages\build\codecracker.CSharp\analyzers\dotnet\cs\CodeCracker.CSharp.dll">
       <Paket>True</Paket>
@@ -99,5 +100,4 @@
       <Paket>True</Paket>
     </Analyzer>
   </ItemGroup>
-  <Import Project="..\..\.paket\paket.targets" />
 </Project>

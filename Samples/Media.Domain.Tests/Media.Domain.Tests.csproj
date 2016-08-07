@@ -78,6 +78,7 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <Import Project="..\..\.paket\paket.targets" />
   <ItemGroup>
     <Analyzer Include="..\..\packages\build\RefactoringEssentials\analyzers\dotnet\RefactoringEssentials.dll">
       <Paket>True</Paket>
@@ -964,5 +965,4 @@
       </ItemGroup>
     </When>
   </Choose>
-  <Import Project="..\..\.paket\paket.targets" />
 </Project>
