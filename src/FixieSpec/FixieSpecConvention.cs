@@ -57,6 +57,18 @@ namespace FixieSpec
                 stepSelector = stepPredicate;
             }
 
+            public static void InvokeStep(MethodInfo specificationStep, Fixture context)
+            {
+                try
+                {
+                    specificationStep.Invoke(context.Instance, null);
+                }
+                catch (TargetInvocationException exception)
+                {
+                    throw new PreservedException(exception.InnerException);
+                }
+            }
+
             public void Execute(Fixture context, Action next)
             {
                 var specificationSteps = context.Class.Type.GetMethods()
@@ -65,14 +77,7 @@ namespace FixieSpec
 
                 foreach (var specificationStep in specificationSteps)
                 {
-                    try
-                    {
-                        specificationStep.Invoke(context.Instance, null);
-                    }
-                    catch (TargetInvocationException exception)
-                    {
-                        throw new PreservedException(exception.InnerException);
-                    }
+                    InvokeStep(specificationStep, context);
                 }
 
                 next?.Invoke();
