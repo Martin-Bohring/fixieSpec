@@ -65,6 +65,8 @@ namespace FixieSpec.Tests
                 int firstParameter,
                 string secondParameter)
             {
+                var firstLocalVariableToAvoidWarning = firstParameter;
+                var secondLocalVariableToAvoidWarning = secondParameter;
             }
         }
 
@@ -78,6 +80,8 @@ namespace FixieSpec.Tests
                 int firstParameter,
                 string secondParameter)
             {
+                var firstLocalVariableToAvoidWarning = firstParameter;
+                var secondLocalVariableToAvoidWarning = secondParameter;
             }
         }
     }
