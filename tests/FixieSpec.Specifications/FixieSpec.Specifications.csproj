@@ -39,6 +39,7 @@
   <ItemGroup>
     <Compile Include="FailedSetupStepExecution.cs" />
     <Compile Include="FailedAssertionStepExecution.cs" />
+    <Compile Include="FailedTransitionStepExecution.cs" />
     <Compile Include="FixieSpecSpecificationBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SelfTestSpecificationConvention.cs" />
