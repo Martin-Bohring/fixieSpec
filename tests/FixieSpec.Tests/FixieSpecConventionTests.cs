@@ -16,22 +16,6 @@ namespace FixieSpec.Tests
 
     public sealed class FixieSpecConventionTests
     {
-        public void ShouldStopWhenASetupStepFails()
-        {
-            var executionResult = Execute<FailingSetupStepExample>();
-
-            executionResult.ConsoleOutput.ShouldEqual(
-                "Given_a_specification_context",
-                "And_given_a_secondary_setup_step_fails");
-        }
-
-        public void ShouldFailAllAssertionStepsWhenASetupStepFails()
-        {
-            var executionResult = Execute<FailingSetupStepExample>();
-
-            executionResult.Failed.ShouldBe(2);
-        }
-
         public void ShouldStopWhenATransitionStepFails()
         {
             var executionResult = Execute<FailingTransitionStepExample>();
@@ -86,36 +70,6 @@ namespace FixieSpec.Tests
                 "Given_a_specification_context",
                 "When_exercising_the_system_under_test",
                 "And_then_another_result_can_be_verified");
-        }
-
-        class FailingSetupStepExample
-        {
-            public void Given_a_specification_context()
-            {
-                WhereAmI();
-            }
-
-            public void And_given_a_secondary_setup_step_fails()
-            {
-                WhereAmI();
-
-                throw new InvalidOperationException();
-            }
-
-            public void When_exercising_the_system_under_test()
-            {
-                throw new ShouldBeUnreachableException();
-            }
-
-            public void Then_the_result_cannot_be_verified()
-            {
-                throw new ShouldBeUnreachableException();
-            }
-
-            public void And_then_another_result_can_also_not_be_verified()
-            {
-                throw new ShouldBeUnreachableException();
-            }
         }
 
         class FailingTransitionStepExample
