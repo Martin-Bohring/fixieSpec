@@ -16,7 +16,12 @@ namespace FixieSpec.Specifications
             inconclusiveExecutionResult = Execute<InconclusiveSpecification>();
         }
 
-        public void Then_all_specification_steps_should_be_recognized()
+        public void Then_no_specifiction_steps_should_execute()
+        {
+            inconclusiveExecutionResult.ConsoleOutput.ShouldBeEmpty();
+        }
+
+        public void And_then_all_specification_steps_should_be_recognized()
         {
             inconclusiveExecutionResult.Total.ShouldBe(2);
         }
@@ -42,11 +47,13 @@ namespace FixieSpec.Specifications
             public void Given_a_specification_context()
             {
                 WhereAmI();
+                throw new ShouldBeUnreachableException();
             }
 
             public void When_exercising_the_system_under_test()
             {
                 WhereAmI();
+                throw new ShouldBeUnreachableException();
             }
 
             public void Then_a_result_cannot_be_verified()
