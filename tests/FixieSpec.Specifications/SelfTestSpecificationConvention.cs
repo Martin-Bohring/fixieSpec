@@ -7,7 +7,7 @@ namespace FixieSpec.Specifications
 {
     using FixieSpec;
 
-    public class SelfTestSpecificationConvention : FixieSpecConvention
+    public sealed class SelfTestSpecificationConvention : FixieSpecConvention
     {
         public SelfTestSpecificationConvention()
         {
