@@ -16,27 +16,12 @@ namespace FixieSpec.Tests
 
     public sealed class FixieSpecConventionTests
     {
-        public void ShouldStopWhenATransitionStepFails()
-        {
-            var executionResult = Execute<FailingTransitionStepExample>();
-
-            executionResult.ConsoleOutput.ShouldEqual(
-                "When_exercising_the_system_under_test_fails");
-        }
-
         public void ShouldStopWhenAnAsynchronousTransitionStepFails()
         {
             var executionResult = Execute<FailingAsynchronousTransitionStepExample>();
 
             executionResult.ConsoleOutput.ShouldEqual(
                 "When_exercising_the_system_under_test_asynchronously_fails");
-        }
-
-        public void ShouldFailAllAssertionStepsWhenATransitionStepFails()
-        {
-            var executionResult = Execute<FailingTransitionStepExample>();
-
-            executionResult.Failed.ShouldBe(2);
         }
 
         public void ShouldFailAllAssertionStepsWhenAnAsynchronousTransitionStepFails()
@@ -70,31 +55,6 @@ namespace FixieSpec.Tests
                 "Given_a_specification_context",
                 "When_exercising_the_system_under_test",
                 "And_then_another_result_can_be_verified");
-        }
-
-        class FailingTransitionStepExample
-        {
-            public void When_exercising_the_system_under_test_fails()
-            {
-                WhereAmI();
-
-                throw new InvalidOperationException();
-            }
-
-            public void And_when_exercising_the_system_under_test_some_more()
-            {
-                throw new ShouldBeUnreachableException();
-            }
-
-            public void Then_the_result_cannot_be_verified()
-            {
-                throw new ShouldBeUnreachableException();
-            }
-
-            public void And_then_another_result_can_also_not_be_verified()
-            {
-                throw new ShouldBeUnreachableException();
-            }
         }
 
         class FailingAsynchronousTransitionStepExample
