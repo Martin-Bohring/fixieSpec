@@ -37,6 +37,7 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FailedSpecificationExecution.cs" />
     <Compile Include="FixieSpecSpecificationBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SelfTestSpecificationConvention.cs" />
