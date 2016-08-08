@@ -16,26 +16,6 @@ namespace FixieSpec.Tests
 
     public sealed class FixieSpecConventionTests
     {
-        public void ShouldExecuteAllStepsInOrderEvenWithFailingAssertionSteps()
-        {
-            var executionResult = Execute<FailingAssertionStepExample>();
-
-            executionResult.ConsoleOutput.ShouldEqual(
-                "When_exercising_the_system_under_test",
-                "And_when_exercising_the_system_under_test_some_more",
-                "Then_a_failing_result_can_be_verified",
-                "And_then_another_result_can_be_verified");
-        }
-
-        public void ShouldRecognizeAllFailedAssertionSteps()
-        {
-            var executionResult = Execute<FailingAssertionStepExample>();
-
-            executionResult.Total.ShouldBe(2);
-            executionResult.Passed.ShouldBe(1);
-            executionResult.Failed.ShouldBe(1);
-        }
-
         public void ShouldStopWhenASetupStepFails()
         {
             var executionResult = Execute<FailingSetupStepExample>();
@@ -108,29 +88,6 @@ namespace FixieSpec.Tests
                 "And_then_another_result_can_be_verified");
         }
 
-        class FailingAssertionStepExample
-        {
-            public void When_exercising_the_system_under_test()
-            {
-                WhereAmI();
-            }
-
-            public void And_when_exercising_the_system_under_test_some_more()
-            {
-                WhereAmI();
-            }
-
-            public void Then_a_failing_result_can_be_verified()
-            {
-                WhereAmI();
-                true.ShouldBeFalse();
-            }
-
-            public void And_then_another_result_can_be_verified()
-            {
-                WhereAmI();
-            }
-        }
         class FailingSetupStepExample
         {
             public void Given_a_specification_context()
