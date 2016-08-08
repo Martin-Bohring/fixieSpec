@@ -12,9 +12,9 @@ namespace FixieSpec.Specifications
     {
         SpecificationExecutionResult failedExecutionResult;
 
-        public void When_executing_a_failed_specification()
+        public void When_executing_an_assertion_step_fails()
         {
-            failedExecutionResult = Execute<FailingSpecification>();
+            failedExecutionResult = Execute<FailingAssertionStepSpecification>();
         }
 
         public void Then_all_specifiction_steps_should_execute_in_order()
@@ -41,7 +41,7 @@ namespace FixieSpec.Specifications
             failedExecutionResult.Failed.ShouldBe(1);
         }
 
-        class FailingSpecification
+        class FailingAssertionStepSpecification
         {
             public void When_exercising_the_system_under_test()
             {

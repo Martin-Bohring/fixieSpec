@@ -18,7 +18,7 @@ namespace FixieSpec.Specifications
             failedSetupStepExecutionResult = Execute<FailingSetupStepSpecification>();
         }
 
-        public void Then_the_execution_should_stop_after_the_failed_step()
+        public void Then_the_execution_should_stop_after_the_failed_setup_step()
         {
             failedSetupStepExecutionResult.ConsoleOutput.ShouldEqual(
                 "Given_a_specification_context",
