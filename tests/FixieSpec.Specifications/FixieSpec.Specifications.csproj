@@ -37,6 +37,7 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FailedAsynchronousAssertionStepExecution.cs" />
     <Compile Include="FailedSetupStepExecution.cs" />
     <Compile Include="FailedAssertionStepExecution.cs" />
     <Compile Include="FailedTransitionStepExecution.cs" />
