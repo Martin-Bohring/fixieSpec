@@ -15,13 +15,6 @@ namespace FixieSpec.Tests
 
     public sealed class FixieSpecConventionTests
     {
-        public void ShouldRecognizenInconclusiveSpecifications()
-        {
-            var executionResult = Execute<InconclusiveExample>();
-
-            executionResult.Skipped.ShouldBe(1);
-        }
-        
         public void ShouldRecognizeInconclusiveAssertionSteps()
         {
             var executionResult = Execute<InconclusiveStepExample>();
@@ -39,25 +32,6 @@ namespace FixieSpec.Tests
                 "Given_a_specification_context",
                 "When_exercising_the_system_under_test",
                 "And_then_another_result_can_be_verified");
-        }
-
-        [Inconclusive]
-        class InconclusiveExample
-        {
-            public void Given_a_specification_context()
-            {
-                WhereAmI();
-            }
-
-            public void When_exercising_the_system_under_test()
-            {
-                WhereAmI();
-            }
-
-            public void Then_a_result_cannot_be_verified()
-            {
-                throw new ShouldBeUnreachableException();
-            }
         }
 
         class InconclusiveStepExample
