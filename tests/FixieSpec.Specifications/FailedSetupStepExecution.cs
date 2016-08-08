@@ -21,8 +21,7 @@ namespace FixieSpec.Specifications
         public void Then_the_execution_should_stop_after_the_failed_setup_step()
         {
             failedSetupStepExecutionResult.ConsoleOutput.ShouldEqual(
-                "Given_a_specification_context",
-                "And_given_a_secondary_setup_step_fails");
+                "Given_a_setup_step_fails");
         }
 
         public void And_then_all_specification_steps_should_be_recognized()
@@ -42,12 +41,7 @@ namespace FixieSpec.Specifications
 
         class FailingSetupStepSpecification
         {
-            public void Given_a_specification_context()
-            {
-                WhereAmI();
-            }
-
-            public void And_given_a_secondary_setup_step_fails()
+            public void Given_a_setup_step_fails()
             {
                 WhereAmI();
 

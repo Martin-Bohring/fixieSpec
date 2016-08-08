@@ -21,7 +21,6 @@ namespace FixieSpec.Specifications
         {
             failedAssertionStepExecutionResult.ConsoleOutput.ShouldEqual(
                 "When_exercising_the_system_under_test",
-                "And_when_exercising_the_system_under_test_some_more",
                 "Then_a_failing_result_can_be_verified",
                 "And_then_another_result_can_be_verified");
         }
@@ -44,11 +43,6 @@ namespace FixieSpec.Specifications
         class FailingAssertionStepSpecification
         {
             public void When_exercising_the_system_under_test()
-            {
-                WhereAmI();
-            }
-
-            public void And_when_exercising_the_system_under_test_some_more()
             {
                 WhereAmI();
             }
