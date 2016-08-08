@@ -7,7 +7,7 @@ namespace FixieSpec.Specifications
 {
     using Shouldly;
 
-    public sealed class SuccessfulSpecificationExecution : FixieSpecSpecificationBase
+    public sealed class SuccessfulExecution : FixieSpecSpecificationBase
     {
         SpecificationExecutionResult successfulExecutionResult;
 

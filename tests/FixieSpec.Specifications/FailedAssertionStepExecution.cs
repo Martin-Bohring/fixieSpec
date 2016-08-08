@@ -8,7 +8,7 @@ namespace FixieSpec.Specifications
 {
     using Shouldly;
 
-    public sealed class FailedSpecificationExecution : FixieSpecSpecificationBase
+    public sealed class FailedAssertionStepExecution : FixieSpecSpecificationBase
     {
         SpecificationExecutionResult failedExecutionResult;
 
