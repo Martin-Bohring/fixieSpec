@@ -8,7 +8,6 @@ namespace FixieSpec.Tests
     using System;
     using System.Collections.Generic;
     using System.Runtime.CompilerServices;
-    using System.Threading.Tasks;
 
     using Fixie.Execution;
     using Fixie.Internal;
@@ -16,21 +15,6 @@ namespace FixieSpec.Tests
 
     public sealed class FixieSpecConventionTests
     {
-        public void ShouldStopWhenAnAsynchronousTransitionStepFails()
-        {
-            var executionResult = Execute<FailingAsynchronousTransitionStepExample>();
-
-            executionResult.ConsoleOutput.ShouldEqual(
-                "When_exercising_the_system_under_test_asynchronously_fails");
-        }
-
-        public void ShouldFailAllAssertionStepsWhenAnAsynchronousTransitionStepFails()
-        {
-            var executionResult = Execute<FailingAsynchronousTransitionStepExample>();
-
-            executionResult.Failed.ShouldBe(2);
-        }
-
         public void ShouldRecognizenInconclusiveSpecifications()
         {
             var executionResult = Execute<InconclusiveExample>();
@@ -55,35 +39,6 @@ namespace FixieSpec.Tests
                 "Given_a_specification_context",
                 "When_exercising_the_system_under_test",
                 "And_then_another_result_can_be_verified");
-        }
-
-        class FailingAsynchronousTransitionStepExample
-        {
-            public async Task When_exercising_the_system_under_test_asynchronously_fails()
-            {
-                WhereAmI();
-
-                await Task.FromResult(true);
-
-                throw new InvalidOperationException();
-            }
-
-            public void And_when_exercising_the_system_under_test_some_more()
-            {
-                throw new ShouldBeUnreachableException();
-            }
-
-            public async Task Then_an_asynchronous_result_cannot_be_verified()
-            {
-                await Task.FromResult(true);
-
-                throw new ShouldBeUnreachableException();
-            }
-
-            public void And_then_another_result_can_also_not_be_verified()
-            {
-                throw new ShouldBeUnreachableException();
-            }
         }
 
         [Inconclusive]
