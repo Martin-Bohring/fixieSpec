@@ -47,12 +47,6 @@ namespace FixieSpec.Specifications
                 throw new InvalidOperationException();
             }
 
-            public void And_when_exercising_the_system_under_test_some_more()
-            {
-                WhereAmI();
-                throw new ShouldBeUnreachableException();
-            }
-
             public void Then_the_result_cannot_be_verified()
             {
                 WhereAmI();
