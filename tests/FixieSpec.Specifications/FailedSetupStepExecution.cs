@@ -24,7 +24,7 @@ namespace FixieSpec.Specifications
                 "Given_a_setup_step_fails");
         }
 
-        public void And_then_all_specification_steps_should_be_recognized()
+        public void And_then_all_assertion_steps_should_be_recognized()
         {
             failedSetupStepExecutionResult.Total.ShouldBe(2);
         }
