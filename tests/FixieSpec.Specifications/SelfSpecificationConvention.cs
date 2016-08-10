@@ -5,11 +5,11 @@
 
 namespace FixieSpec.Specifications
 {
-    using FixieSpec;
+    using Execution;
 
-    public sealed class SelfTestSpecificationConvention : FixieSpecConvention
+    public sealed class SelfSpecificationConvention : FixieSpecConvention
     {
-        public SelfTestSpecificationConvention()
+        public SelfSpecificationConvention()
         {
             Classes
                 .Where(type => type.HasOnlyDefaultConstructor())
