@@ -7,7 +7,7 @@ namespace FixieSpec.Specifications.Execution.Synchronous
 {
     using Shouldly;
 
-    public sealed class SuccessfulExecution : FixieSpecSpecificationBase
+    public sealed class Successful : FixieSpecSpecificationBase
     {
         SpecificationExecutionResult successfulExecutionResult;
 

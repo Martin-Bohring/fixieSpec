@@ -9,42 +9,48 @@ namespace FixieSpec.Specifications.Execution.Synchronous
 
     using Shouldly;
 
-    public sealed class FailedTransitionStepExecution : FixieSpecSpecificationBase
+    public sealed class FailedSetupStep : FixieSpecSpecificationBase
     {
-        SpecificationExecutionResult failedTransitionStepExecutionResult;
+        SpecificationExecutionResult failedSetupStepExecutionResult;
 
-        public void When_executing_a_transition_step_fails()
+        public void When_executing_a_setup_step_fails()
         {
-            failedTransitionStepExecutionResult = Execute<FailingTransitionStepSpecification>();
+            failedSetupStepExecutionResult = Execute<FailingSetupStepSpecification>();
         }
 
-        public void Then_the_execution_should_stop_after_the_failed_transition_step()
+        public void Then_the_execution_should_stop_after_the_failed_setup_step()
         {
-            failedTransitionStepExecutionResult.ConsoleOutput.ShouldEqual(
-                "When_exercising_the_system_under_test_fails");
+            failedSetupStepExecutionResult.ConsoleOutput.ShouldEqual(
+                "Given_a_setup_step_fails");
         }
 
         public void And_then_all_assertion_steps_should_be_recognized()
         {
-            failedTransitionStepExecutionResult.Total.ShouldBe(2);
+            failedSetupStepExecutionResult.Total.ShouldBe(2);
         }
 
         public void And_then_all_assertion_steps_should_fail()
         {
-            failedTransitionStepExecutionResult.Failed.ShouldBe(2);
+            failedSetupStepExecutionResult.Failed.ShouldBe(2);
         }
 
         public void And_then_there_should_be_no_successful_assertion_steps()
         {
-            failedTransitionStepExecutionResult.Passed.ShouldBe(0);
+            failedSetupStepExecutionResult.Passed.ShouldBe(0);
         }
 
-        class FailingTransitionStepSpecification
+        class FailingSetupStepSpecification
         {
-            public void When_exercising_the_system_under_test_fails()
+            public void Given_a_setup_step_fails()
             {
                 WhereAmI();
                 throw new InvalidOperationException();
+            }
+
+            public void When_exercising_the_system_under_test()
+            {
+                WhereAmI();
+                throw new ShouldBeUnreachableException();
             }
 
             public void Then_the_result_cannot_be_verified()
