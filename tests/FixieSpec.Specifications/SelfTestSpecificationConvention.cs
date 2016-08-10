@@ -13,7 +13,7 @@ namespace FixieSpec.Specifications
         {
             Classes
                 .Where(type => type.HasOnlyDefaultConstructor())
-                .Where(type => type.IsSubclassOf(typeof(FixieSpecSpecificationBase)));
+                .Where(type => type.IsSubclassOf(typeof(ExecutionSpecificationBase)));
         }
     }
 }

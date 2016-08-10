@@ -8,7 +8,7 @@ namespace FixieSpec.Specifications.Execution.Asynchronous
     using Shouldly;
     using System.Threading.Tasks;
 
-    public sealed class FailedAssertionStep : FixieSpecSpecificationBase
+    public sealed class FailedAssertionStep : ExecutionSpecificationBase
     {
         SpecificationExecutionResult failedAssertionStepExecutionResult;
 

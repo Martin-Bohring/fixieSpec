@@ -9,7 +9,7 @@ namespace FixieSpec.Specifications.Execution.Synchronous
 
     using Shouldly;
 
-    public sealed class FailedSetupStep : FixieSpecSpecificationBase
+    public sealed class FailedSetupStep : ExecutionSpecificationBase
     {
         SpecificationExecutionResult failedSetupStepExecutionResult;
 

@@ -8,7 +8,7 @@ namespace FixieSpec.Specifications.Execution.Synchronous
 {
     using Shouldly;
 
-    public sealed class FailedAssertionStep : FixieSpecSpecificationBase
+    public sealed class FailedAssertionStep : ExecutionSpecificationBase
     {
         SpecificationExecutionResult failedAssertionStepExecutionResult;
 

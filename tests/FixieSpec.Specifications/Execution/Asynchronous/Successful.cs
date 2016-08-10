@@ -9,7 +9,7 @@ namespace FixieSpec.Specifications.Execution.Asynchronous
 
     using Shouldly;
 
-    public sealed class Successful : FixieSpecSpecificationBase
+    public sealed class Successful : ExecutionSpecificationBase
     {
         SpecificationExecutionResult successfulExecutionResult;
 
