@@ -3,11 +3,11 @@
 // Licensed under the MIT license. See LICENSE.txt file in the project root for full license information.
 // </copyright>
 
-namespace FixieSpec.Specifications
+namespace FixieSpec.Specifications.Execution.Inconclusive
 {
     using Shouldly;
 
-    public sealed class InconclusiveExecution : FixieSpecSpecificationBase
+    public sealed class Specification : FixieSpecSpecificationBase
     {
         SpecificationExecutionResult inconclusiveExecutionResult;
 
