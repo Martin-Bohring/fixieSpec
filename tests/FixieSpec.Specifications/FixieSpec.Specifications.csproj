@@ -37,20 +37,20 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FailedAsynchronousAssertionStepExecution.cs" />
-    <Compile Include="FailedAsynchronousSetupStepExecution.cs" />
-    <Compile Include="FailedSetupStepExecution.cs" />
-    <Compile Include="FailedAssertionStepExecution.cs" />
-    <Compile Include="FailedAsynchronousTransitionStepExecution.cs" />
-    <Compile Include="FailedTransitionStepExecution.cs" />
+    <Compile Include="Execution\Asynchronous\FailedAssertionStepExecution.cs" />
+    <Compile Include="Execution\Asynchronous\FailedSetupStepExecution.cs" />
+    <Compile Include="Execution\Synchronous\FailedSetupStepExecution.cs" />
+    <Compile Include="Execution\Synchronous\FailedAssertionStepExecution.cs" />
+    <Compile Include="Execution\Asynchronous\FailedTransitionStepExecution.cs" />
+    <Compile Include="Execution\Synchronous\FailedTransitionStepExecution.cs" />
     <Compile Include="FixieSpecSpecificationBase.cs" />
     <Compile Include="InconclusiveAssertionStepExecution.cs" />
     <Compile Include="InconclusiveExecution.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SelfTestSpecificationConvention.cs" />
     <Compile Include="ShouldBeUnreachableException.cs" />
-    <Compile Include="SuccessfulAsynchronousExecution.cs" />
-    <Compile Include="SuccessfulExecution.cs" />
+    <Compile Include="Execution\Asynchronous\SuccessfulExecution.cs" />
+    <Compile Include="Execution\Synchronous\SuccessfulExecution.cs" />
     <Compile Include="TestExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -79,6 +79,7 @@
       <Paket>True</Paket>
     </Analyzer>
   </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.5'">
       <ItemGroup>

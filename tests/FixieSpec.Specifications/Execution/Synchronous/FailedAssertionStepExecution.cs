@@ -3,26 +3,26 @@
 // Licensed under the MIT license. See LICENSE.txt file in the project root for full license information.
 // </copyright>
 
-namespace FixieSpec.Specifications
+
+namespace FixieSpec.Specifications.Execution.Synchronous
 {
     using Shouldly;
-    using System.Threading.Tasks;
 
-    public sealed class FailedAsynchronousAssertionStepExecution : FixieSpecSpecificationBase
+    public sealed class FailedAssertionStepExecution : FixieSpecSpecificationBase
     {
         SpecificationExecutionResult failedAssertionStepExecutionResult;
 
-        public void When_executing_an_asynchronous_assertion_step_fails()
+        public void When_executing_an_assertion_step_fails()
         {
-            failedAssertionStepExecutionResult = Execute<FailingAsynchronousAssertionStepSpecification>();
+            failedAssertionStepExecutionResult = Execute<FailingAssertionStepSpecification>();
         }
 
         public void Then_all_specifiction_steps_should_execute_in_order()
         {
             failedAssertionStepExecutionResult.ConsoleOutput.ShouldEqual(
-                "When_exercising_the_system_under_test_asynchronously",
-                "Then_a_failing_asynchronous_result_can_be_verified",
-                "And_then_another_asynchronous_result_can_be_verified");
+                "When_exercising_the_system_under_test",
+                "Then_a_failing_result_can_be_verified",
+                "And_then_another_result_can_be_verified");
         }
 
         public void And_then_all_assertion_steps_should_be_recognized()
@@ -40,25 +40,22 @@ namespace FixieSpec.Specifications
             failedAssertionStepExecutionResult.Failed.ShouldBe(1);
         }
 
-        class FailingAsynchronousAssertionStepSpecification
+        class FailingAssertionStepSpecification
         {
-            public async Task When_exercising_the_system_under_test_asynchronously()
+            public void When_exercising_the_system_under_test()
             {
                 WhereAmI();
-                await Task.FromResult(true);
             }
 
-            public async Task Then_a_failing_asynchronous_result_can_be_verified()
+            public void Then_a_failing_result_can_be_verified()
             {
                 WhereAmI();
                 true.ShouldBeFalse();
-                await Task.FromResult(true);
             }
 
-            public async Task And_then_another_asynchronous_result_can_be_verified()
+            public void And_then_another_result_can_be_verified()
             {
                 WhereAmI();
-                await Task.FromResult(true);
             }
         }
     }

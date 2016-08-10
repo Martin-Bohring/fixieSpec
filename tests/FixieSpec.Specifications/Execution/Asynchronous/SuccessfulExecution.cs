@@ -3,13 +3,13 @@
 // Licensed under the MIT license. See LICENSE.txt file in the project root for full license information.
 // </copyright>
 
-namespace FixieSpec.Specifications
+namespace FixieSpec.Specifications.Execution.Asynchronous
 {
     using System.Threading.Tasks;
 
     using Shouldly;
 
-    public sealed class SuccessfulAsynchronousExecution : FixieSpecSpecificationBase
+    public sealed class SuccessfulExecution : FixieSpecSpecificationBase
     {
         SpecificationExecutionResult successfulExecutionResult;
 
