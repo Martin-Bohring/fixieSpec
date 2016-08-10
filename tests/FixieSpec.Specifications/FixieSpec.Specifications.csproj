@@ -39,16 +39,17 @@
   <ItemGroup>
     <Compile Include="Execution\Asynchronous\FailedAssertionStep.cs" />
     <Compile Include="Execution\Asynchronous\FailedSetupStep.cs" />
+    <Compile Include="Execution\SpecificationExecutionExtensions.cs" />
     <Compile Include="Execution\Synchronous\FailedSetupStep.cs" />
     <Compile Include="Execution\Synchronous\FailedAssertionStep.cs" />
     <Compile Include="Execution\Asynchronous\FailedTransitionStep.cs" />
     <Compile Include="Execution\Synchronous\FailedTransitionStep.cs" />
-    <Compile Include="FixieSpecSpecificationBase.cs" />
+    <Compile Include="Execution\ExecutionSpecificationBase.cs" />
     <Compile Include="Execution\Inconclusive\AssertionStep.cs" />
     <Compile Include="Execution\Inconclusive\Specification.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SelfTestSpecificationConvention.cs" />
-    <Compile Include="ShouldBeUnreachableException.cs" />
+    <Compile Include="SelfSpecificationConvention.cs" />
+    <Compile Include="Execution\ShouldBeUnreachableException.cs" />
     <Compile Include="Execution\Asynchronous\Successful.cs" />
     <Compile Include="Execution\Synchronous\Successful.cs" />
     <Compile Include="TestExtensions.cs" />
