@@ -12,7 +12,7 @@ namespace FixieSpec.Specifications
     using Fixie.Execution;
     using Fixie.Internal;
 
-    public abstract class FixieSpecSpecificationBase
+    public abstract class ExecutionSpecificationBase
     {
         protected static SpecificationExecutionResult Execute<TSampleTestClass>()
         {

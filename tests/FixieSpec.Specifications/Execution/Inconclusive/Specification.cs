@@ -7,7 +7,7 @@ namespace FixieSpec.Specifications.Execution.Inconclusive
 {
     using Shouldly;
 
-    public sealed class Specification : FixieSpecSpecificationBase
+    public sealed class Specification : ExecutionSpecificationBase
     {
         SpecificationExecutionResult inconclusiveExecutionResult;
 
