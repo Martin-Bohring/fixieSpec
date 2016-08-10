@@ -3,57 +3,57 @@
 // Licensed under the MIT license. See LICENSE.txt file in the project root for full license information.
 // </copyright>
 
-namespace FixieSpec.Specifications
+namespace FixieSpec.Specifications.Execution.Asynchronous
 {
     using System;
     using System.Threading.Tasks;
 
     using Shouldly;
 
-    public sealed class FailedAsynchronousTransitionStepExecution : FixieSpecSpecificationBase
+    public sealed class FailedSetupStepExecution : FixieSpecSpecificationBase
     {
-        SpecificationExecutionResult failedTransitionStepExecutionResult;
+        SpecificationExecutionResult failedSetupStepExecutionResult;
 
-        public void When_executing_an_asynchronous_transition_step_fails()
+        public void When_executing_an_asynchronous_setup_step_fails()
         {
-            failedTransitionStepExecutionResult = Execute<FailingAsynchronousTransitionStepSpecification>();
+            failedSetupStepExecutionResult = Execute<FailingAsynchronousSetupStepSpecification>();
         }
 
-        public void Then_the_execution_should_stop_after_the_failed_transition_step()
+        public void Then_the_execution_should_stop_after_the_failed_setup_step()
         {
-            failedTransitionStepExecutionResult.ConsoleOutput.ShouldEqual(
-                "Given_an_asynchronous_setup_step",
-                "When_exercising_the_system_under_test_asynchronously_fails");
+            failedSetupStepExecutionResult.ConsoleOutput.ShouldEqual(
+                "Given_an_asynchronous_setup_step_fails");
         }
 
         public void And_then_all_assertion_steps_should_be_recognized()
         {
-            failedTransitionStepExecutionResult.Total.ShouldBe(2);
+            failedSetupStepExecutionResult.Total.ShouldBe(2);
         }
 
         public void And_then_all_assertion_steps_should_fail()
         {
-            failedTransitionStepExecutionResult.Failed.ShouldBe(2);
+            failedSetupStepExecutionResult.Failed.ShouldBe(2);
         }
 
         public void And_then_there_should_be_no_successful_assertion_steps()
         {
-            failedTransitionStepExecutionResult.Passed.ShouldBe(0);
+            failedSetupStepExecutionResult.Passed.ShouldBe(0);
         }
 
-        class FailingAsynchronousTransitionStepSpecification
+        class FailingAsynchronousSetupStepSpecification
         {
-            public async Task Given_an_asynchronous_setup_step()
-            {
-                WhereAmI();
-                await Task.FromResult(true);
-            }
-
-            public async Task When_exercising_the_system_under_test_asynchronously_fails()
+            public async Task Given_an_asynchronous_setup_step_fails()
             {
                 WhereAmI();
                 await Task.FromResult(true);
                 throw new InvalidOperationException();
+            }
+
+            public async Task When_exercising_the_system_under_test()
+            {
+                WhereAmI();
+                await Task.FromResult(true);
+                throw new ShouldBeUnreachableException();
             }
 
             public async Task Then_an_asynchronous_result_cannot_be_verified()
