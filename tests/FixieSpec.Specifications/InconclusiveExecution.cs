@@ -21,7 +21,7 @@ namespace FixieSpec.Specifications
             inconclusiveExecutionResult.ConsoleOutput.ShouldBeEmpty();
         }
 
-        public void And_then_all_specification_steps_should_be_recognized()
+        public void And_then_all_assertion_steps_should_be_recognized()
         {
             inconclusiveExecutionResult.Total.ShouldBe(2);
         }

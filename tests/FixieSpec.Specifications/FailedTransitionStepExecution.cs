@@ -24,7 +24,7 @@ namespace FixieSpec.Specifications
                 "When_exercising_the_system_under_test_fails");
         }
 
-        public void And_then_all_specification_steps_should_be_recognized()
+        public void And_then_all_assertion_steps_should_be_recognized()
         {
             failedTransitionStepExecutionResult.Total.ShouldBe(2);
         }

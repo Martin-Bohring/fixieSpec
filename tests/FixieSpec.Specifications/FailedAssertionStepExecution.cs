@@ -25,7 +25,7 @@ namespace FixieSpec.Specifications
                 "And_then_another_result_can_be_verified");
         }
 
-        public void And_then_all_specification_steps_should_be_recognized()
+        public void And_then_all_assertion_steps_should_be_recognized()
         {
             failedAssertionStepExecutionResult.Total.ShouldBe(2);
         }
