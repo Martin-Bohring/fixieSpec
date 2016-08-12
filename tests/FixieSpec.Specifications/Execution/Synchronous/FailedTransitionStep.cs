@@ -20,7 +20,7 @@ namespace FixieSpec.Specifications.Execution.Synchronous
 
         public void Then_the_execution_should_stop_after_the_failed_transition_step()
         {
-            failedTransitionStepExecutionResult.ConsoleOutput.ShouldEqual(
+            failedTransitionStepExecutionResult.ShouldHaveExecutedSteps(
                 "When_exercising_the_system_under_test_fails");
         }
 

@@ -19,7 +19,7 @@ namespace FixieSpec.Specifications.Execution.Asynchronous
 
         public void Then_all_specifiction_steps_should_execute_in_order()
         {
-            failedAssertionStepExecutionResult.ConsoleOutput.ShouldEqual(
+            failedAssertionStepExecutionResult.ShouldHaveExecutedSteps(
                 "When_exercising_the_system_under_test_asynchronously",
                 "Then_a_failing_asynchronous_result_can_be_verified",
                 "And_then_another_asynchronous_result_can_be_verified");

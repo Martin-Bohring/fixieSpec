@@ -18,7 +18,7 @@ namespace FixieSpec.Specifications.Execution.Inconclusive
 
         public void Then_no_specifiction_steps_should_execute()
         {
-            inconclusiveExecutionResult.ConsoleOutput.ShouldBeEmpty();
+            inconclusiveExecutionResult.ShouldNotHaveExecutedAnySteps();
         }
 
         public void And_then_all_assertion_steps_should_be_recognized()

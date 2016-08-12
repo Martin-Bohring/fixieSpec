@@ -20,7 +20,7 @@ namespace FixieSpec.Specifications.Execution.Asynchronous
 
         public void Then_all_specifiction_steps_should_execute_in_order()
         {
-            successfulExecutionResult.ConsoleOutput.ShouldEqual(
+            successfulExecutionResult.ShouldHaveExecutedSteps(
                 "Given_an_asynchronous_specification_context",
                 "And_given_a_secondary_asynchronous_specification_context",
                 "When_exercising_the_system_under_test_asynchronously",

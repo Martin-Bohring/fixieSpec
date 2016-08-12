@@ -18,7 +18,7 @@ namespace FixieSpec.Specifications.Execution.Inconclusive
 
         public void Then_the_inconclusive_assertion_step_should_not_be_executed()
         {
-            inconclusiveExecutionResult.ConsoleOutput.ShouldEqual(
+            inconclusiveExecutionResult.ShouldHaveExecutedSteps(
                 "When_exercising_the_system_under_test",
                 "And_then_another_result_can_be_verified");
         }

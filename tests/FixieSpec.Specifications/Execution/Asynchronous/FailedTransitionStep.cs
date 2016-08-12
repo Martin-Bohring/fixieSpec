@@ -21,7 +21,7 @@ namespace FixieSpec.Specifications.Execution.Asynchronous
 
         public void Then_the_execution_should_stop_after_the_failed_transition_step()
         {
-            failedTransitionStepExecutionResult.ConsoleOutput.ShouldEqual(
+            failedTransitionStepExecutionResult.ShouldHaveExecutedSteps(
                 "Given_an_asynchronous_setup_step",
                 "When_exercising_the_system_under_test_asynchronously_fails");
         }

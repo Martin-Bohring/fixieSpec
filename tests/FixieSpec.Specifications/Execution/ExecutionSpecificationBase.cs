@@ -6,7 +6,6 @@
 namespace FixieSpec.Specifications.Execution
 {
     using System;
-    using System.Collections.Generic;
     using System.Runtime.CompilerServices;
 
     using Fixie.Execution;

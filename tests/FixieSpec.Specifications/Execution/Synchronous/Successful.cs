@@ -18,7 +18,7 @@ namespace FixieSpec.Specifications.Execution.Synchronous
 
         public void Then_all_specifiction_steps_should_execute_in_order()
         {
-            successfulExecutionResult.ConsoleOutput.ShouldEqual(
+            successfulExecutionResult.ShouldHaveExecutedSteps(
                 "Given_a_specification_context",
                 "And_given_a_secondary_specification_context",
                 "When_exercising_the_system_under_test",

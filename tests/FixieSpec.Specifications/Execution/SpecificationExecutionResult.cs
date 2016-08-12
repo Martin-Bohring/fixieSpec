@@ -8,6 +8,7 @@ namespace FixieSpec.Specifications.Execution
     using System.Collections.Generic;
 
     using Fixie.Execution;
+    using Shouldly;
 
     public class SpecificationExecutionResult
     {
@@ -28,5 +29,15 @@ namespace FixieSpec.Specifications.Execution
         public int Skipped => allResults.Skipped;
 
         public int Total => allResults.Total;
+
+        public void ShouldHaveExecutedSteps(params string[] stepNames)
+        {
+            ConsoleOutput.ShouldEqual(stepNames);
+        }
+
+        public void ShouldNotHaveExecutedAnySteps()
+        {
+            ConsoleOutput.ShouldBeEmpty();
+        }
     }
 }

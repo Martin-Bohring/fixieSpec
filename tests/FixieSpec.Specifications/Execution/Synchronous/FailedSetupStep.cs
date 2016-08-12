@@ -20,7 +20,7 @@ namespace FixieSpec.Specifications.Execution.Synchronous
 
         public void Then_the_execution_should_stop_after_the_failed_setup_step()
         {
-            failedSetupStepExecutionResult.ConsoleOutput.ShouldEqual(
+            failedSetupStepExecutionResult.ShouldHaveExecutedSteps(
                 "Given_a_setup_step_fails");
         }
 
