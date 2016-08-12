@@ -31,27 +31,6 @@ namespace FixieSpec.Specifications.Execution
             Console.WriteLine(member);
         }
 
-        protected class SpecificationExecutionResult
-        {
-            readonly AssemblyResult allResults;
-
-            public SpecificationExecutionResult(AssemblyResult results, IEnumerable<string> consoleOutput)
-            {
-                allResults = results;
-                ConsoleOutput = consoleOutput;
-            }
-
-            public IEnumerable<string> ConsoleOutput { get; private set; }
-
-            public int Passed => allResults.Passed;
-
-            public int Failed => allResults.Failed;
-
-            public int Skipped => allResults.Skipped;
-
-            public int Total => allResults.Total;
-        }
-
         protected class NullResultListener : Listener
         {
             public void AssemblyStarted(AssemblyInfo assembly) { }
