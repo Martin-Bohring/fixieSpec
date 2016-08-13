@@ -14,13 +14,13 @@ namespace FixieSpec.Specifications.Execution
     {
         readonly AssemblyResult allResults;
 
-        public SpecificationExecutionResult(AssemblyResult results, IEnumerable<string> consoleOutput)
+        public SpecificationExecutionResult(AssemblyResult results, IEnumerable<string> executedSteps)
         {
             allResults = results;
-            ConsoleOutput = consoleOutput;
+            ExecutedSteps = executedSteps;
         }
 
-        public IEnumerable<string> ConsoleOutput { get; private set; }
+        public IEnumerable<string> ExecutedSteps { get; private set; }
 
         public int Passed => allResults.Passed;
 
@@ -32,12 +32,12 @@ namespace FixieSpec.Specifications.Execution
 
         public void ShouldHaveExecutedSteps(params string[] stepNames)
         {
-            ConsoleOutput.ShouldEqual(stepNames);
+            ExecutedSteps.ShouldEqual(stepNames);
         }
 
         public void ShouldNotHaveExecutedAnySteps()
         {
-            ConsoleOutput.ShouldBeEmpty();
+            ExecutedSteps.ShouldBeEmpty();
         }
     }
 }
