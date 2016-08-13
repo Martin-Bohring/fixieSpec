@@ -52,36 +52,36 @@ namespace FixieSpec.Specifications.Execution.Synchronous
             public void Given_a_specification_context()
             {
                 systemUnderTest = new SpecificationContext();
-                WhereAmI();
+                RecordStep();
             }
 
             public void And_given_a_secondary_specification_context()
             {
-                WhereAmI();
+                RecordStep();
             }
 
             public void When_exercising_the_system_under_test()
             {
                 systemUnderTest.Value = SomeValue;
-                WhereAmI();
+                RecordStep();
             }
 
             public void And_when_exercising_the_system_under_test_some_more()
             {
                 systemUnderTest.AnotherValue = SomeOtherValue;
-                WhereAmI();
+                RecordStep();
             }
 
             public void Then_a_result_can_be_verified()
             {
                 systemUnderTest.Value.ShouldBe(SomeValue);
-                WhereAmI();
+                RecordStep();
             }
 
             public void And_then_another_result_can_be_verified()
             {
                 systemUnderTest.AnotherValue.ShouldBe(SomeOtherValue);
-                WhereAmI();
+                RecordStep();
             }
 
             class SpecificationContext

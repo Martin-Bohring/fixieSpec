@@ -44,18 +44,18 @@ namespace FixieSpec.Specifications.Execution.Synchronous
         {
             public void When_exercising_the_system_under_test()
             {
-                WhereAmI();
+                RecordStep();
             }
 
             public void Then_a_failing_result_can_be_verified()
             {
-                WhereAmI();
+                RecordStep();
                 true.ShouldBeFalse();
             }
 
             public void And_then_another_result_can_be_verified()
             {
-                WhereAmI();
+                RecordStep();
             }
         }
     }

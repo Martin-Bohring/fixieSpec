@@ -43,25 +43,25 @@ namespace FixieSpec.Specifications.Execution.Synchronous
         {
             public void Given_a_setup_step_fails()
             {
-                WhereAmI();
+                RecordStep();
                 throw new InvalidOperationException();
             }
 
             public void When_exercising_the_system_under_test()
             {
-                WhereAmI();
+                RecordStep();
                 throw new ShouldBeUnreachableException();
             }
 
             public void Then_the_result_cannot_be_verified()
             {
-                WhereAmI();
+                RecordStep();
                 throw new ShouldBeUnreachableException();
             }
 
             public void And_then_another_result_can_also_not_be_verified()
             {
-                WhereAmI();
+                RecordStep();
                 throw new ShouldBeUnreachableException();
             }
         }

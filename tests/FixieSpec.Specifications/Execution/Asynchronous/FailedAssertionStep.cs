@@ -44,20 +44,20 @@ namespace FixieSpec.Specifications.Execution.Asynchronous
         {
             public async Task When_exercising_the_system_under_test_asynchronously()
             {
-                WhereAmI();
+                RecordStep();
                 await Task.FromResult(true);
             }
 
             public async Task Then_a_failing_asynchronous_result_can_be_verified()
             {
-                WhereAmI();
+                RecordStep();
                 true.ShouldBeFalse();
                 await Task.FromResult(true);
             }
 
             public async Task And_then_another_asynchronous_result_can_be_verified()
             {
-                WhereAmI();
+                RecordStep();
                 await Task.FromResult(true);
             }
         }

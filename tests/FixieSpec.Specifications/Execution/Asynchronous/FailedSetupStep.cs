@@ -44,28 +44,28 @@ namespace FixieSpec.Specifications.Execution.Asynchronous
         {
             public async Task Given_an_asynchronous_setup_step_fails()
             {
-                WhereAmI();
+                RecordStep();
                 await Task.FromResult(true);
                 throw new InvalidOperationException();
             }
 
             public async Task When_exercising_the_system_under_test()
             {
-                WhereAmI();
+                RecordStep();
                 await Task.FromResult(true);
                 throw new ShouldBeUnreachableException();
             }
 
             public async Task Then_an_asynchronous_result_cannot_be_verified()
             {
-                WhereAmI();
+                RecordStep();
                 await Task.FromResult(true);
                 throw new ShouldBeUnreachableException();
             }
 
             public async Task And_then_another_asynchronous_result_can_also_not_be_verified()
             {
-                WhereAmI();
+                RecordStep();
                 await Task.FromResult(true);
                 throw new ShouldBeUnreachableException();
             }

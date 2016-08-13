@@ -25,7 +25,7 @@ namespace FixieSpec.Specifications.Execution
             }
         }
 
-        protected static void WhereAmI([CallerMemberName] string member = null)
+        protected static void RecordStep([CallerMemberName] string member = null)
         {
             Console.WriteLine(member);
         }

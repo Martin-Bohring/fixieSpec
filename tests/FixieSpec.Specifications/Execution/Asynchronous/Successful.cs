@@ -48,37 +48,37 @@ namespace FixieSpec.Specifications.Execution.Asynchronous
         {
             public async Task Given_an_asynchronous_specification_context()
             {
-                WhereAmI();
+                RecordStep();
                 await Task.FromResult(true);
             }
 
             public async Task And_given_a_secondary_asynchronous_specification_context()
             {
-                WhereAmI();
+                RecordStep();
                 await Task.FromResult(true);
             }
 
             public async Task When_exercising_the_system_under_test_asynchronously()
             {
-                WhereAmI();
+                RecordStep();
                 await Task.FromResult(true);
             }
 
             public async Task And_when_exercising_the_system_under_test_asynchronously_some_more()
             {
-                WhereAmI();
+                RecordStep();
                 await Task.FromResult(true);
             }
 
             public async Task Then_an_asynchronous_result_can_be_verified()
             {
-                WhereAmI();
+                RecordStep();
                 await Task.FromResult(true);
             }
 
             public async Task And_then_another_asynchronous_result_can_be_verified()
             {
-                WhereAmI();
+                RecordStep();
                 await Task.FromResult(true);
             }
         }

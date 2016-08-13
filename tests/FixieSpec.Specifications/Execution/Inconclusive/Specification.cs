@@ -46,25 +46,25 @@ namespace FixieSpec.Specifications.Execution.Inconclusive
         {
             public void Given_a_specification_context()
             {
-                WhereAmI();
+                RecordStep();
                 throw new ShouldBeUnreachableException();
             }
 
             public void When_exercising_the_system_under_test()
             {
-                WhereAmI();
+                RecordStep();
                 throw new ShouldBeUnreachableException();
             }
 
             public void Then_a_result_cannot_be_verified()
             {
-                WhereAmI();
+                RecordStep();
                 throw new ShouldBeUnreachableException();
             }
 
             public void And_then_another_result_can_also_not_be_verified()
             {
-                WhereAmI();
+                RecordStep();
                 throw new ShouldBeUnreachableException();
             }
         }

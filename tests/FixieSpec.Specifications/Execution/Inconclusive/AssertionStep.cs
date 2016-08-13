@@ -47,19 +47,19 @@ namespace FixieSpec.Specifications.Execution.Inconclusive
         {
             public void When_exercising_the_system_under_test()
             {
-                WhereAmI();
+                RecordStep();
             }
 
             [Inconclusive]
             public void Then_an_inconclusive_result_is_skipped()
             {
-                WhereAmI();
+                RecordStep();
                 throw new ShouldBeUnreachableException();
             }
 
             public void And_then_another_result_can_be_verified()
             {
-                WhereAmI();
+                RecordStep();
             }
         }
     }
