@@ -8,18 +8,10 @@ namespace FixieSpec.Specifications.Execution
     using System;
     using System.Collections.Generic;
     using System.Linq;
-
-    using Fixie;
-    using Fixie.Execution;
     using Fixie.Internal;
 
     static class SpecificationExecutionExtensions
     {
-        public static AssemblyResult Run(this Type sampleTestClass, Listener listener, Convention convention)
-        {
-            return new Runner(listener).RunTypes(sampleTestClass.Assembly, convention, sampleTestClass);
-        }
-
         public static IEnumerable<string> Lines(this RedirectedConsole console)
         {
             return console.Output.Lines();

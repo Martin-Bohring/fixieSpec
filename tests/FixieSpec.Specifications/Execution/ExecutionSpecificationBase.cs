@@ -13,13 +13,11 @@ namespace FixieSpec.Specifications.Execution
 
     public abstract class ExecutionSpecificationBase
     {
-        protected static SpecificationExecutionResult Execute<TSampleTestClass>()
+        protected static SpecificationExecutionResult Execute<TSpecificationClass>()
         {
             using (var console = new RedirectedConsole())
             {
-                var listener = new NullResultListener();
-
-                var results = typeof(TSampleTestClass).Run(listener, new FixieSpecConvention());
+                var results = Execute(typeof(TSpecificationClass));
 
                 return new SpecificationExecutionResult(results, console.Lines());
             }
@@ -28,6 +26,14 @@ namespace FixieSpec.Specifications.Execution
         protected static void RecordStep([CallerMemberName] string member = null)
         {
             Console.WriteLine(member);
+        }
+
+        static AssemblyResult Execute(Type specificationType)
+        {
+            return new Runner(new NullResultListener()).RunTypes(
+                specificationType.Assembly,
+                new FixieSpecConvention(),
+                specificationType);
         }
 
         protected class NullResultListener : Listener
