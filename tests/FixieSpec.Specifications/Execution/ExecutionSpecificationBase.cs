@@ -6,6 +6,8 @@
 namespace FixieSpec.Specifications.Execution
 {
     using System;
+    using System.Collections.Generic;
+    using System.Linq;
     using System.Runtime.CompilerServices;
 
     using Fixie.Execution;
@@ -19,7 +21,7 @@ namespace FixieSpec.Specifications.Execution
             {
                 var results = Execute(typeof(TSpecificationClass));
 
-                return new SpecificationExecutionResult(results, console.Lines());
+                return new SpecificationExecutionResult(results, SplitIntoLines(console.Output));
             }
         }
 
@@ -36,7 +38,19 @@ namespace FixieSpec.Specifications.Execution
                 specificationType);
         }
 
-        protected class NullResultListener : Listener
+        static IEnumerable<string> SplitIntoLines(string multiline)
+        {
+            var lines = multiline.Split(new[] { Environment.NewLine }, StringSplitOptions.None).ToList();
+
+            while (lines.Count > 0 && lines[lines.Count - 1] == string.Empty)
+            {
+                lines.RemoveAt(lines.Count - 1);
+            }
+
+            return lines;
+        }
+
+        class NullResultListener : Listener
         {
             public void AssemblyStarted(AssemblyInfo assembly) { }
 
