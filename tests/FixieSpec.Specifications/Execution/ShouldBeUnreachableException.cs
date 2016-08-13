@@ -3,7 +3,7 @@
 // Licensed under the MIT license. See LICENSE.txt file in the project root for full license information.
 // </copyright>
 
-namespace FixieSpec.Tests
+namespace FixieSpec.Specifications.Execution
 {
     using System;
     using System.Runtime.CompilerServices;
@@ -13,7 +13,7 @@ namespace FixieSpec.Tests
     /// https://github.com/fixie/fixie/blob/master/src/Fixie.Tests/ShouldBeUnreachableException.cs.
     /// </summary>
     [Serializable]
-    public class ShouldBeUnreachableException : Exception
+    public sealed class ShouldBeUnreachableException : Exception
     {
         public ShouldBeUnreachableException([CallerMemberName] string member = null)
             : base($"'{member}' reached a line of code thought to be unreachable.")

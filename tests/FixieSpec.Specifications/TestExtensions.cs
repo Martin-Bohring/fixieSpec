@@ -3,10 +3,11 @@
 // Licensed under the MIT license. See LICENSE.txt file in the project root for full license information.
 // </copyright>
 
-namespace FixieSpec.Tests
+namespace FixieSpec.Specifications
 {
-    using System;
-    using System.Reflection;
+    using System.Collections.Generic;
+    using System.Linq;
+    using Shouldly;
 
     /// <summary>
     /// Test helper extension class taken from
@@ -14,11 +15,9 @@ namespace FixieSpec.Tests
     /// </summary>
     static class TestExtensions
     {
-        const BindingFlags InstanceMethods = BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public;
-
-        public static MethodInfo GetInstanceMethod(this Type type, string methodName)
+        public static void ShouldEqual<T>(this IEnumerable<T> actual, params T[] expected)
         {
-            return type.GetMethod(methodName, InstanceMethods);
+            actual.ToArray().ShouldBe(expected);
         }
     }
 }

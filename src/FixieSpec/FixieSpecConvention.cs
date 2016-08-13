@@ -58,7 +58,7 @@ namespace FixieSpec
                 stepSelector = stepPredicate;
             }
 
-            public static void InvokeStep(MethodInfo specificationStep, Fixture context)
+            public static void ExecuteStep(MethodInfo specificationStep, Fixture context)
             {
                 var isAsync = specificationStep.IsAsync();
 
@@ -96,7 +96,7 @@ namespace FixieSpec
 
                 foreach (var specificationStep in specificationSteps)
                 {
-                    InvokeStep(specificationStep, context);
+                    ExecuteStep(specificationStep, context);
                 }
 
                 next?.Invoke();

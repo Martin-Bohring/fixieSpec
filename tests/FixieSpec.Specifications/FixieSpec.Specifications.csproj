@@ -5,11 +5,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{31A70DC0-4DB6-422E-BB02-EB606426D35B}</ProjectGuid>
+    <ProjectGuid>{B286E42C-0409-41C3-9F70-33C0E759653B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>FixieSpec.Tests</RootNamespace>
-    <AssemblyName>FixieSpec.Tests</AssemblyName>
+    <RootNamespace>FixieSpec.Specifications</RootNamespace>
+    <AssemblyName>FixieSpec.Specifications</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -22,8 +22,6 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <CodeAnalysisRuleSet />
-    <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -32,8 +30,6 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <CodeAnalysisRuleSet />
-    <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -41,25 +37,31 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DeclarationOrderComparerTests.cs" />
-    <Compile Include="DependencyTests.cs" />
-    <Compile Include="InputAttribute.cs" />
-    <Compile Include="InputAttributeParameterSource.cs" />
-    <Compile Include="MethodBaseExtensionsTests.cs" />
-    <Compile Include="TypeExtensionsTests.cs" />
-    <Compile Include="StepConventionsTests.cs" />
+    <Compile Include="Execution\Asynchronous\FailedAssertionStep.cs" />
+    <Compile Include="Execution\Asynchronous\FailedSetupStep.cs" />
+    <Compile Include="Execution\SpecificationExecutionResult.cs" />
+    <Compile Include="Execution\Synchronous\FailedSetupStep.cs" />
+    <Compile Include="Execution\Synchronous\FailedAssertionStep.cs" />
+    <Compile Include="Execution\Asynchronous\FailedTransitionStep.cs" />
+    <Compile Include="Execution\Synchronous\FailedTransitionStep.cs" />
+    <Compile Include="Execution\ExecutionSpecificationBase.cs" />
+    <Compile Include="Execution\Inconclusive\AssertionStep.cs" />
+    <Compile Include="Execution\Inconclusive\Specification.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SelfTestConvention.cs" />
+    <Compile Include="SelfSpecificationConvention.cs" />
+    <Compile Include="Execution\ShouldBeUnreachableException.cs" />
+    <Compile Include="Execution\Asynchronous\Successful.cs" />
+    <Compile Include="Execution\Synchronous\Successful.cs" />
     <Compile Include="TestExtensions.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="paket.references" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\FixieSpec\FixieSpec.csproj">
       <Project>{bac77003-df6e-489c-b40b-7aa7c67c4716}</Project>
       <Name>FixieSpec</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="paket.references" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />

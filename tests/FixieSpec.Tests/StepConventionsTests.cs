@@ -171,6 +171,7 @@ namespace FixieSpec.Tests
 
             public async Task And_then_an_asynchronous_method_with_parameter_is_no_assertion_step(int parameter)
             {
+                var notUsed = parameter;
                 await Task.FromResult(true);
             }
         }
