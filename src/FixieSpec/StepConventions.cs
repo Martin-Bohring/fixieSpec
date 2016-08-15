@@ -26,30 +26,30 @@ namespace FixieSpec
         {
             AddStepConvention(
                 methodName => methodName.StartsWith("Given", StringComparison.OrdinalIgnoreCase),
-                SpecificationStepType.Setup);
+                StepType.Setup);
 
             AddStepConvention(
                     methodName => methodName.StartsWith("AndGiven", StringComparison.OrdinalIgnoreCase),
-                    SpecificationStepType.SecondarySetup);
+                    StepType.SecondarySetup);
 
             AddStepConvention(
                     methodName => methodName.StartsWith("When", StringComparison.OrdinalIgnoreCase),
-                    SpecificationStepType.Transition);
+                    StepType.Transition);
 
             AddStepConvention(
                     methodName => methodName.StartsWith("AndWhen", StringComparison.OrdinalIgnoreCase),
-                    SpecificationStepType.Transition);
+                    StepType.Transition);
 
             AddStepConvention(
                     methodName => methodName.StartsWith("Then", StringComparison.OrdinalIgnoreCase),
-                    SpecificationStepType.Assertion);
+                    StepType.Assertion);
 
             AddStepConvention(
                     methodName => methodName.StartsWith("AndThen", StringComparison.OrdinalIgnoreCase),
-                    SpecificationStepType.Assertion);
+                    StepType.Assertion);
         }
 
-        enum SpecificationStepType
+        enum StepType
         {
             Undefined,
             Setup,
@@ -78,7 +78,7 @@ namespace FixieSpec
             {
                 var stepType = method.ScanMethod();
 
-                return (stepType == SpecificationStepType.Setup) || (stepType == SpecificationStepType.SecondarySetup);
+                return (stepType == StepType.Setup) || (stepType == StepType.SecondarySetup);
             }
 
             return false;
@@ -101,7 +101,7 @@ namespace FixieSpec
             }
 
             return method.HasStepSignature() &&
-                   method.ScanMethod() == SpecificationStepType.Transition;
+                   method.ScanMethod() == StepType.Transition;
         }
 
         /// <summary>
@@ -121,29 +121,29 @@ namespace FixieSpec
             }
 
             return method.HasStepSignature() &&
-                   method.ScanMethod() == SpecificationStepType.Assertion;
+                   method.ScanMethod() == StepType.Assertion;
         }
 
         static bool HasStepSignature(this MethodInfo method) => method.IsPublic &&
                 method.HasNoParameters() &&
                 (method.IsVoid() || method.IsAsync());
 
-        static SpecificationStepType ScanMethod(this MethodInfo methodToScan)
+        static StepType ScanMethod(this MethodInfo methodToScan)
         {
             foreach (var stepConvention in Conventions)
             {
                 var matchResult = stepConvention.MatchMethodName(methodToScan.ScrubMethodName());
 
-                if (matchResult != SpecificationStepType.Undefined)
+                if (matchResult != StepType.Undefined)
                 {
                     return matchResult;
                 }
             }
 
-            return SpecificationStepType.Undefined;
+            return StepType.Undefined;
         }
 
-        static void AddStepConvention(Func<string, bool> methodNameMatcher, SpecificationStepType stepTypeIfMatched)
+        static void AddStepConvention(Func<string, bool> methodNameMatcher, StepType stepTypeIfMatched)
             => Conventions.Add(new StepConvention(methodNameMatcher, stepTypeIfMatched));
 
         static string ScrubMethodName(this MethodInfo methodToMatch)
@@ -153,22 +153,22 @@ namespace FixieSpec
         {
             readonly Func<string, bool> matcher;
 
-            readonly SpecificationStepType stepType;
+            readonly StepType stepType;
 
-            public StepConvention(Func<string, bool> methodNameMatcher, SpecificationStepType stepTypeIfMatched)
+            public StepConvention(Func<string, bool> methodNameMatcher, StepType stepTypeIfMatched)
             {
                 stepType = stepTypeIfMatched;
                 matcher = methodNameMatcher;
             }
 
-            public SpecificationStepType MatchMethodName(string methodName)
+            public StepType MatchMethodName(string methodName)
             {
                 if (matcher(methodName))
                 {
                     return stepType;
                 }
 
-                return SpecificationStepType.Undefined;
+                return StepType.Undefined;
             }
         }
     }
