@@ -19,11 +19,11 @@ GROUP Test
 STRATEGY: MIN
 NUGET
   remote: https://www.nuget.org/api/v2
-    Albedo (1.0.1)
-    AutoFixture (3.49.1)
-    AutoFixture.Idioms (3.49.1)
-      Albedo (>= 1.0.1)
-      AutoFixture (>= 3.49.1)
+    Albedo (1.0)
+    AutoFixture (3.50.1)
+    AutoFixture.Idioms (3.50.1)
+      Albedo (>= 1.0)
+      AutoFixture (>= 3.50.1)
     Microsoft.CSharp (4.0.1) - framework: >= netstandard13
       System.Collections (>= 4.0.11) - framework: dnxcore50, >= netstandard13
       System.Diagnostics.Debug (>= 4.0.11) - framework: dnxcore50, >= netstandard13
@@ -113,7 +113,7 @@ NUGET
     runtime.native.System.Security.Cryptography (4.0) - framework: >= netstandard13
       Microsoft.NETCore.Platforms (>= 1.0.1)
       Microsoft.NETCore.Targets (>= 1.0.1)
-    Shouldly (2.8.1)
+    Shouldly (2.8.2)
       Microsoft.CSharp (>= 4.0.1) - framework: >= netstandard13
       NETStandard.Library (>= 1.6) - framework: >= netstandard13
       System.Diagnostics.Process (>= 4.1) - framework: >= netstandard13
