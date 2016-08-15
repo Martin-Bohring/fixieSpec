@@ -22,6 +22,24 @@ namespace FixieSpec.Tests
             setupStep.IsSetupStep().ShouldBeTrue();
         }
 
+        [Input("Given_a_specification_context", true)]
+        [Input("And_given_a_secondary_specification_context", false)]
+        public void ShouldDetectPrimarySetupSteps(string methodName, bool isPrimary)
+        {
+            var setupStep = Method(methodName);
+
+            setupStep.IsPrimarySetupStep().ShouldBe(isPrimary);
+        }
+
+        [Input("Given_a_specification_context", false)]
+        [Input("And_given_a_secondary_specification_context", true)]
+        public void ShouldDetectSecondarySetupSteps(string methodName, bool isSecondary)
+        {
+            var setupStep = Method(methodName);
+
+            setupStep.IsSecondarySetupStep().ShouldBe(isSecondary);
+        }
+
         [Input("ToString")]
         [Input("GetHashCode")]
         [Input("GetType")]
