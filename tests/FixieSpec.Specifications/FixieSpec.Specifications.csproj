@@ -39,6 +39,7 @@
   <ItemGroup>
     <Compile Include="Execution\Asynchronous\FailedAssertionStep.cs" />
     <Compile Include="Execution\Asynchronous\FailedSetupStep.cs" />
+    <Compile Include="Execution\SecondPrimarySetupStep.cs" />
     <Compile Include="Execution\SpecificationExecutionResult.cs" />
     <Compile Include="Execution\Synchronous\FailedSetupStep.cs" />
     <Compile Include="Execution\Synchronous\FailedAssertionStep.cs" />
