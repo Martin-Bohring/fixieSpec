@@ -30,7 +30,7 @@ namespace FixieSpec
 
             AddStepConvention(
                     methodName => methodName.StartsWith("AndGiven", StringComparison.OrdinalIgnoreCase),
-                    SpecificationStepType.Setup);
+                    SpecificationStepType.SecondarySetup);
 
             AddStepConvention(
                     methodName => methodName.StartsWith("When", StringComparison.OrdinalIgnoreCase),
@@ -53,6 +53,7 @@ namespace FixieSpec
         {
             Undefined,
             Setup,
+            SecondarySetup,
             Transition,
             Assertion
         }
@@ -73,8 +74,14 @@ namespace FixieSpec
                 throw new ArgumentNullException(nameof(method));
             }
 
-            return method.HasStepSignature() &&
-                   method.ScanMethod() == SpecificationStepType.Setup;
+            if (method.HasStepSignature())
+            {
+                var stepType = method.ScanMethod();
+
+                return (stepType == SpecificationStepType.Setup) || (stepType == SpecificationStepType.SecondarySetup);
+            }
+
+            return false;
         }
 
         /// <summary>
