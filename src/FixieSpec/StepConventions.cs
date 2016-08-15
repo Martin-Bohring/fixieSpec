@@ -69,19 +69,45 @@ namespace FixieSpec
         /// </returns>
         public static bool IsSetupStep(this MethodInfo method)
         {
+            return method.IsPrimarySetupStep() || method.IsSecondarySetupStep();
+        }
+
+        /// <summary>
+        /// Detects if the method given by <paramref name="method"/> is a primary setup step.
+        /// </summary>
+        /// <param name="method">
+        /// The method to check.
+        /// </param>
+        /// <returns>
+        /// <see langword="true"/>, if the method is a primary setup step; <see langword="false"/> otherwise.
+        /// </returns>
+        public static bool IsPrimarySetupStep(this MethodInfo method)
+        {
             if (method == null)
             {
                 throw new ArgumentNullException(nameof(method));
             }
 
-            if (method.HasStepSignature())
-            {
-                var stepType = method.ScanMethod();
+            return method.HasStepSignature() && method.ScanMethod() == StepType.Setup;
+        }
 
-                return (stepType == StepType.Setup) || (stepType == StepType.SecondarySetup);
+        /// <summary>
+        /// Detects if the method given by <paramref name="method"/> is a secondary setup step.
+        /// </summary>
+        /// <param name="method">
+        /// The method to check.
+        /// </param>
+        /// <returns>
+        /// <see langword="true"/>, if the method is a secondary setup step; <see langword="false"/> otherwise.
+        /// </returns>
+        public static bool IsSecondarySetupStep(this MethodInfo method)
+        {
+            if (method == null)
+            {
+                throw new ArgumentNullException(nameof(method));
             }
 
-            return false;
+            return method.HasStepSignature() && method.ScanMethod() == StepType.SecondarySetup;
         }
 
         /// <summary>
