@@ -33,11 +33,11 @@ namespace FixieSpec.Tests
 
         [Input("Given_a_specification_context", false)]
         [Input("And_given_a_secondary_specification_context", true)]
-        public void ShouldDetectSecondarySetupSteps(string methodName, bool isSecondary)
+        public void ShouldDetectAdditionalSetupSteps(string methodName, bool isSecondary)
         {
             var setupStep = Method(methodName);
 
-            setupStep.IsSecondarySetupStep().ShouldBe(isSecondary);
+            setupStep.IsAdditionalSetupStep().ShouldBe(isSecondary);
         }
 
         [Input("ToString")]
