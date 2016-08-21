@@ -30,7 +30,7 @@ namespace FixieSpec
 
             AddStepConvention(
                     methodName => methodName.StartsWith("AndGiven", StringComparison.OrdinalIgnoreCase),
-                    StepType.SecondarySetup);
+                    StepType.AdditionalSetup);
 
             AddStepConvention(
                     methodName => methodName.StartsWith("When", StringComparison.OrdinalIgnoreCase),
@@ -53,7 +53,7 @@ namespace FixieSpec
         {
             Undefined,
             Setup,
-            SecondarySetup,
+            AdditionalSetup,
             Transition,
             Assertion
         }
@@ -69,7 +69,7 @@ namespace FixieSpec
         /// </returns>
         public static bool IsSetupStep(this MethodInfo method)
         {
-            return method.IsPrimarySetupStep() || method.IsSecondarySetupStep();
+            return method.IsPrimarySetupStep() || method.IsAdditionalSetupStep();
         }
 
         /// <summary>
@@ -92,22 +92,22 @@ namespace FixieSpec
         }
 
         /// <summary>
-        /// Detects if the method given by <paramref name="method"/> is a secondary setup step.
+        /// Detects if the method given by <paramref name="method"/> is an additional setup step.
         /// </summary>
         /// <param name="method">
         /// The method to check.
         /// </param>
         /// <returns>
-        /// <see langword="true"/>, if the method is a secondary setup step; <see langword="false"/> otherwise.
+        /// <see langword="true"/>, if the method is an additional setup step; <see langword="false"/> otherwise.
         /// </returns>
-        public static bool IsSecondarySetupStep(this MethodInfo method)
+        public static bool IsAdditionalSetupStep(this MethodInfo method)
         {
             if (method == null)
             {
                 throw new ArgumentNullException(nameof(method));
             }
 
-            return method.HasStepSignature() && method.ScanMethod() == StepType.SecondarySetup;
+            return method.HasStepSignature() && method.ScanMethod() == StepType.AdditionalSetup;
         }
 
         /// <summary>
