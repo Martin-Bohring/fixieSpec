@@ -79,7 +79,7 @@ namespace FixieSpec
                 throw new ArgumentNullException(nameof(method));
             }
 
-            return method.HasStepSignature() && method.GetRoleInScenario() == StepRoleInScenario.Setup;
+            return method.GetRoleInScenario() == StepRoleInScenario.Setup;
         }
 
         /// <summary>
@@ -98,7 +98,7 @@ namespace FixieSpec
                 throw new ArgumentNullException(nameof(method));
             }
 
-            return method.HasStepSignature() && method.GetRoleInScenario() == StepRoleInScenario.AdditionalSetup;
+            return method.GetRoleInScenario() == StepRoleInScenario.AdditionalSetup;
         }
 
         /// <summary>
@@ -117,8 +117,7 @@ namespace FixieSpec
                 throw new ArgumentNullException(nameof(method));
             }
 
-            return method.HasStepSignature() &&
-                   method.GetRoleInScenario() == StepRoleInScenario.Transition;
+            return method.GetRoleInScenario() == StepRoleInScenario.Transition;
         }
 
         /// <summary>
@@ -137,19 +136,21 @@ namespace FixieSpec
                 throw new ArgumentNullException(nameof(method));
             }
 
-            return method.HasStepSignature() &&
-                   method.GetRoleInScenario() == StepRoleInScenario.Assertion;
+            return method.GetRoleInScenario() == StepRoleInScenario.Assertion;
         }
 
         static StepRoleInScenario GetRoleInScenario(this MethodInfo methodToScan)
         {
-            foreach (var stepConvention in Conventions)
+            if (methodToScan.HasStepSignature())
             {
-                var matchResult = stepConvention.MatchMethodName(methodToScan.ScrubMethodName());
-
-                if (matchResult != StepRoleInScenario.Undefined)
+                foreach (var stepConvention in Conventions)
                 {
-                    return matchResult;
+                    var matchResult = stepConvention.MatchMethodName(methodToScan.ScrubMethodName());
+
+                    if (matchResult != StepRoleInScenario.Undefined)
+                    {
+                        return matchResult;
+                    }
                 }
             }
 
