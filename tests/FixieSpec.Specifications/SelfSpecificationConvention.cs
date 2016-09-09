@@ -5,15 +5,16 @@
 
 namespace FixieSpec.Specifications
 {
-    using Execution;
+    using Fixie;
 
     public sealed class SelfSpecificationConvention : FixieSpecConvention
     {
         public SelfSpecificationConvention()
         {
             Classes
+                .Where(type => !type.IsNested)
                 .Where(type => type.HasOnlyDefaultConstructor())
-                .Where(type => type.IsSubclassOf(typeof(ExecutionSpecificationBase)));
+                .Where(type => type.IsInNamespace("FixieSpec.Specifications.Execution"));
         }
     }
 }
