@@ -13,46 +13,6 @@ namespace FixieSpec.Tests
  
     public sealed class StepConventionsTests
     {
-        [Input("Given_a_specification_context")]
-        [Input("And_given_a_secondary_specification_context")]
-        public void ShouldDetectSetupSteps(string methodName)
-        {
-            var setupStep = Method(methodName);
-
-            setupStep.IsSetupStep().ShouldBeTrue();
-        }
-
-        [Input("Given_a_specification_context", true)]
-        [Input("And_given_a_secondary_specification_context", false)]
-        public void ShouldDetectPrimarySetupSteps(string methodName, bool isPrimary)
-        {
-            var setupStep = Method(methodName);
-
-            setupStep.IsPrimarySetupStep().ShouldBe(isPrimary);
-        }
-
-        [Input("Given_a_specification_context", false)]
-        [Input("And_given_a_secondary_specification_context", true)]
-        public void ShouldDetectAdditionalSetupSteps(string methodName, bool isSecondary)
-        {
-            var setupStep = Method(methodName);
-
-            setupStep.IsAdditionalSetupStep().ShouldBe(isSecondary);
-        }
-
-        [Input("ToString")]
-        [Input("GetHashCode")]
-        [Input("GetType")]
-        [Input("Equals")]
-        [Input("Given_a_non_specification_context_has_parameters")]
-        [Input("Given_a_non_specification_context_returns_a_value")]
-        public void ShouldNotDetectNonStepMethodsAsSetupStep(string methodName)
-        {
-            var notASetupStep = Method(methodName);
-
-            notASetupStep.IsSetupStep().ShouldBeFalse();
-        }
-
         public void ShouldFailToDetectSetupStepForInvalidMethod()
         {
             Action act = () => (null as MethodInfo).IsSetupStep();
