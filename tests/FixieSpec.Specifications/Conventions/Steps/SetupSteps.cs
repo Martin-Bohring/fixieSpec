@@ -5,28 +5,67 @@
 
 namespace FixieSpec.Specifications.Conventions.Steps
 {
-    [Inconclusive]
+    using System.Reflection;
+
+    using Shouldly;
+
     public sealed class SetupSteps
     {
+        MethodInfo setupStep;
+        MethodInfo additionalSetupStep;
+        MethodInfo otherMethod;
+
         public void When_detecting_setup_steps()
         {
+            setupStep = Method("Given_a_setup_step");
+            additionalSetupStep = Method("And_given_an_additional_setup_step");
+            otherMethod = Method("ToString");
         }
 
-        public void Then_setup_steps_are_detected()
+        public void Then_setup_steps_are_detected_as_setup_steps()
         {
+            setupStep.IsPrimarySetupStep().ShouldBeTrue();
         }
 
-        public void And_then_additional_setup_steps_are_detected()
+        public void And_then_setup_steps_are_not_detected_as_additional_setup_steps()
         {
+            setupStep.IsAdditionalSetupStep().ShouldBeFalse();
+        }
+
+        public void And_then_additional_setup_steps_are_detected_as_additional_setup_steps()
+        {
+            additionalSetupStep.IsAdditionalSetupStep().ShouldBeTrue();
+        }
+
+        public void And_then_additional_setup_steps_are_not_detected_as_setup_steps()
+        {
+            additionalSetupStep.IsPrimarySetupStep().ShouldBeFalse();
         }
 
         public void And_then_other_methods_are_not_detected_as_setup_steps()
         {
+            otherMethod.IsPrimarySetupStep().ShouldBeFalse();
+        }
+
+        public void And_then_other_methods_are_not_detected_as_additional_setup_steps()
+        {
+            otherMethod.IsAdditionalSetupStep().ShouldBeFalse();
+        }
+
+        static MethodInfo Method(string methodName)
+        {
+            return typeof(SpecificationWithSetupSteps).GetInstanceMethod(methodName);
         }
 
         sealed class SpecificationWithSetupSteps
         {
+            public void Given_a_setup_step()
+            {
+            }
 
+            public void And_given_an_additional_setup_step()
+            {
+            }
         }
     }
 }
