@@ -8,7 +8,7 @@ namespace FixieSpec
     /// <summary>
     /// Describes the role a specification step has within a scenario.
     /// </summary>
-    public enum RoleInScenario
+    public enum StepRoleInScenario
     {
         /// <summary>
         /// The role of the step is not defined, it is even not a step.

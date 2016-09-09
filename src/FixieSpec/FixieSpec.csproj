@@ -48,7 +48,7 @@
     <Compile Include="InconclusiveAttribute.cs" />
     <Compile Include="MethodBaseExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RoleInScenario.cs" />
+    <Compile Include="StepRoleInScenario.cs" />
     <Compile Include="StepConventions.cs" />
     <Compile Include="TypeExtensions.cs" />
   </ItemGroup>
