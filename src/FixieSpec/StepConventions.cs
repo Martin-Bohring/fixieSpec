@@ -49,15 +49,6 @@ namespace FixieSpec
                     RoleInScenario.Assertion);
         }
 
-        enum RoleInScenario
-        {
-            Undefined,
-            Setup,
-            AdditionalSetup,
-            Transition,
-            Assertion
-        }
-
         /// <summary>
         /// Detects if the method given by <paramref name="method"/> is a setup step.
         /// </summary>
