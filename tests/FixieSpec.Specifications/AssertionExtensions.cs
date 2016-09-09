@@ -13,7 +13,7 @@ namespace FixieSpec.Specifications
     /// Test helper extension class taken from
     /// https://github.com/fixie/fixie/blob/master/src/Fixie.Tests/TestExtensions.cs.
     /// </summary>
-    static class TestExtensions
+    static class AssertionExtensions
     {
         public static void ShouldEqual<T>(this IEnumerable<T> actual, params T[] expected)
         {
