@@ -26,30 +26,30 @@ namespace FixieSpec
         {
             AddStepConvention(
                 methodName => methodName.StartsWith("Given", StringComparison.OrdinalIgnoreCase),
-                StepType.Setup);
+                RoleInScenario.Setup);
 
             AddStepConvention(
                     methodName => methodName.StartsWith("AndGiven", StringComparison.OrdinalIgnoreCase),
-                    StepType.AdditionalSetup);
+                    RoleInScenario.AdditionalSetup);
 
             AddStepConvention(
                     methodName => methodName.StartsWith("When", StringComparison.OrdinalIgnoreCase),
-                    StepType.Transition);
+                    RoleInScenario.Transition);
 
             AddStepConvention(
                     methodName => methodName.StartsWith("AndWhen", StringComparison.OrdinalIgnoreCase),
-                    StepType.Transition);
+                    RoleInScenario.Transition);
 
             AddStepConvention(
                     methodName => methodName.StartsWith("Then", StringComparison.OrdinalIgnoreCase),
-                    StepType.Assertion);
+                    RoleInScenario.Assertion);
 
             AddStepConvention(
                     methodName => methodName.StartsWith("AndThen", StringComparison.OrdinalIgnoreCase),
-                    StepType.Assertion);
+                    RoleInScenario.Assertion);
         }
 
-        enum StepType
+        enum RoleInScenario
         {
             Undefined,
             Setup,
@@ -88,7 +88,7 @@ namespace FixieSpec
                 throw new ArgumentNullException(nameof(method));
             }
 
-            return method.HasStepSignature() && method.ScanMethod() == StepType.Setup;
+            return method.HasStepSignature() && method.ScanMethod() == RoleInScenario.Setup;
         }
 
         /// <summary>
@@ -107,7 +107,7 @@ namespace FixieSpec
                 throw new ArgumentNullException(nameof(method));
             }
 
-            return method.HasStepSignature() && method.ScanMethod() == StepType.AdditionalSetup;
+            return method.HasStepSignature() && method.ScanMethod() == RoleInScenario.AdditionalSetup;
         }
 
         /// <summary>
@@ -127,7 +127,7 @@ namespace FixieSpec
             }
 
             return method.HasStepSignature() &&
-                   method.ScanMethod() == StepType.Transition;
+                   method.ScanMethod() == RoleInScenario.Transition;
         }
 
         /// <summary>
@@ -147,29 +147,29 @@ namespace FixieSpec
             }
 
             return method.HasStepSignature() &&
-                   method.ScanMethod() == StepType.Assertion;
+                   method.ScanMethod() == RoleInScenario.Assertion;
         }
 
         static bool HasStepSignature(this MethodInfo method) => method.IsPublic &&
                 method.HasNoParameters() &&
                 (method.IsVoid() || method.IsAsync());
 
-        static StepType ScanMethod(this MethodInfo methodToScan)
+        static RoleInScenario ScanMethod(this MethodInfo methodToScan)
         {
             foreach (var stepConvention in Conventions)
             {
                 var matchResult = stepConvention.MatchMethodName(methodToScan.ScrubMethodName());
 
-                if (matchResult != StepType.Undefined)
+                if (matchResult != RoleInScenario.Undefined)
                 {
                     return matchResult;
                 }
             }
 
-            return StepType.Undefined;
+            return RoleInScenario.Undefined;
         }
 
-        static void AddStepConvention(Func<string, bool> methodNameMatcher, StepType stepTypeIfMatched)
+        static void AddStepConvention(Func<string, bool> methodNameMatcher, RoleInScenario stepTypeIfMatched)
             => Conventions.Add(new StepConvention(methodNameMatcher, stepTypeIfMatched));
 
         static string ScrubMethodName(this MethodInfo methodToMatch)
@@ -179,22 +179,22 @@ namespace FixieSpec
         {
             readonly Func<string, bool> matcher;
 
-            readonly StepType stepType;
+            readonly RoleInScenario stepType;
 
-            public StepConvention(Func<string, bool> methodNameMatcher, StepType stepTypeIfMatched)
+            public StepConvention(Func<string, bool> methodNameMatcher, RoleInScenario stepTypeIfMatched)
             {
                 stepType = stepTypeIfMatched;
                 matcher = methodNameMatcher;
             }
 
-            public StepType MatchMethodName(string methodName)
+            public RoleInScenario MatchMethodName(string methodName)
             {
                 if (matcher(methodName))
                 {
                     return stepType;
                 }
 
-                return StepType.Undefined;
+                return RoleInScenario.Undefined;
             }
         }
     }
