@@ -54,7 +54,7 @@
     <Compile Include="Execution\ShouldBeUnreachableException.cs" />
     <Compile Include="Execution\Asynchronous\Successful.cs" />
     <Compile Include="Execution\Synchronous\Successful.cs" />
-    <Compile Include="TestExtensions.cs" />
+    <Compile Include="AssertionExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="paket.references" />
