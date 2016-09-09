@@ -79,7 +79,7 @@ namespace FixieSpec
                 throw new ArgumentNullException(nameof(method));
             }
 
-            return method.HasStepSignature() && method.ScanMethod() == StepRoleInScenario.Setup;
+            return method.HasStepSignature() && method.GetRoleInScenario() == StepRoleInScenario.Setup;
         }
 
         /// <summary>
@@ -98,7 +98,7 @@ namespace FixieSpec
                 throw new ArgumentNullException(nameof(method));
             }
 
-            return method.HasStepSignature() && method.ScanMethod() == StepRoleInScenario.AdditionalSetup;
+            return method.HasStepSignature() && method.GetRoleInScenario() == StepRoleInScenario.AdditionalSetup;
         }
 
         /// <summary>
@@ -118,7 +118,7 @@ namespace FixieSpec
             }
 
             return method.HasStepSignature() &&
-                   method.ScanMethod() == StepRoleInScenario.Transition;
+                   method.GetRoleInScenario() == StepRoleInScenario.Transition;
         }
 
         /// <summary>
@@ -138,14 +138,10 @@ namespace FixieSpec
             }
 
             return method.HasStepSignature() &&
-                   method.ScanMethod() == StepRoleInScenario.Assertion;
+                   method.GetRoleInScenario() == StepRoleInScenario.Assertion;
         }
 
-        static bool HasStepSignature(this MethodInfo method) => method.IsPublic &&
-                method.HasNoParameters() &&
-                (method.IsVoid() || method.IsAsync());
-
-        static StepRoleInScenario ScanMethod(this MethodInfo methodToScan)
+        static StepRoleInScenario GetRoleInScenario(this MethodInfo methodToScan)
         {
             foreach (var stepConvention in Conventions)
             {
@@ -159,6 +155,10 @@ namespace FixieSpec
 
             return StepRoleInScenario.Undefined;
         }
+
+        static bool HasStepSignature(this MethodInfo method) => method.IsPublic &&
+                method.HasNoParameters() &&
+                (method.IsVoid() || method.IsAsync());
 
         static void AddStepConvention(Func<string, bool> methodNameMatcher, StepRoleInScenario stepTypeIfMatched)
             => Conventions.Add(new StepConvention(methodNameMatcher, stepTypeIfMatched));
