@@ -7,11 +7,11 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyDescriptionAttribute("A super low friction specification test framework based on the fantastic Fixie test framework.")]
 [assembly: AssemblyVersionAttribute("0.2.0")]
 [assembly: AssemblyFileVersionAttribute("0.2.0")]
-[assembly: AssemblyInformationalVersionAttribute("0.2.0-alpha1")]
+[assembly: AssemblyInformationalVersionAttribute("0.2.0-alpha2")]
 [assembly: ComVisibleAttribute(false)]
 namespace System {
     internal static class AssemblyVersionInformation {
         internal const string Version = "0.2.0";
-        internal const string InformationalVersion = "0.2.0-alpha1";
+        internal const string InformationalVersion = "0.2.0-alpha2";
     }
 }

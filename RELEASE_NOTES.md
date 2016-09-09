@@ -1,3 +1,7 @@
+#### 0.2.0-alpha2 - 09.09.2016
+
+* Use fixiespec to test fixiespec where it simplifies existing tests - https://github.com/Martin-Bohring/fixieSpec/issues/18
+
 #### 0.2.0-alpha1 - 07.08.2016
 
 * Implemented asynchronous assertion steps - https://github.com/Martin-Bohring/fixieSpec/issues/5
