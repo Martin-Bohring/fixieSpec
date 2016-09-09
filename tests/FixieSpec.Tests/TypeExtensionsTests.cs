@@ -55,8 +55,19 @@ namespace FixieSpec.Tests
             act.ShouldThrow<ArgumentNullException>();
         }
 
+        public void ShouldGetInstanceMethods()
+        {
+            const string NameOfInstanceMethod = "InstanceMethod";
+
+            typeof(TypeWithDefaultConstructorOnly).GetInstanceMethod(NameOfInstanceMethod)
+                .Name.ShouldBe(NameOfInstanceMethod);
+        }
+
         class TypeWithDefaultConstructorOnly
         {
+            public void InstanceMethod()
+            {
+            }
         }
 
         class TypeWithParameterConstructorOnly

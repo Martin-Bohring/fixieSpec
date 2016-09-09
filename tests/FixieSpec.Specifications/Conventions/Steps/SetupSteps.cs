@@ -22,6 +22,10 @@ namespace FixieSpec.Specifications.Conventions.Steps
 
         public void And_then_other_methods_are_not_detected_as_setup_steps()
         {
+        }
+
+        sealed class SpecificationWithSetupSteps
+        {
 
         }
     }
