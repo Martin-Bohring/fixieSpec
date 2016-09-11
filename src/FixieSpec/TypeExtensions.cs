@@ -61,8 +61,8 @@ namespace FixieSpec
         }
 
         /// <summary>
-        /// Gets the metadata of the instance method defined by the type <paramref name="type"/> having the name
-        /// given by <paramref name="methodName"/>.
+        /// Gets the metadata of the instance method defined by the type <paramref name="type"/> and named
+        /// like <paramref name="methodName"/>.
         /// </summary>
         /// <param name="type">
         /// The type that defines the instance method.
@@ -73,6 +73,9 @@ namespace FixieSpec
         /// <returns>
         /// The <see cref="MethodInfo"/> metadata describing the instance method.
         /// </returns>
+        /// <remarks>
+        /// Currently does not handle overloaded methods.
+        /// </remarks>
         public static MethodInfo GetInstanceMethod(this Type type, string methodName)
         {
             if (type == null)
