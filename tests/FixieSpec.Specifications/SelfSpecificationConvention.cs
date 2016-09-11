@@ -14,8 +14,7 @@ namespace FixieSpec.Specifications
             Classes
                 .Where(type => !type.IsNested)
                 .Where(type => type.HasOnlyDefaultConstructor())
-                .Where(type => type.IsInNamespace("FixieSpec.Specifications.Execution")
-                || type.IsInNamespace("FixieSpec.Specifications.Conventions"));
+                .Where(type => type.IsInNamespace("FixieSpec.Specifications"));
         }
     }
 }
