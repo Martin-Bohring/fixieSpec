@@ -17,7 +17,7 @@ namespace FixieSpec.Specifications.Execution.Asynchronous
             failedAssertionStepExecutionResult = Execute<FailingAsynchronousAssertionStepSpecification>();
         }
 
-        public void Then_all_specifiction_steps_should_execute_in_order()
+        public void Then_all_specification_steps_should_execute_in_order()
         {
             failedAssertionStepExecutionResult.ShouldHaveExecutedSteps(
                 "When_exercising_the_system_under_test_asynchronously",

@@ -16,7 +16,7 @@ namespace FixieSpec.Specifications.Execution.Synchronous
             successfulExecutionResult = Execute<SuccessfulSpecification>();
         }
 
-        public void Then_all_specifiction_steps_should_execute_in_order()
+        public void Then_all_specificaion_steps_should_execute_in_order()
         {
             successfulExecutionResult.ShouldHaveExecutedSteps(
                 "Given_a_specification_context",

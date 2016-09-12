@@ -18,7 +18,7 @@ namespace FixieSpec.Specifications.Execution.Asynchronous
             successfulExecutionResult = Execute<SuccessfulAsynchronousSpecification>();
         }
 
-        public void Then_all_specifiction_steps_should_execute_in_order()
+        public void Then_all_specification_steps_should_execute_in_order()
         {
             successfulExecutionResult.ShouldHaveExecutedSteps(
                 "Given_an_asynchronous_specification_context",
