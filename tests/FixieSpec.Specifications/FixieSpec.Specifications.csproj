@@ -38,6 +38,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Conventions\Steps\SetupSteps.cs" />
+    <Compile Include="Conventions\Steps\TransitionSteps.cs" />
     <Compile Include="Execution\Asynchronous\FailedAssertionStep.cs" />
     <Compile Include="Execution\Asynchronous\FailedSetupStep.cs" />
     <Compile Include="Conventions\Scenarios\SecondSetupStep.cs" />
