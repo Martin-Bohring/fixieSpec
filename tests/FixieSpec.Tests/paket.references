@@ -6,3 +6,4 @@ group Build
 
 group Test
   Shouldly
+  AutoFixture.Idioms

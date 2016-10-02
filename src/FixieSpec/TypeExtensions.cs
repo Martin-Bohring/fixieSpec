@@ -85,7 +85,7 @@ namespace FixieSpec
 
             if (string.IsNullOrEmpty(methodName))
             {
-                throw new ArgumentException(nameof(methodName));
+                throw new ArgumentNullException(nameof(methodName));
             }
 
             return type.GetMethod(methodName, InstanceMethods);

@@ -5,7 +5,6 @@
 
 namespace FixieSpec.Tests
 {
-    using System;
     using System.Reflection;
 
     using Shouldly;
@@ -26,13 +25,6 @@ namespace FixieSpec.Tests
 
             methodWithParameter.HasNoParameters().ShouldBeFalse();
             methodWithParameter.HasParameters().ShouldBeTrue();
-        }
-
-        public void ShouldFailToDetectParametersUsingNullMethod()
-        {
-            Action act = () => (null as MethodInfo).HasParameters();
-
-            act.ShouldThrow<ArgumentNullException>();
         }
 
         static MethodInfo Method(string methodName)

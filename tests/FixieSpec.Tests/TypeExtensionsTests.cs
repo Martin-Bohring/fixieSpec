@@ -5,7 +5,6 @@
 
 namespace FixieSpec.Tests
 {
-    using System;
 
     using Shouldly;
 
@@ -26,13 +25,6 @@ namespace FixieSpec.Tests
             typeof(TypeWithDefaultConstructorAndParameterConstructor).HasOnlyDefaultConstructor().ShouldBeFalse();
         }
 
-        public void ShouldFailToDetectDefaultConstructorOnlyUsingNullType()
-        {
-            Action act = () => (null as Type).HasOnlyDefaultConstructor();
-
-            act.ShouldThrow<ArgumentNullException>();
-        }
-
         public void ShouldDetectParameterOnlyConstructor()
         {
             typeof(TypeWithParameterConstructorOnly).HasOnlyParameterConstructor().ShouldBeTrue();
@@ -46,13 +38,6 @@ namespace FixieSpec.Tests
         public void ShouldNotDetectParameterOnlyConstructorForTypeWithMultipleConstructors()
         {
             typeof(TypeWithDefaultConstructorAndParameterConstructor).HasOnlyParameterConstructor().ShouldBeFalse();
-        }
-
-        public void ShouldFailToDetectSingleParameterConstructorUsingNullType()
-        {
-            Action act = () => (null as Type).HasOnlyParameterConstructor();
-
-            act.ShouldThrow<ArgumentNullException>();
         }
 
         public void ShouldGetInstanceMethods()
