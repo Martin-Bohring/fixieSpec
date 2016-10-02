@@ -16,5 +16,6 @@ excludeddependencies
   CodeCracker.CSharp
   RefactoringEssentials
   Microsoft.Net.Compilers
+  Microsoft.Net.RoslynDiagnostics
 
 include-pdbs true
