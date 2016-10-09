@@ -12,7 +12,7 @@ namespace FixieSpec
     using Fixie;
 
     /// <summary>
-    /// The conventions used to identify specification steps.
+    /// The conventions used to identify specification steps within a scenario.
     /// </summary>
     public static class StepConventions
     {
