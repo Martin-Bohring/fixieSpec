@@ -1,32 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
-  <Import Project="..\..\packages\build\Microsoft.ApiDesignGuidelines.Analyzers\build\Microsoft.ApiDesignGuidelines.VisualBasic.Analyzers.props" Condition="Exists('..\..\packages\build\Microsoft.ApiDesignGuidelines.Analyzers\build\Microsoft.ApiDesignGuidelines.VisualBasic.Analyzers.props')" Label="Paket" />
-  <Import Project="..\..\packages\build\Microsoft.ApiDesignGuidelines.Analyzers\build\Microsoft.ApiDesignGuidelines.CSharp.Analyzers.props" Condition="Exists('..\..\packages\build\Microsoft.ApiDesignGuidelines.Analyzers\build\Microsoft.ApiDesignGuidelines.CSharp.Analyzers.props')" Label="Paket" />
-  <Import Project="..\..\packages\build\Microsoft.ApiDesignGuidelines.Analyzers\build\Microsoft.ApiDesignGuidelines.Analyzers.props" Condition="Exists('..\..\packages\build\Microsoft.ApiDesignGuidelines.Analyzers\build\Microsoft.ApiDesignGuidelines.Analyzers.props')" Label="Paket" />
-  <Import Project="..\..\packages\build\Microsoft.Composition.Analyzers\build\Microsoft.Composition.VisualBasic.Analyzers.props" Condition="Exists('..\..\packages\build\Microsoft.Composition.Analyzers\build\Microsoft.Composition.VisualBasic.Analyzers.props')" Label="Paket" />
-  <Import Project="..\..\packages\build\Microsoft.Composition.Analyzers\build\Microsoft.Composition.CSharp.Analyzers.props" Condition="Exists('..\..\packages\build\Microsoft.Composition.Analyzers\build\Microsoft.Composition.CSharp.Analyzers.props')" Label="Paket" />
-  <Import Project="..\..\packages\build\Microsoft.Composition.Analyzers\build\Microsoft.Composition.Analyzers.props" Condition="Exists('..\..\packages\build\Microsoft.Composition.Analyzers\build\Microsoft.Composition.Analyzers.props')" Label="Paket" />
   <Import Project="..\..\packages\build\Microsoft.Net.Compilers\build\Microsoft.Net.Compilers.props" Condition="Exists('..\..\packages\build\Microsoft.Net.Compilers\build\Microsoft.Net.Compilers.props')" Label="Paket" />
-  <Import Project="..\..\packages\build\Microsoft.Net.RoslynDiagnostics\build\Microsoft.Net.RoslynDiagnostics.props" Condition="Exists('..\..\packages\build\Microsoft.Net.RoslynDiagnostics\build\Microsoft.Net.RoslynDiagnostics.props')" Label="Paket" />
-  <Import Project="..\..\packages\build\Roslyn.Diagnostics.Analyzers\build\Roslyn.Diagnostics.VisualBasic.Analyzers.props" Condition="Exists('..\..\packages\build\Roslyn.Diagnostics.Analyzers\build\Roslyn.Diagnostics.VisualBasic.Analyzers.props')" Label="Paket" />
-  <Import Project="..\..\packages\build\Roslyn.Diagnostics.Analyzers\build\Roslyn.Diagnostics.CSharp.Analyzers.props" Condition="Exists('..\..\packages\build\Roslyn.Diagnostics.Analyzers\build\Roslyn.Diagnostics.CSharp.Analyzers.props')" Label="Paket" />
-  <Import Project="..\..\packages\build\Roslyn.Diagnostics.Analyzers\build\Roslyn.Diagnostics.Analyzers.props" Condition="Exists('..\..\packages\build\Roslyn.Diagnostics.Analyzers\build\Roslyn.Diagnostics.Analyzers.props')" Label="Paket" />
-  <Import Project="..\..\packages\build\System.Collections.Immutable.Analyzers\build\System.Collections.Immutable.VisualBasic.Analyzers.props" Condition="Exists('..\..\packages\build\System.Collections.Immutable.Analyzers\build\System.Collections.Immutable.VisualBasic.Analyzers.props')" Label="Paket" />
-  <Import Project="..\..\packages\build\System.Collections.Immutable.Analyzers\build\System.Collections.Immutable.CSharp.Analyzers.props" Condition="Exists('..\..\packages\build\System.Collections.Immutable.Analyzers\build\System.Collections.Immutable.CSharp.Analyzers.props')" Label="Paket" />
-  <Import Project="..\..\packages\build\System.Collections.Immutable.Analyzers\build\System.Collections.Immutable.Analyzers.props" Condition="Exists('..\..\packages\build\System.Collections.Immutable.Analyzers\build\System.Collections.Immutable.Analyzers.props')" Label="Paket" />
-  <Import Project="..\..\packages\build\System.Runtime.Analyzers\build\System.Runtime.VisualBasic.Analyzers.props" Condition="Exists('..\..\packages\build\System.Runtime.Analyzers\build\System.Runtime.VisualBasic.Analyzers.props')" Label="Paket" />
-  <Import Project="..\..\packages\build\System.Runtime.Analyzers\build\System.Runtime.CSharp.Analyzers.props" Condition="Exists('..\..\packages\build\System.Runtime.Analyzers\build\System.Runtime.CSharp.Analyzers.props')" Label="Paket" />
-  <Import Project="..\..\packages\build\System.Runtime.Analyzers\build\System.Runtime.Analyzers.props" Condition="Exists('..\..\packages\build\System.Runtime.Analyzers\build\System.Runtime.Analyzers.props')" Label="Paket" />
-  <Import Project="..\..\packages\build\System.Runtime.InteropServices.Analyzers\build\System.Runtime.InteropServices.VisualBasic.Analyzers.props" Condition="Exists('..\..\packages\build\System.Runtime.InteropServices.Analyzers\build\System.Runtime.InteropServices.VisualBasic.Analyzers.props')" Label="Paket" />
-  <Import Project="..\..\packages\build\System.Runtime.InteropServices.Analyzers\build\System.Runtime.InteropServices.CSharp.Analyzers.props" Condition="Exists('..\..\packages\build\System.Runtime.InteropServices.Analyzers\build\System.Runtime.InteropServices.CSharp.Analyzers.props')" Label="Paket" />
-  <Import Project="..\..\packages\build\System.Runtime.InteropServices.Analyzers\build\System.Runtime.InteropServices.Analyzers.props" Condition="Exists('..\..\packages\build\System.Runtime.InteropServices.Analyzers\build\System.Runtime.InteropServices.Analyzers.props')" Label="Paket" />
-  <Import Project="..\..\packages\build\System.Threading.Tasks.Analyzers\build\System.Threading.Tasks.VisualBasic.Analyzers.props" Condition="Exists('..\..\packages\build\System.Threading.Tasks.Analyzers\build\System.Threading.Tasks.VisualBasic.Analyzers.props')" Label="Paket" />
-  <Import Project="..\..\packages\build\System.Threading.Tasks.Analyzers\build\System.Threading.Tasks.CSharp.Analyzers.props" Condition="Exists('..\..\packages\build\System.Threading.Tasks.Analyzers\build\System.Threading.Tasks.CSharp.Analyzers.props')" Label="Paket" />
-  <Import Project="..\..\packages\build\System.Threading.Tasks.Analyzers\build\System.Threading.Tasks.Analyzers.props" Condition="Exists('..\..\packages\build\System.Threading.Tasks.Analyzers\build\System.Threading.Tasks.Analyzers.props')" Label="Paket" />
-  <Import Project="..\..\packages\build\XmlDocumentationComments.Analyzers\build\XmlDocumentationComments.VisualBasic.Analyzers.props" Condition="Exists('..\..\packages\build\XmlDocumentationComments.Analyzers\build\XmlDocumentationComments.VisualBasic.Analyzers.props')" Label="Paket" />
-  <Import Project="..\..\packages\build\XmlDocumentationComments.Analyzers\build\XmlDocumentationComments.CSharp.Analyzers.props" Condition="Exists('..\..\packages\build\XmlDocumentationComments.Analyzers\build\XmlDocumentationComments.CSharp.Analyzers.props')" Label="Paket" />
-  <Import Project="..\..\packages\build\XmlDocumentationComments.Analyzers\build\XmlDocumentationComments.Analyzers.props" Condition="Exists('..\..\packages\build\XmlDocumentationComments.Analyzers\build\XmlDocumentationComments.Analyzers.props')" Label="Paket" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -38,7 +13,6 @@
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
-    <Features>IOperation</Features>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -106,51 +80,7 @@
     </Analyzer>
   </ItemGroup>
   <ItemGroup>
-    <Analyzer Include="..\..\packages\build\Microsoft.ApiDesignGuidelines.Analyzers\analyzers\dotnet\cs\Analyzer.Utilities.dll">
-      <Paket>True</Paket>
-    </Analyzer>
-    <Analyzer Include="..\..\packages\build\Microsoft.ApiDesignGuidelines.Analyzers\analyzers\dotnet\cs\Microsoft.ApiDesignGuidelines.Analyzers.dll">
-      <Paket>True</Paket>
-    </Analyzer>
-    <Analyzer Include="..\..\packages\build\Microsoft.ApiDesignGuidelines.Analyzers\analyzers\dotnet\cs\Microsoft.ApiDesignGuidelines.CSharp.Analyzers.dll">
-      <Paket>True</Paket>
-    </Analyzer>
-  </ItemGroup>
-  <ItemGroup>
-    <Analyzer Include="..\..\packages\build\Microsoft.CodeAnalysis.Analyzers\analyzers\dotnet\cs\Analyzer.Utilities.dll">
-      <Paket>True</Paket>
-    </Analyzer>
-    <Analyzer Include="..\..\packages\build\Microsoft.CodeAnalysis.Analyzers\analyzers\dotnet\cs\Microsoft.CodeAnalysis.Analyzers.dll">
-      <Paket>True</Paket>
-    </Analyzer>
-    <Analyzer Include="..\..\packages\build\Microsoft.CodeAnalysis.Analyzers\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.Analyzers.dll">
-      <Paket>True</Paket>
-    </Analyzer>
-  </ItemGroup>
-  <ItemGroup>
-    <Analyzer Include="..\..\packages\build\Microsoft.Composition.Analyzers\analyzers\dotnet\cs\Analyzer.Utilities.dll">
-      <Paket>True</Paket>
-    </Analyzer>
-    <Analyzer Include="..\..\packages\build\Microsoft.Composition.Analyzers\analyzers\dotnet\cs\Microsoft.Composition.Analyzers.dll">
-      <Paket>True</Paket>
-    </Analyzer>
-    <Analyzer Include="..\..\packages\build\Microsoft.Composition.Analyzers\analyzers\dotnet\cs\Microsoft.Composition.CSharp.Analyzers.dll">
-      <Paket>True</Paket>
-    </Analyzer>
-  </ItemGroup>
-  <ItemGroup>
     <Analyzer Include="..\..\packages\build\RefactoringEssentials\analyzers\dotnet\RefactoringEssentials.dll">
-      <Paket>True</Paket>
-    </Analyzer>
-  </ItemGroup>
-  <ItemGroup>
-    <Analyzer Include="..\..\packages\build\Roslyn.Diagnostics.Analyzers\analyzers\dotnet\cs\Analyzer.Utilities.dll">
-      <Paket>True</Paket>
-    </Analyzer>
-    <Analyzer Include="..\..\packages\build\Roslyn.Diagnostics.Analyzers\analyzers\dotnet\cs\Roslyn.Diagnostics.Analyzers.dll">
-      <Paket>True</Paket>
-    </Analyzer>
-    <Analyzer Include="..\..\packages\build\Roslyn.Diagnostics.Analyzers\analyzers\dotnet\cs\Roslyn.Diagnostics.CSharp.Analyzers.dll">
       <Paket>True</Paket>
     </Analyzer>
   </ItemGroup>
@@ -162,61 +92,6 @@
       <Paket>True</Paket>
     </Analyzer>
     <Analyzer Include="..\..\packages\build\StyleCop.Analyzers\analyzers\dotnet\cs\StyleCop.Analyzers.dll">
-      <Paket>True</Paket>
-    </Analyzer>
-  </ItemGroup>
-  <ItemGroup>
-    <Analyzer Include="..\..\packages\build\System.Collections.Immutable.Analyzers\analyzers\dotnet\cs\Analyzer.Utilities.dll">
-      <Paket>True</Paket>
-    </Analyzer>
-    <Analyzer Include="..\..\packages\build\System.Collections.Immutable.Analyzers\analyzers\dotnet\cs\System.Collections.Immutable.Analyzers.dll">
-      <Paket>True</Paket>
-    </Analyzer>
-    <Analyzer Include="..\..\packages\build\System.Collections.Immutable.Analyzers\analyzers\dotnet\cs\System.Collections.Immutable.CSharp.Analyzers.dll">
-      <Paket>True</Paket>
-    </Analyzer>
-  </ItemGroup>
-  <ItemGroup>
-    <Analyzer Include="..\..\packages\build\System.Runtime.Analyzers\analyzers\dotnet\cs\Analyzer.Utilities.dll">
-      <Paket>True</Paket>
-    </Analyzer>
-    <Analyzer Include="..\..\packages\build\System.Runtime.Analyzers\analyzers\dotnet\cs\System.Runtime.Analyzers.dll">
-      <Paket>True</Paket>
-    </Analyzer>
-    <Analyzer Include="..\..\packages\build\System.Runtime.Analyzers\analyzers\dotnet\cs\System.Runtime.CSharp.Analyzers.dll">
-      <Paket>True</Paket>
-    </Analyzer>
-  </ItemGroup>
-  <ItemGroup>
-    <Analyzer Include="..\..\packages\build\System.Runtime.InteropServices.Analyzers\analyzers\dotnet\cs\Analyzer.Utilities.dll">
-      <Paket>True</Paket>
-    </Analyzer>
-    <Analyzer Include="..\..\packages\build\System.Runtime.InteropServices.Analyzers\analyzers\dotnet\cs\System.Runtime.InteropServices.Analyzers.dll">
-      <Paket>True</Paket>
-    </Analyzer>
-    <Analyzer Include="..\..\packages\build\System.Runtime.InteropServices.Analyzers\analyzers\dotnet\cs\System.Runtime.InteropServices.CSharp.Analyzers.dll">
-      <Paket>True</Paket>
-    </Analyzer>
-  </ItemGroup>
-  <ItemGroup>
-    <Analyzer Include="..\..\packages\build\System.Threading.Tasks.Analyzers\analyzers\dotnet\cs\Analyzer.Utilities.dll">
-      <Paket>True</Paket>
-    </Analyzer>
-    <Analyzer Include="..\..\packages\build\System.Threading.Tasks.Analyzers\analyzers\dotnet\cs\System.Threading.Tasks.Analyzers.dll">
-      <Paket>True</Paket>
-    </Analyzer>
-    <Analyzer Include="..\..\packages\build\System.Threading.Tasks.Analyzers\analyzers\dotnet\cs\System.Threading.Tasks.CSharp.Analyzers.dll">
-      <Paket>True</Paket>
-    </Analyzer>
-  </ItemGroup>
-  <ItemGroup>
-    <Analyzer Include="..\..\packages\build\XmlDocumentationComments.Analyzers\analyzers\dotnet\cs\Analyzer.Utilities.dll">
-      <Paket>True</Paket>
-    </Analyzer>
-    <Analyzer Include="..\..\packages\build\XmlDocumentationComments.Analyzers\analyzers\dotnet\cs\XmlDocumentationComments.Analyzers.dll">
-      <Paket>True</Paket>
-    </Analyzer>
-    <Analyzer Include="..\..\packages\build\XmlDocumentationComments.Analyzers\analyzers\dotnet\cs\XmlDocumentationComments.CSharp.Analyzers.dll">
       <Paket>True</Paket>
     </Analyzer>
   </ItemGroup>

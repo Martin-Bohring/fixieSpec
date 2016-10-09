@@ -3,6 +3,5 @@ group Build
   CodeCracker.CSharp
   RefactoringEssentials
   Microsoft.Net.Compilers
-  Microsoft.Net.RoslynDiagnostics
 
   

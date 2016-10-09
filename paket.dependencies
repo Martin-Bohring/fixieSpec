@@ -15,7 +15,6 @@ group Build
   nuget CodeCracker.CSharp prerelease
   nuget RefactoringEssentials
   nuget Microsoft.Net.Compilers
-  nuget Microsoft.Net.RoslynDiagnostics prerelease
   
 group Test
   redirects: on
