@@ -23,9 +23,7 @@ namespace FixieSpec.Tests
 
             var guardMethodParametersAssertion = new GuardClauseAssertion(fixture);
 
-            var allTypes = AllTypes();
-
-            guardMethodParametersAssertion.Verify(allTypes);
+            guardMethodParametersAssertion.Verify(AllTypes());
         }
 
         static IEnumerable<Type> AllTypes()
