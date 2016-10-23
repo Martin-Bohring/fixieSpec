@@ -58,7 +58,21 @@ namespace FixieSpec
                 stepSelector = stepPredicate;
             }
 
-            public static void ExecuteStep(MethodInfo specificationStep, Fixture context)
+            public void Execute(Fixture context, Action next)
+            {
+                var specificationSteps = context.Class.Type.GetMethods()
+                    .Where(stepSelector)
+                    .OrderBy(method => method, DeclarationOrderComparer.Default);
+
+                foreach (var specificationStep in specificationSteps)
+                {
+                    ExecuteStep(specificationStep, context);
+                }
+
+                next?.Invoke();
+            }
+
+            static void ExecuteStep(MethodInfo specificationStep, Fixture context)
             {
                 var isAsync = specificationStep.IsAsync();
 
@@ -86,20 +100,6 @@ namespace FixieSpec
                         throw new PreservedException(exception.InnerExceptions.First());
                     }
                 }
-            }
-
-            public void Execute(Fixture context, Action next)
-            {
-                var specificationSteps = context.Class.Type.GetMethods()
-                    .Where(stepSelector)
-                    .OrderBy(method => method, DeclarationOrderComparer.Default);
-
-                foreach (var specificationStep in specificationSteps)
-                {
-                    ExecuteStep(specificationStep, context);
-                }
-
-                next?.Invoke();
             }
         }
     }

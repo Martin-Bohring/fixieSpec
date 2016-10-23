@@ -40,7 +40,7 @@ namespace Media.Domain.Recording
         }
 
         /// <inheritdoc/>
-        public ActivityId ActivityId { get; private set; }
+        public ActivityId ActivityId { get; }
 
         /// <summary>
         /// Start the video recording using the video and audio recording sources.
@@ -66,7 +66,7 @@ namespace Media.Domain.Recording
                 throw new ArgumentNullException(nameof(audioSource));
             }
 
-            if (videoSource.UseForVideoRecording(this.ActivityId) && audioSource.UseForAudioRecording(this.ActivityId))
+            if (videoSource.UseForVideoRecording(ActivityId) && audioSource.UseForAudioRecording(ActivityId))
             {
                 this.videoSource = videoSource;
                 this.audioSource = audioSource;
@@ -92,7 +92,7 @@ namespace Media.Domain.Recording
                 throw new ArgumentNullException(nameof(videoSource));
             }
 
-            if (videoSource.UseForVideoRecording(this.ActivityId))
+            if (videoSource.UseForVideoRecording(ActivityId))
             {
                 this.videoSource = videoSource;
                 return true;

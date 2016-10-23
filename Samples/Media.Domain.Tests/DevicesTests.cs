@@ -5,6 +5,8 @@
 
 namespace Media.Domain.Tests
 {
+    using System.Linq;
+
     using Shouldly;
 
     public sealed class DevicesTests
@@ -33,7 +35,7 @@ namespace Media.Domain.Tests
             devices.RegisterNewDevice(aDevice);
             devices.RegisterNewDevice(anotherDevice);
 
-            var foundDevices = devices.FindDevicesByType<Microphone>();
+            var foundDevices = devices.FindDevicesByType<Microphone>().ToList();
 
             foundDevices.ShouldNotBeEmpty();
             foundDevices.ShouldContain(aDevice);
@@ -47,7 +49,7 @@ namespace Media.Domain.Tests
             devices.RegisterNewDevice(aDevice);
             devices.RegisterNewDevice(anotherDevice);
 
-            var foundDevices = devices.FindDevicesByType<IAudioRecordingSource>();
+            var foundDevices = devices.FindDevicesByType<IAudioRecordingSource>().ToList();
 
             foundDevices.ShouldNotBeEmpty();
             foundDevices.ShouldContain(aDevice);
@@ -56,7 +58,7 @@ namespace Media.Domain.Tests
         public void ShouldNotFindDevicesByTypeWhenNoDevicesAreRegistered(
             Devices devices)
         {
-            var foundDevices = devices.FindDevicesByType<Microphone>();
+            var foundDevices = devices.FindDevicesByType<Microphone>().ToList();
 
             foundDevices.ShouldBeEmpty();
         }
@@ -65,7 +67,7 @@ namespace Media.Domain.Tests
             Devices devices,
              DeviceId anyDeviceId)
         {
-            Device notFoundDevice = null;
+            Device notFoundDevice;
 
             devices.FindDeviceById(anyDeviceId, out notFoundDevice).ShouldBeFalse();
             notFoundDevice.ShouldBeNull();
@@ -78,7 +80,7 @@ namespace Media.Domain.Tests
         {
             devices.RegisterNewDevice(aDevice);
             devices.RegisterNewDevice(anotherDevice);
-            Device foundDevice = null;
+            Device foundDevice;
 
             devices.FindDeviceById(aDevice.Id, out foundDevice).ShouldBeTrue();
 
@@ -91,7 +93,7 @@ namespace Media.Domain.Tests
             DeviceId anyDeviceId)
         {
             devices.RegisterNewDevice(aDevice);
-            Device notFoundDevice = null;
+            Device notFoundDevice;
 
             devices.FindDeviceById(anyDeviceId, out notFoundDevice).ShouldBeFalse();
             notFoundDevice.ShouldBeNull();

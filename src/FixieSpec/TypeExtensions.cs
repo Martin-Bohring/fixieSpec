@@ -116,7 +116,7 @@ namespace FixieSpec
 
         static bool HasSingleConstuctor(this Type type)
         {
-            return type.GetConstructors().Count() == 1;
+            return type.GetConstructors().Length == 1;
         }
     }
 }

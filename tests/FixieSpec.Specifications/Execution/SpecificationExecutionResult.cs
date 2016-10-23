@@ -20,7 +20,7 @@ namespace FixieSpec.Specifications.Execution
             ExecutedSteps = executedSteps;
         }
 
-        public IEnumerable<string> ExecutedSteps { get; private set; }
+        public IEnumerable<string> ExecutedSteps { get; }
 
         public int Passed => allResults.Passed;
 

@@ -17,7 +17,7 @@ namespace FixieSpec
     /// Currently implemented using the test skipping facilities of https://github.com/fixie/fixie,
     /// because inconclusive tests are not supported yet by fixie.
     /// </remarks>
-    [AttributeUsage(AttributeTargets.Method | AttributeTargets.Class, Inherited = true, AllowMultiple = false)]
+    [AttributeUsage(AttributeTargets.Method | AttributeTargets.Class)]
     public sealed class InconclusiveAttribute : Attribute
     {
         /// <summary>

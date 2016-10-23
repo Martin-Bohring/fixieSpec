@@ -36,12 +36,12 @@ namespace Media.Domain
         /// <summary>
         /// Gets the activity during that the role is being played.
         /// </summary>
-        public ActivityId Activity { get; private set; }
+        public ActivityId Activity { get; }
 
         /// <summary>
         /// Gets the role during the activity.
         /// </summary>
-        public DeviceRole Role { get; private set; }
+        public DeviceRole Role { get; }
 
         /// <summary>
         /// Creates a <see cref="RoleInActivity"/> instance indicating a recording role.

@@ -39,7 +39,7 @@ namespace Media.Domain.Recording
         }
 
         /// <inheritdoc/>
-        public ActivityId ActivityId { get; private set; }
+        public ActivityId ActivityId { get; }
 
         /// <summary>
         /// Start the audio recording using the audio source device.

@@ -89,8 +89,7 @@ namespace Media.Domain
         /// <inheritdoc/>
         public override int GetHashCode()
         {
-            return Reflect().Aggregate(37, (hashCode, value) => value == null ?
-                                    hashCode : hashCode ^ value.GetHashCode());
+            return Reflect().Aggregate(37, (hashCode, value) => hashCode ^ value?.GetHashCode() ?? hashCode);
         }
 
         /// <summary>
