@@ -5,7 +5,6 @@
 
 namespace FixieSpec.Tests
 {
-
     using Shouldly;
 
     public sealed class TypeExtensionsTests

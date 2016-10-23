@@ -13,7 +13,9 @@ namespace FixieSpec.Tests
     {
         public void ShouldDetectMethodWithoutParameters()
         {
-            var methodWithoutParameter = Method("MethodWithoutParameter");
+            const string NameOfMethod = nameof(TypeWithMethods.MethodWithoutParameter);
+
+            var methodWithoutParameter = Method(NameOfMethod);
 
             methodWithoutParameter.HasNoParameters().ShouldBeTrue();
             methodWithoutParameter.HasParameters().ShouldBeFalse();
@@ -21,7 +23,9 @@ namespace FixieSpec.Tests
 
         public void ShouldDetectMethodWithParameter()
         {
-            var methodWithParameter = Method("MethodWithParammeter");
+            const string NameOfMethod = nameof(TypeWithMethods.MethodWithParammeter);
+
+            var methodWithParameter = Method(NameOfMethod);
 
             methodWithParameter.HasNoParameters().ShouldBeFalse();
             methodWithParameter.HasParameters().ShouldBeTrue();
