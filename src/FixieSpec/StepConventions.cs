@@ -59,9 +59,7 @@ namespace FixieSpec
         /// <see langword="true"/>, if the method is a setup step; <see langword="false"/> otherwise.
         /// </returns>
         public static bool IsSetupStep(this MethodInfo method)
-        {
-            return method.IsPrimarySetupStep() || method.IsAdditionalSetupStep();
-        }
+            => method.IsPrimarySetupStep() || method.IsAdditionalSetupStep();
 
         /// <summary>
         /// Detects if the method given by <paramref name="method"/> is a primary setup step.
@@ -73,14 +71,7 @@ namespace FixieSpec
         /// <see langword="true"/>, if the method is a primary setup step; <see langword="false"/> otherwise.
         /// </returns>
         public static bool IsPrimarySetupStep(this MethodInfo method)
-        {
-            if (method == null)
-            {
-                throw new ArgumentNullException(nameof(method));
-            }
-
-            return method.GetRoleInScenario() == StepRoleInScenario.Setup;
-        }
+            => method.GetRoleInScenario() == StepRoleInScenario.Setup;
 
         /// <summary>
         /// Detects if the method given by <paramref name="method"/> is an additional setup step.
@@ -92,14 +83,7 @@ namespace FixieSpec
         /// <see langword="true"/>, if the method is an additional setup step; <see langword="false"/> otherwise.
         /// </returns>
         public static bool IsAdditionalSetupStep(this MethodInfo method)
-        {
-            if (method == null)
-            {
-                throw new ArgumentNullException(nameof(method));
-            }
-
-            return method.GetRoleInScenario() == StepRoleInScenario.AdditionalSetup;
-        }
+            => method.GetRoleInScenario() == StepRoleInScenario.AdditionalSetup;
 
         /// <summary>
         /// Detects if the method given by <paramref name="method"/> is a transition step.
@@ -111,14 +95,7 @@ namespace FixieSpec
         /// <see langword="true"/>, if the method is an transition step; <see langword="false"/> otherwise.
         /// </returns>
         public static bool IsTransitionStep(this MethodInfo method)
-        {
-            if (method == null)
-            {
-                throw new ArgumentNullException(nameof(method));
-            }
-
-            return method.GetRoleInScenario() == StepRoleInScenario.Transition;
-        }
+            => method.GetRoleInScenario() == StepRoleInScenario.Transition;
 
         /// <summary>
         /// Detects if the method given by <paramref name="method"/> is an assertion step.
@@ -130,27 +107,36 @@ namespace FixieSpec
         /// <see langword="true"/>, if the method is an assertion step; <see langword="false"/> otherwise.
         /// </returns>
         public static bool IsAssertionStep(this MethodInfo method)
+            => method.GetRoleInScenario() == StepRoleInScenario.Assertion;
+
+        /// <summary>
+        /// Gets the <see cref="StepRoleInScenario"/> a method has within a scenario.
+        /// </summary>
+        /// <param name="methodfOfScenario">
+        /// The method that is part of the scenario.
+        /// </param>
+        /// <returns>
+        /// The role the method given by <paramref name="methodfOfScenario"/> has.
+        /// </returns>
+        public static StepRoleInScenario GetRoleInScenario(this MethodInfo methodfOfScenario)
         {
-            if (method == null)
+            if (methodfOfScenario == null)
             {
-                throw new ArgumentNullException(nameof(method));
+                throw new ArgumentNullException(nameof(methodfOfScenario));
             }
 
-            return method.GetRoleInScenario() == StepRoleInScenario.Assertion;
-        }
-
-        static StepRoleInScenario GetRoleInScenario(this MethodInfo methodToScan)
-        {
-            if (methodToScan.HasStepSignature())
+            if (!methodfOfScenario.HasStepSignature())
             {
-                foreach (var stepConvention in Conventions)
-                {
-                    var matchResult = stepConvention.MatchMethodName(methodToScan.ScrubMethodName());
+                return StepRoleInScenario.Undefined;
+            }
 
-                    if (matchResult != StepRoleInScenario.Undefined)
-                    {
-                        return matchResult;
-                    }
+            foreach (var stepConvention in Conventions)
+            {
+                var matchResult = stepConvention.MatchMethodName(methodfOfScenario.ScrubMethodName());
+
+                if (matchResult != StepRoleInScenario.Undefined)
+                {
+                    return matchResult;
                 }
             }
 
