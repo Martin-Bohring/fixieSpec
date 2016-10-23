@@ -40,12 +40,22 @@ namespace FixieSpec.Tests
             typeof(TypeWithDefaultConstructorAndParameterConstructor).HasOnlyParameterConstructor().ShouldBeFalse();
         }
 
-        public void ShouldGetInstanceMethods()
+        public void ShouldGetNamedInstanceMethod()
         {
-            const string NameOfInstanceMethod = "InstanceMethod";
+            const string NameOfInstanceMethod = nameof(TypeWithDefaultConstructorOnly.InstanceMethod);
 
             typeof(TypeWithDefaultConstructorOnly).GetInstanceMethod(NameOfInstanceMethod)
                 .Name.ShouldBe(NameOfInstanceMethod);
+        }
+
+        public void ShouldGetAllInstanceMethods()
+        {
+            const string NameOfInstanceMethod = nameof(TypeWithDefaultConstructorOnly.InstanceMethod);
+            var type = typeof(TypeWithDefaultConstructorOnly);
+
+            var instanceMethods = type.GetInstanceMethods();
+
+            instanceMethods.ShouldContain(type.GetInstanceMethod(NameOfInstanceMethod));
         }
 
         class TypeWithDefaultConstructorOnly

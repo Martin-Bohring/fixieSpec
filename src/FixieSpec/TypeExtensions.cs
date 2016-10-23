@@ -6,6 +6,7 @@
 namespace FixieSpec
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Reflection;
 
@@ -71,7 +72,7 @@ namespace FixieSpec
         /// The name of the instance method.
         /// </param>
         /// <returns>
-        /// The <see cref="MethodInfo"/> metadata describing the instance method.
+        /// The instance method.
         /// </returns>
         /// <remarks>
         /// Currently does not handle overloaded methods.
@@ -89,6 +90,28 @@ namespace FixieSpec
             }
 
             return type.GetMethod(methodName, InstanceMethods);
+        }
+
+        /// <summary>
+        /// Gets the metadata of the all instance methods defined by the type <paramref name="type"/>.
+        /// </summary>
+        /// <param name="type">
+        /// The type that defines the instance methods.
+        /// </param>
+        /// <returns>
+        /// All instance methods of the type.
+        /// </returns>
+        /// <remarks>
+        /// Currently does not handle overloaded methods.
+        /// </remarks>
+        public static IEnumerable<MethodInfo> GetInstanceMethods(this Type type)
+        {
+            if (type == null)
+            {
+                throw new ArgumentNullException(nameof(type));
+            }
+
+            return type.GetMethods(InstanceMethods);
         }
 
         static bool HasSingleConstuctor(this Type type)
