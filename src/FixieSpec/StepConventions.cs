@@ -29,24 +29,24 @@ namespace FixieSpec
                 StepRoleInScenario.Setup);
 
             AddStepConvention(
-                    methodName => methodName.StartsWith("AndGiven", StringComparison.OrdinalIgnoreCase),
-                    StepRoleInScenario.AdditionalSetup);
+                methodName => methodName.StartsWith("AndGiven", StringComparison.OrdinalIgnoreCase),
+                StepRoleInScenario.AdditionalSetup);
 
             AddStepConvention(
-                    methodName => methodName.StartsWith("When", StringComparison.OrdinalIgnoreCase),
-                    StepRoleInScenario.Transition);
+                methodName => methodName.StartsWith("When", StringComparison.OrdinalIgnoreCase),
+                StepRoleInScenario.Transition);
 
             AddStepConvention(
-                    methodName => methodName.StartsWith("AndWhen", StringComparison.OrdinalIgnoreCase),
-                    StepRoleInScenario.Transition);
+                methodName => methodName.StartsWith("AndWhen", StringComparison.OrdinalIgnoreCase),
+                StepRoleInScenario.Transition);
 
             AddStepConvention(
-                    methodName => methodName.StartsWith("Then", StringComparison.OrdinalIgnoreCase),
-                    StepRoleInScenario.Assertion);
+                methodName => methodName.StartsWith("Then", StringComparison.OrdinalIgnoreCase),
+                StepRoleInScenario.Assertion);
 
             AddStepConvention(
-                    methodName => methodName.StartsWith("AndThen", StringComparison.OrdinalIgnoreCase),
-                    StepRoleInScenario.Assertion);
+                methodName => methodName.StartsWith("AndThen", StringComparison.OrdinalIgnoreCase),
+                StepRoleInScenario.Assertion);
         }
 
         /// <summary>
