@@ -10,17 +10,13 @@ namespace FixieSpec.Specifications.Conventions.Steps
 
     using Shouldly;
 
-    public sealed class AssertionSteps
+    public sealed class When_detecting_assertion_steps
     {
         readonly MethodInfo assertionStep = Method("Then_a_result_can_be_verified");
         readonly MethodInfo additionalAssertionStep = Method("And_then_another_result_can_be_verified");
         readonly MethodInfo otherMethod = Method("ToString");
         readonly MethodInfo methodWithParameter = Method("And_then_a_method_with_parameters_is_no_assertion_step");
         readonly MethodInfo methodWithReturnValue = Method("And_then_a_method_with_return_value_is_no_assertion_step");
-
-        public void When_detecting_assertion_steps()
-        {
-        }
 
         public void Then_assertion_steps_are_detected_as_setup_steps()
         {

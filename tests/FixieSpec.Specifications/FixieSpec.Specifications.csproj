@@ -37,9 +37,9 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Conventions\Steps\AssertionSteps.cs" />
-    <Compile Include="Conventions\Steps\SetupSteps.cs" />
-    <Compile Include="Conventions\Steps\TransitionSteps.cs" />
+    <Compile Include="Conventions\Steps\When_detecting_assertion_steps.cs" />
+    <Compile Include="Conventions\Steps\When_detecting_setup_steps.cs" />
+    <Compile Include="Conventions\Steps\When_detecting_transition_steps.cs" />
     <Compile Include="Execution\Asynchronous\FailedAssertionStep.cs" />
     <Compile Include="Execution\Asynchronous\FailedSetupStep.cs" />
     <Compile Include="Execution\SpecificationExecutionResult.cs" />

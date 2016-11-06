@@ -9,15 +9,11 @@ namespace FixieSpec.Specifications.Conventions.Steps
 
     using Shouldly;
 
-    public sealed class SetupSteps
+    public sealed class When_detecting_setup_steps
     {
         readonly MethodInfo setupStep = Method("Given_a_setup_step");
         readonly MethodInfo additionalSetupStep = Method("And_given_an_additional_setup_step");
         readonly MethodInfo otherMethod = Method("ToString");
-
-        public void When_detecting_setup_steps()
-        {
-        }
 
         public void Then_setup_steps_are_detected_as_setup_steps()
         {
