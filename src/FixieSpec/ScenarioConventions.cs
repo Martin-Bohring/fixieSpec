@@ -31,7 +31,7 @@ namespace FixieSpec
                 throw new ArgumentNullException(nameof(scenario));
             }
 
-            return Enumerable.Empty<MethodInfo>();
+            return scenario.GetInstanceMethods().Where(method => method.GetRoleInScenario() == StepRoleInScenario.Setup);
         }
     }
 }

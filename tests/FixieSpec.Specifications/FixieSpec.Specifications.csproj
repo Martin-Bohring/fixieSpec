@@ -37,6 +37,7 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Conventions\Scenarios\InspectingSimpleScenario.cs" />
     <Compile Include="Conventions\Steps\AssertionSteps.cs" />
     <Compile Include="Conventions\Steps\SetupSteps.cs" />
     <Compile Include="Conventions\Steps\TransitionSteps.cs" />
