@@ -21,34 +21,18 @@ namespace FixieSpec.Specifications.Conventions.Steps
 
         public void Then_setup_steps_are_detected_as_setup_steps()
         {
-            setupStep.IsPrimarySetupStep().ShouldBeTrue();
+            setupStep.IsSetupStep().ShouldBeTrue();
         }
 
-        public void And_then_setup_steps_are_not_detected_as_additional_setup_steps()
+        public void And_then_additional_setup_steps_are_detected_as_setup_steps()
         {
-            setupStep.IsAdditionalSetupStep().ShouldBeFalse();
-        }
-
-        public void And_then_additional_setup_steps_are_detected_as_additional_setup_steps()
-        {
-            additionalSetupStep.IsAdditionalSetupStep().ShouldBeTrue();
-        }
-
-        public void And_then_additional_setup_steps_are_not_detected_as_setup_steps()
-        {
-            additionalSetupStep.IsPrimarySetupStep().ShouldBeFalse();
+            additionalSetupStep.IsSetupStep().ShouldBeTrue();
         }
 
         public void And_then_other_methods_are_not_detected_as_setup_steps()
         {
-            otherMethod.IsPrimarySetupStep().ShouldBeFalse();
+            otherMethod.IsSetupStep().ShouldBeFalse();
         }
-
-        public void And_then_other_methods_are_not_detected_as_additional_setup_steps()
-        {
-            otherMethod.IsAdditionalSetupStep().ShouldBeFalse();
-        }
-
         static MethodInfo Method(string methodName)
         {
             return typeof(SpecificationWithSetupSteps).GetInstanceMethod(methodName);

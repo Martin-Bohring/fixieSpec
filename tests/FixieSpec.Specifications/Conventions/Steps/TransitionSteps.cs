@@ -12,19 +12,14 @@ namespace FixieSpec.Specifications.Conventions.Steps
 
     public sealed class TransitionSteps
     {
-        MethodInfo transitionStep;
-        MethodInfo additionalTransitionStep;
-        MethodInfo otherMethod;
-        MethodInfo methodWithParameter;
-        MethodInfo methodWithReturnValue;
+        readonly MethodInfo transitionStep = Method("When_exercising_the_system_under_test");
+        readonly MethodInfo additionalTransitionStep = Method("And_when_exercising_the_system_under_test_some_more");
+        readonly MethodInfo otherMethod = Method("ToString");
+        readonly MethodInfo methodWithParameter = Method("And_when_a_non_transition_step_has_parameters");
+        readonly MethodInfo methodWithReturnValue = Method("And_when_a_non_transition_step_returns_a_value");
 
         public void When_detecting_transition_steps()
         {
-            transitionStep = Method("When_exercising_the_system_under_test");
-            additionalTransitionStep = Method("And_when_exercising_the_system_under_test_some_more");
-            otherMethod = Method("ToString");
-            methodWithParameter = Method("And_when_a_non_transition_step_has_parameters");
-            methodWithReturnValue = Method("And_when_a_non_transition_step_returns_a_value");
         }
 
         public void Then_transition_steps_are_detected_as_transition_steps()

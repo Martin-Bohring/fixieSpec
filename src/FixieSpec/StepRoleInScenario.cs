@@ -21,16 +21,6 @@ namespace FixieSpec
         Setup,
 
         /// <summary>
-        /// The step is an additional setup step, that also sets up scenario
-        /// specific context.
-        /// </summary>
-        /// <remarks>
-        /// Sometimes it is better to follow the SRP principle and to split up
-        /// one complex setup step into several smaller simpler setup steps.
-        /// </remarks>
-        AdditionalSetup,
-
-        /// <summary>
         /// The step is a transition step that exercises the SUT to produce
         /// a testable outcome.
         /// </summary>

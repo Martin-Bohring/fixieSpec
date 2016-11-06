@@ -30,7 +30,7 @@ namespace FixieSpec
 
             AddStepConvention(
                 methodName => methodName.StartsWith("AndGiven", StringComparison.OrdinalIgnoreCase),
-                StepRoleInScenario.AdditionalSetup);
+                StepRoleInScenario.Setup);
 
             AddStepConvention(
                 methodName => methodName.StartsWith("When", StringComparison.OrdinalIgnoreCase),
@@ -59,31 +59,7 @@ namespace FixieSpec
         /// <see langword="true"/>, if the method is a setup step; <see langword="false"/> otherwise.
         /// </returns>
         public static bool IsSetupStep(this MethodInfo method)
-            => method.IsPrimarySetupStep() || method.IsAdditionalSetupStep();
-
-        /// <summary>
-        /// Detects if the method given by <paramref name="method"/> is a primary setup step.
-        /// </summary>
-        /// <param name="method">
-        /// The method to check.
-        /// </param>
-        /// <returns>
-        /// <see langword="true"/>, if the method is a primary setup step; <see langword="false"/> otherwise.
-        /// </returns>
-        public static bool IsPrimarySetupStep(this MethodInfo method)
             => method.GetRoleInScenario() == StepRoleInScenario.Setup;
-
-        /// <summary>
-        /// Detects if the method given by <paramref name="method"/> is an additional setup step.
-        /// </summary>
-        /// <param name="method">
-        /// The method to check.
-        /// </param>
-        /// <returns>
-        /// <see langword="true"/>, if the method is an additional setup step; <see langword="false"/> otherwise.
-        /// </returns>
-        public static bool IsAdditionalSetupStep(this MethodInfo method)
-            => method.GetRoleInScenario() == StepRoleInScenario.AdditionalSetup;
 
         /// <summary>
         /// Detects if the method given by <paramref name="method"/> is a transition step.
