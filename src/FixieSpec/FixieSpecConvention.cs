@@ -13,8 +13,7 @@ namespace FixieSpec
     using Fixie;
 
     /// <summary>
-    /// A class that describes a Fixie <see cref="Convention"/> that picks up
-    /// BDD style style specifications.
+    /// A Fixie <see cref="Convention"/> for BDD style style specifications.
     /// </summary>
     public class FixieSpecConvention : Convention
     {
