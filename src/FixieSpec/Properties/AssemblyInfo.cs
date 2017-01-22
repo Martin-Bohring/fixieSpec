@@ -11,7 +11,12 @@ using System.Runtime.InteropServices;
 [assembly: ComVisibleAttribute(false)]
 namespace System {
     internal static class AssemblyVersionInformation {
-        internal const string Version = "0.2.0";
-        internal const string InformationalVersion = "0.2.0-alpha2";
+        internal const System.String AssemblyTitle = "FixieSpec";
+        internal const System.String AssemblyProduct = "FixieSpec";
+        internal const System.String AssemblyDescription = "A super low friction specification test framework based on the fantastic Fixie test framework.";
+        internal const System.String AssemblyVersion = "0.2.0";
+        internal const System.String AssemblyFileVersion = "0.2.0";
+        internal const System.String AssemblyInformationalVersion = "0.2.0-alpha2";
+        internal const System.Boolean ComVisible = false;
     }
 }
